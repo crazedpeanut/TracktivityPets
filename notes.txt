@@ -1,0 +1,17 @@
+Running server:
+	python manage.py runserver
+	
+Start an app:
+	python manage.py startapp <app_name>
+	(add to INSTALLED_APPS in main sites settings.py)
+	
+Models:
+	python manage.py makemigrations <app_name>
+	python manage.py migrate <app_name>
+	
+Shell:
+	python manage.py shell
+	
+Admin: 
+	python manage.py createsuperuser 
+	(Enter username, email, password, re-password)

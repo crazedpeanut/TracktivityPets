@@ -1,0 +1,31 @@
+{% if user.is_authenticated %}
+	Logged in as: {{ user.get_username }} <br/><br/>
+
+	{% if not synched %}
+		<form action="/fitbit/login/" method="POST">
+		{% csrf_token %}
+		<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
+		</form>
+	{% endif %}
+		
+	{% if data %}
+		{{ data }}
+	{% else %}
+		<form action="/fitbit/get_data/activities/steps/" method="GET"> 
+			{% csrf_token %}
+			Start Date (yyyy-mm-dd):<br/>
+			<input type="text" name="base_date" value="" />
+			<br/>
+			End Date (yyyy-mm-dd):<br/>
+			<input type="text" name="end_date" value="" />
+			<br/><br/>
+			
+			<input type="submit" name="values_submit" value="Get Data" />
+		</form>
+	{% endif %}
+
+{% else %}
+
+Visit /login/ to login
+
+{% endif %}

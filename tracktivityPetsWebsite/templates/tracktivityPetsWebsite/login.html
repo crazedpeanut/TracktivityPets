@@ -1,0 +1,43 @@
+{% comment %} if the user is logged in {% endcomment %}
+{% if user.is_authenticated %}
+
+	{% comment %} {{ var }} prints variable {% endcomment %}
+	User is logged in and has username: {{ user.get_username }} 
+	
+	{% if not user.is_active %}
+		<br/> User account is not active
+	{% endif %}
+	
+	{% comment %} Button to logout {% endcomment %}
+	<form action="{% url 'tracktivityPetsWebsite:user_logout' %}" method="POST">
+		{% csrf_token %} 
+		<input type="submit" name="logout_submit" value="Logout" /> 
+	</form>
+		{% if not synched %}
+			<form action="/fitbit/login/" method="POST">
+			{% csrf_token %}
+			<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
+			</form>
+		{% endif %}
+
+{% comment %} Do this if user is not logged in {% endcomment %}	
+{% else %} 
+ 
+	{% if error_message %}
+		{% comment %} Error made from previous POST {% endcomment %}
+		Error: {{ error_message }} <br/><br/> 
+	{% endif %}
+
+	{% comment %} Generic login form {% endcomment %}
+	<form action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST"> 
+		{% csrf_token %}
+		Username<br/>
+		<input type="text" name="username" value="" />
+		<br/>
+		Password:<br/>
+		<input type="password" name="password" value="" />
+		<br/><br/>
+		
+		<input type="submit" name="login_submit" value="Submit" />
+	</form>
+{% endif %}
