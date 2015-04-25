@@ -94,4 +94,4 @@ LOGIN_URL = "/login/"
 APPEND_SLASH = True
 
 from django.contrib.auth.models import User, models
-User._meta.get_field('email')._unique = True
+User._meta.get_field('email')._unique = True #dont want duplicate emails if they are being used as sign-in
