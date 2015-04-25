@@ -91,5 +91,7 @@ LOGIN_URL = "/login/"
 
 #FITAPP_SUBSCRIBE = True
 
+APPEND_SLASH = True
+
 from django.contrib.auth.models import User, models
 User._meta.get_field('email')._unique = True
