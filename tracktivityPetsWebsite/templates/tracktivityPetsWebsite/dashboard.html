@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 {% if user.is_authenticated %}
 	Logged in as: {{ user.get_username }} <br/><br/>
 
@@ -23,9 +25,5 @@
 			<input type="submit" name="values_submit" value="Get Data" />
 		</form>
 	{% endif %}
-
-{% else %}
-
-Visit /login/ to login
 
 {% endif %}
