@@ -59,8 +59,12 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), #currently using sqlite, needs to be postgres eventually
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tracktivitypets',
+        'USER': 'tracktivitypets',
+        'PASSWORD': 'swagcats',
+        'HOST': 'prod.tracktivitypets.me',
+        'PORT': '',
     }
 }
 
