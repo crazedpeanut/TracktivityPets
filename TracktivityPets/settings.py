@@ -59,6 +59,16 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+'''
+To use on server:
+
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'tracktivitypets',
         'USER': 'tracktivitypets',
@@ -67,7 +77,7 @@ DATABASES = {
         'PORT': '',
     }
 }
-
+'''
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
