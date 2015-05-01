@@ -1,5 +1,7 @@
 from django.contrib import admin
 from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
 ######################################
 class PhraseInline(admin.TabularInline):
@@ -33,24 +35,25 @@ class PetAdmin(admin.ModelAdmin):
     ]
     inlines = [MoodInline, StoryInline]
     
-    #search_fields = ['default_name', 'cost']
 ########################################
 class CollectedPetsInline(admin.TabularInline):
     model = CollectedPet
     extra = 1
-    
+        
 class InventoryAdmin(admin.ModelAdmin):
     inlines = [CollectedPetsInline]
-    
-#########################################
 
-class ProfileAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None,               {'fields': ['user', 'inventory', 'current_pet', 'total_pet_pennies', 'last_fitbit_sync']}),
-    ]
 #########################################
+class ProfileInline(admin.TabularInline):
+    model = Profile
+    
+class UserAdmin(AuthUserAdmin):
+    inlines = [ProfileInline]
+
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
 admin.site.register(Mood, MoodAdmin)
-admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Inventory, InventoryAdmin)
+
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)

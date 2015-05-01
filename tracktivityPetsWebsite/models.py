@@ -6,7 +6,7 @@ from django.templatetags.static import static
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
     def __str__(self):             
-        return str(self.id)
+        return str(self.profile.user.email) + " inventory"
 
 class Level(models.Model):
     level = models.IntegerField(unique=True)
