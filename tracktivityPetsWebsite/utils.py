@@ -21,7 +21,7 @@ def update_user_fitbit(request):
         url = request.META['HTTP_HOST']
         params = urllib.parse.urlencode({'username': request.user.get_username(),'base_date': date_from, 'end_date': date_to})
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
-        return "data is: " + str(f.read())
+        return "data is: " + str(f.read().decode('utf-8'))
     except Exception as e:
         return str(e)
     
