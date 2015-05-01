@@ -1,0 +1,21 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block content_block %}
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/trackpets_logo.png' %}" alt="paw prints">
+            </div>
+        </div>
+        
+        {% include 'tracktivityPetsWebsite/login.html'%}
+        
+        <div class="row">
+            <div class="col-xs-12">
+                <img id="pawprints" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/pawprints.png' %}" alt="paw prints">
+            </div>
+        </div>
+    </div>
+
+{% endblock content_block %}
