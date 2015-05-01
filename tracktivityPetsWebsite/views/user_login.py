@@ -10,7 +10,6 @@ def user_login(request):
         fitbit_synched = False;
         if fitapp.utils.is_integrated(request.user):
             fitbit_synched = True
-        
         return render(request, 'tracktivityPetsWebsite/login.html', {"synched": fitbit_synched})
     
     elif request.method == 'POST': #if http request was made with POST type
