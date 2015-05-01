@@ -43,7 +43,9 @@
                             <input type="checkbox" value="remember-me">Remember Me
                         </label>
                     </div>
-
+                    
+					{% csrf_token %}
+					
                     <button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
                     <a class="formLink" href="signup.html"><button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button" formaction="signup.html">Sign up</button></a>
                 </form>
