@@ -1,7 +1,4 @@
-{% extends 'tracktivityPetsWebsite/base.html' %}
 {% load staticfiles %}
-
-{% block content_block %}
 
 	<script src="{% static 'tracktivityPetsWebsite/behaviour/login.js'%}"></script>
 
@@ -35,13 +32,6 @@
 			Error: {{ error_message }} <br/><br/> 
 		{% endif %}
 		
-		<div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/trackpets_logo.png' %}" alt="paw prints">
-            </div>
-        </div>
-
         <div class="row">
                 <form class="form-signin" action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST">
                     <label for="inputEmail" class="sr-only">Email address</label>
@@ -59,13 +49,5 @@
                 </form>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-xs-12">
-                <img id="pawprints" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/pawprints.png' %}" alt="paw prints">
-            </div>
-        </div>
-    </div>
-
 	{% endif %}
-{% endblock content_block %}
+
