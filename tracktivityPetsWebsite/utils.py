@@ -2,15 +2,37 @@ import fitapp
 from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet
 import datetime
+import urllib.request #for fitbit http requests
+import urllib.parse
+import django
+from django.core.urlresolvers import reverse
+import fitapp
+from django.contrib.sites.models import get_current_site
 
-def update_user_fitbit(user):
+''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models '''
+def update_user_fitbit(request):
+    if not is_fitbit_linked(request.user):
+        return False
+    
+    date_from = '2015-03-21'
+    date_to = '2015-05-01'
+    try:
+        #TODO: MAJOR SECURITY RISK - hash username or some crap to make it more secure
+        url = request.META['HTTP_HOST']
+        params = urllib.parse.urlencode({'username': request.user.get_username(),'base_date': date_from, 'end_date': date_to})
+        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
+        return "data is: " + str(f.read())
+    except Exception as e:
+        return str(e)
+    
+    #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
+    
     #pull steps from last_fitbit_sync upto today
     #run through each one and add new steps
     #last_fitbit_sync may already contain data for that day, but different, need to do new - old and add to that day
     #add to current pet experience and happiness
     #save it all
     #return True if succeed, False if something went wrong
-    pass
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
 #TODO: untested
@@ -39,16 +61,16 @@ def register_pet_selection(user, pet, name):
         return False
     except:
         try:
-            level = Level.objects.get(level=1)
+            level = Level.objects.get(level=1) #dodgy code, but can presume level 1 will always exist
             now = datetime.datetime.now()
             profile = Profile.objects.get(user=user) #should change this to form of user.profile, but it doesnt seem to work 
             collected_pet = CollectedPet.objects.create(pet=pet, inventory=profile.inventory, level=level, name=name, date_created=now) #create new collected pet
             collected_pet.save()
             profile.current_pet = collected_pet #link it to user.profile.current_pet 
             profile.save()
+            return True
         except Exception as e:
             return str(e)
-        return True
 
 def set_current_pet(user):
     pass

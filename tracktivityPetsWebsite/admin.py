@@ -44,12 +44,13 @@ class InventoryAdmin(admin.ModelAdmin):
     inlines = [CollectedPetsInline]
 
 #########################################
-class ProfileInline(admin.TabularInline):
+class ProfileInline(admin.StackedInline):
     model = Profile
     
 class UserAdmin(AuthUserAdmin):
     inlines = [ProfileInline]
-
+    
+#########################################
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
 admin.site.register(Mood, MoodAdmin)

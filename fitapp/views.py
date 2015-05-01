@@ -27,6 +27,8 @@ try:
     STRING_TYPES = [StringType, UnicodeType]
 except ImportError:  # Python 3
     STRING_TYPES = [str]
+    
+from django.contrib.auth.models import User
 
 
 @login_required
@@ -87,7 +89,7 @@ def complete(request):
         return redirect(reverse('fitbit-error'))
     try:
         fb.client.fetch_access_token(verifier, token=token)
-    except e:
+    except Exception as e:
         return redirect(reverse('fitbit-error'))
 
     if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists():
@@ -354,7 +356,7 @@ def get_data(request, category, resource):
     """
 
     # Manually check that user is logged in and integrated with Fitbit.
-    user = request.user
+    user = User.objects.get(username=request.GET.get('username', None)) #TODO: THIS IS MAJORLY UNSECURE #user = request.user
     try:
         resource_type = TimeSeriesDataType.objects.get(
             category=getattr(TimeSeriesDataType, category), resource=resource)
@@ -363,7 +365,7 @@ def get_data(request, category, resource):
 
     fitapp_subscribe = utils.get_setting('FITAPP_SUBSCRIBE')
     if not user.is_authenticated() or not user.is_active:
-        return make_response(101)
+        return HttpResponse(101)
     if not fitapp_subscribe and not utils.is_integrated(user):
         return make_response(102)
 
