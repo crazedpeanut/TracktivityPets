@@ -1,4 +1,5 @@
 import fitapp
+from django.contrib.auth.models import User
 
 def update_user_fitbit(user):
     #pull steps from last_fitbit_sync upto today
@@ -8,6 +9,18 @@ def update_user_fitbit(user):
     #save it all
     #return True if succeed, False if something went wrong
     pass
+
+def register_user(first_name, last_name, email, username, password, confirm_password):
+    if password != confirm_password or password == '' or email == '' or username == '':
+        return 'Not all values have been set'
+    
+    try:
+        user = User.objects.create_user(username, email, password, first_name = first_name, last_name = last_name )
+        return None
+    except:
+        return 'That username/email is already taken'
+    
+    return None
 
 def set_current_pet(user):
     pass

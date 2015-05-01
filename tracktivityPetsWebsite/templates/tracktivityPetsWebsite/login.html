@@ -12,6 +12,11 @@
 			<br/> User account is not active
 		{% endif %}
 		
+		{% if error_message %}
+			{% comment %} Error made from previous POST {% endcomment %}
+			Error: {{ error_message }} <br/><br/> 
+		{% endif %}
+		
 		{% comment %} Button to logout {% endcomment %}
 		<form action="{% url 'tracktivityPetsWebsite:user_logout' %}" method="POST">
 			{% csrf_token %} 
