@@ -1,43 +1,71 @@
-{% comment %} if the user is logged in {% endcomment %}
-{% if user.is_authenticated %}
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
 
-	{% comment %} {{ var }} prints variable {% endcomment %}
-	User is logged in and has username: {{ user.get_username }} 
+{% block content_block %}
+
+	<script src="{% static 'tracktivityPetsWebsite/behaviour/login.js'%}"></script>
+
+	{% comment %} if the user is logged in {% endcomment %}
+	{% if user.is_authenticated %}
 	
-	{% if not user.is_active %}
-		<br/> User account is not active
-	{% endif %}
-	
-	{% comment %} Button to logout {% endcomment %}
-	<form action="{% url 'tracktivityPetsWebsite:user_logout' %}" method="POST">
-		{% csrf_token %} 
-		<input type="submit" name="logout_submit" value="Logout" /> 
-	</form>
-		{% if not synched %}
-			<form action="/fitbit/login/" method="POST">
-			{% csrf_token %}
-			<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
-			</form>
-		{% endif %}
-
-{% comment %} Do this if user is not logged in {% endcomment %}	
-{% else %} 
- 
-	{% if error_message %}
-		{% comment %} Error made from previous POST {% endcomment %}
-		Error: {{ error_message }} <br/><br/> 
-	{% endif %}
-
-	{% comment %} Generic login form {% endcomment %}
-	<form action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST"> 
-		{% csrf_token %}
-		Username<br/>
-		<input type="text" name="username" value="" />
-		<br/>
-		Password:<br/>
-		<input type="password" name="password" value="" />
-		<br/><br/>
+		{% comment %} {{ var }} prints variable {% endcomment %}
+		User is logged in and has username: {{ user.get_username }} 
 		
-		<input type="submit" name="login_submit" value="Submit" />
-	</form>
-{% endif %}
+		{% if not user.is_active %}
+			<br/> User account is not active
+		{% endif %}
+		
+		{% comment %} Button to logout {% endcomment %}
+		<form action="{% url 'tracktivityPetsWebsite:user_logout' %}" method="POST">
+			{% csrf_token %} 
+			<input type="submit" name="logout_submit" value="Logout" /> 
+		</form>
+			{% if not synched %}
+				<form action="/fitbit/login/" method="POST">
+				{% csrf_token %}
+				<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
+				</form>
+			{% endif %}
+	
+	{% comment %} Do this if user is not logged in {% endcomment %}	
+	{% else %} 
+	 
+		{% if error_message %}
+			{% comment %} Error made from previous POST {% endcomment %}
+			Error: {{ error_message }} <br/><br/> 
+		{% endif %}
+		
+		<div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/trackpets_logo.png' %}" alt="paw prints">
+            </div>
+        </div>
+
+        <div class="row">
+                <form class="form-signin" action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST">
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input name="username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsPDhss3LcOZQAAAU5JREFUOMvdkzFLA0EQhd/bO7iIYmklaCUopLAQA6KNaawt9BeIgnUwLHPJRchfEBR7CyGWgiDY2SlIQBT/gDaCoGDudiy8SLwkBiwz1c7y+GZ25i0wnFEqlSZFZKGdi8iiiOR7aU32QkR2c7ncPcljAARAkgckb8IwrGf1fg/oJ8lRAHkR2VDVmOQ8AKjqY1bMHgCGYXhFchnAg6omJGcBXEZRtNoXYK2dMsaMt1qtD9/3p40x5yS9tHICYF1Vn0mOxXH8Uq/Xb389wff9PQDbQRB0t/QNOiPZ1h4B2MoO0fxnYz8dOOcOVbWhqq8kJzzPa3RAXZIkawCenHMjJN/+GiIqlcoFgKKq3pEMAMwAuCa5VK1W3SAfbAIopum+cy5KzwXn3M5AI6XVYlVt1mq1U8/zTlS1CeC9j2+6o1wuz1lrVzpWXLDWTg3pz/0CQnd2Jos49xUAAAAASUVORK5CYII=); background-attachment: scroll; background-position: 100% 50%; background-repeat: no-repeat;">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="remember-me">Remember Me
+                        </label>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
+                    <a class="formLink" href="signup.html"><button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button" formaction="signup.html">Sign up</button></a>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <img id="pawprints" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/pawprints.png' %}" alt="paw prints">
+            </div>
+        </div>
+    </div>
+
+	{% endif %}
+{% endblock content_block %}
