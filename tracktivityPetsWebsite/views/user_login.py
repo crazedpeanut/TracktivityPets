@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.conf import settings
 import fitapp
 
 def user_login(request):
@@ -26,7 +27,7 @@ def user_login(request):
         try:
             u = User.objects.get(email=email)
         except:
-            return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "No user with that email" })   
+            return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "No user with that email" })
         
         user = authenticate(username=u.get_username(), password=password) #django method to see if user exists in database
         if user is not None:
@@ -35,6 +36,10 @@ def user_login(request):
                 fitbit_synched = False;
                 if fitapp.utils.is_integrated(user):
                     fitbit_synched = True
+                    
+                if request.POST.get('remember-me', False):
+                    request.session.set_expiry(settings.REMEMBER_ME_DURATION)
+                    
                 return render(request, 'tracktivityPetsWebsite/splash.html', {"synched": fitbit_synched})
             else:
                 fitbit_synched = False;

@@ -22,6 +22,7 @@ def register_user(first_name, last_name, email, username, password, confirm_pass
     
     return None
 
+
 def set_current_pet(user):
     pass
 
