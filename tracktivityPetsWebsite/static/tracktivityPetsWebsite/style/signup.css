@@ -1,0 +1,81 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #00BFF3;
+}
+.form-signin {
+//max-width: 330px;
+    padding: 0px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+#titleimage {
+    margin: 0 auto 5%;
+    max-width: 50%;
+}
+
+.form-signin {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid black;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input {
+    margin-bottom: -1px;
+    border: 1px solid black;
+
+}
+
+.form-signin input {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    //border-top-left-radius: 0;
+    //border-top-right-radius: 0;
+}
+
+.btn {
+// padding: 7px 10px 7px 10px;
+    border: 1px solid black;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #F8931D;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+#pawprints {
+    margin: 15% auto auto 5%;
+    max-width: 50%;
+}
