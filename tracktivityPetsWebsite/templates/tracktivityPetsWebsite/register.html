@@ -1,60 +1,46 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
 {% load staticfiles %}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
-		<link href="{% static 'tracktivityPetsWebsite/style/signup.css' %}" type="text/css" rel="stylesheet"/>
-	
-		<title>Tracktivity Pets: Sign Up</title>
-	<body>
-		{% block content_block %}		
-		<div class="container">
-			    <div class="row">
-			        <div class="col-xs-12">
-			            <img id="titleimage" class="img-responsive" src={% static 'tracktivityPetsWebsite/images/signup_img.png' %} alt="Sign up">
-			        </div>
-			    </div>
-		
-		    <div class="row">
-		        <div class="col-xs-12 col-sm-5 pull-right">
-		            <form class="form-signin text-center">
-		                <label for="firstName" class="sr-only">First name</label>
-		                <input type="text" id="firstName" class="form-control" placeholder="First name" required autofocus />
-		
-		                <label for="surname" class="sr-only">Surname</label>
-		                <input type="text" id="surname" class="form-control" placeholder="Surname" required />
-		
-		                <label for="inputEmail" class="sr-only">Email Address</label>
-		                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus />
-		
-		                <label for="username" class="sr-only">Username</label>
-		                <input type="text" id="username" class="form-control" placeholder="Username" required />
-		
-		                <label for="inputPassword" class="sr-only">Password</label>
-		                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
-		
-		                <label for="confirmPass" class="sr-only">Confirm password</label>
-		                <input type="password" id="confirmPass" class="form-control" placeholder="Confirm Password" required autofocus />
-		
-		                <a class="formLink" href="/login/"><button class="btn btn-lg btn-primary col-xs-5" type="button" formaction="#">Cancel</button></a>
-		                <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="submit">Sign up</button>
-		            </form>
-		        </div>
-		    </div>
-		    
-		    <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <img id="pawprints" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/pawprints.png' %}" alt="paw prints">
-            </div>        
-           
+{% block content_block %}		
+<div class="container">
+	    <div class="row">
+	        <div class="col-xs-12">
+	            <img id="titleimage" class="img-responsive" src={% static 'tracktivityPetsWebsite/images/signup_img.png' %} alt="Sign up">
+	        </div>
+	    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-5 pull-right">
+            <form class="form-signin text-center">
+                <label for="firstName" class="sr-only">First name</label>
+                <input type="text" id="regFirstName" class="form-control" placeholder="First name" required autofocus />
+
+                <label for="surname" class="sr-only">Surname</label>
+                <input type="text" id="regSurname" class="form-control" placeholder="Surname" required />
+
+                <label for="inputEmail" class="sr-only">Email Address</label>
+                <input type="email" id="regEmail" class="form-control" placeholder="Email address" required/>
+
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="regUsername" class="form-control" placeholder="Username" required />
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="regPassword" class="form-control" placeholder="Password" required />
+
+                <label for="confirmPass" class="sr-only">Confirm password</label>
+                <input type="password" id="regConfirmPass" class="form-control" placeholder="Confirm Password" required/>
+
+                <a class="formLink" href="/login/"><button class="btn btn-lg btn-primary col-xs-5" type="button" formaction="#">Cancel</button></a>
+                <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="submit">Sign up</button>
+            </form>
         </div>
-		 </div>				
-		{%endblock content_block %}
-	</body>
-</html>
+        
+        <div class="col-xs-12 col-md-6">
+        	<img id="pawprints" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/pawprints.png' %}" alt="paw prints">
+   		</div>
+    </div>
+</div>				
+{%endblock content_block %}
 
 
 

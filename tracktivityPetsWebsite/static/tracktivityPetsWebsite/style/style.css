@@ -32,14 +32,23 @@ body {
     z-index: 2;
 }
 
-.form-signin input[type="email"] {
+#loginEmail, #regFirstName {
     margin-bottom: -1px;
     border: 1px solid black;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+#regSurname, #regEmail, #regUsername, #regPassword {
+	margin-bottom: -1px;
+	border: 1px solid black;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#loginPassword, #regConfirmPass {
     margin-bottom: 10px;
     border: 1px solid black;
     border-top-left-radius: 0;
@@ -47,7 +56,6 @@ body {
 }
 
 .btn {
-   // padding: 7px 10px 7px 10px;
     border: 1px solid black;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -72,8 +80,9 @@ body {
 }
 
 #pawprints {
-    margin: 15% auto auto 5%;
-    max-width: 50%;
+	position: relative;
+    margin: 30px auto;
+    max-width: 75%;
 }
 
 #signupLink:hover {
