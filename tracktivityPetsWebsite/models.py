@@ -5,7 +5,8 @@ from django.templatetags.static import static
 #TODO add helper functions and __name__
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
-    pass
+    def __str__(self):             
+        return str(self.profile.user.email) + " inventory"
 
 class Level(models.Model):
     level = models.IntegerField(unique=True)
@@ -29,13 +30,19 @@ class CollectedPet(models.Model):
     level = models.ForeignKey(Level)
     name = models.CharField(max_length=100, default=pet.name)
     date_created = models.DateTimeField()
+    
+    def __str__(self):             
+        return self.pet.default_name + ": " + self.name
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
     inventory = models.OneToOneField(Inventory)  
-    current_pet = models.OneToOneField(CollectedPet)
+    current_pet = models.OneToOneField(CollectedPet, null=True)
     total_pet_pennies = models.IntegerField(default=0)
     last_fitbit_sync = models.DateTimeField(null=True)
+    
+    def __str__(self):             
+        return self.user.email + " profile"
     
 class Happiness(models.Model):
     pet = models.ForeignKey(CollectedPet)
