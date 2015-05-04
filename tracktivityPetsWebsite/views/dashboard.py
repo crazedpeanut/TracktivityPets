@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.templatetags.static import static
 import fitapp
+from tracktivityPetsWebsite import utils
 
 @login_required
 def dashboard(request):
@@ -16,10 +17,11 @@ def dashboard(request):
     mood = {"phrase": "I'm so happy", "image": '{url}/pets/{name}/{location}" />'.format(url=start_url, name='Melvin', location='happyface.png')}
     level_data = {"experience": 100, "experioence_to_next_level": 200, "current_level": 5}
     age = 20
-    
-    
+    data = utils.update_user_fitbit(request)
+    #data=''
     return render(request, 'tracktivityPetsWebsite/dashboard.html',  
                   {
+                   "data": data, #temp data for testing
                    "synched": fitbit_synched,
                    "happiness_data": happiness_data,
                    "experience_data": experience_data,

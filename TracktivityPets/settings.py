@@ -109,3 +109,6 @@ APPEND_SLASH = True
 
 from django.contrib.auth.models import User, models
 User._meta.get_field('email')._unique = True #dont want duplicate emails if they are being used as sign-in
+
+#extend login time
+REMEMBER_ME_DURATION = 60 * 60 * 24 * 365 # a year
