@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.templatetags.static import static
+import datetime
+from django.utils import timezone
 
 #TODO add helper functions and __name__
 
@@ -37,19 +39,40 @@ class CollectedPet(models.Model):
     def __str__(self):             
         return self.pet.default_name + ": " + self.name
     
-    def total_happiness(self):
+    def get_total_happiness(self):
         data = self.happiness_set.all()
         total = 0
         for h in data:
             data += h.amount
         return total
     
-    def total_experience(self):
+    def get_total_experience(self):
         data = self.experience_set.all()
         total = 0
         for e in data:
             data += e.amount
         return total
+    
+    def get_happiness_last_seven_days(self):
+        seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
+        today = seven_days_ago.strftime('%Y-%m-%d')
+        dates = self.happiness_set.filter(date__gt=seven_days_ago)
+        values = []
+        for d in dates:
+            values.append(d.amount)
+        return values
+    
+    def get_experience_last_seven_days(self):
+        seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
+        today = seven_days_ago.strftime('%Y-%m-%d')
+        dates = self.experience_set.filter(date__gt=seven_days_ago)
+        values = []
+        for d in dates:
+            values.append(d.amount)
+        return values
+    
+    def get_age_in_days(self):
+        return (timezone.now() - self.date_created).days
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
