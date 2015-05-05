@@ -73,13 +73,16 @@ class UserAdmin(upstream.UserAdmin):
     add_form = UserCreationForm
     
     def save_model(self, request, user, form, change):
-        user.save()
-        inventory = Inventory.objects.create()
-        inventory.save()
-        profile = Profile.objects.create(user=user, inventory=inventory)
-        profile.save()
-        inventory.save()
-        user.save()
+        if change:
+            user.save()
+        else:
+            user.save()
+            inventory = Inventory.objects.create()
+            inventory.save()
+            profile = Profile.objects.create(user=user, inventory=inventory)
+            profile.save()
+            inventory.save()
+            user.save()
         
 ''' #TODO: need to actually delete everything, such as pets etc...
 None of this code seems to work

@@ -13,6 +13,7 @@ import hashlib
 from django.conf import settings
 import hashlib, binascii
 import json
+from django.core.exceptions import ObjectDoesNotExist
 
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
@@ -62,17 +63,17 @@ def update_user_fitbit(request):
     for date in data_json['objects']: #terrible code reuse
         if date['dateTime'] == date_from: #this day may already have data, if its synced multiple times a day, should do this a less exhaustive way though
             try:#update it
-                existing_exp = Experience.objects.get(pet=profile.current_pet, date=date['dateTime'])
-                existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=date['dateTime'])
-                
-                experience += exp.amount
+                existing_experience = Experience.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
+                existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
+
                 happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                existing_happiness.amount = happiness
                 existing_experience.amount = date['value']
-                experience += date['value'] - existing_experience.amount #new - old = amount gained
-                existing_exp.save()
+                experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
+                existing_experience.save()
                 existing_happiness.save()
                 
-            except:#just do same as below
+            except ObjectDoesNotExist: #only create a new one for it if the day doesnt exist, which should presumably only be the first ever time
                 exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
                 experience += exp.amount
                 happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
