@@ -91,6 +91,8 @@ def update_user_fitbit(request):
     #happiness += int(date['value']) / data_json['meta']['total_count'] / 75 #need to cap this at 100 #if ever want average of the retrieved stuff
     
     #change last_fitbit_sync to todays date
+    profile.last_fitbit_sync = date_to
+    profile.save()
     
     #TODO: figure out if pet levelled up or not, and change it
     
