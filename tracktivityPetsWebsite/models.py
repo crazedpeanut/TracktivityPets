@@ -67,7 +67,7 @@ class Happiness(models.Model):
     date = models.DateTimeField()
     
     def __str__(self):             
-        return self.pet.name + " " + str(self.amount)
+        return self.pet.name + " " + str(self.date) + " " + str(self.amount)
 
 class Experience(models.Model):
     pet = models.ForeignKey(CollectedPet)
@@ -75,7 +75,7 @@ class Experience(models.Model):
     date = models.DateTimeField()
     
     def __str__(self):             
-        return self.pet.name + " " + str(self.amount)
+        return self.pet.name + " " + str(self.date) + " " + str(self.amount)
  
 class Mood(models.Model):
     pet = models.ForeignKey(Pet)
