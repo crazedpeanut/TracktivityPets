@@ -12,18 +12,6 @@
 		
 	{% if data %}
 		{{ data }} <br/>
-	{% else %}
-		<form action="/fitbit/get_data/activities/steps/" method="GET"> 
-			{% csrf_token %}
-			Start Date (yyyy-mm-dd):<br/>
-			<input type="text" name="base_date" value="" />
-			<br/>
-			End Date (yyyy-mm-dd):<br/>
-			<input type="text" name="end_date" value="" />
-			<br/><br/>
-			
-			<input type="submit" name="values_submit" value="Get Data" />
-		</form>
 	{% endif %}
 	
 	{% for entry in happiness_data %}

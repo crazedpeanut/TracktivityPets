@@ -9,31 +9,45 @@ from django.core.urlresolvers import reverse
 import fitapp
 from django.contrib.sites.models import get_current_site
 import datetime
+import hashlib
+from django.conf import settings
+import hashlib, binascii
 
-''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models '''
+''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
+#TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
+this method will probably take 2-3 seconds to run, since fitbit API can take a while to respond, so ajax would be good
+means it should go in the update_user_fitbit
+'''
 def update_user_fitbit(request):
-    if not is_fitbit_linked(request.user):
+    if not is_fitbit_linked(request.user) or request.user.profile.current_pet is None:
         return False
 
     #pull steps from last_fitbit_sync upto today
     if request.user.profile.last_fitbit_sync is None:
-        date_from = request.user.date_joined #need to format this from a datetime
+        d_from = request.user.date_joined
     else:
-        date_from = request.user.profile.last_fitbit_sync
+        d_from = request.user.profile.last_fitbit_sync
+        
+    date_from = d_from.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
         
     now = datetime.datetime.now()
-    date_to = t.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
-    
-    print(date_to)
+    date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
     
     try:
-        #TODO: MAJOR SECURITY RISK - hash username or some crap to make it more secure
         url = request.META['HTTP_HOST']
-        params = urllib.parse.urlencode({'username': request.user.get_username(),'base_date': date_from, 'end_date': date_to})
+        username = request.user.get_username()
+        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
+        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
         data = f.read().decode('utf-8')
     except Exception as e:
         return str(e)
+    
+    #data is now what was returned
+    
+    
+    
+    return data
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
     
@@ -44,6 +58,12 @@ def update_user_fitbit(request):
         #add to current pet experience and happiness
         #save it all (each new happiness and experience in the for loop)
     #return True if succeed, False if something went wrong
+    
+    
+    #if request.method == GET
+        #return ajax friendly data
+    #else
+        #render dashboard page
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
 #TODO: untested

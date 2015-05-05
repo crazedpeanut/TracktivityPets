@@ -36,6 +36,9 @@ class CollectedPet(models.Model):
     
     def __str__(self):             
         return self.pet.default_name + ": " + self.name
+    
+    def total_happiness(self):
+        data = 
 
 class Profile(models.Model):
     user = models.OneToOneField(User)

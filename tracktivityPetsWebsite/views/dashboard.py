@@ -17,8 +17,8 @@ def dashboard(request):
     mood = {"phrase": "I'm so happy", "image": '{url}/pets/{name}/{location}" />'.format(url=start_url, name='Melvin', location='happyface.png')}
     level_data = {"experience": 100, "experioence_to_next_level": 200, "current_level": 5}
     age = 20
-    #data = utils.update_user_fitbit(request)
-    data=''
+    data = utils.update_user_fitbit(request)
+    #data=''
     return render(request, 'tracktivityPetsWebsite/dashboard.html',  
                   {
                    "data": data, #temp data for testing
