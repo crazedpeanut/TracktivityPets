@@ -1,6 +1,6 @@
 import fitapp
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness
 import datetime
 import urllib.request #for fitbit http requests
 import urllib.parse
@@ -12,6 +12,8 @@ import datetime
 import hashlib
 from django.conf import settings
 import hashlib, binascii
+import json
+
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
 #TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
@@ -21,12 +23,15 @@ means it should go in the update_user_fitbit
 def update_user_fitbit(request):
     if not is_fitbit_linked(request.user) or request.user.profile.current_pet is None:
         return False
-
+    
+    user = request.user
+    profile = user.profile
+    
     #pull steps from last_fitbit_sync upto today
-    if request.user.profile.last_fitbit_sync is None:
-        d_from = request.user.date_joined
+    if profile.last_fitbit_sync is None:
+        d_from = user.date_joined
     else:
-        d_from = request.user.profile.last_fitbit_sync
+        d_from = profile.last_fitbit_sync
         
     date_from = d_from.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
         
@@ -35,31 +40,61 @@ def update_user_fitbit(request):
     
     try:
         url = request.META['HTTP_HOST']
-        username = request.user.get_username()
-        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
+        username = user.get_username()
+        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)#compute secure hash so people cant intercept this crappy call (since request object doesnt work)
         params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
-        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
-        data = f.read().decode('utf-8')
+        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
+        data = f.read().decode('utf-8')#whats returned 
     except Exception as e:
-        return str(e)
+        return str(e) #TODO: make this something useful
     
-    #data is now what was returned
-    
-    
-    
-    return data
+    data_json = json.loads(data)#change it from text to something usable
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
+    if data_json['meta']['status_code'] != 100:#temp stuff for testing
+        data_to_return = {}
+        data_to_return['experience_gained'] = data_json
+        data_to_return['levels_gained'] = -1
+        return data_to_return
+    
+    experience = 0
+
+    for date in data_json['objects']: #terrible code reuse
+        if date['dateTime'] == date_from: #this day may already have data, if its synced multiple times a day, should do this a less exhaustive way though
+            try:#update it
+                existing_exp = Experience.objects.get(pet=profile.current_pet, date=date['dateTime'])
+                existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=date['dateTime'])
+                
+                experience += exp.amount
+                happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                existing_experience.amount = date['value']
+                experience += date['value'] - existing_experience.amount #new - old = amount gained
+                existing_exp.save()
+                existing_happiness.save()
+                
+            except:#just do same as below
+                exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
+                experience += exp.amount
+                happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
+        else:
+            exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
+            experience += exp.amount
+            happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+            Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
+
+    data_to_return = {}
+    data_to_return['experience_gained'] = experience
+    data_to_return['levels_gained'] = 0 #TODO
+    #data_to_return['pet_pennies_gained'] = 0
+    
+    #happiness += int(date['value']) / data_json['meta']['total_count'] / 75 #need to cap this at 100 #if ever want average of the retrieved stuff
     
     #change last_fitbit_sync to todays date
     
-    #run through each one and add new steps
-        #last_fitbit_sync may already contain data for that day, but different, need to do new - old and add to that day
-        #add to current pet experience and happiness
-        #save it all (each new happiness and experience in the for loop)
-    #return True if succeed, False if something went wrong
+    #TODO: figure out if pet levelled up or not, and change it
     
-    
+    return data_to_return
     #if request.method == GET
         #return ajax friendly data
     #else

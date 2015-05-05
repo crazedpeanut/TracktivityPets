@@ -38,7 +38,18 @@ class CollectedPet(models.Model):
         return self.pet.default_name + ": " + self.name
     
     def total_happiness(self):
-        data = 
+        data = self.happiness_set.all()
+        total = 0
+        for h in data:
+            data += h.amount
+        return total
+    
+    def total_experience(self):
+        data = self.experience_set.all()
+        total = 0
+        for e in data:
+            data += e.amount
+        return total
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
@@ -54,11 +65,17 @@ class Happiness(models.Model):
     pet = models.ForeignKey(CollectedPet)
     amount = models.IntegerField()
     date = models.DateTimeField()
+    
+    def __str__(self):             
+        return self.pet.name + " " + str(self.amount)
 
 class Experience(models.Model):
     pet = models.ForeignKey(CollectedPet)
     amount = models.IntegerField()
     date = models.DateTimeField()
+    
+    def __str__(self):             
+        return self.pet.name + " " + str(self.amount)
  
 class Mood(models.Model):
     pet = models.ForeignKey(Pet)

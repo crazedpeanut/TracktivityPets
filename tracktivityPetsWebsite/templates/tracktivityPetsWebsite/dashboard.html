@@ -10,12 +10,26 @@
 		</form>
 	{% endif %}
 		
-	{% if data %}
-		{{ data }} <br/>
-	{% endif %}
-	
-	{% for entry in happiness_data %}
-		{{ entry }} <br/>
+		
+	<strong>Update View</strong><br/>
+	Experience Gained: {{ experience_gained }} <br/>
+	Levels Gained: {{ levels_gained }} <br/><br/>
+
+	<strong>Graph Data</strong><br/>
+	{% for data in happiness_graph_data %}
+		{{ data }}, 
 	{% endfor %}
+	<br/>
+	
+	{% for data in experience_graph_data %}
+		{{ data }}, 
+	{% endfor %}
+	<br/><br/>
+	
+	<strong>Pet Info</strong><br/>
+	Age: {{ age }}<br/>
+	Mood: {{ mood }}<br/>
+	Level: {{ level_data }}
+	
 
 {% endif %}
