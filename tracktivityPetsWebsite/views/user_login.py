@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.conf import settings
 from tracktivityPetsWebsite.forms import LoginForm
+from django.shortcuts import redirect
 import fitapp
 
 def user_login(request):
@@ -11,7 +12,7 @@ def user_login(request):
         fitbit_synched = False;
         if fitapp.utils.is_integrated(request.user):
             fitbit_synched = True
-        return render(request, 'tracktivityPetsWebsite/login.html', {"synched": fitbit_synched})
+        return redirect('tracktivityPetsWebsite:dashboard') #go to dashboard
     
     elif(request.method == "GET"):
         loginForm = LoginForm()
