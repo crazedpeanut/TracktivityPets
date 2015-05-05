@@ -56,7 +56,7 @@ class Profile(models.Model):
     inventory = models.OneToOneField(Inventory)  
     current_pet = models.OneToOneField(CollectedPet, null=True)
     total_pet_pennies = models.IntegerField(default=0)
-    last_fitbit_sync = models.DateTimeField(null=True)
+    last_fitbit_sync = models.DateTimeField(null=True, blank=True)
     
     def __str__(self):             
         return self.user.email + " profile"
