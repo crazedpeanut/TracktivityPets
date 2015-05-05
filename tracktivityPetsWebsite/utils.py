@@ -144,24 +144,6 @@ def register_pet_selection(user, pet, name):
 def set_current_pet(user):
     pass
 
-def get_happiness_graph_data(user):
-    #possibly user.current_pet.happiness_set.filter(date__gt=<date 6 days ago?>)
-    pass
-
-def get_experience_graph_data(user):
-    #possibly user.current_pet.experience_set.filter(date__gt=<date 6 days ago?>)
-    pass
-
-def get_current_pet_level(user):
-    #possibly user.current_pet.level.level
-    pass
-
-def get_current_pet_mood(user):
-    pass
-
-def get_current_pet_phrase(user):
-    #possibly same as mood, but .text at end
-    pass
 
 def get_user(request):
     return request.user
