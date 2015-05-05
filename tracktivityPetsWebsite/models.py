@@ -5,8 +5,11 @@ from django.templatetags.static import static
 #TODO add helper functions and __name__
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
-    def __str__(self):             
-        return str(self.profile.user.email) + " inventory"
+    def __str__(self):    
+        try:         
+            return str(self.profile.user.email) + " inventory"
+        except:
+            return "DELETE ME" #crappy self fix, deleting a user doesnt delete inventory, TODO
 
 class Level(models.Model):
     level = models.IntegerField(unique=True)
@@ -76,7 +79,6 @@ class Phrase(models.Model):
     
     def __str__(self): 
         return self.text[0:20]
-    
 
 class Story(models.Model):
     level_unlocked = models.ForeignKey(Level)

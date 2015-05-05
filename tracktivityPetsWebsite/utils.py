@@ -8,30 +8,41 @@ import django
 from django.core.urlresolvers import reverse
 import fitapp
 from django.contrib.sites.models import get_current_site
+import datetime
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models '''
 def update_user_fitbit(request):
     if not is_fitbit_linked(request.user):
         return False
+
+    #pull steps from last_fitbit_sync upto today
+    if request.user.profile.last_fitbit_sync is None:
+        date_from = request.user.date_joined #need to format this from a datetime
+    else:
+        date_from = request.user.profile.last_fitbit_sync
+        
+    now = datetime.datetime.now()
+    date_to = t.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
     
-    date_from = '2015-03-21'
-    date_to = '2015-05-01'
+    print(date_to)
+    
     try:
         #TODO: MAJOR SECURITY RISK - hash username or some crap to make it more secure
         url = request.META['HTTP_HOST']
         params = urllib.parse.urlencode({'username': request.user.get_username(),'base_date': date_from, 'end_date': date_to})
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
-        return "data is: " + str(f.read().decode('utf-8'))
+        data = f.read().decode('utf-8')
     except Exception as e:
         return str(e)
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
     
-    #pull steps from last_fitbit_sync upto today
+    #change last_fitbit_sync to todays date
+    
     #run through each one and add new steps
-    #last_fitbit_sync may already contain data for that day, but different, need to do new - old and add to that day
-    #add to current pet experience and happiness
-    #save it all
+        #last_fitbit_sync may already contain data for that day, but different, need to do new - old and add to that day
+        #add to current pet experience and happiness
+        #save it all (each new happiness and experience in the for loop)
     #return True if succeed, False if something went wrong
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
