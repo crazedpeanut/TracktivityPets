@@ -15,7 +15,7 @@
 		<script src="http://code.jquery.com/jquery.min.js"></script>
 		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
-		<link href="{% static 'tracktivityPetsWebsite/style/style.css' %}" type="text/css" rel="stylesheet"/>
+		<link href="{% static 'tracktivityPetsWebsite/style/style1.css' %}" type="text/css" rel="stylesheet"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset=utf-8 />
 		<title>Tracktivity PetsTest</title>
 </head>
@@ -34,11 +34,12 @@
 		{{ data }}, 
 	{% endfor %}
 	<br/><br/>
-	
+	<div id="section">
 	<strong>Pet Info</strong><br/>
 	Age: {{ age }}<br/>
 	Mood: {{ mood }}<br/>
 	Level: {{ level_data }}
+	</div>
 	
 
 {% endif %}
