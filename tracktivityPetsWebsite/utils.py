@@ -83,10 +83,14 @@ def update_user_fitbit(request):
             experience += exp.amount
             happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
             Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
+            
+    current_level = profile.current_pet.level.level
+    update_pet_level(profile.current_pet)
+    new_level = profile.current_pet.level.level
 
     data_to_return = {}
     data_to_return['experience_gained'] = experience
-    data_to_return['levels_gained'] = 0 #TODO
+    data_to_return['levels_gained'] = new_level - current_level #TODO
     #data_to_return['pet_pennies_gained'] = 0
     
     #happiness += int(date['value']) / data_json['meta']['total_count'] / 75 #need to cap this at 100 #if ever want average of the retrieved stuff
@@ -94,8 +98,6 @@ def update_user_fitbit(request):
     #change last_fitbit_sync to todays date
     profile.last_fitbit_sync = date_to
     profile.save()
-    
-    #TODO: figure out if pet levelled up or not, and change it
     
     return data_to_return
     #if request.method == GET
@@ -140,6 +142,27 @@ def register_pet_selection(user, pet, name):
             return True
         except Exception as e:
             return str(e)
+
+#forces a refresh on the pet to see if it's level should be different
+def update_pet_level(collected_pet):
+    try:
+        experience = collected_pet.get_total_experience()
+        level = Level.objects.filter(experience_needed__lte=experience).order_by('-experience_needed')
+        collected_pet.level = level[0]
+        collected_pet.save()
+        return True
+    except:
+        return False
+            
+def update_pet_level_with_value(collected_pet, experience):
+    try:
+        level = Level.objects.filter(experience_needed__lte=experience).order_by('-experience_needed')
+        collected_pet.level = level[0]
+        collected_pet.save()
+        return True
+    except:
+        return False
+
 
 def set_current_pet(user):
     pass
