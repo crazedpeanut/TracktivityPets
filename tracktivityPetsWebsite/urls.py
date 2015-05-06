@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     url(r'^login/', views.user_login, name='user_login'), #ie mysite.com/login/
     url(r'^logout/', views.user_logout, name='user_logout'), #ie mysite.com/logout/
     url(r'^register/', views.register, name='register'), #ie mysite.com/register/
-    url(r'^$', views.dashboard, name='dashboard'), #ie mysite.com
-  #  url(r'^feedback/', views.feedback, name='feedback'), #ie mysite.com
+  #  url(r'^$', views.dashboard, name='dashboard'), #ie mysite.com
+    url(r'^feedback/', views.dashboard, name='feedback'), #ie mysite.com
 )
