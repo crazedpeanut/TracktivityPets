@@ -39,6 +39,7 @@ class CollectedPet(models.Model):
     def __str__(self):             
         return self.pet.default_name + ": " + self.name
     
+    #this method is pretty much pointless...
     def get_total_happiness(self):
         data = self.happiness_set.all()
         total = 0
@@ -62,6 +63,13 @@ class CollectedPet(models.Model):
             values.append(d.amount)
         return values
     
+    def get_todays_happiness_value(self):
+        today = datetime.datetime.now().strftime('%Y-%m-%d')
+        try:
+            return self.happiness_set.get(date=today).amount
+        except:
+            return 0 #might not have synced today, so its currently 0
+    
     def get_experience_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
         today = seven_days_ago.strftime('%Y-%m-%d')
@@ -75,10 +83,15 @@ class CollectedPet(models.Model):
         return (timezone.now() - self.date_created).days
     
     def get_next_level(self):
-        try:
-            return Level.objects.get(level = self.level.level + 1)
-        except:
-            return None
+        return Level.objects.get(level = self.level.level + 1)
+        
+    def get_current_mood(self):
+        happiness = self.get_todays_happiness_value()
+         #TODO: this compares keys, levels are already in order, but if you deleted level 1, then added it again, it would then be greater than the others and this would fail
+        return self.pet.mood_set.filter(happiness_needed__lte=happiness, level__lte=self.level).order_by('-level', '-happiness_needed')[0]
+    
+    def get_random_current_phrase_by_mood(self, mood):
+        return mood.phrase_set.all().order_by('?')[0]
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
