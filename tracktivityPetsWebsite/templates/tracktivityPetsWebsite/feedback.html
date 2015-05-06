@@ -1,0 +1,32 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block content_block %}
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                
+               <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/trackpets_logo.png' %}" alt="Tracktivity Pets logo">
+           
+           <body>
+            <div class= "formdisplay container">Are you experiencing a technical issue with Tracktivity Pets? Please describe your issue or any other feedback in the box below and we will follow it up as soon as we can!</div>
+          </body>
+ <br></br> <br></br> <br></br>
+            <form class="form-signin text-center">
+                
+                
+				<textarea name="textarea" id="formfill" class="form-submitting" cols="30" rows="5" placeholder="We would love your feedback!" required autofocus ></textarea>
+				<br></br>
+				<div id="test">
+                <button class="feedbtn btn-lg btn-primary col-xs-5 " type="button" formaction="#">Send Feedback</button>
+            
+            </div></form>
+            </div>
+
+        	<div class="col-xs-12 col-sm-5 pull-center">
+           	 
+        </div>        
+
+    </div>
+
+{% endblock content_block %}
