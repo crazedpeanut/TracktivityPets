@@ -50,7 +50,7 @@ class CollectedPet(models.Model):
         data = self.experience_set.all()
         total = 0
         for e in data:
-            data += e.amount
+            total += e.amount
         return total
     
     def get_happiness_last_seven_days(self):
@@ -73,6 +73,12 @@ class CollectedPet(models.Model):
     
     def get_age_in_days(self):
         return (timezone.now() - self.date_created).days
+    
+    def get_next_level(self):
+        try:
+            return Level.objects.get(level = self.level.level + 1)
+        except:
+            return None
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
