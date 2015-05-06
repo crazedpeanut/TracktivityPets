@@ -9,8 +9,16 @@
 		<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
 		</form>
 	{% endif %}
-		
-		
+		{% load staticfiles %}
+
+	<head>
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+		<link href="{% static 'tracktivityPetsWebsite/style/style.css' %}" type="text/css" rel="stylesheet"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset=utf-8 />
+		<title>Tracktivity PetsTest</title>
+</head>
 	<strong>Update View</strong><br/>
 	Experience Gained: {{ experience_gained }} <br/>
 	Levels Gained: {{ levels_gained }} <br/><br/>
