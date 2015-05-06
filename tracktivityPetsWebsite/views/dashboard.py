@@ -18,7 +18,9 @@ def dashboard(request):
     data = utils.update_user_fitbit(request)
         
     start_url = static('tracktivityPetsWebsite/images')
-    mood = {"phrase": "I'm so happy", "image": '{url}/pets/{name}/{location}" />'.format(url=start_url, name='Melvin', location='happyface.png')} 
+    current_mood = request.user.profile.current_pet.get_current_mood()
+    phrase = request.user.profile.current_pet.get_random_current_phrase_by_mood(current_mood).text
+    mood = {"phrase": phrase, "image": '{url}/pets/{name}/{location}" />'.format(url=start_url, name=request.user.profile.current_pet.pet, location=current_mood.image_location)} 
     
     next_level = request.user.profile.current_pet.get_next_level()
     if next_level is None:
