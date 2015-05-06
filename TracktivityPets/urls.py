@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^fitbit/', include('fitapp.urls')),
     url(r'^', include('tracktivityPetsWebsite.urls', namespace="tracktivityPetsWebsite")),
+     
 )
