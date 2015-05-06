@@ -27,8 +27,11 @@ try:
     STRING_TYPES = [StringType, UnicodeType]
 except ImportError:  # Python 3
     STRING_TYPES = [str]
-    
+ 
+#additional imports for tracktivityPets   
 from django.contrib.auth.models import User
+import hashlib, binascii
+from django.conf import settings
 
 
 @login_required
@@ -354,9 +357,34 @@ def get_data(request, category, resource):
     URL name:
         `fitbit-data`
     """
+#########################################
+#START OF ADDITION FOR TRACKTIVITY PETS
+#########################################
 
-    # Manually check that user is logged in and integrated with Fitbit.
-    user = User.objects.get(username=request.GET.get('username', None)) #TODO: THIS IS MAJORLY UNSECURE #user = request.user
+    user = request.user
+    
+    if user.is_anonymous(): #if request object doesnt work, like it currently does with urllib, they will be anonymous, which we dont want
+        try:
+            # Manually check that user is logged in and integrated with Fitbit.
+            username=request.GET.get('username', None)
+            if username is None:
+                return make_response(101)
+            
+            hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
+            
+            hash_get = request.GET.get('hash', None)
+            if binascii.hexlify(hash).decode() != hash_get:
+                return make_response(101)
+            
+            user = User.objects.get(username=username)
+        except Exception as e:
+            return make_response(101)
+    
+#########################################
+#END OF ADDITION FOR TRACKTIVITY PETS
+#########################################
+    
+    #user = request.user
     try:
         resource_type = TimeSeriesDataType.objects.get(
             category=getattr(TimeSeriesDataType, category), resource=resource)
