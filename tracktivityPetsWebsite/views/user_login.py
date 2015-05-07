@@ -43,7 +43,7 @@ def user_login(request):
                         
                     if(rememberMe):
                         request.session.set_expiry(settings.REMEMBER_ME_DURATION)
-                    return render(request, 'tracktivityPetsWebsite/splash.html', {"synched": fitbit_synched})
+                    return redirect('tracktivityPetsWebsite:dashboard')#return render(request, 'tracktivityPetsWebsite/splash.html', {"synched": fitbit_synched})
                 else:
                     fitbit_synched = False
                     

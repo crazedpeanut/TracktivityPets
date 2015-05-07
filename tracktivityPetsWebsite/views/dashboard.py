@@ -4,12 +4,13 @@ from django.contrib.auth.decorators import login_required
 from django.templatetags.static import static
 import fitapp
 from tracktivityPetsWebsite import utils
+from django.shortcuts import redirect
 
 @login_required
 def dashboard(request):
     
-    if request.user.profile.current_pet is None:
-        return HttpResponse('You have no pet!')#TODO: this shouldnt ever actually occur
+    if request.user.profile.current_pet is None:#take them to the page to select a pet
+        return redirect('tracktivityPetsWebsite:pet_selection')
         
     success, data = utils.update_user_fitbit(request)
     
