@@ -37,19 +37,17 @@
 			Error: {{ error_message }} <br/><br/> 
 		{% endif %}
 	
-		<div class="">
-                <form class="form-signin col-md-6 col-xs-12" action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST">
-					{{ loginForm }}
-                  	{% csrf_token %}
+            <form class="form-signin" action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST">
+				{{ loginForm }}
+              	{% csrf_token %}
 
-					<div>
-						<button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
-	                    <a class="formLink" href="{% url 'tracktivityPetsWebsite:register' %}">
-	                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button">Sign up</button></a>
-					</div>
+				<div>
+					<button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
+                    <a class="formLink" href="{% url 'tracktivityPetsWebsite:register' %}">
+                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button">Sign up</button></a>
+				</div>
 
-            </form>
-		</div>       
+            </form>     
 						
 	{% endif %}
 
