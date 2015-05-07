@@ -10,12 +10,10 @@ def dashboard(request):
     
     if request.user.profile.current_pet is None:
         return HttpResponse('You have no pet!')#TODO: this shouldnt ever actually occur
-    
-    fitbit_synched = False;
-    if fitapp.utils.is_integrated(request.user):
-        fitbit_synched = True
         
-    data = utils.update_user_fitbit(request)
+    success, data = utils.update_user_fitbit(request)
+    
+    fitbit_synched = utils.is_fitbit_linked(request.user)
         
     start_url = static('tracktivityPetsWebsite/images')
     current_mood = request.user.profile.current_pet.get_current_mood()
@@ -30,10 +28,15 @@ def dashboard(request):
     
     age = request.user.profile.current_pet.get_age_in_days()
     
-    if not 'experience_gained' in data:
+    if not success:
+        data = {}
         data['experience_gained'] = -1
-    if not 'levels_gained' in data:
         data['levels_gained'] = -1
+    else:   
+        if not 'experience_gained' in data:
+            data['experience_gained'] = -1
+        if not 'levels_gained' in data:
+            data['levels_gained'] = -1
         
     happiness_data = request.user.profile.current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
     experience_data = request.user.profile.current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]

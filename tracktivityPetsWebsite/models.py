@@ -83,7 +83,10 @@ class CollectedPet(models.Model):
         return (timezone.now() - self.date_created).days
     
     def get_next_level(self):
-        return Level.objects.get(level = self.level.level + 1)
+        try:
+            return Level.objects.get(level = self.level.level + 1)
+        except:
+            return None
         
     def get_current_mood(self):
         happiness = self.get_todays_happiness_value()
