@@ -107,22 +107,46 @@ def update_user_fitbit(request):
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
 #TODO: untested
-def register_user(first_name, last_name, email, username, password, confirm_password):
-    if password != confirm_password or password == '' or email == '' or username == '':
-        return 'Not all values have been set'
-    
-    try:
-        user = User.objects.create_user(username, email, password, first_name=first_name, last_name=last_name)
-        inventory = Inventory.objects.create()
-        inventory.save()
-        profile = Profile.objects.create(user=user, inventory=inventory)
-        profile.save()
-        user.save()
+def register_user(first_name=None, last_name=None, email=None, username=None, password=None, confirm_password=None, registerForm=None):
+    if(registerForm == None): #Chosen to input fields manually
+        if password != confirm_password or password == '' or email == '' or username == '':
+            return 'Not all values have been set'
+        
+        try:
+            user = User.objects.create_user(username, email, password, first_name=first_name, last_name=last_name)
+            inventory = Inventory.objects.create()
+            inventory.save()
+            profile = Profile.objects.create(user=user, inventory=inventory)
+            profile.save()
+            user.save()
+            return None
+        except Exception as e:
+            return str(e)
+        
         return None
-    except Exception as e:
-        return str(e)
-    
-    return None
+    elif(registerForm.is_valid()): #Using registerForm to enter details
+            username = registerForm.cleaned_data['username']
+            password = registerForm.cleaned_data['password']
+            confirmPass = registerForm.cleaned_data['confirmPass']
+            firstName = registerForm.cleaned_data['firstname']
+            surname = registerForm.cleaned_data['surname']
+            email = registerForm.cleaned_data['email']
+            
+            if password != confirmPass or password == '' or email == '' or email == '':
+                return 'Not all values have been set'
+            
+            try:
+                user = User.objects.create_user(username, email, password, first_name=firstname.firstname, last_name = surname)
+                inventory = Inventory.objects.create()
+                inventory.save()
+                profile = Profile.objects.create(user=user, inventory=inventory)
+                profile.save()
+                user.save()
+                return None
+            except Exception as e:
+                return str(e)
+            
+        
 
 ''' Used for when a user picks their first pet. Creates a new current pet and assigns it to the user '''
 #TODO: Untested
