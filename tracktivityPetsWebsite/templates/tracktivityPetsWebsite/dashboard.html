@@ -1,45 +1,46 @@
+{% extends 'tracktivityPetsWebsite:base.html' %}
 {% load staticfiles %}
 
-{% if user.is_authenticated %}
-	Logged in as: {{ user.get_username }} <br/><br/>
+{% block navbar %}
+	{% include 'tracktivityPetsWebsite/navigationbar.html'%}
+{% endblock navbar %}
 
-	{% if not synched %}
-		<form action="/fitbit/login/" method="POST">
-		{% csrf_token %}
-		<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
-		</form>
-	{% endif %}
-		{% load staticfiles %}
+{% block content_block %}
 
-	<head>
-		<script src="http://code.jquery.com/jquery.min.js"></script>
-		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
-		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
-		<link href="{% static 'tracktivityPetsWebsite/style/style1.css' %}" type="text/css" rel="stylesheet"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset=utf-8 />
-		<title>Tracktivity PetsTest</title>
-</head>
-	<strong>Update View</strong><br/>
-	Experience Gained: {{ experience_gained }} <br/>
-	Levels Gained: {{ levels_gained }} <br/><br/>
-
-	<strong>Graph Data</strong><br/>
-	Happiness:
-	{% for data in happiness_graph_data %}
-		{{ data }}, 
-	{% endfor %}
-	<br/>
-	Experience:
-	{% for data in experience_graph_data %}
-		{{ data }}, 
-	{% endfor %}
-	<br/><br/>
-	<div class="enjoy-css">
-	<strong>Pet Info</strong><br/>
-	Age: {{ age }}<br/>
-	Mood: {{ mood }}<br/>
-	Level: {{ level_data }}
-	</div>
+	{% if user.is_authenticated %}
+		Logged in as: {{ user.get_username }} <br/><br/>
 	
-
-{% endif %}
+		{% if not synched %}
+			<form action="/fitbit/login/" method="POST">
+			{% csrf_token %}
+			<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
+			</form>
+		{% endif %}
+	
+	
+		<strong>Update View</strong><br/>
+		Experience Gained: {{ experience_gained }} <br/>
+		Levels Gained: {{ levels_gained }} <br/><br/>
+	
+		<strong>Graph Data</strong><br/>
+		Happiness:
+		{% for data in happiness_graph_data %}
+			{{ data }}, 
+		{% endfor %}
+		<br/>
+		Experience:
+		{% for data in experience_graph_data %}
+			{{ data }}, 
+		{% endfor %}
+		<br/><br/>
+		<div class="enjoy-css">
+		<strong>Pet Info</strong><br/>
+		Age: {{ age }}<br/>
+		Mood: {{ mood }}<br/>
+		Level: {{ level_data }}
+		</div>
+		
+	
+	{% endif %}
+	
+{% endblock content_block %}
