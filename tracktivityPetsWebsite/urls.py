@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^register/', views.register, name='register'), #ie mysite.com/register/
     url(r'^$', views.dashboard, name='dashboard'), #ie mysite.com
     url(r'^feedback/', views.feedback, name='feedback'), 
+    url(r'^pet_selection/', views.pet_selection, name='pet_selection'), 
 )
