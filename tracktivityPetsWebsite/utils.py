@@ -22,8 +22,11 @@ this method will probably take 2-3 seconds to run, since fitbit API can take a w
 means it should go in the update_user_fitbit
 '''
 def update_user_fitbit(request):
-    if not is_fitbit_linked(request.user) or request.user.profile.current_pet is None:
-        return False
+    if not is_fitbit_linked(request.user):
+        return False, 'No fitbit found'
+    
+    if request.user.profile.current_pet is None:
+        return False, 'No current pet'
     
     user = request.user
     profile = user.profile
@@ -47,7 +50,7 @@ def update_user_fitbit(request):
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
         data = f.read().decode('utf-8')#whats returned 
     except Exception as e:
-        return str(e) #TODO: make this something useful
+        return False, str(e) #TODO: make this something useful
     
     data_json = json.loads(data)#change it from text to something usable
     
@@ -99,7 +102,7 @@ def update_user_fitbit(request):
     profile.last_fitbit_sync = date_to
     profile.save()
     
-    return data_to_return
+    return True, data_to_return
     #if request.method == GET
         #return ajax friendly data
     #else
