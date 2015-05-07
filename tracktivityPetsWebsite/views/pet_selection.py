@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 @login_required
 def pet_selection(request):
-    pass
+    return HttpResponse('TODO: pet selection page')
