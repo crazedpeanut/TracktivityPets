@@ -136,7 +136,7 @@ def register_user(first_name=None, last_name=None, email=None, username=None, pa
                 return 'Not all values have been set'
             
             try:
-                user = User.objects.create_user(username, email, password, first_name=firstname.firstname, last_name = surname)
+                user = User.objects.create_user(username, email, password, first_name=firstName, last_name = surname)
                 inventory = Inventory.objects.create()
                 inventory.save()
                 profile = Profile.objects.create(user=user, inventory=inventory)

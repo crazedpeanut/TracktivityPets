@@ -21,7 +21,7 @@ def register(request):
         else:
             result = utils.register_user(registerForm=registerForm)
             if(result is not None):
-                return HttpResponse("User registration didn't work")
+                return HttpResponse("User registration didn't work" + result)
             else:
                 return HttpResponse("User registration worked")
             
