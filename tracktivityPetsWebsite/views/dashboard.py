@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.templatetags.static import static
+from django.templatetags.static import static 
 import fitapp
 from tracktivityPetsWebsite import utils
 from django.shortcuts import redirect
