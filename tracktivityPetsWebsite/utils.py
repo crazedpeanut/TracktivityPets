@@ -14,6 +14,7 @@ from django.conf import settings
 import hashlib, binascii
 import json
 from django.core.exceptions import ObjectDoesNotExist
+from django.templatetags.static import static
 
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
@@ -140,7 +141,7 @@ def register_user(first_name=None, last_name=None, email=None, username=None, pa
 def register_pet_selection(user, pet, name):
     try: #gross code, if it passes this then they have a pet, otherwise it throws an exception and we make a new pet
         user.profile.current_pet
-        return False
+        return False, None
     except:
         try:
             level = Level.objects.get(level=1) #dodgy code, but can presume level 1 will always exist
@@ -150,9 +151,9 @@ def register_pet_selection(user, pet, name):
             collected_pet.save()
             profile.current_pet = collected_pet #link it to user.profile.current_pet 
             profile.save()
-            return True
+            return True, None
         except Exception as e:
-            return str(e)
+            return False, str(e)
 
 #forces a refresh on the pet to see if it's level should be different
 def update_pet_level(collected_pet):
@@ -173,6 +174,23 @@ def update_pet_level_with_value(collected_pet, experience):
         return True
     except:
         return False
+
+def get_pet_selection_data():
+    pets = Pet.objects.all()
+    levelOne = Level.objects.get(level=1)
+    data = {}
+    start_url = static('tracktivityPetsWebsite/images')
+    
+    for pet in pets:
+        try:
+            data[pet.default_name] = {}
+            data[pet.default_name]['name'] = pet.default_name
+            data[pet.default_name]['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text#get the level one story for each pet
+            image_location = pet.mood_set.filter(happiness_needed=-1)[0].image_location
+            data[pet.default_name]['image'] = '{url}/pets/{name}/{location}" />'.format(url=start_url, name=pet.default_name, location=image_location)
+        except:
+            pass #do nothing, but pet isnt set up properly in admin view (needs a story at level 1, and image at -1 happiness)
+    return data
 
 
 def set_current_pet(user):

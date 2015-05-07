@@ -31,5 +31,3 @@ def register(request):
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 return redirect('tracktivityPetsWebsite:pet_selection') #go to pet_selection
-            
-        
