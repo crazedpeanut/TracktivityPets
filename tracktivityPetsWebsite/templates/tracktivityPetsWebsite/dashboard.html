@@ -16,18 +16,21 @@
 				<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
 			</form>
 		{% endif %}
-	
-		<div>
-			{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
-		</div>
 		
-		<div>
-			{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
+		<div class="row">
+			<div class="col-md-4">
+				{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
+			</div>
+			
+			<div class="col-md-4">
+				{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
+			</div>
+			
+			<div class="col-md-4">
+				{% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
+			</div>
 		</div>
-		
-		<div>
-			{% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
-		</div>
+
 	
 	{% endif %}
 	
