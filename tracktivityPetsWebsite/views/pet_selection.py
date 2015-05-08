@@ -29,4 +29,4 @@ def pet_selection(request):
             return HttpResponse('Error creating pet')#shouldnt occur, only if they modify data on their end before sending
     else:
         data = utils.get_pet_selection_data()
-        return render(request, 'tracktivityPetsWebsite/pet_selection.html', {'available_pets':data, 'crap':json.dumps(data)}) #this should be a template, just like this for testing purposes
+        return render(request, 'tracktivityPetsWebsite/pet_selection.html', {'available_pets':data}) #this should be a template, just like this for testing purposes

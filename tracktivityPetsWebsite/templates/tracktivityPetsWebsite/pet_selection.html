@@ -5,15 +5,14 @@
 		{{ key }}
 		
 		{% for key, field in pet.items %}
-		
+	
 			{{ key }} {{ field }}</br>
 			{% if key == "image" %}
-				<img src="{{ field }}" /> <!--Should work, the db is sending us some weird characters at the end -->
-				
+				<img src="{{ field }}" /> <!--Should work, the db is sending us some weird characters at the end -->		
 			{% endif %}
+			
 		{% endfor %}
 		
 		</br>
 	{% endfor %}
-	{{ crap }}
 {% endblock content_block %}
