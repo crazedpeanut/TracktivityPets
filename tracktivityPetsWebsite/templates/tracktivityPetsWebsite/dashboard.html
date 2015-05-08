@@ -12,8 +12,8 @@
 	
 		{% if not synched %}
 			<form action="/fitbit/login/" method="POST">
-			{% csrf_token %}
-			<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
+				{% csrf_token %}
+				<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
 			</form>
 		{% endif %}
 	
@@ -23,21 +23,21 @@
 		Levels Gained: {{ levels_gained }} <br/><br/>
 	
 		<strong>Graph Data</strong><br/>
-		Happiness:
-		{% for data in happiness_graph_data %}
-			{{ data }}, 
-		{% endfor %}
-		<br/>
-		Experience:
-		{% for data in experience_graph_data %}
-			{{ data }}, 
-		{% endfor %}
-		<br/><br/>
+			Happiness:
+			{% for data in happiness_graph_data %}
+				{{ data }}, 
+			{% endfor %}
+			<br/>
+			Experience:
+			{% for data in experience_graph_data %}
+				{{ data }}, 
+			{% endfor %}
+			<br/><br/>
 		<div class="enjoy-css">
-		<strong>Pet Info</strong><br/>
-		Age: {{ age }}<br/>
-		Mood: {{ mood }}<br/>
-		Level: {{ level_data }}
+			<strong>Pet Info</strong><br/>
+			Age: {{ age }}<br/>
+			Mood: {{ mood }}<br/>
+			Level: {{ level_data }}
 		</div>
 		
 	
