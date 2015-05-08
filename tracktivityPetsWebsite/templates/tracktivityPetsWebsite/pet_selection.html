@@ -1,8 +1,19 @@
 {% extends 'tracktivityPetsWebsite/base.html' %}
 
 {% block content_block %}
-	{% for pet in available_pets %}
-		{{ pet }}
+	{% for key, pet in available_pets.items %}
+		{{ key }}
+		
+		{% for key, field in pet.items %}
+		
+			{{ key }} {{ field }}</br>
+			{% if key == "image" %}
+				<img src="{{ field }}" /> <!--Should work, the db is sending us some weird character at the end -->
+				
+			{% endif %}
+		{% endfor %}
+		
+		</br>
 	{% endfor %}
-	{{ data }}
+	{{ crap }}
 {% endblock content_block %}
