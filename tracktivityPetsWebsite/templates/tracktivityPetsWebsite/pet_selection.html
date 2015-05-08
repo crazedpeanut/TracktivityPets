@@ -1,0 +1,8 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+
+{% block content_block %}
+	{% for pet in available_pets %}
+		{{ pet }}
+	{% endfor %}
+	{{ data }}
+{% endblock content_block %}
