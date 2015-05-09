@@ -60,10 +60,10 @@ class CollectedPet(models.Model):
         dates = self.happiness_set.filter(date__gt=seven_days_ago)
         values = {}
         for d in dates:
-            date = d.date.strftime('%Y-%m-%d')
+            date = d.date.strftime('%d-%m')
             values[date] = {}
             values[date]['date'] = date
-            values[date]['happiness'] = d.amount
+            values[date]['happiness'] = d.amount/100
         return values
     
     def get_todays_happiness_value(self):

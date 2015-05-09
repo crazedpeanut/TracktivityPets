@@ -20,8 +20,8 @@ function drawHappinessChart()
     var data = google.visualization.arrayToDataTable([
         ['Day', 'Happiness'],
         
-        {% for date in happiness_graph_data %}
-        ['{{ date }}', 0.5],   // Percentages are entered as decimals, as Google multiplies them by 100 automatically!
+        {% for key, value in happiness_graph_data.items %}
+        ['{{ key }}', {{value.happiness}}],   // Percentages are entered as decimals, as Google multiplies them by 100 automatically!
         {% endfor %}
     ]);
 
@@ -120,7 +120,9 @@ $(document).ready(function() {
     </div>
 </div>
 
-<br/>
+
+
+
 
 Experience:
 {% for data in experience_graph_data %}
