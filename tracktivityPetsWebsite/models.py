@@ -58,9 +58,12 @@ class CollectedPet(models.Model):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
         today = seven_days_ago.strftime('%Y-%m-%d')
         dates = self.happiness_set.filter(date__gt=seven_days_ago)
-        values = []
+        values = {}
         for d in dates:
-            values.append(d.amount)
+            date = d.date.strftime('%Y-%m-%d')
+            values[date] = {}
+            values[date]['date'] = date
+            values[date]['happiness'] = d.amount
         return values
     
     def get_todays_happiness_value(self):
