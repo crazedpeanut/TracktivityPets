@@ -18,36 +18,24 @@
 		{% endif %}
 		
 		<div class="row">
-			<div class="col-md-2">
-			</div>
-			
-			<div class="col-md-8">
-				Center
-			</div>
-			
-			<div class="col-md-2">
-			</div>
-		</div>
-		
-		<div class="row">
 			<div class="col-md-4">
-				{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
+			     <h3>Pet Info</h3>
+			     {% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
 			</div>
 			
 			<div class="col-md-4">
+				<h3>Pet Happiness</h3>
 				{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
 			</div>
 			
 			<div class="col-md-4">
-				{% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
+			     <h3>Pet Updates</h3>
+			     {% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
 			</div>
 		</div>
 
-
 		<br/><br/>
-		{% if happiness_json %}
-			{{ happiness_json }}
-		{% endif %}
+		
 	
 	{% endif %}
 	
