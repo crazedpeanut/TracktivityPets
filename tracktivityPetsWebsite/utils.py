@@ -187,7 +187,7 @@ def get_pet_selection_data():
             data[pet.default_name]['name'] = pet.default_name
             data[pet.default_name]['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text#get the level one story for each pet
             image_location = pet.mood_set.filter(happiness_needed=-1)[0].image_location
-            data[pet.default_name]['image'] = '{url}/pets/{name}/{location} />'.format(url=start_url, name=pet.default_name, location=image_location)
+            data[pet.default_name]['image'] = '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
         except:
             pass #do nothing, but pet isnt set up properly in admin view (needs a story at level 1, and image at -1 happiness)
     return data
