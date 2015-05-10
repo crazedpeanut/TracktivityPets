@@ -2,11 +2,15 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from tracktivityPetsWebsite import utils
+from django.shortcuts import redirect
+from tracktivityPetsWebsite.models import CollectedPet
 import json
 
 @login_required
 def pet_selection(request):
-    #if user has a current pet redirect away
+
+    if request.user.profile.current_pet is not None or CollectedPet.objects.filter(inventory=request.user.profile.inventory).count() > 0:#redirect if own any pets, so they cant get more
+        return redirect('tracktivityPetsWebsite:dashboard')
     
     #NOTE: THE METHOD FOR POST IS TOTALLY UNTESTED
     if request.method == 'POST':
