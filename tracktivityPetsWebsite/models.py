@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.templatetags.static import static
 import datetime
 from django.utils import timezone
+from collections import OrderedDict
 
 #TODO add helper functions and __name__
 
@@ -56,12 +57,11 @@ class CollectedPet(models.Model):
     
     def get_happiness_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
-        today = seven_days_ago.strftime('%Y-%m-%d')
-        dates = self.happiness_set.filter(date__gt=seven_days_ago).order_by('-date')
-        values = {}
+        dates = self.happiness_set.filter(date__gt=seven_days_ago).order_by('date')
+        values = OrderedDict()
         for d in dates:
             date = d.date.strftime('%d-%m')
-            values[date] = {}
+            values[date] = OrderedDict()
             values[date]['date'] = date
             values[date]['happiness'] = d.amount/100
         return values
