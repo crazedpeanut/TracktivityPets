@@ -56,15 +56,18 @@ function drawHappinessChart()
 
 function drawStepsChart()
 {
+     // This is where the graph data gets entered (x axis, y axis format)
     var data = google.visualization.arrayToDataTable([
-        ['Day', 'Step Count'],
-        {% for date in happiness_graph_data %}
-        ['{{ date }}', 5000],   // Percentages are entered as decimals, as Google multiplies them by 100 automatically!
+        ['Day', 'Experience'],
+        
+        {% for key, value in experience_graph_data.items %}
+            ['{{ key }}', {{value.experience}}],   
         {% endfor %}
     ]);
-    
+
+
     var options = {
-        title: 'Displaying Your Step Counts',
+        title: 'Pet Experience',
         curveType: 'function',
         height: 400,
         backgroundColor: '#00BFF3',
@@ -74,14 +77,15 @@ function drawStepsChart()
         },
         vAxis:
         {
-            title: 'Steps',
+            title: 'Experience',
             minValue: 0,
+            //maxValue: {{ largest_experience }},
             //format: '#%'
         },
         legend: {position: 'none'},
         pointSize: '8'
     };
-    
+
     var chart = new google.visualization.LineChart(document.getElementById('chart'));
     chart.draw(data, options);
 }
@@ -112,19 +116,10 @@ $(document).ready(function() {
 
     <div class="row text-center">
         <label class="radio-inline">
-            <input type="radio" id="stepsRadio" name="chartradio">Steps
+            <input type="radio" id="stepsRadio" name="chartradio">Experience
         </label>
         <label class="radio-inline">
             <input type="radio" id="happyRadio" name="chartradio" checked="checked">Happiness
         </label>                            
     </div>
 </div>
-
-
-
-
-
-Experience:
-{% for data in experience_graph_data %}
-	{{ data }}, 
-{% endfor %}
