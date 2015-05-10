@@ -25,8 +25,7 @@ means it should go in the update_user_fitbit
 def update_user_fitbit(request):
     if not is_fitbit_linked(request.user):
         return False, 'No fitbit found'
-    
-    if request.user.profile.current_pet is None:
+    elif request.user.profile.current_pet is None:
         return False, 'No current pet'
     
     user = request.user
@@ -56,11 +55,26 @@ def update_user_fitbit(request):
     data_json = json.loads(data)#change it from text to something usable
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
+    '''
+     When everything goes well, the *status_code* is 100 and the requested data
+    is included. However, there are a number of things that can 'go wrong'
+    with this call. For each type of error, we return an empty data list with
+    a *status_code* to describe what went wrong on our end:
+
+        :100: OK - Response contains JSON data.
+        :101: User is not logged in.
+        :102: User is not integrated with Fitbit.
+        :103: Fitbit authentication credentials are invalid and have been
+            removed.
+        :104: Invalid input parameters. Either *period* or *end_date*, but not
+            both, must be supplied. *period* should be one of [1d, 7d, 30d,
+            1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
+            'yyyy-mm-dd'.
+        :105: User exceeded the Fitbit limit of 150 calls/hour.
+        :106: Fitbit error - please try again soon.
+    '''
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
-        data_to_return = {}
-        data_to_return['experience_gained'] = data_json
-        data_to_return['levels_gained'] = -1
-        return data_to_return
+        return False, data_json['meta']['status_code']#TODO: make this something useful
     
     experience = 0
 
