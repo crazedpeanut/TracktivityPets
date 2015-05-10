@@ -20,7 +20,7 @@ def dashboard(request):
     start_url = static('tracktivityPetsWebsite/images')
     current_mood = request.user.profile.current_pet.get_current_mood()
     phrase = request.user.profile.current_pet.get_random_current_phrase_by_mood(current_mood).text
-    mood = {"phrase": phrase, "image": '{url}/pets/{name}/{location}" />'.format(url=start_url, name=request.user.profile.current_pet.pet, location=current_mood.image_location)} 
+    mood = {"phrase": phrase, "image": '{url}/pets/{name}/{location}'.format(url=start_url, name=request.user.profile.current_pet.pet, location=current_mood.image_location)} 
     
     next_level = request.user.profile.current_pet.get_next_level()
     if next_level is None:
@@ -42,7 +42,7 @@ def dashboard(request):
         
     happiness_data = request.user.profile.current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
     happiness_json = json.dumps(happiness_data)
-    experience_data = request.user.profile.current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
+    largest_experience, experience_data = request.user.profile.current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
     experience_progress = int(round(request.user.profile.current_pet.get_total_experience() / experience_needed * 100, 0))
         
     level_data = {"current_experience": request.user.profile.current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": request.user.profile.current_pet.level.level, "progress": experience_progress} #get_current_level()
@@ -53,6 +53,7 @@ def dashboard(request):
                    'happiness_json': happiness_json,
                    "happiness_graph_data": happiness_data,
                    "experience_graph_data": experience_data,
+                   "largest_experience": largest_experience,
                    "mood": mood,
                    "level_data": level_data,
                    "age": age,

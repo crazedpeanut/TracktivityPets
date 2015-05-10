@@ -75,12 +75,18 @@ class CollectedPet(models.Model):
     
     def get_experience_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
-        '''today = seven_days_ago.strftime('%Y-%m-%d')'''
-        dates = self.experience_set.filter(date__gt=seven_days_ago).order_by('-date')
-        values = []
+        dates = self.experience_set.filter(date__gt=seven_days_ago).order_by('date')
+        values = OrderedDict()
+        largest_number = 0
         for d in dates:
-            values.append(d.amount)
-        return values
+            date = d.date.strftime('%d-%m')
+            values[date] = OrderedDict()
+            values[date]['date'] = date
+            values[date]['experience'] = d.amount
+            
+            if d.amount > largest_number:
+                largest_number = d.amount
+        return largest_number, values
     
     def get_age_in_days(self):
         return (timezone.now() - self.date_created).days
