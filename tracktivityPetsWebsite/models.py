@@ -57,7 +57,7 @@ class CollectedPet(models.Model):
     def get_happiness_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
         today = seven_days_ago.strftime('%Y-%m-%d')
-        dates = self.happiness_set.filter(date__gt=seven_days_ago)
+        dates = self.happiness_set.filter(date__gt=seven_days_ago).order_by('-date')
         values = {}
         for d in dates:
             date = d.date.strftime('%d-%m')
@@ -75,8 +75,8 @@ class CollectedPet(models.Model):
     
     def get_experience_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
-        today = seven_days_ago.strftime('%Y-%m-%d')
-        dates = self.experience_set.filter(date__gt=seven_days_ago)
+        '''today = seven_days_ago.strftime('%Y-%m-%d')'''
+        dates = self.experience_set.filter(date__gt=seven_days_ago).order_by('-date')
         values = []
         for d in dates:
             values.append(d.amount)
