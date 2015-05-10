@@ -10,7 +10,9 @@ import json
 @login_required
 def dashboard(request):
     
-    if request.user.profile.current_pet is None:#take them to the page to select a pet
+    if not utils.is_fitbit_linked(request.user):
+        return redirect('/fitbit/login')
+    elif request.user.profile.current_pet is None:#take them to the page to select a pet
         return redirect('tracktivityPetsWebsite:pet_selection')
         
     success, data = utils.update_user_fitbit(request)
