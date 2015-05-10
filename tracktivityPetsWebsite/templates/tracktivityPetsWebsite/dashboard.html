@@ -6,16 +6,8 @@
 {% endblock navbar %}
 
 {% block content_block %}
-
 	{% if user.is_authenticated %}
 		Logged in as: {{ user.get_username }} <br/><br/>
-	
-		{% if not synched %}
-			<form action="/fitbit/login/" method="POST">
-				{% csrf_token %}
-				<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
-			</form>
-		{% endif %}
 		
 		<div class="row">
 			<div class="col-md-4">
