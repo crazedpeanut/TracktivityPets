@@ -41,18 +41,20 @@ def dashboard(request):
             data['levels_gained'] = -1
         
     happiness_data = request.user.profile.current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
-    happiness_json = json.dumps(happiness_data)
     largest_experience, experience_data = request.user.profile.current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
     experience_progress = int(round(request.user.profile.current_pet.get_total_experience() / experience_needed * 100, 0))
-        
+    happiness_today = request.user.profile.current_pet.get_todays_happiness_value()
     level_data = {"current_experience": request.user.profile.current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": request.user.profile.current_pet.level.level, "progress": experience_progress} #get_current_level()
+    
+    pet_name = request.user.profile.current_pet.name
     
     return render(request, 'tracktivityPetsWebsite/dashboard.html',  
                   {
+                   "pet_name": pet_name,
                    "synched": fitbit_synched,
-                   'happiness_json': happiness_json,
                    "happiness_graph_data": happiness_data,
                    "experience_graph_data": experience_data,
+                   "happiness_today": happiness_today,
                    "largest_experience": largest_experience,
                    "mood": mood,
                    "level_data": level_data,

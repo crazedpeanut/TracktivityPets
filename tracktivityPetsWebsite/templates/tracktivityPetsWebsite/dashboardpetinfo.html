@@ -1,9 +1,17 @@
 <strong>Pet Info</strong><br/>
-Age: {{ age }}<br/>
-Mood: {{ mood }}<br/>
-Level: {{ level_data }}
-
+<img alt="pet mood image" src="{{ mood.image }}" />
 <br/>
+{{ mood.phrase }}
+<br/>
+Name: {{ pet_name }}
+<br/>
+Age: {{ age }} days
+<br/>
+Current happiness: {{ happiness_today }}%
+<br/>
+Current level: {{ level_data.current_level }}
+<br/>
+
 
 <div class="container-fluid">
     <div class="progress">
