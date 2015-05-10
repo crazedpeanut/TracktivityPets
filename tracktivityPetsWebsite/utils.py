@@ -70,7 +70,7 @@ def update_user_fitbit(request):
                 existing_experience = Experience.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
                 existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
 
-                happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
                 existing_happiness.amount = happiness
                 existing_experience.amount = date['value']
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
@@ -80,12 +80,12 @@ def update_user_fitbit(request):
             except ObjectDoesNotExist: #only create a new one for it if the day doesnt exist, which should presumably only be the first ever time
                 exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
                 experience += exp.amount
-                happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
                 Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
         else:
             exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
             experience += exp.amount
-            happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+            happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
             Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
             
     current_level = profile.current_pet.level.level
@@ -97,7 +97,7 @@ def update_user_fitbit(request):
     data_to_return['levels_gained'] = new_level - current_level #TODO
     #data_to_return['pet_pennies_gained'] = 0
     
-    #happiness += int(date['value']) / data_json['meta']['total_count'] / 75 #need to cap this at 100 #if ever want average of the retrieved stuff
+    #happiness += int(date['value']) / data_json['meta']['total_count'] / 100 #need to cap this at 100 #if ever want average of the retrieved stuff
     
     #change last_fitbit_sync to todays date
     profile.last_fitbit_sync = date_to
