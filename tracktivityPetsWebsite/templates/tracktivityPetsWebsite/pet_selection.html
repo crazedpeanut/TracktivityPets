@@ -1,26 +1,91 @@
 {% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
 
 {% block content_block %}
-	{% for key, pet in available_pets.items %}
 
-		{% for key, field in pet.items %}
-	
-			{{ key }} {{ field }}</br>
-			
-			{% if key == "image" %}
-				<img src="{{ field }}" /> <!--Should work, the db is sending us some weird characters at the end -->		
-			{% endif %}
-			
-			{% if key == "story" %}
-				<p>{{ key }}: {{ field }}</p>
-			{% endif %}
-			
-			{% if key == "name" %}
-				<p>{{ key }}: {{ field }}</p>
-			{% endif %}
-			
-		{% endfor %}
+<script async="" type="text/javascript" src="http://pagead2.googlesyndication.com/pub-config/ca-pub-7798941810450096.js"></script>
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+<script type="text/javascript" src="{% static 'tracktivityPetsWebsite/behaviour/carouFredSel-master/jquery.carouFredSel-6.2.1-packed.js'%}"></script>
+<script type="text/javascript" src="{% static 'tracktivityPetsWebsite/behaviour/carouFredSel-master/jquery.carouFredSel-6.2.1.js'%}"></script>
+
+<link href="{% static 'tracktivityPetsWebsite/style/carousel.css' %}" type="text/css" rel="stylesheet"/>
+<script src="{% static 'tracktivityPetsWebsite/behaviour/carousel.js'%}"></script>
+<script src="{% static 'tracktivityPetsWebsite/behaviour/carousel2.js'%}"></script>
+
+<script type="text/javascript">
+
+window.onload = function(){
+	document.getElementById("img").onclick = function fun(){
+		alert("GASDHASD");
+		document.getElementById("test").innerHtml = "Poop";
+	}
+}
+	var cars = [
+				{% for key, pet in availible_pets.items %}
+					{% for key, field in pet.items %}
+						{% if key == 'image' %}
+							"{{field}}",
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+				""
+				];
+</script>
+
+	<div id="wrapper">
+		<div id="carousel">
+			{% for key, pet in available_pets.items %}
+				{% for key, field in pet.items %}
+					{% if key == 'image' %}
+						<img src="{{ field }}" id="img" width="384" height="450"/>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+			<img src="" width="384" height="450"/>
+		</div>
+		<div id="imagecaro">
+			{% for key, pet in available_pets.items %}
+				{% for key, field in pet.items %}
+					{% if key == 'image' %}
+						<img src="{{ field }}" width="384" height="450"/>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</div>
+		<a href="#" id="prev" title="Show previous"></a>
+		<a href="#" id="next" title="Show next"></a>
+		<div id="pager"></div>
+	</div>
 		
-		</br>
-	{% endfor %}
+	<div id="wrapper2">
+		<div id="namecaro">
+			{% for key, pet in available_pets.items %}
+				{% for key, field in pet.items %}
+					{% if key == 'name' %}
+						{{ field }}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</div>
+		<div id="carousel">
+			{% for key, pet in available_pets.items %}
+				{% for key, field in pet.items %}
+					{% if key == 'image' %}
+						<img src="{{ field }}" width="384" height="450"/>
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</div>
+		<div id="storycaro">
+			{% for key, pet in available_pets.items %}
+				{% for key, field in pet.items %}
+					{% if key == 'story' %}
+						{{ field }}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+		</div>
+		<div id="pager"></div>
+	</div>	
+	
 {% endblock content_block %}
