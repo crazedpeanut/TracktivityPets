@@ -1,4 +1,4 @@
-$(function() {
+
 	$('#carousel').carouFredSel({
 		width:'100%',
 		items: 3,
@@ -12,11 +12,23 @@ $(function() {
 			duration: 1000,
 			timeoutDuration: 3000
 		},
-		prev: '#prev',
-		next: '#next',
+		prev: '#prev2',
+		next: '#next2',
+		synchronise: ['#imagecaro', true, true]
 //		pagination: {
 //			container:'#pager',
 //			deviation: 1
 //		}
 	});
+
+$('#next2').click(function(){
+	$("#carousel, #imagecaro").trigger("next");
+});
+
+$('#prev2').click(function(){
+	$("#carousel, #imagecaro").trigger("prev");
+});
+
+$('#imagecaro').carouFredSel({
+	auto : false
 });

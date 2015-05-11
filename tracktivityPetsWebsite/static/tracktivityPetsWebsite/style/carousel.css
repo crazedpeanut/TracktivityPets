@@ -15,23 +15,21 @@ body *{
 #wrapper{
 	background-color: #fff;
 	width: 40%;
-	height : 450px;
-	margin-top: 185px;
-	margin-left: 140px;
+	height : 200%;
+	margin-top: 3%;
+	margin-left: 8%;
 	overflow: hidden;
 	position: absolute;
-	top: 50%;
 	left: 0;
 }
 #wrapper2{
-	background-color: #fff;
+	background-color: #ff9900;
 	width: 40%;
-	height: 450px;
-	margin-top: 185px;
-	margin-right: 140px;
+	height: 300%;
+	margin-top: 0%;
+	margin-right: 8%;
 	overflow: hidden;
 	position: absolute;
-	top: 50%;
 	right: 0;
 }
 #carousel img{
@@ -40,9 +38,9 @@ body *{
 }
 #imagecaro img{
 	display: block;
-	float: right;
+	float: left;
 }
-#prev, #next{
+#prev2, #next2{
 	background-color: rgba(255,255,255,0.7);
 	display: block;
 	height: 450px;
@@ -54,10 +52,10 @@ body *{
 	background-color: #fff;
 	background-color: rgba(255,255,255,0.8);
 }
-#prev{
+#prev2{
 	left: 0px;
 }
-#next{
+#next2{
 	right: 0px;	
 }
 #pager{
@@ -100,8 +98,28 @@ body *{
 #pager2 a span{
 	display: none;
 }
+#name{
+	font-size:24px;
+	width: 11%;
+	text-align: center;
+	background-color: rgba(255,255,255,1);
+	overflow: visible;
+}
+#story{
+
+	font-size: 12px;
+	padding-left: 0.5%; 
+	
+}
+#image{
+	margin-left:30px;
+	width:10%;
+}
 #pager a.selected{
 	background-color: #fff;
+}
+#pdimage{
+	height: 80%;
 }
 #pager2 a.selected{
 	background-color: #fff;
