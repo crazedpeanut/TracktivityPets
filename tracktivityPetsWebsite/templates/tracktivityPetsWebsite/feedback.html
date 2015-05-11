@@ -13,9 +13,10 @@
     <div class="row text-center">
         <h2 class="col-xs-12">Feedback</h2>
         <p class="col-xs-12">Are you experiencing a technical issue with Tracktivity Pets? Please describe your issue or any other feedback in the box below and we will follow it up as soon as we can!</p>
-        <form role="form">
+        <form role="form" method="POST">
+        	{% csrf_token %}
             <div class="form-group col-xs-12">
-                <textarea class="form-control" rows="5" id="comment" placeholder="We would value your feedback!"></textarea>
+                <textarea class="form-control" rows="5" id="comment" placeholder="We would value your feedback!" name="contents"></textarea>
                 <button id="feedbackBtn" class="btn btn-lg btn-primary" type="submit" formaction="#">Send Feedback</button>        
             </div>
         </form>
