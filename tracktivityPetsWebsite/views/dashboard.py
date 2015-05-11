@@ -43,6 +43,7 @@ def dashboard(request):
         data = {}
         data['experience_gained'] = -1
         data['levels_gained'] = -1
+        data['stories'] = ''
     
     happiness_data = request.user.profile.current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
     largest_experience, experience_data = request.user.profile.current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
@@ -52,6 +53,9 @@ def dashboard(request):
     
     pet_name = request.user.profile.current_pet.name
     
+    stories_unlocked = request.user.profile.current_pet.get_unlocked_stories()
+    stories_available = request.user.profile.current_pet.get_stories_available()
+
     return render(request, 'tracktivityPetsWebsite/dashboard.html',  
                   {
                    "pet_name": pet_name,
@@ -64,5 +68,10 @@ def dashboard(request):
                    "age": age,
                    "experience_gained": data['experience_gained'],
                    "levels_gained": data['levels_gained'],
-                   "error": error
+                   "error": error,
+                   "stories_unlocked_count": stories_unlocked.count(),
+                   "stories_available_count": stories_available.count(),
+                   "stories_unlocked": stories_unlocked,
+                   "stories_gained": data['stories'],
+                   
                    })
