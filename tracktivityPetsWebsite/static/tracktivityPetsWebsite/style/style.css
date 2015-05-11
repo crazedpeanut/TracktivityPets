@@ -232,6 +232,7 @@ body.slide-active {
         min-width: 0;
         width: 100%;
         margin: 0;
+        color: white;
     }
     #slide-nav #slidemenu .navbar-nav .dropdown-menu li a {
         min-width: 0;
@@ -272,6 +273,7 @@ body.slide-active {
         width: 100%
     }
 }
+
 @media (min-width:768px) {
     #page-content {
         left: 0!important
@@ -282,4 +284,8 @@ body.slide-active {
     .navbar-header {
         left: 0!important
     }
+}
+
+.modal-footer {
+    text-align: center;
 }
