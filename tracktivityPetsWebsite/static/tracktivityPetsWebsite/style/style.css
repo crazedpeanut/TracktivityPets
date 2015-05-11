@@ -289,3 +289,7 @@ body.slide-active {
 .modal-footer {
     text-align: center;
 }
+
+#feedbackBtn {
+    margin-top: 10px;
+}
