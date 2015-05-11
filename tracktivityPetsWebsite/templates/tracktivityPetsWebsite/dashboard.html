@@ -7,6 +7,8 @@
 
 {% block content_block %}
 	{% if user.is_authenticated %}
+	
+	{{ error }}
 		<div class="row">
 			<div class="col-md-4 text-center">
 			     <h3>Pet Info</h3>
@@ -21,6 +23,11 @@
 			<div class="col-md-4 text-center">
 			     <h3>Pet Updates</h3>
 			     {% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
+			</div>
+			
+			<div class="col-md-4 text-center">
+			     <h3>Pet Unlocks</h3>
+			     {% include 'tracktivityPetsWebsite/dashboardunlocks.html' %}
 			</div>
 		</div>
     {% endif %}

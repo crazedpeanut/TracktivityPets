@@ -104,6 +104,12 @@ class CollectedPet(models.Model):
     
     def get_random_current_phrase_by_mood(self, mood):
         return mood.phrase_set.all().order_by('?')[0]
+    
+    def get_unlocked_stories(self):
+        return Story.objects.filter(pet=self.pet, level_unlocked__lte=self.level).order_by('level_unlocked')
+    
+    def get_stories_available(self):
+        return Story.objects.filter(pet=self.pet)
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
@@ -158,11 +164,6 @@ class Story(models.Model):
     level_unlocked = models.ForeignKey(Level)
     pet = models.ForeignKey(Pet)
     text = models.TextField()
-
-class UserStory(models.Model):
-    story = models.ForeignKey(Story)
-    collected_pet = models.ForeignKey(CollectedPet)
-    is_viewed = models.BooleanField(default=False)
 
 #release 2 models below
 

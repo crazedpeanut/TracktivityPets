@@ -1,7 +1,6 @@
 import fitapp
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness
-import datetime
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story
 import urllib.request #for fitbit http requests
 import urllib.parse
 import django
@@ -104,12 +103,25 @@ def update_user_fitbit(request):
             
     current_level = profile.current_pet.level.level
     update_pet_level(profile.current_pet)
-    new_level = profile.current_pet.level.level
+    new_level = profile.current_pet.level.level           
 
     data_to_return = {}
     data_to_return['experience_gained'] = experience
     data_to_return['levels_gained'] = new_level - current_level #TODO
     #data_to_return['pet_pennies_gained'] = 0
+    data_to_return['stories'] = {}
+    
+    #see if any new stories are unlocked and create UserStory here
+    level = current_level + 1
+    combined = ''
+    while level <= new_level:
+        try:
+            l = Level.objects.get(level=level)
+            story = Story.objects.get(level_unlocked=l, pet=profile.current_pet.pet)#get any stories for that level
+            data_to_return['stories'][l.level] = story
+        except:
+            pass #no story for this level
+        level += 1
     
     #happiness += int(date['value']) / data_json['meta']['total_count'] / 100 #need to cap this at 100 #if ever want average of the retrieved stuff
     

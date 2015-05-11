@@ -27,6 +27,14 @@ Levels Gained: {{ levels_gained }}
 	                    {% elif levels_gained == 1 %}
 	                    	Your pet has levelled up {{ levels_gained }} time!
 	                    {% endif %}
+	                    
+	                    <br/>
+	                    {% if stories_gained|length > 1 %}
+	                    	Your pet has unlocked {{ stories_gained|length }} new stories, check the unlocks section to read them!
+	                    {% elif stories_gained|length == 1 %}
+	                    	Your pet has unlocked {{ stories_gained|length }} new story, check the unlocks section to read it!
+	                    {% endif %}
+	                    
 	                </div>
 	                <div class="modal-footer text-center">
 	                    <button type="button" class="btn btn-default" data-dismiss="modal">Close!</button>
