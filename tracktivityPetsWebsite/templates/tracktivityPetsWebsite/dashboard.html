@@ -8,25 +8,21 @@
 {% block content_block %}
 	{% if user.is_authenticated %}
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 text-center">
 			     <h3>Pet Info</h3>
 			     {% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-4 text-center">
 				<h3>Pet Happiness</h3>
 				{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-4 text-center">
 			     <h3>Pet Updates</h3>
 			     {% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
 			</div>
 		</div>
-
-		<br/><br/>
-		
-	
-	{% endif %}
+    {% endif %}
 	
 {% endblock content_block %}
