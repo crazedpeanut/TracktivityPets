@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required 
 
-
+@login_required
 def feedback(request):
     
     if request.method == "POST":
