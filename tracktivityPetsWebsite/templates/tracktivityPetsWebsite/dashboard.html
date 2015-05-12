@@ -23,25 +23,25 @@
 			</div>
 		</div>
 	
-		<div class="row">
-			<div class="col-md-4 text-center">
-
-
+		<div id="infoRow" class="row">
+			
+			<div class="col-md-1 text-center">
 			</div>
 			
-			<div class="col-md-4 text-center">
-				<h3>Pet Happiness</h3>
-				{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
-			</div>
-			
-			<div class="col-md-4 text-center">
-			     <h3>Pet Updates</h3>
+			<div class="col-md-3 text-center">
 			     {% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
 			</div>
 			
 			<div class="col-md-4 text-center">
-			     <h3>Pet Unlocks</h3>
+				{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
+			</div>
+			
+			
+			<div class="col-md-3 text-center">
 			     {% include 'tracktivityPetsWebsite/dashboardunlocks.html' %}
+			</div>
+			
+			<div class="col-md-1 text-center">
 			</div>
 		</div>
     {% endif %}

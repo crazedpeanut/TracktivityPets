@@ -305,17 +305,15 @@ body.slide-active {
 #pet_scene
 {
 	position: relative;
-	width: 100px;
+	/*width: 100px;*/
     height: 100px;
 }
 
 #pet_mood_image
 {
 	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-    left: 0;
+	margin: auto;
+  	top: 0; left: 0; bottom: 0; right: 0;
 }
 
 #petinfo
@@ -331,5 +329,32 @@ body.slide-active {
 
 #pet_progress
 {
+	margin-top: 2px;
 	margin-bottom: 2px;
+}
+
+#pet_phrase
+{
+	margin-bottom: 2px;
+}
+
+#infoRow>div
+{
+	padding: 10px;
+}
+
+.infoItem
+{
+	background: #eee;
+	height: 100%;
+	border-radius: 8px;
+	padding-top: 0.5px;
+}
+
+.infoItem h3
+{
+	border-radius: 8px 8px 0px 0px;
+	color: white;
+	background: #00002B;
+	margin: 3px;
 }
