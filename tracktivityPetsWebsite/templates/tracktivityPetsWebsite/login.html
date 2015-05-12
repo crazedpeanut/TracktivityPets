@@ -42,9 +42,9 @@
               	{% csrf_token %}
 
 				<div>
+					<a class="formLink" href="{% url 'tracktivityPetsWebsite:register' %}">
+                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button">Register</button></a>
 					<button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
-                    <a class="formLink" href="{% url 'tracktivityPetsWebsite:register' %}">
-                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button">Sign up</button></a>
 				</div>
 
             </form>     
