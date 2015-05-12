@@ -14,7 +14,10 @@
 		
 		{% if error_message %}
 			{% comment %} Error made from previous POST {% endcomment %}
-			Error: {{ error_message }} <br/><br/> 
+			<div class="alert alert-danger" role="alert">
+				Error: {{ error_message }}
+			</div>
+			
 		{% endif %}
 		
 		{% comment %} Button to logout {% endcomment %}
@@ -34,7 +37,10 @@
 	 
 		{% if error_message %}
 			{% comment %} Error made from previous POST {% endcomment %}
-			Error: {{ error_message }} <br/><br/> 
+			<div class="alert alert-danger" role="alert">
+				Error: {{ error_message }}
+			</div>
+			
 		{% endif %}
 	
             <form class="form-signin" action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST">
