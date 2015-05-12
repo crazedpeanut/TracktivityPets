@@ -40,6 +40,11 @@ class CollectedPet(models.Model):
     def __str__(self):             
         return self.pet.default_name + ": " + self.name
     
+    def get_current_mood_image_location(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        image_location = self.get_current_mood().image_location
+        return '{url}/pets/{name}/{location}'.format(url=start_url, name=self.pet.default_name, location=image_location)
+    
     #this method is pretty much pointless...
     def get_total_happiness(self):
         data = self.happiness_set.all()
