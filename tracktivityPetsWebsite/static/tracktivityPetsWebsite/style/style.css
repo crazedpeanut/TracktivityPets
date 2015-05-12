@@ -294,7 +294,42 @@ body.slide-active {
     margin-top: 10px;
 }
 
-#pet_scene
+#pet_scene_container
 {
 	padding: 2px;
+	width: 100%;
+	height: 100%;
+	
+}
+
+#pet_scene
+{
+	position: relative;
+	width: 100px;
+    height: 100px;
+}
+
+#pet_mood_image
+{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+    left: 0;
+}
+
+#petinfo
+{
+	top: 0;
+    left: 0;
+	z-index: 2;
+	text-align: left;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#pet_progress
+{
+	margin-bottom: 2px;
 }
