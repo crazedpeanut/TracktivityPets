@@ -65,7 +65,6 @@ DATABASES = {
 }
 
 '''
-To use on server:
 
 DATABASES = {
     'default': {
