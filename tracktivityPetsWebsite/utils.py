@@ -218,6 +218,8 @@ def get_pet_selection_data():
             pass #do nothing, but pet isnt set up properly in admin view (needs a story at level 1, and image at -1 happiness)
     return data
 
+def get_current_pet(user):
+    return user.profile.current_pet
 
 def set_current_pet(user):
     pass

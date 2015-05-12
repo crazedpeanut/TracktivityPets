@@ -23,17 +23,21 @@ def dashboard(request):
         return redirect('/fitbit/login')
         
     start_url = static('tracktivityPetsWebsite/images')
-    current_mood = request.user.profile.current_pet.get_current_mood()
-    phrase = request.user.profile.current_pet.get_random_current_phrase_by_mood(current_mood).text
-    mood = {"phrase": phrase, "image": '{url}/pets/{name}/{location}'.format(url=start_url, name=request.user.profile.current_pet.pet, location=current_mood.image_location)} 
     
-    next_level = request.user.profile.current_pet.get_next_level()
+    current_pet = utils.get_current_pet(request.user)
+    
+    current_mood = current_pet.get_current_mood()
+    
+    phrase = current_pet.get_random_current_phrase_by_mood(current_mood).text
+    mood = {"phrase": phrase, "image": '{url}/pets/{name}/{location}'.format(url=start_url, name= current_pet.pet, location=current_mood.image_location)} 
+    
+    next_level = current_pet.get_next_level()
     if next_level is None:
         experience_needed = 0
     else:
         experience_needed = next_level.experience_needed
     
-    age = request.user.profile.current_pet.get_age_in_days()
+    age = current_pet.get_age_in_days()
     
     error = "" 
     
@@ -45,16 +49,16 @@ def dashboard(request):
         data['levels_gained'] = -1
         data['stories'] = ''
     
-    happiness_data = request.user.profile.current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
-    largest_experience, experience_data = request.user.profile.current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
-    experience_progress = int(round(request.user.profile.current_pet.get_total_experience() / experience_needed * 100, 0))
-    happiness_today = request.user.profile.current_pet.get_todays_happiness_value()
-    level_data = {"current_experience": request.user.profile.current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": request.user.profile.current_pet.level.level, "progress": experience_progress} #get_current_level()
+    happiness_data = current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
+    largest_experience, experience_data = current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
+    experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
+    happiness_today = current_pet.get_todays_happiness_value()
+    level_data = {"current_experience": current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": current_pet.level.level, "progress": experience_progress} #get_current_level()
     
-    pet_name = request.user.profile.current_pet.name
+    pet_name = current_pet.name
     
-    stories_unlocked = request.user.profile.current_pet.get_unlocked_stories()
-    stories_available = request.user.profile.current_pet.get_stories_available()
+    stories_unlocked = current_pet.get_unlocked_stories()
+    stories_available = current_pet.get_stories_available()
 
     return render(request, 'tracktivityPetsWebsite/dashboard.html',  
                   {
