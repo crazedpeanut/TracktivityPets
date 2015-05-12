@@ -1,0 +1,142 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+    {% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+<!-- code borrowed from http://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=carousel and http://jsfiddle.net/technotarek/gXN2u/ !-->
+<div class="container text-center">
+	<style>
+		
+		.carousel-content {
+		    color: #FFF;
+		    display:flex;
+		    align-items:center;
+		}
+		
+		.carousel-indicators {
+		  bottom:-5px;
+		}
+	</style>
+	
+	<style type="text/css">
+		h2{
+		    margin: 0;     
+		    color: #666;
+		    padding-top: 90px;
+		    font-size: 52px;
+		    font-family: "trebuchet ms", sans-serif;    
+		}
+		.bs-example{
+		    background: #333;    
+		    text-align: center;
+		    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("/static/tracktivityPetsWebsite/images/main_story_background.png");
+		    background-size: cover;
+		    background-repeat: no-repeat;
+		    background-position: 50% 60%;
+		}
+
+		.bs-example{
+			margin: 20px;
+		}
+		
+		.item {
+			margin: 20px;
+		}
+	</style>
+			
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#myCarousel").carousel({
+		         interval : false
+		     });
+		});
+		
+		setCarouselHeight('#carousel-example');
+
+	    function setCarouselHeight(id)
+	    {
+	        var slideHeight = [];
+	        $(id+' .item').each(function()
+	        {
+	            // add all slide heights to an array
+	            slideHeight.push($(this).height());
+	        });
+	
+	        // find the tallest item
+	        max = Math.max.apply(null, slideHeight);
+	
+	        // set the slide's height
+	        $(id+' .carousel-content').each(function()
+	        {
+	            $(this).css('height',max+'px');
+	        });
+	    }
+	</script>
+	
+	<h1>Story</h1>
+	
+	<div class="bs-example">
+	    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+	    	<!-- Carousel indicators -->
+	        <ol class="carousel-indicators">
+	            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	            <li data-target="#myCarousel" data-slide-to="1"></li>
+	            <li data-target="#myCarousel" data-slide-to="2"></li>
+	        </ol>   
+	       <!-- Carousel items -->
+	        <div class="row">
+		        <div class="col-xs-offset-3 col-xs-6">
+		            <div class="carousel-inner">
+		                <div class="item active">
+		                    <div class="carousel-content">
+		                        <div>
+		                            <p>
+		                            	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non orci congue, dictum tellus et, finibus neque. Vestibulum nec nunc lorem. Curabitur purus ipsum, semper non ligula vitae, suscipit scelerisque tellus. In blandit lorem enim, iaculis auctor enim imperdiet ut.
+		                            	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non orci congue, dictum tellus et, finibus neque. Vestibulum nec nunc lorem. Curabitur purus ipsum, semper non ligula vitae, suscipit scelerisque tellus. In blandit lorem enim, iaculis auctor enim imperdiet ut.
+		                            </p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="item">
+		                    <div class="carousel-content">
+		                        <div>
+		                        	<p> 
+		                        		In id iaculis ex, vel gravida sapien. Donec commodo sapien vitae neque tincidunt, sed pellentesque dolor dapibus. Nunc luctus nisl metus, vitae luctus metus consectetur quis. Curabitur bibendum magna mattis, aliquam tellus in, mollis nulla.
+		                        		In id iaculis ex, vel gravida sapien. Donec commodo sapien vitae neque tincidunt, sed pellentesque dolor dapibus. Nunc luctus nisl metus, vitae luctus metus consectetur quis. Curabitur bibendum magna mattis, aliquam tellus in, mollis nulla.
+		                        	</p>
+		                        </div>
+		                    </div>
+		                </div>
+		                <div class="item">
+		                    <div class="carousel-content">
+		                        <div>                          
+		                             <p>
+		                             	Aliquam mollis vestibulum ullamcorper. Vivamus dignissim lacus et mi elementum, vel fermentum lectus aliquam. Proin egestas eros orci. Donec a neque purus. Aliquam gravida laoreet eros at pretium.
+		                             	Aliquam mollis vestibulum ullamcorper. Vivamus dignissim lacus et mi elementum, vel fermentum lectus aliquam. Proin egestas eros orci. Donec a neque purus. Aliquam gravida laoreet eros at pretium.
+		                             </p>
+		                        </div>
+		                    </div>
+		                </div>
+		                
+		            </div>
+		        </div>
+		    </div>
+	        <!-- Carousel nav -->
+	        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+	            <span class="glyphicon glyphicon-chevron-left"></span>
+	        </a>
+	        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+	            <span class="glyphicon glyphicon-chevron-right"></span>
+	        </a>
+	    </div>
+	</div>
+  	{% if not has_pet %}
+		<form action="{{ pet_selection_link }}">
+			<input type="submit" value="Select a pet!">
+		</form>
+	{% endif %}
+</div>
+{% endblock content_block %}
