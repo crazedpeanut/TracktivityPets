@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     url(r'^feedback/$', views.feedback, name='feedback'), 
     url(r'^pet_selection/$', views.pet_selection, name='pet_selection'),
     url(r'^main_story$', views.main_story, name='main_story'),
-    
+    url(r'^fitbit_link', views.fitbit_link, name='fitbit_link'),
 )
