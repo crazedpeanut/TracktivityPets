@@ -51,7 +51,12 @@ def dashboard(request):
     
     happiness_data = current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
     largest_experience, experience_data = current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
-    experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
+    
+     try:
+        experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
+    except:
+        experience_progress = 0
+        
     happiness_today = current_pet.get_todays_happiness_value()
     level_data = {"current_experience": current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": current_pet.level.level, "progress": experience_progress} #get_current_level()
     
