@@ -3,11 +3,37 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="apple-touch-icon" sizes="57x57" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-57x57.png' %}">
+		<link rel="apple-touch-icon" sizes="60x60" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-60x60.png' %}">
+		<link rel="apple-touch-icon" sizes="72x72" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-72x72.png' %}">
+		<link rel="apple-touch-icon" sizes="76x76" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-76x76.png' %}">
+		<link rel="apple-touch-icon" sizes="114x114" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-114x114.png' %}">
+		<link rel="apple-touch-icon" sizes="120x120" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-120x120.png' %}">
+		<link rel="apple-touch-icon" sizes="144x144" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-144x144.png' %}">
+		<link rel="apple-touch-icon" sizes="152x152" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-152x152.png' %}">
+		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'tracktivityPetsWebsite/images/favicon/apple-icon-180x180.png' %}">
+		<link rel="icon" type="image/png" sizes="192x192"  href="{% static 'tracktivityPetsWebsite/images/favicon/android-icon-192x192.png' %}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{% static 'tracktivityPetsWebsite/images/favicon/favicon-32x32.png' %}">
+		<link rel="icon" type="image/png" sizes="96x96" href="{% static 'tracktivityPetsWebsite/images/favicon/favicon-96x96.png' %}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{% static 'tracktivityPetsWebsite/images/favicon/favicon-16x16.png' %}">
+		<link rel="manifest" href="{% static 'tracktivityPetsWebsite/images/favicon/manifest.json' %}">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="{% static 'tracktivityPetsWebsite/images/favicon/ms-icon-144x144.png' %}">
+		<meta name="theme-color" content="#ffffff">
+		
 		<script src="http://code.jquery.com/jquery.min.js"></script>
 		<link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
 		<link href="{% static 'tracktivityPetsWebsite/style/style.css' %}" type="text/css" rel="stylesheet"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset=utf-8 />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" charset="utf-8" />
+		<script type="text/javascript" src="https://www.google.com/jsapi?autoload={
+                'modules':[{
+                  'name':'visualization',
+                  'version':'1',
+                  'packages':['corechart']
+                }]
+              }">
+        </script>
 		<title>Tracktivity Pets</title>
 	<body>
 		{% block navbar %}

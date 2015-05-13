@@ -1,11 +1,119 @@
-<strong>Graph Data</strong><br/>
+{% load staticfiles %}
 
-Happiness:
-{% for data in happiness_graph_data %}
-	{{ data }}, 
-{% endfor %}
-<br/>
-Experience:
-{% for data in experience_graph_data %}
-	{{ data }}, 
-{% endfor %}
+<div class="infoItem">
+	<h3>History</h3>
+	
+	<!--<script src="{% static 'tracktivityPetsWebsite/behaviour/graph.js'%}"></script>-->
+	<script>
+	// Used example from http://codepen.io/anon/pen/mJyRgb?editors=101
+	
+	google.setOnLoadCallback(drawHappinessChart);
+	
+	function drawHappinessChart()
+	{
+	    // This is where the graph data gets entered (x axis, y axis format)
+	    var data = google.visualization.arrayToDataTable([
+	        ['Day', 'Happiness'],
+	        
+	        {% for key, value in happiness_graph_data.items %}
+	        ['{{ key }}', {{value.happiness}}],   // Percentages are entered as decimals, as Google multiplies them by 100 automatically!
+	        {% endfor %}
+	    ]);
+	
+	
+	    var options = {
+	        title: 'Pet Happiness',
+	        curveType: 'function',
+	        height: 400,
+	        backgroundColor: '#eee',
+	        hAxis:
+	        {
+	            title: 'Date'
+	        },
+	        vAxis:
+	        {
+	            title: 'Happiness Level',
+	            minValue: 0,
+	            maxValue: 1,
+	            format: '#%'
+	        },
+	        legend: {position: 'none'},
+	        pointSize: '8'
+	    };
+	
+	    var formatter = new google.visualization.NumberFormat({
+	        pattern: '#%'
+	    }); formatter.format(data, 1);
+	
+	    var chart = new google.visualization.LineChart(document.getElementById('chart'));
+	    chart.draw(data, options);
+	}
+	
+	function drawStepsChart()
+	{
+	     // This is where the graph data gets entered (x axis, y axis format)
+	    var data = google.visualization.arrayToDataTable([
+	        ['Day', 'Experience'],
+	        
+	        {% for key, value in experience_graph_data.items %}
+	            ['{{ key }}', {{value.experience}}],   
+	        {% endfor %}
+	    ]);
+	
+	
+	    var options = {
+	        title: 'Pet Experience',
+	        curveType: 'function',
+	        height: 400,
+	        backgroundColor: '#00BFF3',
+	        hAxis:
+	        {
+	            title: 'Date'
+	        },
+	        vAxis:
+	        {
+	            title: 'Experience',
+	            minValue: 0,
+	            //maxValue: {{ largest_experience }},
+	            //format: '#%'
+	        },
+	        legend: {position: 'none'},
+	        pointSize: '8'
+	    };
+	
+	    var chart = new google.visualization.LineChart(document.getElementById('chart'));
+	    chart.draw(data, options);
+	}
+	
+	
+	$(window).resize(function() {
+	    drawHappinessChart();
+	});
+	
+	$(document).ready(function() {
+	    $('#stepsRadio').click(function() {
+	        drawStepsChart()
+	    });
+	    $('#happyRadio').click(function() {
+	        drawHappinessChart()
+	    });
+	});
+	
+	// Reminder: you need to put https://www.google.com/jsapi in the head of your document or as an external resource on codepen //
+	</script>
+	
+	<div class="container-fluid">
+	    <div class="row text-center">
+	        <div id="chart"></div>              
+	    </div>
+	
+	    <div class="row text-center">
+	        <label class="radio-inline">
+	            <input type="radio" id="stepsRadio" name="chartradio">Experience
+	        </label>
+	        <label class="radio-inline">
+	            <input type="radio" id="happyRadio" name="chartradio" checked="checked">Happiness
+	        </label>                            
+	    </div>
+	</div>
+</div>

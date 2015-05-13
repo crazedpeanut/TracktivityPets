@@ -6,44 +6,44 @@
 {% endblock navbar %}
 
 {% block content_block %}
-
 	{% if user.is_authenticated %}
-		Logged in as: {{ user.get_username }} <br/><br/>
 	
-		{% if not synched %}
-			<form action="/fitbit/login/" method="POST">
-				{% csrf_token %}
-				<input type="submit" name="link_fitbit" value="Link Fitbit Account" /> 
-			</form>
-		{% endif %}
-		
+	{{ error }}
+	
 		<div class="row">
 			<div class="col-md-2">
+				
 			</div>
-			
-			<div class="col-md-8">
-				Center
+			<div class="col-md-8 text-center">
+			     {% include 'tracktivityPetsWebsite/dashboardpetscene.html' %}
 			</div>
 			
 			<div class="col-md-2">
+				
 			</div>
 		</div>
-		
-		<div class="row">
-			<div class="col-md-4">
-				{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
+	
+		<div id="infoRow" class="row">
+			
+			<div class="col-md-1 text-center">
 			</div>
 			
-			<div class="col-md-4">
+			<div class="col-md-3 text-center">
+			     {% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
+			</div>
+			
+			<div class="col-md-4 text-center">
 				{% include 'tracktivityPetsWebsite/dashboardstats.html' %}
 			</div>
 			
-			<div class="col-md-4">
-				{% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
+			
+			<div class="col-md-3 text-center">
+			     {% include 'tracktivityPetsWebsite/dashboardunlocks.html' %}
+			</div>
+			
+			<div class="col-md-1 text-center">
 			</div>
 		</div>
-
-	
-	{% endif %}
+    {% endif %}
 	
 {% endblock content_block %}

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.templatetags.static import static
 import datetime
 from django.utils import timezone
+from collections import OrderedDict
 
 #TODO add helper functions and __name__
 
@@ -39,6 +40,11 @@ class CollectedPet(models.Model):
     def __str__(self):             
         return self.pet.default_name + ": " + self.name
     
+    def get_current_mood_image_location(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        image_location = self.get_current_mood().image_location
+        return '{url}/pets/{name}/{location}'.format(url=start_url, name=self.pet.default_name, location=image_location)
+    
     #this method is pretty much pointless...
     def get_total_happiness(self):
         data = self.happiness_set.all()
@@ -56,11 +62,13 @@ class CollectedPet(models.Model):
     
     def get_happiness_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
-        today = seven_days_ago.strftime('%Y-%m-%d')
-        dates = self.happiness_set.filter(date__gt=seven_days_ago)
-        values = []
+        dates = self.happiness_set.filter(date__gt=seven_days_ago).order_by('date')
+        values = OrderedDict()
         for d in dates:
-            values.append(d.amount)
+            date = d.date.strftime('%d-%m')
+            values[date] = OrderedDict()
+            values[date]['date'] = date
+            values[date]['happiness'] = d.amount/100
         return values
     
     def get_todays_happiness_value(self):
@@ -72,12 +80,18 @@ class CollectedPet(models.Model):
     
     def get_experience_last_seven_days(self):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
-        today = seven_days_ago.strftime('%Y-%m-%d')
-        dates = self.experience_set.filter(date__gt=seven_days_ago)
-        values = []
+        dates = self.experience_set.filter(date__gt=seven_days_ago).order_by('date')
+        values = OrderedDict()
+        largest_number = 0
         for d in dates:
-            values.append(d.amount)
-        return values
+            date = d.date.strftime('%d-%m')
+            values[date] = OrderedDict()
+            values[date]['date'] = date
+            values[date]['experience'] = d.amount
+            
+            if d.amount > largest_number:
+                largest_number = d.amount
+        return largest_number, values
     
     def get_age_in_days(self):
         return (timezone.now() - self.date_created).days
@@ -95,6 +109,12 @@ class CollectedPet(models.Model):
     
     def get_random_current_phrase_by_mood(self, mood):
         return mood.phrase_set.all().order_by('?')[0]
+    
+    def get_unlocked_stories(self):
+        return Story.objects.filter(pet=self.pet, level_unlocked__lte=self.level).order_by('level_unlocked')
+    
+    def get_stories_available(self):
+        return Story.objects.filter(pet=self.pet)
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
@@ -149,11 +169,6 @@ class Story(models.Model):
     level_unlocked = models.ForeignKey(Level)
     pet = models.ForeignKey(Pet)
     text = models.TextField()
-
-class UserStory(models.Model):
-    story = models.ForeignKey(Story)
-    collected_pet = models.ForeignKey(CollectedPet)
-    is_viewed = models.BooleanField(default=False)
 
 #release 2 models below
 

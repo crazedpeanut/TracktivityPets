@@ -1,7 +1,6 @@
 import fitapp
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness
-import datetime
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story
 import urllib.request #for fitbit http requests
 import urllib.parse
 import django
@@ -25,8 +24,7 @@ means it should go in the update_user_fitbit
 def update_user_fitbit(request):
     if not is_fitbit_linked(request.user):
         return False, 'No fitbit found'
-    
-    if request.user.profile.current_pet is None:
+    elif request.user.profile.current_pet is None:
         return False, 'No current pet'
     
     user = request.user
@@ -56,11 +54,26 @@ def update_user_fitbit(request):
     data_json = json.loads(data)#change it from text to something usable
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
+    '''
+     When everything goes well, the *status_code* is 100 and the requested data
+    is included. However, there are a number of things that can 'go wrong'
+    with this call. For each type of error, we return an empty data list with
+    a *status_code* to describe what went wrong on our end:
+
+        :100: OK - Response contains JSON data.
+        :101: User is not logged in.
+        :102: User is not integrated with Fitbit.
+        :103: Fitbit authentication credentials are invalid and have been
+            removed.
+        :104: Invalid input parameters. Either *period* or *end_date*, but not
+            both, must be supplied. *period* should be one of [1d, 7d, 30d,
+            1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
+            'yyyy-mm-dd'.
+        :105: User exceeded the Fitbit limit of 150 calls/hour.
+        :106: Fitbit error - please try again soon.
+    '''
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
-        data_to_return = {}
-        data_to_return['experience_gained'] = data_json
-        data_to_return['levels_gained'] = -1
-        return data_to_return
+        return False, data_json['meta']['status_code']#TODO: make this something useful
     
     experience = 0
 
@@ -70,7 +83,7 @@ def update_user_fitbit(request):
                 existing_experience = Experience.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
                 existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
 
-                happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
                 existing_happiness.amount = happiness
                 existing_experience.amount = date['value']
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
@@ -80,24 +93,37 @@ def update_user_fitbit(request):
             except ObjectDoesNotExist: #only create a new one for it if the day doesnt exist, which should presumably only be the first ever time
                 exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
                 experience += exp.amount
-                happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+                happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
                 Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
         else:
             exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
             experience += exp.amount
-            happiness = max(min(int(date['value']) / 75, 100), 0) #75 is used to set '100%'
+            happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
             Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
             
     current_level = profile.current_pet.level.level
     update_pet_level(profile.current_pet)
-    new_level = profile.current_pet.level.level
+    new_level = profile.current_pet.level.level           
 
     data_to_return = {}
     data_to_return['experience_gained'] = experience
     data_to_return['levels_gained'] = new_level - current_level #TODO
     #data_to_return['pet_pennies_gained'] = 0
+    data_to_return['stories'] = {}
     
-    #happiness += int(date['value']) / data_json['meta']['total_count'] / 75 #need to cap this at 100 #if ever want average of the retrieved stuff
+    #see if any new stories are unlocked and create UserStory here
+    level = current_level + 1
+    combined = ''
+    while level <= new_level:
+        try:
+            l = Level.objects.get(level=level)
+            story = Story.objects.get(level_unlocked=l, pet=profile.current_pet.pet)#get any stories for that level
+            data_to_return['stories'][l.level] = story
+        except:
+            pass #no story for this level
+        level += 1
+    
+    #happiness += int(date['value']) / data_json['meta']['total_count'] / 100 #need to cap this at 100 #if ever want average of the retrieved stuff
     
     #change last_fitbit_sync to todays date
     profile.last_fitbit_sync = date_to
@@ -204,7 +230,9 @@ def get_pet_data(index):
     except:
         pass
     return data
-        
+
+def get_current_pet(user):
+    return user.profile.current_pet
 
 def set_current_pet(user):
     pass

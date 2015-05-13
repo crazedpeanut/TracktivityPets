@@ -26,7 +26,11 @@ def user_login(request):
             email = loginForm.cleaned_data['email']
             password = loginForm.cleaned_data['password']
             rememberMe = loginForm.cleaned_data['rememberMe']
-            u = User.objects.get(email=email)
+            
+            try:
+                u = User.objects.get(email=email)
+            except:
+                return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "No user with that username",'loginForm':loginForm})
             
             user = authenticate(username=u.get_username(), password=password)
             

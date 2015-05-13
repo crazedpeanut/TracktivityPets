@@ -1,0 +1,15 @@
+<div class="infoItem">
+	<h3>Pet Unlocks</h3>
+	
+	<div class="container-fluid">
+	    <div class="unlocks">
+	    	Stories unlocked: {{ stories_unlocked_count }} / {{ stories_available_count }}
+	    	<br/>
+	    	<ul>
+	    	{% for story in stories_unlocked %}
+	    		<li>{{ story.text }}</li>
+	    	{% endfor %}
+	    	</ul>
+	    </div>
+	</div>
+</div>

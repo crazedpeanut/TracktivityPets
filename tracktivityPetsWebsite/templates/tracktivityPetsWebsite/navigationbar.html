@@ -13,14 +13,15 @@
             <a class="navbar-brand" href="#">Tracktivity Pets</a>
         </div>
         <div id="slidemenu">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Pet Dashboard</a></li>
-                <li><a href="#">Store</a></li>
-                <li><a href="#">Inventory</a></li>
-                <li><a href="#">Challenges</a></li>
-                <li><a href="#">Feedback</a></li>
+            <ul class="nav navbar-nav">                
+                <li><a href="/">Pet Dashboard</a></li>
+                <li class="disabled"><a href="#">Store</a></li>
+                <li class="disabled"><a href="#">Inventory</a></li>
+                <li class="disabled"><a href="#">Challenges</a></li>
+                <li><a href="/feedback">Feedback</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">  
+                <li class="navbar-text">Signed in as: {{ user.get_username }} </li>              
                 <li><a href="{% url 'tracktivityPetsWebsite:user_logout' %}"><span class="glyphicon glyphicon-log-in"></span>Sign Out</a></li>
             </ul>
         </div>

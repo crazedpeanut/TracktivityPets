@@ -14,7 +14,10 @@
 		
 		{% if error_message %}
 			{% comment %} Error made from previous POST {% endcomment %}
-			Error: {{ error_message }} <br/><br/> 
+			<div class="alert alert-danger" role="alert">
+				Error: {{ error_message }}
+			</div>
+			
 		{% endif %}
 		
 		{% comment %} Button to logout {% endcomment %}
@@ -34,7 +37,10 @@
 	 
 		{% if error_message %}
 			{% comment %} Error made from previous POST {% endcomment %}
-			Error: {{ error_message }} <br/><br/> 
+			<div class="alert alert-danger" role="alert">
+				Error: {{ error_message }}
+			</div>
+			
 		{% endif %}
 	
             <form class="form-signin" action="{% url 'tracktivityPetsWebsite:user_login' %}" method="POST">
@@ -42,9 +48,9 @@
               	{% csrf_token %}
 
 				<div>
-					<button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
-                    <a class="formLink" href="{% url 'tracktivityPetsWebsite:register' %}">
-                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button">Sign up</button></a>
+					<a class="formLink" href="{% url 'tracktivityPetsWebsite:register' %}">
+                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="button">Register</button></a>
+                    <button class="btn btn-lg btn-primary col-xs-5" type="submit">Sign in</button>
 				</div>
 
             </form>     

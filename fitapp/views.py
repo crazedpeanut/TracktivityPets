@@ -50,6 +50,26 @@ def login(request):
     URL name:
         `fitbit-login`
     """
+#########################################
+#START OF ADDITION FOR TRACKTIVITY PETS
+#########################################
+#log the user out if they got to /fitbit/login, if one already exists, otherwise we get a crappy error
+    try:
+        if request.user.userfitbit is not None:
+            user = request.user
+            if utils.get_setting('FITAPP_SUBSCRIBE'):
+                try:
+                    SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
+                except ImproperlyConfigured:
+                    return redirect(reverse('fitbit-error'))
+                unsubscribe.apply_async(kwargs=user.userfitbit.get_user_data(), countdown=5)
+            user.userfitbit.delete()
+    except:
+        pass#they must not have an account so move on
+#########################################
+#END OF ADDITION FOR TRACKTIVITY PETS
+#########################################
+ 
     next_url = request.GET.get('next', None)
     if next_url:
         request.session['fitbit_next'] = next_url
