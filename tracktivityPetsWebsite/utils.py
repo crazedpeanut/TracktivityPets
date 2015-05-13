@@ -217,6 +217,19 @@ def get_pet_selection_data():
         except:
             pass #do nothing, but pet isnt set up properly in admin view (needs a story at level 1, and image at -1 happiness)
     return data
+    
+def get_pet_data(index):
+    pet = Pet.objects.get(pk=index)
+    data = {}
+    static_url = static('tracktivityPetsWebsite/images')
+    try:
+        data['name'] = pet.default_name
+        data['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text
+        image_location = pet.mood_set.filter(hapiness_needed=-1)[0].image_location
+        data['image'] = '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
+    except:
+        pass
+    return data
 
 def get_current_pet(user):
     return user.profile.current_pet

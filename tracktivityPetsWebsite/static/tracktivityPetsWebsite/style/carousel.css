@@ -1,0 +1,126 @@
+html, body{
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body{
+	min-height: 500px;
+}
+body *{
+	font-family: Arial, Geneva, sans-serif;
+	font-size: 14px;
+	color: #333;
+	line-height: 22px;
+}
+#wrapper{
+	background-color: #fff;
+	width: 40%;
+	height : 200%;
+	margin-top: 3%;
+	margin-left: 8%;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+}
+#wrapper2{
+	background-color: #ff9900;
+	width: 40%;
+	height: 300%;
+	margin-top: 0%;
+	margin-right: 8%;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+}
+#carousel img{
+	display: block;
+	float: left;
+}
+#imagecaro img{
+	display: block;
+	float: left;
+}
+#prev2, #next2{
+	background-color: rgba(255,255,255,0.7);
+	display: block;
+	height: 450px;
+	width: 25%;
+	top: 0;
+	position: absolute;
+}
+#prev.hover, #next.hover{
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.8);
+}
+#prev2{
+	left: 0px;
+}
+#next2{
+	right: 0px;	
+}
+#pager{
+	margin-left: 0px;
+	position: absolute;
+	left:25%;
+	bottom: 10px;
+}
+#pager2{
+	margin-right: 0px;
+	position: absolute;
+	right:25%;
+	bottom: 10px;
+}
+#pager a{
+	border: 2px solid #fff;
+	border-radius: 10px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 5px 0 0;
+}
+#pager2 a{
+	border: 2px solid #fff;
+	border-radius: 10px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 5px 0 0;
+}
+#pager a:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+#pager2 a:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+#pager a span{
+	display: none;
+}
+#pager2 a span{
+	display: none;
+}
+#name{
+	font-size:24px;
+	width: 11%;
+	text-align: center;
+	background-color: rgba(255,255,255,1);
+	overflow: visible;
+}
+#story{
+
+	font-size: 12px;
+	padding-left: 0.5%; 
+	
+}
+#image{
+	margin-left:30px;
+	width:10%;
+}
+#pager a.selected{
+	background-color: #fff;
+}
+#pdimage{
+	height: 80%;
+}
+#pager2 a.selected{
+	background-color: #fff;
+}
