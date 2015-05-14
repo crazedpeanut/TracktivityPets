@@ -52,13 +52,30 @@ def dashboard(request):
     happiness_data = current_pet.get_happiness_last_seven_days()#[25, 50, 40, 70, 10, 80, 60]#temp data
     largest_experience, experience_data = current_pet.get_experience_last_seven_days()#[2500, 5000, 4000, 7000, 1000, 8000, 6000]
     
-    try:
+    '''try:
         experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
     except:
-        experience_progress = 0
+        experience_progress = 0'''
+    
+    experience_progress = 0
+    progress_bar_text = ""
+    progress_bar_colour = ""
+    
+    if current_pet.level.level == 10:
+        experience_progress = 100
+        progress_bar_text = "%s has reached maximum level!" % (current_pet.name)
+        progress_bar_colour = "progress-bar-success"
+    elif current_pet.level.level == 1 and current_pet.get_total_experience() == 0:
+        experience_progress = 100
+        progress_bar_text = "%s hasn't gained any experience yet." % (current_pet.name)
+        progress_bar_colour = "progress-bar-danger"
+    else:
+        experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
+        progress_bar_text = "%i / %i (%i%)" % (current_pet.get_total_experience(), experience_needed, experience_progress)
+        progress_bar_colour = "progress-bar-warning"
         
     happiness_today = current_pet.get_todays_happiness_value()
-    level_data = {"current_experience": current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": current_pet.level.level, "progress": experience_progress} #get_current_level()
+    level_data = {"progress_bar_text": progress_bar_text, "current_experience": current_pet.get_total_experience(), "experience_to_next_level": experience_needed, "current_level": current_pet.level.level, "progress": experience_progress} #get_current_level()
     
     pet_name = current_pet.name
     
@@ -82,5 +99,5 @@ def dashboard(request):
                    "stories_available_count": stories_available.count(),
                    "stories_unlocked": stories_unlocked,
                    "stories_gained": data['stories'],
-                   
+                   "progress_bar_colour": progress_bar_colour
                    })
