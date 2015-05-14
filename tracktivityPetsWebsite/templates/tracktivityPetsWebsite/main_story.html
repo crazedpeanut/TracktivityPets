@@ -46,22 +46,12 @@
 			margin: 20px;
 		}
 	</style>
-	
-	<script src="/static/tracktivityPetsWebsite/behaviour/jquery.mobile-1.4.5.min.js"></script>  
-			
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#myCarousel").carousel({
 		         interval : false
 		     });
-		     
-		    $("#myCarousel").swiperight(function() {  
-		      $("#myCarousel").carousel('prev');  
-		    });  
-		    
-		   $("#myCarousel").swipeleft(function() {  
-		      $("#myCarousel").carousel('next');  
-		   });  
 
 		   $.mobile.loading( 'show', { theme: "b", text: "", textonly: false});
 		});
