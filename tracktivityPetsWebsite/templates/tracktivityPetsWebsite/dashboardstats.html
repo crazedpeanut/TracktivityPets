@@ -3,7 +3,6 @@
 <div class="infoItem">
 	<h3>History</h3>
 	
-	<!--<script src="{% static 'tracktivityPetsWebsite/behaviour/graph.js'%}"></script>-->
 	<script>
 	// Used example from http://codepen.io/anon/pen/mJyRgb?editors=101
 	
@@ -19,8 +18,7 @@
 	        ['{{ key }}', {{value.happiness}}],   // Percentages are entered as decimals, as Google multiplies them by 100 automatically!
 	        {% endfor %}
 	    ]);
-	
-	
+		
 	    var options = {
 	        title: 'Pet Happiness',
 	        curveType: 'function',
@@ -34,8 +32,10 @@
 	        {
 	            title: 'Happiness Level',
 	            minValue: 0,
-	            maxValue: 1,
-	            format: '#%'
+	            format: '#%',
+	            viewWindow: {
+	               max: 1
+	           }
 	        },
 	        legend: {position: 'none'},
 	        pointSize: '8'
