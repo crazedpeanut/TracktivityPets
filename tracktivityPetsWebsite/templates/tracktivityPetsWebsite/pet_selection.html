@@ -7,159 +7,149 @@
 
 {% block content_block %}
 <div class="container-fluid">
-
-	    	<style type="text/css">
-				.carousel-content {
-				    color:black;
-				    display:flex;
-				    align-items:center;
-				    margin: 20px;
-				}
+	<style type="text/css">
+    	.carousel-content {
+    	    color:black;
+    	    display:flex;
+    	    align-items:center;
+    	    margin: 20px;
+    	}
 				
-				.carousel-control.left, .carousel-control.right {
-				    background-image: none
-				}
-				
-				.carousel-control{
-				  color: #000;
-				}
+		.carousel-control.left, .carousel-control.right {
+		    background-image: none
+		}
+		
+		.carousel-control{
+		  color: #000;
+		}			
+	</style>
 			
-			</style>
+	<script type="text/javascript">			
+		$(document).ready(function(){
+	  		updateCharacterSelectScreen();
+		});
+		
+		function updateCharacterSelectScreen()
+		{
+			//hide all images
+	  		$("#pet_selector .pet_image, #pet_selector .pet_silohuette").hide();
+	  		var insert_into = $("#visible_pets");
+	  		
+	  		var active = $("#pet_selector").find(".active");
 
+	   		var image_alt = active.find("img").attr("alt");
+	  		$("#pet_content").children().hide();
+	  		$("[id='"+image_alt+"_content']").show();
+	  		
+	  		next_silohuette = active.next('span').next('span').next('span');
+			if(next_silohuette.val() === undefined){next_silohuette = $("#pet_selector .pet_silohuette:first");}
 			
-			<script type="text/javascript"> 
+			prev_silohuette = active.prev('span');
+			if(prev_silohuette.val() === undefined){prev_silohuette = $("#pet_selector .pet_silohuette:last");}
 			
-				$(document).ready(function(){
-			  		updateCharacterSelectScreen();
-				});
+
+			insert_into.show();
+			insert_into.empty();
+			insert_into.append(prev_silohuette.html());
+			insert_into.append(active.html());
+			insert_into.append(next_silohuette.html());
+		}
+	    
+	    var pet_number =  1;
+	    var pets_available_count = {{ pets_available_count }}	    
+	    
+	    $(function () {      
+	        
+	        $('#selectLeft').click(function() {
+	        	pet_number--;
+	        	if(pet_number < 1) { pet_number = pets_available_count; }
+			  	$('#viewing_pet_number').html(pet_number);
 				
-				function updateCharacterSelectScreen()
-				{
-					//hide all images
-			  		$("#pet_selector .pet_image, #pet_selector .pet_silohuette").hide();
-			  		var insert_into = $("#visible_pets");
-			  		
-			  		var active = $("#pet_selector").find(".active");
-
-			   		var image_alt = active.find("img").attr("alt");
-			  		$("#pet_content").children().hide();
-			  		$("[id='"+image_alt+"_content']").show();
-			  		
-			  		next_silohuette = active.next('span').next('span').next('span');
-					if(next_silohuette.val() === undefined){next_silohuette = $("#pet_selector .pet_silohuette:first");}
-					
-					prev_silohuette = active.prev('span');
-					if(prev_silohuette.val() === undefined){prev_silohuette = $("#pet_selector .pet_silohuette:last");}
-					
-
-					insert_into.show();
-					insert_into.empty();
-					insert_into.append(prev_silohuette.html());
-					insert_into.append(active.html());
-					insert_into.append(next_silohuette.html());
-				}
-			    
-			    var pet_number =  1;
-			    var pets_available_count = {{ pets_available_count }}
-			    
-			    
-			    $(function () {	        
-			        
-			        $('#selectLeft').click(function() {
-			        	pet_number--;
-			        	if(pet_number < 1) { pet_number = pets_available_count; }
-					  	$('#viewing_pet_number').html(pet_number);
-						
-						var active = $("#pet_selector").find(".active");
-						active.toggleClass('active'); //remove the active class
-						next = active.prev('span').prev('span');
-						if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
-						next.toggleClass('active');
-						
-						updateCharacterSelectScreen();
-
-					});
-					
-					$('#selectRight').click(function() {
-						pet_number++;
-			        	if(pet_number > pets_available_count) { pet_number = 1; }
-						$('#viewing_pet_number').html(pet_number);
-						
-						var active = $("#pet_selector").find(".active");
-						active.toggleClass('active'); //remove the active class
-						next = active.next('span').next('span');
-						if(next.val() === undefined){next = $("#pet_selector .pet_image:first");}
-						next.toggleClass('active');
-						
-						updateCharacterSelectScreen();
-					});
-				});
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.prev('span').prev('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+				next.toggleClass('active');
 				
-				function getPet()
-				{
-					var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
-					$("#petSubmitForm").find("#pet").val(image_alt);
-				}
-		    </script>
+				updateCharacterSelectScreen();
+
+			});
 			
-			<div class="col-md-7 text-center">
+			$('#selectRight').click(function() {
+				pet_number++;
+	        	if(pet_number > pets_available_count) { pet_number = 1; }
+				$('#viewing_pet_number').html(pet_number);
 				
-				<p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
-				<div id="pet_selector">
-					{% for key, value in available_pets.items %}
-						{% if forloop.first %}
-							<span class="active pet_image">
-						{% else %}
-							<span class="pet_image">
-						{% endif %}
-						
-						<img src="{{ value.image }}" alt="{{ value.name }}" width="300px" height="300px" />
-						</span>
-						<span class="pet_silohuette">
-							<img src="{{ value.silohuette }}" alt="{{ value.name }}" width="300px" height="300px" />
-						</span>
-					{% endfor %}
-
-				</div>
-
-				<div id="visible_pets">
-					
-				</div>
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.next('span').next('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:first");}
+				next.toggleClass('active');
 				
-				<a id="selectLeft" id="selectLeft">
-			    	<button>Left</button>
-			  	</a>
-				<a id="selectRight">
-			    	<button>Right</button>
-			  	</a>
-				
-				<form method="POST" onsubmit="getPet()" id="petSubmitForm">
-					{% csrf_token %}
-					Pet Name:<br/>
-					<input type="text" name="user_pet_name"><br/>
-					<input type="submit" value="Adopt!"/>
-					<input type="hidden" name="default_pet_name" value="" id="pet"/>
-					
-				</form>
+				updateCharacterSelectScreen();
+			});
+		});
+		
+		function getPet()
+		{
+			var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
+			$("#petSubmitForm").find("#pet").val(image_alt);
+		}
+    </script>
+			
+	<div class="container text-center col-xs-12 col-md-7">	
+	   <div class="row">
+	       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
+	   </div>	
+	   <div class="row">
+            <div id="pet_selector">
+            {% for key, value in available_pets.items %}
+                {% if forloop.first %}
+                    <span class="active pet_image">
+                {% else %}
+                    <span class="pet_image">
+                {% endif %}                
+                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-3 img-responsive" />
+                    </span>
+                <span class="pet_silohuette">
+                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-3 img-responsive" />
+                </span>
+            {% endfor %}
+            </div>
+        </div>		
+        <div class="row" id="visible_pets">         
+        </div>
+	    <div class="row">
+            <a id="selectLeft" id="selectLeft">
+                <button>Left</button>
+            </a>
+            <a id="selectRight">
+                <button>Right</button>
+            </a>
+            <form method="POST" onsubmit="getPet()" id="petSubmitForm">
+            {% csrf_token %}
+            Pet Name:<br/>
+                <input type="text" name="user_pet_name"><br/>
+                <input type="submit" value="Adopt!"/>
+                <input type="hidden" name="default_pet_name" value="" id="pet"/>                    
+            </form>
+        </div>		
+	</div>		
+    <div class="col-xs-12 col-md-4 text-center" id="pet_content" class="infoitem">
+		{% for key, value in available_pets.items %}
+			<div id="{{ value.name }}_content">
+				<h3> {{ value.name }}</h3>
+				<img src="{{ value.image }}" alt="{{ value.name }}" width="300px" height="300px"/>
+				<p> {{ value.story }}</p>
 			</div>
-			
-			
-			
-			<div class="col-md-4 text-center" id="pet_content" class="infoitem">
-				{% for key, value in available_pets.items %}
-					<div id="{{ value.name }}_content">
-						<h3> {{ value.name }}</h3>
-						<img src="{{ value.image }}" alt="{{ value.name }}" width="300px" height="300px"/>
-						<p> {{ value.story }}</p>
-					</div>
-				{% endfor %}
-			</div>
-			
-			<div class="col-md-3 text-center">
-			</div>
-	    	
-	    </div>
+		{% endfor %}
+    </div>
+    	
+    <div class="col-md-3 text-center">
 	</div>
+	    	
+    </div>
+</div>
 
 
 {% endblock content_block %}
