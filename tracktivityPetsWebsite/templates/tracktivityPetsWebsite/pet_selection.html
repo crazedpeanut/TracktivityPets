@@ -1,113 +1,162 @@
 {% extends 'tracktivityPetsWebsite/base.html' %}
 {% load staticfiles %}
 
+{% block navbar %}
+	{% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
 {% block content_block %}
+<div class="container-fluid">
 
-<script async="" type="text/javascript" src="http://pagead2.googlesyndication.com/pub-config/ca-pub-7798941810450096.js"></script>
-<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-<script type="text/javascript" src="http://coolcarousels.frebsite.nl/js/jquery.carouFredSel.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.caroufredsel/6.1.0/jquery.carouFredSel.packed.js" type="text/javascript"></script>
+	    	<style type="text/css">
+				.carousel-content {
+				    color:black;
+				    display:flex;
+				    align-items:center;
+				    margin: 20px;
+				}
+				
+				.carousel-control.left, .carousel-control.right {
+				    background-image: none
+				}
+				
+				.carousel-control{
+				  color: #000;
+				}
+				
+			</style>
 
-<link href="{% static 'tracktivityPetsWebsite/style/carousel.css' %}" type="text/css" rel="stylesheet"/>
-<script src="{% static 'tracktivityPetsWebsite/behaviour/carousel.js'%}"></script>
-
-<script type="text/javascript">
-
-window.onload = function(){
-	document.getElementById("img").onclick = function fun(){
-		alert("GASDHASD");
-		document.getElementById("test").innerHtml = "Poop";
-	}
-		$('#carousel').carouFredSel({
-		synchronise: ['#imagecaro', false],
-		width:'100%',
-		items: 3,
-		auto: false,
-		scroll: {
-			items: 1,
-			duration: 1000,
-			timeoutDuration: 3000
-		},
-		prev: '#prev2',
-		next: '#next2'
-	});
-
-$('#next2').click(function(){
-	$("#carousel, #detailscaro").trigger("next");
-});
-
-$('#prev2').click(function(){
-	$("#carousel, #detailscaro").trigger("prev");
-});
-
-$('#detailscaro').carouFredSel(
-	{
-		auto: false,
-		items: {
-			visible: 1,
-			start: 1
-		}
-	});
-}
-
-
-</script>
-
-               <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/PetSelectionFont.png' %}" alt="Tracktivity Pets logo">
-           
-	<div id="wrapper">
-		<div id="carousel">
-			{% for key, pet in available_pets.items %}
-				{% for key, field in pet.items %}
-					{% if key == 'image' %}
-						<img src="{{ field }}" id="img" width="384" height="450"/>
-					{% endif %}
-				{% endfor %}
-			{% endfor %}
-			<img src="" width="384" height="450"/>
-		</div><!--
-		<div id="imagecaro">
-			{% for key, pet in available_pets.items %}
-				{% for key, field in pet.items %}
-					{% if key == 'image' %}
-						<img src="{{ field }}" width="384" height="450"/>
-					{% endif %}
-				{% endfor %}
-			{% endfor %}
 			
-			<img src="" width="384" height="450"/>
-		</div>-->
-		<a href="#" id="prev2" title="Show previous"></a>
-		<a href="#" id="next2" title="Show next"></a>
-		<div id="pager"></div>
-	</div>
-		
-	<div id="wrapper2">
-		<div id="detailscaro">
-			{% for key, pet in available_pets.items %}
-			<div id="details">
-				{% for key, field in pet.items %}
+			<script type="text/javascript"> 
+			
+				$(document).ready(function(){
+					$("#myCarousel").carousel({
+				    	interval : false
+				    });
+					
+					$("#myCarousel").on('slide.bs.carousel', function (e) {
+				       var xx = $(this);
+				       setTimeout(function() {
+				            var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
+					  		$("#pet_content").children().hide();
+					  		$("[id='"+image_alt+"_content']").show();
+					  		
+				       } , 700);
+				   });
+				   
+			   		var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
+			  		$("#pet_content").children().hide();
+			  		$("[id='"+image_alt+"_content']").show();
+				});
+				setCarouselHeight('myCarousel');
+	
+			    function setCarouselHeight(id)
+			    {
+			        var slideHeight = [];
+			        $(id+' .item').each(function()
+			        {
+			            // add all slide heights to an array
+			            slideHeight.push($(this).height());
+			        });
+			
+			        // find the tallest item
+			        max = Math.max.apply(null, slideHeight);
+			
+			        // set the slide's height
+			        $(id+' .carousel-content').each(function()
+			        {
+			            $(this).css('height',max+'px');
+			        });
+			    }
+			    
+			    var pet_number =  1;
+			    var pets_available_count = {{ pets_available_count }}
+			    
+			    
+			    $(function () {	        
+			        
+			        $('.carousel-control.left').click(function() {
+			        	pet_number--;
+			        	if(pet_number < 1) { pet_number = pets_available_count; }
+					  $('#viewing_pet_number').html(pet_number);
+					  
+
+						
+						
+					});
+					
+					$('.carousel-control.right').click(function() {
+						pet_number++;
+			        	if(pet_number > pets_available_count) { pet_number = 1; }
+						$('#viewing_pet_number').html(pet_number);
+					});
+				});
 				
-					{% if key == 'name' %}
-					<b>
-						<p id="name">{{ field }}</p>
-						</b>
-					{% endif %}
-					{% if key == 'image' %}
-						<img src="{{ field }}" id="image" width="384" height="450"/>
-					{% endif %}
-					{% if key == 'story' %}
-						<p id="story">{{ field }}</p>
-					{% endif %}
+				function getPet()
+				{
+					var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
+					$("#petSubmitForm#pet").val(image_alt);
+				}
+		    </script>
+			
+			<div class="col-md-4 text-center">
+				<p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+				    <div class="row">
+				        <div class="col-xs-offset-3 col-xs-6">
+				            <div class="carousel-inner">
+								{% for key, value in available_pets.items %}
+									{% if forloop.first %}
+										<div class="item active">
+									{% else %}
+										<div class="item">
+									{% endif %}
+									
+									<img src="{{ value.image }}" alt="{{ value.name }}"/>
+									</div>
+								{% endfor %}
+
+				            </div>
+				        </div>
+				    </div>
+
+				    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				    	<span class="glyphicon glyphicon-chevron-left"></span>
+				  	</a>
+				 	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+				    	<span class="glyphicon glyphicon-chevron-right"></span>
+				  	</a>
 				
+				</div>
+				
+				<form method="POST" onsubmit="getPet()" id="petSubmitForm">
+					{% csrf_token %}
+					Pet Name:<br/>
+					<input type="text" name="user_pet_name"><br/>
+					<input type="submit" value="Adopt!"/>
+					<input type="hidden" name="default_pet_name" value="" id="pet"/>
+					
+				</form>
+			</div>
+			
+			
+			
+			<div class="col-md-4 text-center" id="pet_content" class="infoitem">
+				{% for key, value in available_pets.items %}
+					<div id="{{ value.name }}_content">
+						<h3> {{ value.name }}</h3>
+						<img src="{{ value.image }}" alt="{{ value.name }}" width="300px" height="300px"/>
+						<p> {{ value.story }}</p>
+					</div>
 				{% endfor %}
 			</div>
-			{% endfor %}
-			<div>
-				<p> </p>
-				<image></image>
-				<p> </p>
+			
+			<div class="col-md-3 text-center">
 			</div>
-	</div>	
-	
+	    	
+	    </div>
+	</div>
+
+
 {% endblock content_block %}

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from tracktivityPetsWebsite import utils
 from django.shortcuts import redirect
-from tracktivityPetsWebsite.models import CollectedPet
+from tracktivityPetsWebsite.models import CollectedPet, Pet
 import json
 
 @login_required
@@ -29,10 +29,15 @@ def pet_selection(request):
                     return HttpResponse('You already have a pet, please contact admin')#this should never appear
             
             
-        except:
-            return HttpResponse('Error creating pet')#shouldnt occur, only if they modify data on their end before sending
+        except Exception as e:
+            return HttpResponse('Error creating pet: ' + str(e))#shouldnt occur, only if they modify data on their end before sending
     else:
-        data = utils.get_pet_selection_data()
-        test = utils.get_pet_data(1)
-        return render(request, 'tracktivityPetsWebsite/pet_selection.html', {'available_pets':data}) #this should be a template, just like this for testing purposes
+        pets = utils.get_pet_selection_data()
+
+        
+        return render(request, 'tracktivityPetsWebsite/pet_selection.html', 
+                      {
+                       'available_pets': pets,
+                       'pets_available_count': len(pets),
+                       })
     
