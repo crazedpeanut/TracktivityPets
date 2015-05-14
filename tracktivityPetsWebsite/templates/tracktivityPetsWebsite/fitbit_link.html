@@ -13,7 +13,7 @@
 		Clicking the button below will allow this website to access your Fitbit data.
 		Any time we are unable to gather data from Fitbit due to permissions, you will be brought here to relink, if you wish to use the site.
 	</p>
-	<form action="{{ fitbit_link_link }}">
+	<form action="{{ fitbit_link_link }}?next={{ redirect_to }}">
 		<input type="submit" value="Link Account">
 	</form>
 </div>
