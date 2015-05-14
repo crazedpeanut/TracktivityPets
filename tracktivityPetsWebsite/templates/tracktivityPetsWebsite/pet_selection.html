@@ -96,8 +96,9 @@
 			$("#petSubmitForm").find("#pet").val(image_alt);
 		}
     </script>
-			
-	<div class="container text-center col-xs-12 col-md-7">	
+	
+	<div class="col-xs-12 col-md-1 text-center"></div>		
+	<div class="container text-center col-xs-12 col-md-5">	
 	   <div class="row">
 	       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
 	   </div>	
@@ -109,10 +110,10 @@
                 {% else %}
                     <span class="pet_image">
                 {% endif %}                
-                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4 img-responsive" />
+                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4" width="250px" height="250px" />
                     </span>
                 <span class="pet_silohuette">
-                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4 img-responsive" />
+                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4" width="250px" height="250px"/>
                 </span>
             {% endfor %}
             </div>
@@ -134,7 +135,8 @@
                 <input type="hidden" name="default_pet_name" value="" id="pet"/>                    
             </form>
         </div>		
-	</div>		
+	</div>	
+	<div class="col-xs-12 col-md-1 text-center"></div>
     <div class="col-xs-12 col-md-4 text-center" id="pet_content" class="infoitem">
 		{% for key, value in available_pets.items %}
 			<div id="{{ value.name }}_content">
