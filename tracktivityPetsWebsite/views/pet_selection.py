@@ -16,12 +16,13 @@ def pet_selection(request):
     if request.method == 'POST':
         try:
             pet_name = request.POST.get('user_pet_name', None)
-            pet = Pet.objects.filter(default_name=request.POST.get('default_pet_name', None))#pet should be chosen when the user clicks 'select' or whatever, POST the default_name found in the data passed
+            pet = Pet.objects.get(default_name=request.POST.get('default_pet_name', None))#pet should be chosen when the user clicks 'select' or whatever, POST the default_name found in the data passed)
+            
             if pet_name is None or pet is None:
                 return HttpResponse('need to enter all details') 
             success, error = utils.register_pet_selection(request.user, pet, pet_name)
             if success: 
-                return HttpResponse('it worked')
+                return redirect('tracktivityPetsWebsite:dashboard')
             else:
                 if error is not None:
                     return HttpResponse(error)

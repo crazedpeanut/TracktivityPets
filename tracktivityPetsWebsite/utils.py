@@ -136,7 +136,6 @@ def update_user_fitbit(request):
         #render dashboard page
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
-#TODO: untested
 def register_user(first_name=None, last_name=None, email=None, username=None, password=None, confirm_password=None, registerForm=None):
     if registerForm is not None and registerForm.is_valid(): #Using registerForm to enter details
             username = registerForm.cleaned_data['username']
@@ -165,10 +164,9 @@ def register_user(first_name=None, last_name=None, email=None, username=None, pa
 ''' Used for when a user picks their first pet. Creates a new current pet and assigns it to the user '''
 #TODO: Untested
 def register_pet_selection(user, pet, name):
-    try: #gross code, if it passes this then they have a pet, otherwise it throws an exception and we make a new pet
-        user.profile.current_pet
-        return False, None
-    except:
+    if user.profile.current_pet is not None:
+        return False, None #user already has a current pet
+    else:
         try:
             level = Level.objects.get(level=1) #dodgy code, but can presume level 1 will always exist
             now = datetime.datetime.now()
