@@ -72,7 +72,7 @@ DATABASES = {
         'NAME': 'tracktivitypets',
         'USER': 'tracktivitypets',
         'PASSWORD': 'swagcats',
-        'HOST': '',
+        'HOST': 'prod.tracktivitypets.me',
         'PORT': '',
     }
 }
