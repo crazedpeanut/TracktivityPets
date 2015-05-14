@@ -30,4 +30,4 @@ def register(request):
                 password = registerForm.cleaned_data['password']
                 user = authenticate(username=username, password=password)
                 login(request, user)
-                return redirect('tracktivityPetsWebsite:pet_selection') #go to pet_selection
+                return redirect('tracktivityPetsWebsite:fitbit_link')

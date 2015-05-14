@@ -20,7 +20,7 @@ def dashboard(request):
     success, data = utils.update_user_fitbit(request)
     
     if not success and data == 103:# :103: Fitbit authentication credentials are invalid and have been removed.
-        return redirect('/fitbit/login')
+        return redirect('tracktivityPetsWebsite:fitbit_link')
         
     start_url = static('tracktivityPetsWebsite/images')
     
