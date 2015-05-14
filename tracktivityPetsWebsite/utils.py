@@ -21,6 +21,8 @@ from django.templatetags.static import static
 this method will probably take 2-3 seconds to run, since fitbit API can take a while to respond, so ajax would be good
 means it should go in the update_user_fitbit
 '''
+#TODO: Gets all steps for the day, and doesnt consider other pets already having steps for it
+#Not going to effect release 1, but needs to change for release 2. Will have to loop through each pet in users inventory, get the experience for the day, add it all up, minus that from the total steps, and then add that to the pet
 def update_user_fitbit(request):
     if not is_fitbit_linked(request.user):
         return False, 'No fitbit found'
@@ -212,21 +214,10 @@ def get_pet_selection_data():
             data[pet.default_name]['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text#get the level one story for each pet
             image_location = pet.mood_set.filter(happiness_needed=-1)[0].image_location
             data[pet.default_name]['image'] = '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
+            silohuette_image_location = pet.mood_set.filter(happiness_needed=-2)[0].image_location
+            data[pet.default_name]['silohuette'] = '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=silohuette_image_location)
         except:
             pass #do nothing, but pet isnt set up properly in admin view (needs a story at level 1, and image at -1 happiness)
-    return data
-    
-def get_pet_data(index):
-    pet = Pet.objects.get(pk=index)
-    data = {}
-    static_url = static('tracktivityPetsWebsite/images')
-    try:
-        data['name'] = pet.default_name
-        data['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text
-        image_location = pet.mood_set.filter(hapiness_needed=-1)[0].image_location
-        data['image'] = '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
-    except:
-        pass
     return data
 
 def get_current_pet(user):

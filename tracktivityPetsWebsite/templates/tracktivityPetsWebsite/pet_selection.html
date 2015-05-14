@@ -23,51 +23,41 @@
 				.carousel-control{
 				  color: #000;
 				}
-				
+			
 			</style>
 
 			
 			<script type="text/javascript"> 
 			
 				$(document).ready(function(){
-					$("#myCarousel").carousel({
-				    	interval : false
-				    });
-					
-					$("#myCarousel").on('slide.bs.carousel', function (e) {
-				       var xx = $(this);
-				       setTimeout(function() {
-				            var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
-					  		$("#pet_content").children().hide();
-					  		$("[id='"+image_alt+"_content']").show();
-					  		
-				       } , 700);
-				   });
-				   
-			   		var image_alt = $(".carousel-inner").find(".active").find("img").attr("alt");
+			  		updateCharacterSelectScreen();
+				});
+				
+				function updateCharacterSelectScreen()
+				{
+					//hide all images
+			  		$("#pet_selector .pet_image, #pet_selector .pet_silohuette").hide();
+			  		var insert_into = $("#visible_pets");
+			  		
+			  		var active = $("#pet_selector").find(".active");
+
+			   		var image_alt = active.find("img").attr("alt");
 			  		$("#pet_content").children().hide();
 			  		$("[id='"+image_alt+"_content']").show();
-				});
-				setCarouselHeight('myCarousel');
-	
-			    function setCarouselHeight(id)
-			    {
-			        var slideHeight = [];
-			        $(id+' .item').each(function()
-			        {
-			            // add all slide heights to an array
-			            slideHeight.push($(this).height());
-			        });
-			
-			        // find the tallest item
-			        max = Math.max.apply(null, slideHeight);
-			
-			        // set the slide's height
-			        $(id+' .carousel-content').each(function()
-			        {
-			            $(this).css('height',max+'px');
-			        });
-			    }
+			  		
+			  		next_silohuette = active.next('span').next('span').next('span');
+					if(next_silohuette.val() === undefined){next_silohuette = $("#pet_selector .pet_silohuette:first");}
+					
+					prev_silohuette = active.prev('span');
+					if(prev_silohuette.val() === undefined){prev_silohuette = $("#pet_selector .pet_silohuette:last");}
+					
+
+					insert_into.show();
+					insert_into.empty();
+					insert_into.append(prev_silohuette.html());
+					insert_into.append(active.html());
+					insert_into.append(next_silohuette.html());
+				}
 			    
 			    var pet_number =  1;
 			    var pets_available_count = {{ pets_available_count }}
@@ -75,20 +65,33 @@
 			    
 			    $(function () {	        
 			        
-			        $('.carousel-control.left').click(function() {
+			        $('#selectLeft').click(function() {
 			        	pet_number--;
 			        	if(pet_number < 1) { pet_number = pets_available_count; }
-					  $('#viewing_pet_number').html(pet_number);
-					  
+					  	$('#viewing_pet_number').html(pet_number);
+						
+						var active = $("#pet_selector").find(".active");
+						active.toggleClass('active'); //remove the active class
+						next = active.prev('span').prev('span');
+						if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+						next.toggleClass('active');
+						
+						updateCharacterSelectScreen();
 
-						
-						
 					});
 					
-					$('.carousel-control.right').click(function() {
+					$('#selectRight').click(function() {
 						pet_number++;
 			        	if(pet_number > pets_available_count) { pet_number = 1; }
 						$('#viewing_pet_number').html(pet_number);
+						
+						var active = $("#pet_selector").find(".active");
+						active.toggleClass('active'); //remove the active class
+						next = active.next('span').next('span');
+						if(next.val() === undefined){next = $("#pet_selector .pet_image:first");}
+						next.toggleClass('active');
+						
+						updateCharacterSelectScreen();
 					});
 				});
 				
@@ -99,36 +102,36 @@
 				}
 		    </script>
 			
-			<div class="col-md-4 text-center">
-				<p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-				    <div class="row">
-				        <div class="col-xs-offset-3 col-xs-6">
-				            <div class="carousel-inner">
-								{% for key, value in available_pets.items %}
-									{% if forloop.first %}
-										<div class="item active">
-									{% else %}
-										<div class="item">
-									{% endif %}
-									
-									<img src="{{ value.image }}" alt="{{ value.name }}"/>
-									</div>
-								{% endfor %}
-
-				            </div>
-				        </div>
-				    </div>
-
-				    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				    	<span class="glyphicon glyphicon-chevron-left"></span>
-				  	</a>
-				 	<a class="right carousel-control" href="#myCarousel" data-slide="next">
-				    	<span class="glyphicon glyphicon-chevron-right"></span>
-				  	</a>
+			<div class="col-md-7 text-center">
 				
+				<p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
+				<div id="pet_selector">
+					{% for key, value in available_pets.items %}
+						{% if forloop.first %}
+							<span class="active pet_image">
+						{% else %}
+							<span class="pet_image">
+						{% endif %}
+						
+						<img src="{{ value.image }}" alt="{{ value.name }}" width="300px" height="300px" />
+						</span>
+						<span class="pet_silohuette">
+							<img src="{{ value.silohuette }}" alt="{{ value.name }}" width="300px" height="300px" />
+						</span>
+					{% endfor %}
+
 				</div>
+
+				<div id="visible_pets">
+					
+				</div>
+				
+				<a id="selectLeft" id="selectLeft">
+			    	<button>Left</button>
+			  	</a>
+				<a id="selectRight">
+			    	<button>Right</button>
+			  	</a>
 				
 				<form method="POST" onsubmit="getPet()" id="petSubmitForm">
 					{% csrf_token %}

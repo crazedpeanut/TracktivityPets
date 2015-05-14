@@ -21,6 +21,7 @@
 				.carousel-control{
 				  color: #000;
 				}
+
 			</style>
 			
 			<script type="text/javascript"> 
@@ -30,7 +31,6 @@
 				    	interval : false
 				    });
 
-				   $.mobile.loading( 'show', { theme: "b", text: "", textonly: false});
 				});
 				setCarouselHeight('myCarousel');
 	
@@ -62,6 +62,7 @@
 			        	story_number--;
 			        	if(story_number < 1) { story_number = stories_available_count; }
 					  $('#viewing_story_number').html(story_number);
+					  
 					});
 					
 					$('.carousel-control.right').click(function() {
@@ -70,6 +71,7 @@
 						$('#viewing_story_number').html(story_number);
 					});
 				});
+				
 		    </script>
 			
 			<p>Viewing story <span id="viewing_story_number">1</span> of {{ stories_available_count }}</p>
