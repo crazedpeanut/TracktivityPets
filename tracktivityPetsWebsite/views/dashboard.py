@@ -71,7 +71,8 @@ def dashboard(request):
         progress_bar_colour = "progress-bar-danger"
     else:
         experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
-        progress_bar_text = "%i / %i (%i%)" % (current_pet.get_total_experience(), experience_needed, experience_progress)
+        progress_bar_text = "{total}/ {needed} ({percent}%)".format(total=current_pet.get_total_experience(), needed=experience_needed, percent=experience_progress)
+        '''progress_bar_test = "Hello!"'''
         progress_bar_colour = "progress-bar-warning"
         
     happiness_today = current_pet.get_todays_happiness_value()
