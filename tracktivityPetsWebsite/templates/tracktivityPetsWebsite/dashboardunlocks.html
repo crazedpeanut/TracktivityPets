@@ -27,13 +27,13 @@
 			<script type="text/javascript"> 
 			
 				$(document).ready(function(){
-					$("#myCarousel").carousel({
+					$("#Dashboard").carousel({
 				    	interval : false
 				    });
 
 				});
-				setCarouselHeight('myCarousel');
-	
+				setCarouselHeight('Dashboard');
+
 			    function setCarouselHeight(id)
 			    {
 			        var slideHeight = [];
@@ -55,27 +55,69 @@
 			    
 			    var story_number =  1;
 			    var stories_available_count = {{ stories_available_count }}
-			    
+			    var stories_unlocked = {{stories_unlocked_count}}
 			    $(function () {	        
-			        
+			         if (story_number == 1 )
+						{
+							$('.carousel-control.left').hide();
+						}
 			        $('.carousel-control.left').click(function() {
-			        	story_number--;
-			        	if(story_number < 1) { story_number = stories_available_count; }
+						setTimeout(function(){ $('.carousel-control.left').hide(); }, 50);
+						setTimeout(function(){ $('.carousel-control.right').hide(); }, 50);
+			        	story_number--;		        	
+			        	if(story_number ==1) {       		 
+			        		 $('.carousel-control.left').hide();
+			        		 }
+			        		 else if (story_number!=1)
+			        		 {
+			        		 		setTimeout(function() { $('.carousel-control.left').show();}, 600);
+		
+			        		 }
 					  $('#viewing_story_number').html(story_number);
 					  
+					$("#Dashboard").carousel("prev");
+
+					  if (story_number == stories_unlocked ) 
+						{
+							$('.carousel-control.right').hide();
+							$('.carousel-control.left').show();							
+						}
+						else if(story_number != stories_unlocked)
+						{
+							setTimeout(function() { $('.carousel-control.right').show();}, 600);
+							$('.carousel-control.right').show();						
+						} 
+  
 					});
 					
 					$('.carousel-control.right').click(function() {
 						story_number++;
-			        	if(story_number > stories_available_count) { story_number = 1; }
+						setTimeout(function(){ $('.carousel-control.right').hide(); }, 50);
+						setTimeout(function(){ $('.carousel-control.left').hide(); }, 50);
+			        	if(story_number > stories_unlocked ) { story_number = 1; }
 						$('#viewing_story_number').html(story_number);
+						$("#Dashboard").carousel("next");
+						if (story_number == stories_unlocked ) 
+						{
+							setTimeout(function() { $('.carousel-control.left').show();}, 600);
+							$('.carousel-control.right').hide();
+							$('.carousel-control.left').show();
+						}
+						else if(story_number != stories_unlocked )
+						{
+							setTimeout(function() { $('.carousel-control.right').show();}, 600);
+							setTimeout(function() { $('.carousel-control.left').show();}, 600);
+							$('.carousel-control.right').show();
+							$('.carousel-control.left').show();
+						} 
+
 					});
 				});
 				
 		    </script>
 			
-			<p>Viewing story <span id="viewing_story_number">1</span> of {{ stories_available_count }}</p>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<p>Viewing story <span id="viewing_story_number">1</span> of {{ stories_unlocked_count }}</p>
+			<div id="Dashboard" class="carousel slide" data-ride="carousel" data-interval="3000" interval="false">
 			    <!-- Wrapper for slides -->
 			    <div class="row">
 			        <div class="col-xs-offset-3 col-xs-6">
@@ -97,10 +139,10 @@
 			        </div>
 			    </div>
 			    <!-- Controls --> 
-			    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+			    <a class="left carousel-control" href="#Dashboard" role="button">
 			    	<span class="glyphicon glyphicon-chevron-left"></span>
 			  	</a>
-			 	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+			 	<a class="right carousel-control" href="#Dashboard" role="button">
 			    	<span class="glyphicon glyphicon-chevron-right"></span>
 			  	</a>
 			

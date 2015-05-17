@@ -9,10 +9,11 @@
 <!-- code borrowed from http://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=carousel and http://jsfiddle.net/technotarek/gXN2u/ !-->
 <div class="container text-center">
 	<style>
-		
+
 		.carousel-content {
 		    color: #FFF;
 		    display:flex;
+		    margin:10%;
 		    align-items:center;
 		}
 		
@@ -43,7 +44,7 @@
 		}
 		
 		.item {
-			margin: 55px;
+			margin: 40px;
 		}
 	</style>
 
@@ -51,9 +52,25 @@
 		$(document).ready(function(){
 			$("#myCarousel").carousel({
 		         interval : false
-		     });
-
+		    });
+				   $(".left").click(function(){
+       	   $("#myCarousel").carousel("prev");	
+       	   });
+       	       $(".right").click(function()
+       	       {
+       	       	 if (!$('.carousel-inner .item:last').hasClass('active'))
+       	       		{
+       					 $("#myCarousel").carousel("next");
+       				}
+       				if ($('.carousel-inner .item:last').hasClass('active'))
+       	       		{
+       					 window.location.href = '{{ pet_selection_link }}';
+       				}
+        
+    });
 		   $.mobile.loading( 'show', { theme: "b", text: "", textonly: false});
+
+    
 		});
 		
 		setCarouselHeight('#carousel-example');
@@ -82,7 +99,7 @@
 	<h1>Story</h1>
 	
 	<div class="bs-example">
-	    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+	    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel" data-wrap="false">
 	    	<!-- Carousel indicators -->
 	        <ol class="carousel-indicators">
 	            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -95,10 +112,10 @@
 	       <!-- Carousel items -->
 	        <div class="row">
 		        <div class="col-lg-12">
-		            <div class="carousel-inner">
+		            <div class="carousel-inner" role="listbox">
 		                <div class="item active">
 		                    <div class="carousel-content">
-		                        <div>
+		                        <div style="width:800px; margin:0 auto;">
 		                            <p>
 		                            	H.ll. can.. y.u h.re me? No? Ah. That should fix it. Hello! I am Dr. Lionel, I'm speaking to you through the proprietary Petnet I have built which is
 		                            	 a connection between your universe and mine. Anyway, that doesn't matter right now. We need your help!
@@ -108,7 +125,7 @@
 		                </div>
 		                <div class="item">
 		                    <div class="carousel-content">
-		                        <div>
+		                        <div style="width:800px; margin:0 auto;">
 		                        	<p> 
 		                        	It all started a few weeks ago... King Rupert and his minions were trekking through the murky jungle. The group had almost made their way through until
 		                        	they were attacked by a mysterious creature! Only one of the minions made it back	
@@ -118,8 +135,8 @@
 		                </div>
 		                <div class="item">
 		                    <div class="carousel-content">
-		                        <div>                          
-		                             <p>
+		                        <div style="width:800px; margin:0 auto;">                          
+		                             <p >
 		                             King Rupert has many kingly duties. One of the most important is telling his subjects to exercise!
 		                             Without him nagging , they all just forget to walk around. Thats where you come in!	
 		                             </p>
@@ -128,7 +145,7 @@
 		                </div>
 		                <div class="item">
 		                    <div class="carousel-content">
-		                        <div>                          
+		                        <div style="width:800px; margin:0 auto;">                          
 		                             <p>
 		                             	We need you to help get our townsfolk to exercise until King Rupert returns. To do this, I'll set you up with a private channel over the Petnet.
 		                             	This will allow you to connect to our universe overa secure line. Once connected, you will be connected with a pet.
@@ -138,7 +155,7 @@
 		                </div>
 		                <div class="item">
 		                    <div class="carousel-content">
-		                        <div>                          
+		                        <div style="width:800px; margin:0 auto;">                          
 		                             <p>
 		                             	So you and your pet can exerciuse at the same time, your Fitbit device will be connected to the Petnet as well. Now, when you exercise your pet will exercise.
 		                             	Perhaps when you get some practice we'll link you up to some more pets...We can worry about that later though.
@@ -147,10 +164,11 @@
 		                    </div>
 		                </div>
 		                <div class="item">
-		                    <div class="carousel-content col-lg-offset-2 col-md-offset-2">
-		                        <div>                          
+		                    <div class="carousel-content">
+		                        <div style="width:800px; margin:0 auto;">                          
 		                             <p>
-		                             	If you happen to find any information about King Rupert please let me know. Alright! Let's get started...                                                                                                                                       
+		                             	If you happen to find any information about King Rupert please let me know. 
+		                             							Alright! Let's get started...                                                                                                                                       
 		                             </p>
 		                        </div>
 		                    </div>
@@ -159,17 +177,19 @@
 		        </div>
 		    </div>
 	        <!-- Carousel nav -->
-	        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-	            <span class="glyphicon glyphicon-chevron-left"></span>
-	        </a>
-	        <a class="carousel-control right" href="#myCarousel" data-slide="next">
-	            <span class="glyphicon glyphicon-chevron-right"></span>
-	        </a>
+<a class="left carousel-control" href="#myCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+    </a>
+<a class="right carousel-control" href="#myCarousel" role="button">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
 	    </div>
 	</div>
   	{% if not has_pet %}
 		<form action="{{ pet_selection_link }}">
-			<input type="submit" value="Select a pet!">
+			<input type="submit" value="Select a pet! "class="btn btn-lg btn-primary">
 		</form>
 	{% endif %}
 </div>
