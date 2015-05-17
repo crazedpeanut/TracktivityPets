@@ -82,8 +82,8 @@
 	</script>
 	
 	<div class="col-xs-12 col-md-1 text-center"></div>		
-	<div class="container text-center col-xs-12 col-md-5">	
-	   <div class="row">
+	<div id="petSelectionContainer" class="container text-center col-xs-12 col-md-5 infoItem">	
+	   <div id="pet_selector_title" class="row">
 	       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
 	   </div>	
 	   <div class="row">
@@ -94,10 +94,10 @@
                 {% else %}
                     <span class="pet_image">
                 {% endif %}                
-                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4" width="250px" height="250px" />
+                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
                     </span>
                 <span class="pet_silohuette">
-                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4" width="250px" height="250px"/>
+                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
                 </span>
             {% endfor %}
             </div>
@@ -121,11 +121,11 @@
         </div>		
 	</div>	
 	<div class="col-xs-12 col-md-1 text-center"></div>
-    <div class="col-xs-12 col-md-4 text-center" id="pet_content" class="infoitem">
+    <div class="col-xs-12 col-md-4 text-center infoItem" id="pet_content">
 		{% for key, value in available_pets.items %}
 			<div id="{{ value.name }}_content">
 				<h3> {{ value.name }}</h3>
-				<img src="{{ value.image }}" alt="{{ value.name }}" width="300px" height="300px"/>
+				<img src="{{ value.image }}" alt="{{ value.name }}" width="100%"/>
 				<p> {{ value.story }}</p>
 			</div>
 		{% endfor %}

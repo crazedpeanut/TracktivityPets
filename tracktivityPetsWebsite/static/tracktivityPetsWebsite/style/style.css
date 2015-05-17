@@ -227,7 +227,7 @@ width: 75%;
 #petinfo
 {
 	top: 0;
-    	left: 0;
+    left: 0;
 	z-index: 2;
 	text-align: left;
 	position: absolute;
@@ -257,9 +257,10 @@ width: 75%;
 	height: 100%;
 	border-radius: 8px;
 	padding-top: 0.5px;
+	border: 1px solid black;
 }
 
-.infoItem h3
+.infoItem h3, #pet_selector_title
 {
 	border-radius: 8px 8px 0px 0px;
 	color: white;
@@ -302,4 +303,10 @@ width: 75%;
 #fitbitlinkmessage h3
 {
 	margin-bottom: 30px;
+}
+
+#petSelectionContainer, #pet_content
+{
+	padding-left: 0px;
+	padding-right: 0px;
 }
