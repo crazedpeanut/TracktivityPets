@@ -25,6 +25,13 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_HOST_USER = 'john@johnkendall.net'
+EMAIL_HOST_PASSWORD = 'hx--xq5iRGYZ-I3MT9kdPg'
+EMAIL_PORT = 587
+
 
 # Application definition
 
