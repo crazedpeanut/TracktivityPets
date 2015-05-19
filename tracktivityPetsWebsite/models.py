@@ -93,6 +93,20 @@ class CollectedPet(models.Model):
                 largest_number = d.amount
         return largest_number, values
     
+    def get_all_accumulative_experience(self):
+        pass
+        dates = self.experience_set.all().order_by('date')
+        values = OrderedDict()
+        accumulative = 0 
+        for d in dates:
+            date = d.date.strftime('%d-%m')
+            values[date] = OrderedDict()
+            values[date]['date'] = date
+            accumulative += d.amount
+            values[date]['experience'] = accumulative
+            
+        return values
+    
     def get_age_in_days(self):
         return (timezone.now() - self.date_created).days
     
