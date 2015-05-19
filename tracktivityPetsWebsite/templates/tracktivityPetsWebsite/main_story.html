@@ -44,7 +44,8 @@
 		}
 		
 		.item {
-			margin: 40px;
+			margin: 0 auto;
+			
 		}
 	</style>
 
@@ -53,7 +54,25 @@
 			$("#myCarousel").carousel({
 		         interval : false
 		    });
-				   $(".left").click(function(){
+		    $('.carousel-control.left').hide();
+		  
+		  $('#myCarousel').bind('slid.bs.carousel', function (e)
+        {
+          
+            var $this = $(this);
+
+            $this.children('.carousel-control').show();
+
+            if ($('.carousel-inner .item:last').hasClass('active'))
+            {
+                $this.children('.right.carousel-control').hide();
+            } else if ($('.carousel-inner .item:first').hasClass('active'))
+            {
+                $this.children('.left.carousel-control').hide();
+            }
+        });
+		  
+		   $(".left").click(function(){
        	   $("#myCarousel").carousel("prev");	
        	   });
        	       $(".right").click(function()
@@ -62,17 +81,13 @@
        	       		{
        					 $("#myCarousel").carousel("next");
        				}
-       				if ($('.carousel-inner .item:last').hasClass('active'))
-       	       		{
-       					 window.location.href = '{{ pet_selection_link }}';
-       				}
         
     });
 		   $.mobile.loading( 'show', { theme: "b", text: "", textonly: false});
 
-    
 		});
 		
+        
 		setCarouselHeight('#carousel-example');
 
 	    function setCarouselHeight(id)
@@ -94,12 +109,14 @@
 	        });
 	       
 	    }
+	    
+
 	</script>
 	
 	<h1>Story</h1>
 	
 	<div class="bs-example">
-	    <div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel" data-wrap="false">
+	    <div id="myCarousel" style="overflow:hidden" class="carousel slide" data-interval="1000" data-ride="carousel" data-wrap="false">
 	    	<!-- Carousel indicators -->
 	        <ol class="carousel-indicators">
 	            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
