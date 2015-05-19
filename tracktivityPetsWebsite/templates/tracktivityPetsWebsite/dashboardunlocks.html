@@ -61,6 +61,11 @@
 						{
 							$('.carousel-control.left').hide();
 						}
+						if (story_number == stories_unlocked ) 
+						{
+							$('.carousel-control.right').hide();
+												
+						}
 			        $('.carousel-control.left').click(function() {
 						setTimeout(function(){ $('.carousel-control.left').hide(); }, 50);
 						setTimeout(function(){ $('.carousel-control.right').hide(); }, 50);
