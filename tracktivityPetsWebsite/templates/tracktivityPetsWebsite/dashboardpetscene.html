@@ -1,18 +1,51 @@
 <div id="pet_scene_container" class="jumbotron">
-	<div id="pet_phrase" class="alert alert-success" role="alert">
-		{{ mood.phrase }}
-	</div>
-	<div id="pet_scene">
-		
-		<img id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
-		
-		{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>	
+	<div class="col-md-6 text-center">
+		<div id="pet_scene">
+			</br>
+			<img id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
+		</div>
 	</div>
 	
-	<div id="pet_progress" class="progress">
-        <div class="progress-bar {{ progress_bar_colour }} progress-bar-striped active" role="progressbar"
-        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level_data.progress}}%">
-            {{ level_data.progress_bar_text }}
-        </div>
-    </div>
+	<div class="col-md-6 text-center">
+			
+		{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}	
+		</br>
+		</br>
+		</br>
+		</br>
+		</br>
+		<div id="myTest">
+			</br>
+			<div id="pet_progress" class="progress">
+		        <div class="progress-bar {{ progress_bar_colour }} progress-bar-striped active" role="progressbar"
+		        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level_data.progress}}%">
+		            {{ level_data.progress_bar_text }}
+		        </div>
+		    </div>
+		</div>
+	    
+	</div>
+	<!--Looks messy however i don't know how else to get the box to go do the right placement -->
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>	
 </div>
