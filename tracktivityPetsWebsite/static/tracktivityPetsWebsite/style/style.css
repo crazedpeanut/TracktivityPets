@@ -372,3 +372,28 @@ width: 75%;
     left: -7px;
 }
 
+#petselectionCarouselArrows
+{
+	position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+}
+
+#petselectionCarouselArrows img
+{
+	height: 100%;
+}
+
+
+#petselectionCarouselArrows .row
+{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+#visible_pets 
+{
+	margin-left: 0px;
+	margin-right: 0px;
+	position: relative;
+}
