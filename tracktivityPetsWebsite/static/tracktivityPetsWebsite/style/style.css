@@ -379,9 +379,9 @@ width: 75%;
 	  transform: translateY(-50%);
 }
 
-#petselectionCarouselArrows img
+#petselectionCarouselArrows > .row > img
 {
-	height: 100%;
+	opacity: 0.7;
 }
 
 
