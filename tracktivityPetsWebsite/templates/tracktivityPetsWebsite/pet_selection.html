@@ -94,24 +94,26 @@
                 {% else %}
                     <span class="pet_image">
                 {% endif %}                
-                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-2 col-md-2"/>
+                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
                     </span>
                 <span class="pet_silohuette">
-                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-2 col-md-2"/>
+                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
                 </span>
             {% endfor %}
             
             </div>
         </div>		
         <div class="row" id="visible_pets">
-        	<img alt="left arrow" src="{% static "tracktivityPetsWebsite/images/left_arrow.png" %}" id="selectLeft" class="col-xs-2 col-md-2"/>
         	<span id="pets"></span>
-        	<img alt="right arrow" src="{% static "tracktivityPetsWebsite/images/right_arrow.png" %}" id="selectRight" class="col-xs-2 col-md-2"/>
+        	<div id="petselectionCarouselArrows">
+        		<div class="row">
+		        	<img alt="left arrow" src="{% static "tracktivityPetsWebsite/images/left_arrow.png" %}" id="selectLeft" class="col-md-2 col-xs-2"/>
+		        	<img alt="right arrow" src="{% static "tracktivityPetsWebsite/images/right_arrow.png" %}" id="selectRight" class="col-xs-offset-8 col-md-offset-8 col-md-2 col-xs-2"/>
+		        </div>
+	        </div>
         </div>
+        
 	    <div class="row">
-            
-			
-			
             <form method="POST" onsubmit="getPet()" id="petSubmitForm">
             {% csrf_token %}
             Pet Name:<br/>
