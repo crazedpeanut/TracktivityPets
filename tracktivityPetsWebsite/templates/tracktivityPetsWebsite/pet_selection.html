@@ -59,6 +59,7 @@
 		
 			});
 			
+
 			$('#selectRight').click(function() {
 				pet_number++;
 		    	if(pet_number > pets_available_count) { pet_number = 1; }
@@ -72,6 +73,37 @@
 				
 				updateCharacterSelectScreen();
 			});
+			
+			$('#visible_pets').on("swipeleft", function(event) {
+		    	pet_number--;
+		    	if(pet_number < 1) { pet_number = pets_available_count; }
+			  	$('#viewing_pet_number').html(pet_number);
+				
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.prev('span').prev('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+				next.toggleClass('active');
+				
+				updateCharacterSelectScreen();
+		
+			});
+			
+			$('#visible_pets').on("swiperight", function(event) {
+		    	pet_number--;
+		    	if(pet_number < 1) { pet_number = pets_available_count; }
+			  	$('#viewing_pet_number').html(pet_number);
+				
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.prev('span').prev('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+				next.toggleClass('active');
+				
+				updateCharacterSelectScreen();
+		
+			});
+			
 		});
 		
 		function getPet()
