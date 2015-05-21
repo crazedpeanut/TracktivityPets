@@ -1,7 +1,9 @@
 {% load staticfiles %}
 
 <div class="infoItem">
-	<h3>History</h3>
+	<div class="row">
+	   <img class="dashboard_bubbletext col-xs-4 col-xs-offset-4" src="{% static 'tracktivityPetsWebsite/images/history_img.png' %}">
+	</div>
 	
 	<script>
 	// Used example from http://codepen.io/anon/pen/mJyRgb?editors=101
@@ -23,7 +25,8 @@
 	        title: 'Pet Happiness',
 	        curveType: 'line',
 	        height: 400,
-	        backgroundColor: '#eee',
+	        //backgroundColor: '#eee',
+	        backgroundColor: 'transparent',
 	        hAxis:
 	        {
 	            title: 'Date'
@@ -63,9 +66,10 @@
 	
 	    var options = {
 	        title: 'Pet Experience',
-	        curveType: 'function',
+	        curveType: 'line',
 	        height: 400,
-	        backgroundColor: '#eee',
+	        //backgroundColor: '#eee',
+	        backgroundColor: 'transparent',
 	        hAxis:
 	        {
 	            title: 'Date'
@@ -78,7 +82,7 @@
 	            //format: '#%'
 	        },
 	        legend: {position: 'none'},
-	        pointSize: '8'
+	        pointSize: '4'
 	    };
 	
 	    var chart = new google.visualization.LineChart(document.getElementById('chart'));
@@ -87,7 +91,11 @@
 	
 	
 	$(window).resize(function() {
-	    drawHappinessChart();
+	   if($('#stepsRadio').prop('checked')) {
+	       drawStepsChart();
+	   }
+	   else
+	       drawHappinessChart();
 	});
 	
 	$(document).ready(function() {
