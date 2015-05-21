@@ -209,7 +209,7 @@ width: 75%;
 	background: linear-gradient( rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) ), url("/static/tracktivityPetsWebsite/images/petscene_background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 60%;
+    background-position: 50% 90%;
 }
 
 #pet_scene
@@ -448,9 +448,18 @@ left: 50%;
     font-size: 24px
 }
 
+#pet_scene_filler {
+    margin-top: 150px;
+}
+
 #infoTable {
     font-size: 24px;
-    
+    color: white;
+    border-radius: 8px;
     background: url("/static/tracktivityPetsWebsite/images/Petscene_Trans.png");
-    }
+    margin-bottom: 10px;
+}
 
+#infoTable td {
+    padding-left: 20px;
+}

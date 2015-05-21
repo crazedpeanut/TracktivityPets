@@ -5,11 +5,12 @@
             </div>
        </div>
        <div class="row">
-            <img class="col-xs-6 col-xs-offset-3" id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
+            <img class="col-xs-12 col-md-6 col-md-offset-3" id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
        </div>
 </div>
+<div id="pet_scene_filler" class="xs-hidden"></div>
 <div id="petInfoProgress">
-    <table id="infoTable" class="col-xs-12 col-md-6">
+    <table id="infoTable" class="col-xs-12 col-md-4 col-md-offset-1">
         <tr>
             <td>Name:</td>
             <td>{{ pet_name }}</td>
@@ -19,19 +20,15 @@
             <td>{{ age }} days</td>
         </tr>
         <tr>
-            <td>Current happiness:</td>
-            <td>{{ happiness_today }}%</td>
-        </tr>
-        <tr>
             <td>Current level:</td>
             <td>{{ level_data.current_level }}</td>
         </tr>
     </table>
 </div>
-<div class="col-xs-12">
+<div class="col-xs-12 col-md-6">
     <div class="row">
         <div id="pet_progress" class="progress">
-            <div class="progress-bar {{ progress_bar_colour }} progress-bar-striped active" role="progressbar"
+            <div class="progress-bar {{ progress_bar_colour }} progress-bar-striped" role="progressbar"
                 aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level_data.progress}}%">
                 {{ level_data.progress_bar_text }}
             </div>
