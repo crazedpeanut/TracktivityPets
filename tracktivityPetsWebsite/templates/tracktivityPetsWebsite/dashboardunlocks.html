@@ -14,7 +14,7 @@
 				    color:black;
 				    display:flex;
 				    align-items:center;
-				    margin: 20px;
+				    margin: 10%;
 				}
 				
 				.carousel-control.left, .carousel-control.right {
@@ -128,16 +128,16 @@
 			<div id="Dashboard" class="carousel slide" data-ride="carousel" data-interval="3000" interval="false">
 			    <!-- Wrapper for slides -->
 			    <div class="row">
-			        <div class="col-xs-offset-3 col-xs-6">
+			        <div class="col-xs-12">
 			            <div class="carousel-inner">
 			            	{% for story in stories_unlocked %}
 				            	{% if stories_unlocked|first == story %}  
-							    	<div class="item active"> {% comment %} first item has to be active {% endcomment %}
+							    	<div class="item active" > {% comment %} first item has to be active {% endcomment %}
 							    {% else %}
 							    	<div class="item">
 							    {% endif %}
 				                    <div class="carousel-content">
-				                        <div>
+				                        <div   style="width:400px;margin:0 auto;">
 				                            <p>{{ story.text }}</p>
 				                        </div>
 				                    </div>
