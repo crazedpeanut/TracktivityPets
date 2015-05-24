@@ -1,5 +1,8 @@
+{% load staticfiles %}
 <div class="infoItem">
-	<h3>Pet Updates</h3>
+	<div class="row">
+       <img class="dashboard_bubbletext col-xs-6 col-xs-offset-3" src="{% static 'tracktivityPetsWebsite/images/updates_img.png' %}">
+    </div>
 	
 	Experience Gained: {{ experience_gained }} <br/>
 	Levels Gained: {{ levels_gained }}

@@ -8,10 +8,9 @@
 {% block content_block %}
 <div class="container text-center">
     <div class="row text-center col-xs-12 col-md-6 col-md-offset-3">
-        <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/trackpets_logo.png' %}" alt="Tracktivity Pets logo" />           
+        <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/feedback_img.png' %}" alt="Feedback" />           
     </div>    
     <div class="row text-center">
-        <h2 class="col-xs-12">Feedback</h2>
         <p class="col-xs-12">Are you experiencing a technical issue with Tracktivity Pets? Please describe your issue or any other feedback in the box below and we will follow it up as soon as we can!</p>
         <form role="form" method="POST">
         	{% csrf_token %}

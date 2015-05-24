@@ -1,51 +1,37 @@
-<div id="pet_scene_container" class="jumbotron">
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>	
-	<div class="col-md-6 text-center">
-		<div id="pet_scene">
-			</br>
-			<img id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
-		</div>
-	</div>
-	
-	<div class="col-md-6 text-center">
-			
-		{% include 'tracktivityPetsWebsite/dashboardpetinfo.html' %}	
-		</br>
-		</br>
-		</br>
-		</br>
-		</br>
-		<div id="myTest">
-			</br>
-			<div id="pet_progress" class="progress">
-		        <div class="progress-bar {{ progress_bar_colour }} progress-bar-striped active" role="progressbar"
-		        aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level_data.progress}}%">
-		            {{ level_data.progress_bar_text }}
-		        </div>
-		    </div>
-		</div>
-	    
-	</div>
-	<!--Looks messy however i don't know how else to get the box to go do the right placement -->
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>	
+<div class="col-xs-12 col-md-6" id="petAndSpeech">
+       <div class="row">
+            <div class="bubble text-center">
+                <p id="petSpeech">{{ mood.phrase }}</p>
+            </div>
+       </div>
+       <div class="row">
+            <img class="col-xs-12 col-md-6 col-md-offset-3" id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
+       </div>
+</div>
+<div id="pet_scene_filler" class="xs-hidden"></div>
+<div id="petInfoProgress">
+    <table id="infoTable" class="col-xs-12 col-md-4 col-md-offset-1">
+        <tr>
+            <td>Name:</td>
+            <td>{{ pet_name }}</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td>{{ age }} days</td>
+        </tr>
+        <tr>
+            <td>Current level:</td>
+            <td>{{ level_data.current_level }}</td>
+        </tr>
+    </table>
+</div>
+<div class="col-xs-12 col-md-6">
+    <div class="row">
+        <div id="pet_progress" class="progress">
+            <div class="progress-bar {{ progress_bar_colour }} progress-bar-striped" role="progressbar"
+                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{level_data.progress}}%">
+                {{ level_data.progress_bar_text }}
+            </div>
+        </div>
+    </div>
 </div>
