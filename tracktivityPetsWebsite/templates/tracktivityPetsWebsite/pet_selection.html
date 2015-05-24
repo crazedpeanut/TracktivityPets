@@ -117,7 +117,7 @@
 	</script>
 	
 	<div id="petselectcontentrow" class="row">	
-		<div class="col-xs-6 col-md-6 ">
+		<div class="col-xs-12 col-md-6 col-sm-6">
 			<div id="petSelectionContainer" class="container text-center infoItem">	
 			   <div id="pet_selector_title" class="row">
 			       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
@@ -160,7 +160,7 @@
 		</div>
 		
 		
-		<div class="col-xs-6 col-md-6">
+		<div class="col-xs-12 col-sm-6 col-md-6">
 			<div class="text-center infoItem" id="pet_content">
 				{% for key, value in available_pets.items %}
 					<div id="{{ value.name }}_content">
