@@ -332,6 +332,11 @@ width: 75%;
     background-position: 50% 60%;
 }
 
+#petSelectionContainer
+{
+	width: 100%;
+}
+
 #pet_content
 {
 	color: white;
@@ -462,4 +467,20 @@ left: 50%;
 
 #infoTable td {
     padding-left: 20px;
+}
+
+#pet_content p
+{
+	background: #eee;
+	padding: 3px;
+	color: black;
+}
+
+#adoptPetForm
+{
+	padding: 10px;
+	margin-top:10px;
+	border-radius: 8px;
+	background: #eee;
+	border: 1px solid black;
 }

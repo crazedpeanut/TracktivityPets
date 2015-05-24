@@ -116,63 +116,63 @@
 		}
 	</script>
 	
-	<div class="col-xs-12 col-md-1 text-center"></div>		
-	<div id="petSelectionContainer" class="container text-center col-xs-12 col-md-5 infoItem">	
-	   <div id="pet_selector_title" class="row">
-	       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
-	   </div>	
-	   <div class="row">
-            <div id="pet_selector">
-            {% for key, value in available_pets.items %}
-                {% if forloop.first %}
-                    <span class="active pet_image">
-                {% else %}
-                    <span class="pet_image">
-                {% endif %}                
-                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
-                    </span>
-                <span class="pet_silohuette">
-                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
-                </span>
-            {% endfor %}
-            
-            </div>
-        </div>		
-        <div class="row" id="visible_pets">
-        	<span id="pets"></span>
-        	<div id="petselectionCarouselArrows" class="col-lg-12 col-md-12 col-xs-12">
-        		<div class="row">
-		        	<img alt="left arrow" src="{% static "tracktivityPetsWebsite/images/left_arrow.png" %}" id="selectLeft" class="col-lg-2 col-md-2 col-xs-2"/>
-		        	<img alt="right arrow" src="{% static "tracktivityPetsWebsite/images/right_arrow.png" %}" id="selectRight" class="col-lg-offset-8 col-xs-offset-8 col-md-offset-8 col-lg-2 col-md-2 col-xs-2"/>
+	<div id="petselectcontentrow" class="row">	
+		<div class="col-xs-6 col-md-6 ">
+			<div id="petSelectionContainer" class="container text-center infoItem">	
+			   <div id="pet_selector_title" class="row">
+			       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
+			   </div>	
+			   <div class="row">
+		            <div id="pet_selector">
+		            {% for key, value in available_pets.items %}
+		                {% if forloop.first %}
+		                    <span class="active pet_image">
+		                {% else %}
+		                    <span class="pet_image">
+		                {% endif %}                
+		                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
+		                    </span>
+		                <span class="pet_silohuette">
+		                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
+		                </span>
+		            {% endfor %}
+		            
+		            </div>
+		        </div>		
+		        <div class="row" id="visible_pets">
+		        	<span id="pets"></span>
+		        	<div id="petselectionCarouselArrows" class="col-lg-12 col-md-12 col-xs-12">
+		        		<div class="row">
+				        	<img alt="left arrow" src="{% static "tracktivityPetsWebsite/images/left_arrow.png" %}" id="selectLeft" class="col-lg-2 col-md-2 col-xs-2"/>
+				        	<img alt="right arrow" src="{% static "tracktivityPetsWebsite/images/right_arrow.png" %}" id="selectRight" class="col-lg-offset-8 col-xs-offset-8 col-md-offset-8 col-lg-2 col-md-2 col-xs-2"/>
+				        </div>
+			        </div>
 		        </div>
-	        </div>
-        </div>
-        
-	    <div class="row">
-            <form method="POST" onsubmit="getPet()" id="petSubmitForm">
-            {% csrf_token %}
-            Pet Name:<br/>
-                <input type="text" name="user_pet_name"><br/>
-                <input type="submit" value="Adopt!"/>
-                <input type="hidden" name="default_pet_name" value="" id="pet"/>                    
-            </form>
-        </div>		
-	</div>	
-	<div class="col-xs-12 col-md-1 text-center"></div>
-    <div class="col-xs-12 col-md-4 text-center infoItem" id="pet_content">
-		{% for key, value in available_pets.items %}
-			<div id="{{ value.name }}_content">
-				<h3> {{ value.name }}</h3>
-				<img src="{{ value.image }}" alt="{{ value.name }}" width="100%"/>
-				<p> {{ value.story }}</p>
+			</div>	
+			<div id="adoptPetForm" class="text-center">
+		        <form method="POST" onsubmit="getPet()" id="petSubmitForm">
+		        {% csrf_token %}
+		            <input placeholder="Pet Name" type="text" name="user_pet_name"><br/>
+		            <input type="submit" value="Adopt!"/>
+		            <input type="hidden" name="default_pet_name" value="" id="pet"/>                    
+		        </form>
 			</div>
-		{% endfor %}
-    </div>
-    	
-    <div class="col-md-4 text-center">
+		</div>
+		
+		
+		<div class="col-xs-6 col-md-6">
+			<div class="text-center infoItem" id="pet_content">
+				{% for key, value in available_pets.items %}
+					<div id="{{ value.name }}_content">
+						<h3> {{ value.name }}</h3>
+						<img src="{{ value.image }}" alt="{{ value.name }}" width="100%"/>
+						<p> {{ value.story }}</p>
+					</div>
+				{% endfor %}
+		    </div>
+		</div>
 	</div>
-	    	
-    </div>
+   </div>
 </div>
 
 
