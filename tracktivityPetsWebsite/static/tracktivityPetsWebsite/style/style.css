@@ -237,7 +237,7 @@ width: 75%;
 
 #pet_progress
 {
-    margin-top: 2px;
+    margin-top: 10px;
     margin-bottom: 2px;
     border: 1px solid black;
 }
@@ -457,12 +457,17 @@ left: 50%;
     margin-top: 150px;
 }
 
+#petInfoProgress {
+    background-color: #666;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
 #infoTable {
     font-size: 24px;
     color: white;
-    border-radius: 8px;
-    background: url("/static/tracktivityPetsWebsite/images/Petscene_Trans.png");
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 #infoTable td {
