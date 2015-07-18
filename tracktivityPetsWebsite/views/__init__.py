@@ -7,3 +7,4 @@ from .main_story import main_story
 from .pet_selection import pet_selection
 from .register import register
 from .fitbit_link import fitbit_link
+from .view_pet import view_pet
