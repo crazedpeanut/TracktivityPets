@@ -186,7 +186,12 @@ class Story(models.Model):
 
 #release 2 models below
 
-
+class PetActive(models.Model):
+    pet = models.ForeignKey(Pet)
+    user = models.ForeignKey(Profile)
+    startDateTime = models.DateTimeField()
+    endDateTime = models.DateTimeField(default=None, null=True)
+    stepsTakenDuringPeriod = models.IntegerField(default=0)
     
     
     

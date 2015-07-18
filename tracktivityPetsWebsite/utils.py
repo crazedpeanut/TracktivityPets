@@ -1,6 +1,6 @@
 import fitapp
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story, PetActive
 import urllib.request #for fitbit http requests
 import urllib.parse
 import django
@@ -43,42 +43,16 @@ def update_user_fitbit(request):
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
     
-    try:
-        url = request.META['HTTP_HOST']
-        username = user.get_username()
-        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)#compute secure hash so people cant intercept this crappy call (since request object doesnt work)
-        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
-        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
-        data = f.read().decode('utf-8')#whats returned 
-    except Exception as e:
-        return False, str(e) #TODO: make this something useful
-    
-    data_json = json.loads(data)#change it from text to something usable
-    
-    #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
-    '''
-     When everything goes well, the *status_code* is 100 and the requested data
-    is included. However, there are a number of things that can 'go wrong'
-    with this call. For each type of error, we return an empty data list with
-    a *status_code* to describe what went wrong on our end:
+    url = settings.DOMAIN_NAME
+    success, result = get_fitbit_data(date_from, date_to, user, url)
 
-        :100: OK - Response contains JSON data.
-        :101: User is not logged in.
-        :102: User is not integrated with Fitbit.
-        :103: Fitbit authentication credentials are invalid and have been
-            removed.
-        :104: Invalid input parameters. Either *period* or *end_date*, but not
-            both, must be supplied. *period* should be one of [1d, 7d, 30d,
-            1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
-            'yyyy-mm-dd'.
-        :105: User exceeded the Fitbit limit of 150 calls/hour.
-        :106: Fitbit error - please try again soon.
-    '''
-    if data_json['meta']['status_code'] != 100:#temp stuff for testing
-        return False, data_json['meta']['status_code']#TODO: make this something useful
+    if(not success): # Fitbit request didn't work
+        return False, result
+    
+    data_json = result # the fitbit call worked, so now this is magically a json object. hooray!
     
     experience = 0
-
+    
     for date in data_json['objects']: #terrible code reuse
         if date['dateTime'] == date_from: #this day may already have data, if its synced multiple times a day, should do this a less exhaustive way though
             try:#update it
@@ -175,8 +149,13 @@ def register_pet_selection(user, pet, name):
             profile = Profile.objects.get(user=user) #should change this to form of user.profile, but it doesnt seem to work 
             collected_pet = CollectedPet.objects.create(pet=pet, inventory=profile.inventory, level=level, name=name, date_created=now) #create new collected pet
             collected_pet.save()
+            
             profile.current_pet = collected_pet #link it to user.profile.current_pet 
             profile.save()
+            
+            pet_active = PetActive.objects.create(pet=pet, user=profile, startDateTime=now) #Create a record that this is the users current active pet
+            pet_active.save()
+            
             return True, None
         except Exception as e:
             return False, str(e)
@@ -223,9 +202,53 @@ def get_pet_selection_data():
 def get_current_pet(user):
     return user.profile.current_pet
 
-def set_current_pet(user):
-    pass
+def set_current_pet(user, pet):
+    profile = Profile.objects.get(user=user)
+    inventory = profile.inventory
+    
+    #Check that the user owns the pet
+    user_owns_pet_check = CollectedPets.objects.filter(inventory=inventory, pet=pet)
+    if(user_owns_pet_check.count() > 0): #User actually owns the pet!
+        print('huzzah')
+    else:
+        return False #User does not own the pet
+    
+#url is actually hostname - Blame Andrew    
+def get_fitbit_data(date_from, date_to, user, url):
+    try:
+        username = user.get_username()
+        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)#compute secure hash so people cant intercept this crappy call (since request object doesnt work)
+        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
+        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
+        data = f.read().decode('utf-8')#whats returned 
+    except Exception as e:
+        return False, str(e) #TODO: make this something useful
+        
+    data_json = json.loads(data)#change it from text to something usable
+        
+    #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
+    '''
+     When everything goes well, the *status_code* is 100 and the requested data
+    is included. However, there are a number of things that can 'go wrong'
+    with this call. For each type of error, we return an empty data list with
+    a *status_code* to describe what went wrong on our end:
 
+        :100: OK - Response contains JSON data.
+        :101: User is not logged in.
+        :102: User is not integrated with Fitbit.
+        :103: Fitbit authentication credentials are invalid and have been
+            removed.
+        :104: Invalid input parameters. Either *period* or *end_date*, but not
+            both, must be supplied. *period* should be one of [1d, 7d, 30d,
+            1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
+            'yyyy-mm-dd'.
+        :105: User exceeded the Fitbit limit of 150 calls/hour.
+        :106: Fitbit error - please try again soon.
+    '''
+    if data_json['meta']['status_code'] != 100:#temp stuff for testing
+        return False, data_json['meta']['status_code']#TODO: make this something useful
+    
+    return True, data_json
 
 def get_user(request):
     return request.user

@@ -32,6 +32,8 @@ EMAIL_HOST_USER = 'john@johnkendall.net'
 EMAIL_HOST_PASSWORD = 'hx--xq5iRGYZ-I3MT9kdPg'
 EMAIL_PORT = 587
 
+# Website Domain name
+DOMAIN_NAME = "tracktivitypets.me"
 
 # Application definition
 
@@ -63,7 +65,7 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -83,7 +85,7 @@ DATABASES = {
         'PORT': '',
     }
 }
-
+'''
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
