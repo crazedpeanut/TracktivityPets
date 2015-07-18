@@ -12,4 +12,6 @@ urlpatterns = patterns('',
     url(r'^pet_selection/$', views.pet_selection, name='pet_selection'),
     url(r'^main_story$', views.main_story, name='main_story'),
     url(r'^fitbit_link', views.fitbit_link, name='fitbit_link'),
+    url(r'^view_pet/$', views.view_pet, name='view_pet'),
+    url(r'^view_pet/(?P<pet_index>[0-9]+)/$', views.view_pet, name='view_pet'),
 )
