@@ -10,7 +10,16 @@
 	    </div>
 
     <div class="row">
-        <div class="col-xs-12 col-sm-5 pull-right" action="{% url 'tracktivityPetsWebsite:register' %}" method="POST">
+    	<div class="col-xs-12 col-sm-5 pull-right">
+    		{% if registerForm.errors %} {% comment %} Previous form submission was not valid {% endcomment %}
+				{% for field in registerform %}
+					{% for error in field.errors %}
+		            	<div class="alert alert-danger" role="alert">
+	                		<strong>{{ error|escape }}</strong>
+						</div>
+	        		{% endfor %}
+	        	{% endfor %}
+			{% endif %}
             <form method="POST" action="{% url 'tracktivityPetsWebsite:register' %}" class="form-signin text-center">
                 {{ registerForm }}
                	{% csrf_token %}

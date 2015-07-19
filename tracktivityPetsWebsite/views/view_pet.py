@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.templatetags.static import static 
 import fitapp
 from tracktivityPetsWebsite import utils
-from tracktivityPetsWebsite.models import Pet, Item
+from tracktivityPetsWebsite.models import Pet#, Item
 from django.shortcuts import redirect
 import fitapp.utils
 import json
