@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.templatetags.static import static 
 import fitapp
 from tracktivityPetsWebsite import utils
-from tracktivityPetsWebsite.models import Pet#, Item
+from tracktivityPetsWebsite.models import Pet, Item, CollectedItem
 from django.shortcuts import redirect
 import fitapp.utils
 import json
@@ -44,7 +44,14 @@ def view_pet(request, pet_index=""):
         #use owned_pet, and they are unlocked
         experience = owned_pet.get_total_experience()
         level = owned_pet.level.level
-        usable_items = [1, 2, 3]
+        usable_items = Item.objects.filter(usable__pet_usable_on=owned_pet.pet)
+        owned_items = CollectedItem.objects.filter(inventory=request.user.profile.inventory, item__in=usable_items)
+
+        for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are locked
+            if item in owned_items:
+                usable_item.remove(item)
+                
+        locked_items = usable_items
         
         try: #usable items
             #usable_items = Item.usableon_set.filter(pet_usable_on=owned_pet.pet)
@@ -59,6 +66,8 @@ def view_pet(request, pet_index=""):
            "experience": experience,
            "level": level,
            "usable_items": usable_items,
+           "locked_items": locked_items,
+           
         })
     else:
         #use pet, and they are locked
