@@ -14,4 +14,7 @@ urlpatterns = patterns('',
     url(r'^fitbit_link', views.fitbit_link, name='fitbit_link'),
     url(r'^view_pet/$', views.view_pet, name='view_pet'),
     url(r'^view_pet/(?P<pet_index>[0-9]+)/$', views.view_pet, name='view_pet'),
+    url(r'^store/$', views.store, name='store'),
+    url(r'^inventory/$', views.inventory, name='inventory'),
+    url(r'^inventory/(?P<item_index>[0-9]+)/$', views.inventory, name='inventory'),
 )

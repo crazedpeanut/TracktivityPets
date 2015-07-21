@@ -13,6 +13,24 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
             return str(self.profile.user.email) + " inventory"
         except:
             return "DELETE ME" #crappy self fix, deleting a user doesnt delete inventory, TODO
+        
+    def get_owned_items(self):
+        return CollectedItem.objects.filter(inventory=self)
+        
+    def get_owned_items_in_queryset(self, set):
+        return CollectedItem.objects.filter(inventory=self, item__in=set)
+    
+    def calculate_locked_items(self, usable_items, owned_items):
+        locked_items = []
+        for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are locked
+            found = False
+            for i in owned_items:
+                if i.item.name == item.name:
+                    found=True
+                    break
+            if not found:
+                locked_items.append(item)
+        return locked_items
 
 class Level(models.Model):
     level = models.IntegerField(unique=True)
@@ -130,6 +148,12 @@ class CollectedPet(models.Model):
     def get_stories_available(self):
         return Story.objects.filter(pet=self.pet)
 
+    def get_usable_items(self):
+        return Item.objects.filter(usable__pet_usable_on=self.pet)
+    
+    def set_name(self, name):
+        self.name = name
+
 class Profile(models.Model):
     user = models.OneToOneField(User)
     inventory = models.OneToOneField(Inventory)  
@@ -198,7 +222,6 @@ class Item(models.Model):
 class CollectedItem(models.Model):
     item = models.ForeignKey(Item)
     inventory = models.ForeignKey(Inventory)
-    is_currently_equipped = models.BooleanField(default=False)
     equipped_on = models.ForeignKey(CollectedPet, null=True)
     
     def __str__(self):             

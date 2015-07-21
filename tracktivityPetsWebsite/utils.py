@@ -1,6 +1,6 @@
 import fitapp
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story, Item, CollectedItem
 import urllib.request #for fitbit http requests
 import urllib.parse
 import django
@@ -226,10 +226,24 @@ def get_current_pet(user):
 def set_current_pet(user):
     pass
 
-
 def get_user(request):
     return request.user
 
 ''' Returns whether a user has a linked fitbit account or not '''
 def is_fitbit_linked(user):
     return fitapp.utils.is_integrated(user)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
