@@ -199,6 +199,10 @@ class CollectedItem(models.Model):
     item = models.ForeignKey(Item)
     inventory = models.ForeignKey(Inventory)
     is_currently_equipped = models.BooleanField(default=False)
+    equipped_on = models.ForeignKey(CollectedPet, null=True)
+    
+    def __str__(self):             
+        return self.item.name
 
 class Usable(models.Model):
     pet_usable_on = models.ForeignKey(Pet)

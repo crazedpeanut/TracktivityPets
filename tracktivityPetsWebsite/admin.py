@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory
+from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Usable, CollectedItem
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib import admin
@@ -46,9 +46,13 @@ class PetAdmin(admin.ModelAdmin):
 class CollectedPetsInline(admin.TabularInline):
     model = CollectedPet
     extra = 1
+    
+class CollectedItemsInline(admin.TabularInline):
+    model = CollectedItem
+    extra = 1 
         
 class InventoryAdmin(admin.ModelAdmin):
-    inlines = [CollectedPetsInline]
+    inlines = [CollectedPetsInline, CollectedItemsInline]
 
 #########################################
 class ProfileInline(admin.StackedInline):
@@ -96,10 +100,21 @@ None of this code seems to work
     
 #########################################
 
+class UsableInline(admin.TabularInline):
+    model = Usable
+    extra = 1
+    
+class ItemAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
+    ] 
+    inlines = [UsableInline]
+
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
 admin.site.register(Mood, MoodAdmin)
 admin.site.register(Inventory, InventoryAdmin)
+admin.site.register(Item, ItemAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

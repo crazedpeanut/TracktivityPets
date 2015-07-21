@@ -46,12 +46,19 @@ def view_pet(request, pet_index=""):
         level = owned_pet.level.level
         usable_items = Item.objects.filter(usable__pet_usable_on=owned_pet.pet)
         owned_items = CollectedItem.objects.filter(inventory=request.user.profile.inventory, item__in=usable_items)
+        
+        usable_items = set(usable_items)
+        locked_items = []
 
         for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are locked
-            if item in owned_items:
-                usable_item.remove(item)
+            found = False
+            for i in owned_items:
+                if i.item.name == item.name:
+                    found=True
+                    break
+            if not found:
+                locked_items.append(item)
                 
-        locked_items = usable_items
         
         try: #usable items
             #usable_items = Item.usableon_set.filter(pet_usable_on=owned_pet.pet)
@@ -66,12 +73,13 @@ def view_pet(request, pet_index=""):
            "experience": experience,
            "level": level,
            "usable_items": usable_items,
+           "owned_items": owned_items,
            "locked_items": locked_items,
            
         })
     else:
         #use pet, and they are locked
-        cost = 0
+        cost = pet.cost
         return render(request, 'tracktivityPetsWebsite/view_pet.html',  
         {
            "owns_pet": owns_pet,
