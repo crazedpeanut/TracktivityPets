@@ -160,8 +160,8 @@ class Mood(models.Model):
     pet = models.ForeignKey(Pet)
     level = models.ForeignKey(Level) #different images depending on level
     happiness_needed = models.IntegerField()
-    image_location = models.TextField()
-    description = models.TextField()
+    image_location = models.TextField(default="")
+    description = models.TextField(default="")
     
     def image_tag(self):
         start_url = static('tracktivityPetsWebsite/images')
@@ -174,7 +174,7 @@ class Mood(models.Model):
 
 class Phrase(models.Model):
     mood = models.ForeignKey(Mood)
-    text = models.TextField()
+    text = models.TextField(default="")
     
     def __str__(self): 
         return self.text[0:20]
@@ -182,9 +182,50 @@ class Phrase(models.Model):
 class Story(models.Model):
     level_unlocked = models.ForeignKey(Level)
     pet = models.ForeignKey(Pet)
-    text = models.TextField()
+    text = models.TextField(default="")
 
 #release 2 models below
+
+class Item(models.Model):
+    experience_to_unlock = models.IntegerField()
+    image_location = models.TextField(default="")
+    name = models.CharField(max_length=100)
+    cost = models.IntegerField()
+    
+    def __str__(self):             
+        return self.name
+
+class CollectedItem(models.Model):
+    item = models.ForeignKey(Item)
+    inventory = models.ForeignKey(Inventory)
+    is_currently_equipped = models.BooleanField(default=False)
+
+class Usable(models.Model):
+    pet_usable_on = models.ForeignKey(Pet)
+    item_to_use = models.ForeignKey(Item)
+
+class MicroChallenge(models.Model):
+    name = models.CharField(max_length=100)
+    overview = models.TextField(default="")
+    
+class UserMicroChallengeState(models.Model):
+    state = models.CharField(max_length=100)
+
+class UserMicroChallenge(models.Model):
+    micro_challenge = models.ForeignKey(MicroChallenge)
+    state = models.ForeignKey(UserMicroChallengeState)
+    user = models.OneToOneField(User)
+    
+class MicroChallengeMedal(models.Model):
+    name = models.CharField(max_length=100)
+
+class MicroChallengeGoal(models.Model):
+    micro_challenge = models.ForeignKey(MicroChallenge)
+    medal = models.ForeignKey(MicroChallengeMedal)
+    description = models.TextField(default="")
+    pet_pennies_reward = models.IntegerField()
+    
+    
 
 
     
