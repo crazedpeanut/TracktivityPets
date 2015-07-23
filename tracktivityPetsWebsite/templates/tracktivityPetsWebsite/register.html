@@ -1,7 +1,7 @@
 {% extends 'tracktivityPetsWebsite/base.html' %}
 {% load staticfiles %}
 
-{% block content_block %}		
+{% block content_block %}	
 <div class="container">
 	    <div class="row">
 	        <div class="col-xs-12">
@@ -9,17 +9,26 @@
 	        </div>
 	    </div>
 
+
+
     <div class="row">
     	<div class="col-xs-12 col-sm-5 pull-right">
     		{% if registerForm.errors %} {% comment %} Previous form submission was not valid {% endcomment %}
-				{% for field in registerform %}
-					{% for error in field.errors %}
-		            	<div class="alert alert-danger" role="alert">
-	                		<strong>{{ error|escape }}</strong>
-						</div>
-	        		{% endfor %}
-	        	{% endfor %}
+    			<div class="alert alert-danger" role="alert">
+					{% for field in registerform %}
+						{% for error in field.errors %}
+		                		<strong>{{ error|escape }}</strong>
+		        		{% endfor %}
+		        	{% endfor %}
+	        	</div>
 			{% endif %}
+			
+			{% if error %}
+			   	<div class="alert alert-danger" role="alert">
+					<strong>{{ error|escape }}</strong>
+				</div>
+			{% endif %}
+			
             <form method="POST" action="{% url 'tracktivityPetsWebsite:register' %}" class="form-signin text-center">
                 {{ registerForm }}
                	{% csrf_token %}

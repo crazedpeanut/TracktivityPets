@@ -20,11 +20,11 @@ def register(request):
         registerForm = RegisterForm(request.POST)
         
         if registerForm.is_valid() == False:
-            return render(request, 'tracktivityPetsWebsite/register.html', {'registerForm': registerForm} ) #Form not valid
+            return render(request, 'tracktivityPetsWebsite/register.html', {'error':'Form not valid','registerForm': registerForm} ) #Form not valid
         else:
             result = utils.register_user(registerForm=registerForm)
             if result is not None:
-                return render(request, 'tracktivityPetsWebsite/register.html', {'registerForm': registerForm} ) #Form not valid
+                return render(request, 'tracktivityPetsWebsite/register.html', {'error':result,'registerForm': registerForm} ) #Form not valid
             else:
                 username = registerForm.cleaned_data['username']
                 password = registerForm.cleaned_data['password']
