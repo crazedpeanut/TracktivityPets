@@ -2,21 +2,20 @@
 {% load staticfiles %}
 
 {% block content_block %}
-	<div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/trackpets_logo.png' %}" alt="Tracktivity Pets logo">
+<div id="splash_bg">
+	<div class="container">         
+        <div id="loginDiv" class="col-xs-12 col-md-6 col-md-offset-3">
+            <div class="row">
+                <img id="splash_portrait" class="col-centred col-xs-3 img-circle img-responsive" src="/static/tracktivityPetsWebsite/images/splash_portrait.png"/>
             </div>
-        </div>       
-        
-        <div class="row">
-            <div class="col-md-6 col-xs-12 pull-right">
-                {% include 'tracktivityPetsWebsite/login.html'%}
+            
+            <div class="row">
+                <img id="loginLogo" class="col-md-10 col-md-offset-1 img-responsive" src="/static/tracktivityPetsWebsite/images/trackpets_logo.png">
             </div>
-        	<div class="col-xs-12 col-md-6 pull-left">
-                <img id="pawprints" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/pawprints_stroke.png' %}" alt="paw prints">
-            </div>
-        </div>
-    </div>
+ 
+            {% include 'tracktivityPetsWebsite/login.html'%}
 
+        </div>        
+    </div>
+</div>
 {% endblock content_block %}
