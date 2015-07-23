@@ -4,6 +4,42 @@ body {
     background-color: #00BFF3;
 }
 
+.col-centred {
+    float: none;
+    margin: 0 auto;
+}
+
+#splash_bg {
+    position: absolute;
+    top:0; right:0;
+    bottom:0; left:0;
+    background: url("/static/tracktivityPetsWebSite/images/splash_bg.jpg") no-repeat center fixed; 
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#splash_portrait {
+    border: 6px solid #F8931D;
+    position: relative;
+    margin-top: -15%;
+    padding-left: 0px;
+    padding-right: 0px;
+    background: white;
+}
+
+#loginDiv {
+    background:#00BFF3;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin-top: 15%;
+    padding-bottom: 3%;
+}
+
+#loginLogo {
+    padding: 3%;
+}
+
 #page-content {
     margin-top: 30px;
 }
