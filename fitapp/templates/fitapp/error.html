@@ -8,4 +8,8 @@
         <p>We encountered an error while attempting to authenticate you
         through Fitbit.</p>
     </body>
+    
+    {% if error %}
+    	{{ error }}
+    {% endif error %}
 </html>

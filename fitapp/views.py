@@ -60,8 +60,9 @@ def login(request):
             if utils.get_setting('FITAPP_SUBSCRIBE'):
                 try:
                     SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
-                except ImproperlyConfigured:
-                    return redirect(reverse('fitbit-error'))
+                except ImproperlyConfigured as e:
+                    return redirect(reverse('fitbit-error', kwargs={'error':e}))
+                                    
                 unsubscribe.apply_async(kwargs=user.userfitbit.get_user_data(), countdown=5)
             user.userfitbit.delete()
     except:
@@ -108,15 +109,16 @@ def complete(request):
     try:
         token = request.session.pop('token')
         verifier = request.GET.get('oauth_verifier')
-    except KeyError:
-        return redirect(reverse('fitbit-error'))
+    except KeyError as e:
+        return redirect(reverse('fitbit-error', kwargs={'error':e}))
     try:
         fb.client.fetch_access_token(verifier, token=token)
     except Exception as e:
-        return redirect(reverse('fitbit-error'))
+        return redirect(reverse('fitbit-error', kwargs={'error':e}))
 
-    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists():
-        return redirect(reverse('fitbit-error'))
+    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists(): #For testing purposes, fitbit id is deleted and readded
+        #return redirect(reverse('fitbit-error'))
+        UserFitbit.objects.filter(fitbit_user=fb.client.user_id).delete()
 
     fbuser, _ = UserFitbit.objects.get_or_create(user=request.user)
     fbuser.auth_token = fb.client.resource_owner_key
@@ -206,8 +208,8 @@ def logout(request):
         if utils.get_setting('FITAPP_SUBSCRIBE'):
             try:
                 SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
-            except ImproperlyConfigured:
-                return redirect(reverse('fitbit-error'))
+            except ImproperlyConfigured as e:
+                return redirect(reverse('fitbit-error', kwargs={'error':e}))
             unsubscribe.apply_async(kwargs=fbuser.get_user_data(), countdown=5)
         fbuser.delete()
     next_url = request.GET.get('next', None) or utils.get_setting(
@@ -247,8 +249,8 @@ def update(request):
                         (update['ownerId'], _type.category, _type.resource,),
                         {'date': parser.parse(update['date'])},
                         countdown=(2 * i))
-        except:
-            return redirect(reverse('fitbit-error'))
+        except Exception as e:
+            return redirect(reverse('fitbit-error', kwargs={'error':e}))
 
         return HttpResponse(status=204)
 
