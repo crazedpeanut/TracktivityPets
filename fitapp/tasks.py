@@ -28,6 +28,8 @@ def subscribe(fitbit_user, subscriber_id):
             fb.subscription(fbuser.user.id, subscriber_id)
         except:
             exc = sys.exc_info()[1]
+            logger_file = subscribe.get_logger(logfile='subscribe.log')
+            logger_file.exception("Error subscribing user: %s" % exc)
             logger.exception("Error subscribing user: %s" % exc)
             raise Reject(exc, requeue=False)
 
@@ -45,6 +47,8 @@ def unsubscribe(*args, **kwargs):
     except:
         exc = sys.exc_info()[1]
         logger.exception("Error unsubscribing user: %s" % exc)
+        logger_file = unsubscribe.get_logger(logfile='unsubscribe.log')
+        logger_file.exception("Error unsubscribing user: %s" % exc)
         raise Reject(exc, requeue=False)
 
 
@@ -58,6 +62,8 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
     except TimeSeriesDataType.DoesNotExist:
         logger.exception("The resource %s in category %s doesn't exist" % (
             resource, cat))
+        logger_file = get_time_series_data.get_logger(logfile='get_time_series_data.log')
+        logger_file.exception("Error get_time_series_data: %s" % exc)
         raise Reject(sys.exc_info()[1], requeue=False)
 
     # Create a lock so we don't try to run the same task multiple times
@@ -90,8 +96,13 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
         e = sys.exc_info()[1]
         logger.debug('Rate limit reached, will try again in %s seconds' %
                      e.retry_after_secs)
+        logger_file = get_time_series_data.get_logger(logfile='get_time_series_data.log')
+        logger_file.exception("Error get_time_series_data: %s" % exc)
+        
         raise get_time_series_data.retry(e, countdown=e.retry_after_secs)
     except Exception:
         exc = sys.exc_info()[1]
         logger.exception("Exception updating data: %s" % exc)
+        logger_file = get_time_series_data.get_logger(logfile='get_time_series_data.log')
+        logger_file.exception("Error get_time_series_data: %s" % exc)
         raise Reject(exc, requeue=False)
