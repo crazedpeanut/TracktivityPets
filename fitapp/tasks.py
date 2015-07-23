@@ -12,6 +12,8 @@ from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
 
 
 logger = logging.getLogger(__name__, logfile='tasks.log')
+logger.basicConfig(filename='tasks.log')
+
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 
 
