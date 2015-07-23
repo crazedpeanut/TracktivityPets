@@ -258,7 +258,7 @@ def update(request):
                         countdown=(2 * i))
         except Exception as e:
             logger.error("Error trying to update fibit records: %s" % str(e))
-            return redirect(reverse('fitbit-error', kwargs={'error':e}))
+            raise 404 # Testing whether this is the exception causing fitbit problems
 
         return HttpResponse(status=204)
 
