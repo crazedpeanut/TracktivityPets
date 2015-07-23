@@ -35,7 +35,7 @@ import hashlib, binascii
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
-hdlr = logging.FileHandler('/var/tmp/tracktivitypets_fitapp.log')
+hdlr = logging.FileHandler('./tracktivitypets_fitapp.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
@@ -258,7 +258,7 @@ def update(request):
                         countdown=(2 * i))
         except Exception as e:
             logger.error("Error trying to update fibit records: %s" % str(e))
-            raise 404 # Testing whether this is the exception causing fitbit problems
+            raise 500
 
         return HttpResponse(status=204)
 

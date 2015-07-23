@@ -12,7 +12,7 @@ from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
 
 
 logger = logging.getLogger(__name__)
-hdlr = logging.FileHandler('/var/tmp/tracktivitypets_celerylog.log')
+hdlr = logging.FileHandler('./tracktivitypets_celerylog.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
