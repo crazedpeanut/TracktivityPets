@@ -23,7 +23,7 @@ def user_login(request):
             loginForm = LoginForm()
             return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "Form invalid",'loginForm':loginForm})
         else:
-            email = loginForm.cleaned_data['email']
+            email = loginForm.cleaned_data['email'].lower()
             password = loginForm.cleaned_data['password']
             rememberMe = loginForm.cleaned_data['rememberMe']
             
@@ -32,7 +32,7 @@ def user_login(request):
             except:
                 return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "Incorrect username/password combinatione",'loginForm':loginForm})
             
-            user = authenticate(username=u.get_username(), password=password)
+            user = authenticate(username=u.get_username().lower(), password=password)
             
             if user is not None:
                 if user.is_active:

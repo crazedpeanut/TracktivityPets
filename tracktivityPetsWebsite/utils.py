@@ -140,18 +140,18 @@ def update_user_fitbit(request):
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
 def register_user(first_name=None, last_name=None, email=None, username=None, password=None, confirm_password=None, registerForm=None):
     if registerForm is not None and registerForm.is_valid(): #Using registerForm to enter details
-            username = registerForm.cleaned_data['username']
+            username = registerForm.cleaned_data['username'].lower()
             password = registerForm.cleaned_data['password']
             confirmPass = registerForm.cleaned_data['confirmPass']
-            firstName = registerForm.cleaned_data['firstname']
-            surname = registerForm.cleaned_data['surname']
-            email = registerForm.cleaned_data['email']
+            firstName = registerForm.cleaned_data['firstname'].lower()
+            surname = registerForm.cleaned_data['surname'].lower()
+            email = registerForm.cleaned_data['email'].lower()
             
             if password != confirmPass or password == '' or email == '' or email == '':
                 return 'Not all values have been set'
             
             try:
-                user = User.objects.create_user(username, email, password, first_name=firstName, last_name = surname)
+                user = User.objects.create_user(username.lower(), email.lower(), password.lower(), first_name=firstName.lower(), last_name = surname.lower())
                 inventory = Inventory.objects.create()
                 inventory.save()
                 profile = Profile.objects.create(user=user, inventory=inventory)
