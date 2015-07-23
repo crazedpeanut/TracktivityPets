@@ -30,7 +30,7 @@ def user_login(request):
             try:
                 u = User.objects.get(email=email)
             except:
-                return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "No user with that username",'loginForm':loginForm})
+                return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "Incorrect username/password combinatione",'loginForm':loginForm})
             
             user = authenticate(username=u.get_username(), password=password)
             
