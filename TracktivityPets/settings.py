@@ -109,7 +109,8 @@ FITAPP_CONSUMER_SECRET = '7d61820de4ec48f198d5103416eec4ba'
 LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"
 
-#FITAPP_SUBSCRIBE = True
+FITAPP_SUBSCRIBE = True
+FITAPP_SUBSCRIBER_ID = 1
 
 APPEND_SLASH = True
 
@@ -119,3 +120,16 @@ User._meta.get_field('email')._blank = False
 
 #extend login time
 REMEMBER_ME_DURATION = 60 * 60 * 24 * 365 # a year
+
+
+
+#########
+'''
+CELERY
+'''
+
+## Broker settings.
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ('fitapp.tasks', )
