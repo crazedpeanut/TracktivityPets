@@ -1,3 +1,5 @@
+
+
 """
 Django settings for TracktivityPets project.
 
@@ -128,8 +130,3 @@ REMEMBER_ME_DURATION = 60 * 60 * 24 * 365 # a year
 CELERY
 '''
 
-## Broker settings.
-BROKER_URL = 'amqp://guest:guest@localhost:5672//'
-
-# List of modules to import when celery starts.
-CELERY_IMPORTS = ('fitapp.tasks', )

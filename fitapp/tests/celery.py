@@ -7,7 +7,7 @@ from django.conf import settings
 
 
 # set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'TracktivityPets.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fitapp.defaults')
 
 app = Celery('fitapp_tests')
 app.conf['CELERY_ALWAYS_EAGER'] = True

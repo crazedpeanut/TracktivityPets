@@ -22,3 +22,9 @@ FITAPP_ERROR_TEMPLATE = 'fitapp/error.html'
 # called with the request as the only parameter to get the final value for the
 # message.
 FITAPP_DECORATOR_MESSAGE = 'This page requires Fitbit integration.'
+
+## Broker settings.
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ('fitapp.tasks', )
