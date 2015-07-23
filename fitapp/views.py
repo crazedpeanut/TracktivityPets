@@ -35,7 +35,7 @@ import hashlib, binascii
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
-hdlr = logging.FileHandler('/var/tmp/celerylog.log')
+hdlr = logging.FileHandler('/var/tmp/tracktivitypets_fitapp.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
