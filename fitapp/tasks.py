@@ -32,7 +32,7 @@ def subscribe(fitbit_user, subscriber_id):
             fb.subscription(fbuser.user.id, subscriber_id)
         except:
             exc = sys.exc_info()[1]
-            logger.exception("Error subscribing user: %s" % exc)
+            logger.error("Error subscribing user: %s" % exc)
             raise Reject(exc, requeue=False)
 
 
@@ -48,7 +48,7 @@ def unsubscribe(*args, **kwargs):
                                 method="DELETE")
     except:
         exc = sys.exc_info()[1]
-        logger.exception("Error unsubscribing user: %s" % exc)
+        logger.error("Error unsubscribing user: %s" % exc)
         raise Reject(exc, requeue=False)
 
 
@@ -60,7 +60,7 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
     try:
         _type = TimeSeriesDataType.objects.get(category=cat, resource=resource)
     except TimeSeriesDataType.DoesNotExist:
-        logger.exception("The resource %s in category %s doesn't exist" % (
+        logger.error("The resource %s in category %s doesn't exist" % (
             resource, cat))
         raise Reject(sys.exc_info()[1], requeue=False)
 
@@ -98,5 +98,5 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
         raise get_time_series_data.retry(e, countdown=e.retry_after_secs)
     except Exception:
         exc = sys.exc_info()[1]
-        logger.exception("Exception updating data: %s" % exc)
+        logger.error("Exception updating data: %s" % exc)
         raise Reject(exc, requeue=False)
