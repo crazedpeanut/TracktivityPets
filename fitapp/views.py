@@ -13,6 +13,7 @@ from django.shortcuts import redirect, render
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
+import logging
 
 from fitbit.exceptions import (HTTPUnauthorized, HTTPForbidden, HTTPConflict,
                                HTTPServerError)
@@ -33,6 +34,12 @@ from django.contrib.auth.models import User
 import hashlib, binascii
 from django.conf import settings
 
+logger = logging.getLogger(__name__)
+hdlr = logging.FileHandler('/var/tmp/celerylog.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.DEBUG)
 
 @login_required
 def login(request):
@@ -250,6 +257,7 @@ def update(request):
                         {'date': parser.parse(update['date'])},
                         countdown=(2 * i))
         except Exception as e:
+            logger.error("Error trying to update fibit records: %s" % str(e))
             return redirect(reverse('fitbit-error', kwargs={'error':e}))
 
         return HttpResponse(status=204)

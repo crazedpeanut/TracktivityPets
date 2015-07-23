@@ -12,11 +12,11 @@ from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
 
 
 logger = logging.getLogger(__name__)
-hdlr = logging.FileHandler('/var/tmp/celerylog.log')
+hdlr = logging.FileHandler('/var/tmp/tracktivitypets_celerylog.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
-logger.setLevel(logging.WARNING)
+logger.setLevel(logging.DEBUG)
 
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 
