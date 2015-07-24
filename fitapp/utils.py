@@ -62,9 +62,15 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
     """
     fb = create_fitbit(**fbuser.get_user_data())
     resource_path = resource_type.path()
-    data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
-                          period=period, base_date=base_date,
-                          end_date=end_date)
+    
+    if('15min' in period or '1min' in period):#untested!!!!!
+        data = fb.intraday_time_series(resource_path, user_id=fbuser.fitbit_user,
+                      period=period, base_date=base_date,
+                      end_date=end_date)
+    else:
+        data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
+                              period=period, base_date=base_date,
+                              end_date=end_date)
     return data[resource_path.replace('/', '-')]
 
 
