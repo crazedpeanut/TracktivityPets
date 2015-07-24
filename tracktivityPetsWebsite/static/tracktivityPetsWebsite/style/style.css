@@ -13,7 +13,7 @@ body {
     position: absolute;
     top:0; right:0;
     bottom:0; left:0;
-    background: url("/static/tracktivityPetsWebSite/images/splash_bg.jpg") no-repeat center fixed; 
+    background: url("/static/tracktivityPetsWebsite/images/splash_bg.jpg") no-repeat center fixed; 
     -webkit-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
