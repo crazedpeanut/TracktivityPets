@@ -50,7 +50,7 @@ def update_user_fitbit(request):
         #params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
         params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'period': '15min'})
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
-        data = f.read().decode('utf-8')#whats returned 
+        data = f.read().decode('utf-8')#whats returned
     except Exception as e:
         return False, str(e) #TODO: make this something useful
     
