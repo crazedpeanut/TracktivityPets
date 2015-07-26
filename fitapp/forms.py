@@ -19,7 +19,7 @@ class IntraDayForm(forms.Form):
     def get_fitbit_data(self):
         if self.is_valid():
             return {
-                'base_date': self.cleaned_data['base_date'] or 'today',
+                'base_date': self.cleaned_data['base_date'],
                 'period': self.cleaned_data['period'],
                 'end_date': self.cleaned_data['end_date']
             }
