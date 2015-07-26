@@ -434,8 +434,10 @@ def get_data(request, category, resource):
         form = forms.PeriodForm({'base_date': base_date, 'period': period})
     elif end_date and not period:
         form = forms.RangeForm({'base_date': base_date, 'end_date': end_date})
+    elif end_date and period:
+        form = forms.IntraDayForm({'base_date': base_date, 'end_date': end_date, 'period':period})
     else:
-        # Either end_date or period, but not both, must be specified.
+        # Either end_date or period must be specified.
         return make_response(104)
 
     fitbit_data = form.get_fitbit_data()
