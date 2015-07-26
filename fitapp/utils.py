@@ -8,6 +8,7 @@ from . import defaults
 from .models import UserFitbit
 
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 hdlr = logging.FileHandler('./tracktivitypets_fitapp_utils.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
