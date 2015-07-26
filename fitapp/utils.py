@@ -40,7 +40,7 @@ def is_integrated(user):
 
 def get_valid_periods():
     """Returns list of periods for which one may request time series data."""
-    return ['1d', '7d', '30d', '1w', '1m', '3m', '6m', '1y', 'max']
+    return ['1min', '15min','1d', '7d', '30d', '1w', '1m', '3m', '6m', '1y', 'max']
 
 
 def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
@@ -65,8 +65,7 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
     
     if('15min' in period or '1min' in period):#untested!!!!!
         data = fb.intraday_time_series(resource_path, user_id=fbuser.fitbit_user,
-                      period=period, base_date=base_date,
-                      end_date=end_date)
+                      period=period, base_date=base_date)
     else:
         data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
                               period=period, base_date=base_date,

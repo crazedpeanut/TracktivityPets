@@ -375,7 +375,7 @@ def get_data(request, category, resource):
         :103: Fitbit authentication credentials are invalid and have been
             removed.
         :104: Invalid input parameters. Either *period* or *end_date*, but not
-            both, must be supplied. *period* should be one of [1d, 7d, 30d,
+            both, must be supplied. *period* should be one of [1min, 15min, 1d, 7d, 30d,
             1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
             'yyyy-mm-dd'.
         :105: User exceeded the Fitbit limit of 150 calls/hour.
