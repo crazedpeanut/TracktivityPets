@@ -278,7 +278,6 @@ def make_response(code=None, objects=[]):
 
 def normalize_date_range(request, fitbit_data):
     """Prepare a fitbit date range for django database access. """
-
     result = {}
     base_date = fitbit_data['base_date']
     if base_date == 'today':
@@ -298,6 +297,9 @@ def normalize_date_range(request, fitbit_data):
                 start = parser.parse(base_date)
             else:
                 start = base_date
+                
+            ######### FROM HERE - UNSAFE
+
             if 'y' in period:
                 kwargs = {'years': int(period.replace('y', ''))}
             elif 'm' in period:
@@ -306,8 +308,13 @@ def normalize_date_range(request, fitbit_data):
                 kwargs = {'weeks': int(period.replace('w', ''))}
             elif 'd' in period:
                 kwargs = {'days': int(period.replace('d', ''))}
+            elif 'min' in period:
+                kwargs = {'minutes': int(period.replace('min', ''))}
+                
             end_date = start + relativedelta(**kwargs)
             result['date__lte'] = end_date.strftime('%Y-%m-%d')
+
+            ######### To HERE - UNSAFE
 
     return result
 
@@ -375,7 +382,7 @@ def get_data(request, category, resource):
         :103: Fitbit authentication credentials are invalid and have been
             removed.
         :104: Invalid input parameters. Either *period* or *end_date*, but not
-            both, must be supplied. *period* should be one of [1min, 15min, 1d, 7d, 30d,
+            both, must be supplied. *period* should be one of [1d, 7d, 30d,
             1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
             'yyyy-mm-dd'.
         :105: User exceeded the Fitbit limit of 150 calls/hour.
@@ -434,10 +441,10 @@ def get_data(request, category, resource):
         form = forms.PeriodForm({'base_date': base_date, 'period': period})
     elif end_date and not period:
         form = forms.RangeForm({'base_date': base_date, 'end_date': end_date})
-    elif end_date and period:
-        form = forms.IntraDayForm({'base_date': base_date, 'end_date': end_date, 'period':period})
+    elif end_date and period and base_date:
+        form = forms.IntraDayForm({'base_date': base_date, 'end_date': end_date, 'period': period})
     else:
-        # Either end_date or period must be specified.
+        # Either end_date or period, but not both, must be specified.
         return make_response(104)
 
     fitbit_data = form.get_fitbit_data()
@@ -446,7 +453,11 @@ def get_data(request, category, resource):
 
     if fitapp_subscribe:
         # Get the data directly from the database.
-        date_range = normalize_date_range(request, fitbit_data)
+        try:    
+            date_range = normalize_date_range(request, fitbit_data)
+        except Exception as e:
+            return HttpResponse(str(e))
+        
         existing_data = TimeSeriesData.objects.filter(
             user=user, resource_type=resource_type, **date_range)
         simplified_data = [{'value': d.value, 'dateTime': d.string_date()}

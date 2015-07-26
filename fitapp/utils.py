@@ -73,8 +73,6 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
     resource_path = resource_type.path()
     
     logger.debug("Detail level: %s, startTime: %s, endTime: %s", period, str(base_date), str(end_date))
- 
-    return ("Detail level: %s, startTime: %s, endTime: %s" % (period, str(base_date), str(end_date)))
     
     if('15min' in period or '1min' in period):#untested!!!!!
         data = fb.intraday_time_series(resource_path, user_id=fbuser.fitbit_user,

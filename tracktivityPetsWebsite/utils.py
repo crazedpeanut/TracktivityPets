@@ -48,12 +48,14 @@ def update_user_fitbit(request):
         username = user.get_username()
         hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)#compute secure hash so people cant intercept this crappy call (since request object doesnt work)
         #params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
-        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'period': '15min'})
+        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to),'period': '15min'})
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
         data = f.read().decode('utf-8')#whats returned
     except Exception as e:
         return False, str(e) #TODO: make this something useful
     
+    ####TEST
+    return True, data
     data_json = json.loads(data)#change it from text to something usable
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
