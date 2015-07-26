@@ -54,8 +54,6 @@ def update_user_fitbit(request):
     except Exception as e:
         return False, str(e) #TODO: make this something useful
     
-    ####TEST
-    return True, data
     data_json = json.loads(data)#change it from text to something usable
     
     #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
