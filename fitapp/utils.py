@@ -72,6 +72,8 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
     fb = create_fitbit(**fbuser.get_user_data())
     resource_path = resource_type.path()
     
+    logger.debug("Detail level: %s, startTime: %s, endTime: %s", period, str(base_date), str(end_date))
+    
     if('15min' in period or '1min' in period):#untested!!!!!
         data = fb.intraday_time_series(resource_path, user_id=fbuser.fitbit_user,
                       detail_level=period, start_time=base_date, end_time=end_date)
@@ -79,7 +81,8 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
         data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
                               period=period, base_date=base_date,
                               end_date=end_date)
-        
+    
+    
     if('HTTP Error 500' in data[resource_path.replace('/', '-')]):
         logger.error('HTTPServerError - >=500 - Fitbit server error or maintenance.')
     
