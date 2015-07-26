@@ -65,7 +65,7 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
     
     if('15min' in period or '1min' in period):#untested!!!!!
         data = fb.intraday_time_series(resource_path, user_id=fbuser.fitbit_user,
-                      period=period, base_date=base_date)
+                      period=period, start_time=base_date, end_time=end_date)
     else:
         data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
                               period=period, base_date=base_date,
