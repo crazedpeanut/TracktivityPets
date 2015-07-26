@@ -31,6 +31,7 @@ def subscribe(fitbit_user, subscriber_id):
         fb = utils.create_fitbit(**fbuser.get_user_data())
         try:
             fb.subscription(fbuser.user.id, subscriber_id)
+            logger.debug("New subscriber: UserId: %s SubscriberId:%s" % (fbuser.user.id, subscriber_id))
         except:
             exc = sys.exc_info()[1]
             logger.error("Error subscribing user: %s" % exc)
@@ -47,6 +48,7 @@ def unsubscribe(*args, **kwargs):
             if sub['ownerId'] == kwargs['user_id']:
                 fb.subscription(sub['subscriptionId'], sub['subscriberId'],
                                 method="DELETE")
+                logger.debug("User subscribed: UserId: %s SubscriberId:%s" % (kwargs['user_id'], sub['subscriberId']))
     except:
         exc = sys.exc_info()[1]
         logger.error("Error unsubscribing user: %s" % exc)
@@ -79,6 +81,7 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
         dates = {'base_date': date, 'end_date': date}
     try:
         for fbuser in fbusers:
+            logger.debug("Updating user: %s", str(fbuser))
             data = utils.get_fitbit_data(fbuser, _type, **dates)
             for datum in data:
                 # Create new record or update existing record
