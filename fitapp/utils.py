@@ -1,3 +1,4 @@
+import logging
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
@@ -5,6 +6,13 @@ from fitbit import Fitbit
 
 from . import defaults
 from .models import UserFitbit
+
+logger = logging.getLogger(__name__)
+hdlr = logging.FileHandler('./tracktivitypets_celerylog.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr) 
+logger.setLevel(logging.DEBUG)
 
 
 def create_fitbit(consumer_key=None, consumer_secret=None, **kwargs):
@@ -70,6 +78,10 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
         data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
                               period=period, base_date=base_date,
                               end_date=end_date)
+        
+    if('HTTP Error 500' in data[resource_path.replace('/', '-')]):
+        logger.error('HTTPServerError - >=500 - Fitbit server error or maintenance.')
+    
     return data[resource_path.replace('/', '-')]
 
 
