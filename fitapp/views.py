@@ -418,7 +418,9 @@ def get_data(request, category, resource):
             user = User.objects.get(username=username)
         except Exception as e:
             return make_response(101)
-    
+
+    logger.debug("Found user")
+
 #########################################
 #END OF ADDITION FOR TRACKTIVITY PETS
 #########################################
@@ -454,10 +456,13 @@ def get_data(request, category, resource):
     if not fitbit_data:
         return make_response(104)
 
+    logger.debug("If Fitapp_subscribe")
     if fitapp_subscribe:
         # Get the data directly from the database.
-        try:    
+        try:
+            logger.debug("About to normalize data range")
             date_range = normalize_date_range(request, fitbit_data)
+            logger.debug("Done normalizing data range")
         except Exception as e:
             return HttpResponse(str(e))
         
