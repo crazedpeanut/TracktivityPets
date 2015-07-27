@@ -123,8 +123,7 @@ def complete(request):
     except Exception as e:
         return redirect(reverse('fitbit-error', kwargs={'error':e}))
 
-    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists(): #For testing purposes, fitbit id is deleted and readded
-        #return redirect(reverse('fitbit-error'))
+    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists():
         UserFitbit.objects.filter(fitbit_user=fb.client.user_id).delete()
 
     fbuser, _ = UserFitbit.objects.get_or_create(user=request.user)
