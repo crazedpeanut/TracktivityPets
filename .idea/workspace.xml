@@ -6,7 +6,6 @@
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp.log" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp_utils.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/views.py" afterPath="$PROJECT_DIR$/fitapp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TracktivityPets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fitapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39158577">
-              <caret line="464" column="42" selection-start-line="464" selection-start-column="42" selection-end-line="464" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.77022654">
+              <caret line="446" column="23" selection-start-line="446" selection-start-column="23" selection-end-line="446" selection-end-column="23" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -742,8 +741,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39158577">
-          <caret line="464" column="42" selection-start-line="464" selection-start-column="42" selection-end-line="464" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.77022654">
+          <caret line="446" column="23" selection-start-line="446" selection-start-column="23" selection-end-line="446" selection-end-column="23" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
