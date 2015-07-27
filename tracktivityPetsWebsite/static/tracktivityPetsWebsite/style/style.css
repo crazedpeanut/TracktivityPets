@@ -526,3 +526,50 @@ left: 50%;
 	background: #eee;
 	border: 1px solid black;
 }
+
+/**************************************** Inventory Page Style ******************************************************/
+
+#inventory_tabs, #inventory_pet p, #inventory_detail_header, #inventory_detail, #inventory_detail p
+{
+    text-align: center;
+}
+
+#inventory_tabs {
+    margin-bottom: 1%;
+}
+
+#inventory_grid {
+    padding-top: 15px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background: white;     
+}
+
+#inventory_detail {
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;;
+    background: white;
+    padding-bottom: 1%;    
+}
+
+/* Mobile-devices inventory style rules */
+@media only screen 
+        and (min-device-width: 375px) 
+        and (max-device-width: 667px) 
+        and (-webkit-min-device-pixel-ratio: 2)
+{
+    #inventory_detail
+    {
+        border-left: 1px solid black;
+    }
+    
+    #inventory_grid
+    {
+        border-right: 1px solid black;
+        min-height: 100%;
+    }   
+}
+
+/******************************************** End of Inventory Style *************************************************/
