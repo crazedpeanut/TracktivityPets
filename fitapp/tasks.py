@@ -6,10 +6,12 @@ from celery.exceptions import Ignore, Reject
 from dateutil import parser
 from django.core.cache import cache
 from fitbit.exceptions import HTTPTooManyRequests
+from django.conf import settings
 
 from . import utils
 from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
 
+settings.configure()
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -20,8 +22,6 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
 
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "TracktivityPets.settings")
 
 @shared_task
 def subscribe(fitbit_user, subscriber_id):
