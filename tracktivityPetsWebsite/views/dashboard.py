@@ -7,6 +7,15 @@ from tracktivityPetsWebsite import utils
 from django.shortcuts import redirect
 import fitapp.utils
 import json
+import logger
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+hdlr = logging.FileHandler('./tracktivitypets_dashboard.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr)
+logger.setLevel(logging.DEBUG)
 
 @login_required
 def dashboard(request):
