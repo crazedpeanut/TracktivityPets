@@ -1,5 +1,5 @@
 import fitapp
-import logger
+import logging
 from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story, Item, CollectedItem
 import urllib.request #for fitbit http requests
@@ -23,7 +23,6 @@ formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
-
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
 #TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done

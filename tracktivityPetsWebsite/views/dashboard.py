@@ -7,7 +7,7 @@ from tracktivityPetsWebsite import utils
 from django.shortcuts import redirect
 import fitapp.utils
 import json
-import logger
+import logging
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
