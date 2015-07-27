@@ -5,7 +5,6 @@
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_celerylog.log" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp.log" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp_utils.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
     </list>
     <ignored path="TracktivityPets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +75,8 @@
       <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33009708">
-              <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.79611653">
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -641,8 +640,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33009708">
-          <caret line="44" column="26" selection-start-line="44" selection-start-column="26" selection-end-line="44" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.79611653">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
