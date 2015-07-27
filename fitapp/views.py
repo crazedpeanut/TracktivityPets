@@ -442,9 +442,14 @@ def get_data(request, category, resource):
     period = request.GET.get('period', None)
     end_date = request.GET.get('end_date', None)
 
-    logger.debug("Swag")
-    logger.debug("Get Data: base_date: %s, period: %s, end_date: %s" % base_date, period, end_date)
-    logger.debug("Swag2")
+    logger.debug("Get Data: ")
+    
+    if base_date:
+        print("Base Date: %s" % base_date)
+    if period:
+        print("Period: %s", period)
+    if end_date:
+        print("End Date: %s", end_date)
 
     if period and not end_date:
         form = forms.PeriodForm({'base_date': base_date, 'period': period})
