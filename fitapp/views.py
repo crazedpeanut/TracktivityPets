@@ -398,6 +398,8 @@ def get_data(request, category, resource):
 #START OF ADDITION FOR TRACKTIVITY PETS
 #########################################
 
+    logger.debug("Called get_data method")
+
     user = request.user
     
     if user.is_anonymous(): #if request object doesnt work, like it currently does with urllib, they will be anonymous, which we dont want
