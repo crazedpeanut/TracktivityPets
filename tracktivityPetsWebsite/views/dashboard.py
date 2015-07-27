@@ -31,7 +31,7 @@ def dashboard(request):
     if not success and data == 103:# :103: Fitbit authentication credentials are invalid and have been removed.
         return redirect('tracktivityPetsWebsite:fitbit_link')
     if not success or data is not 100:
-        return HttpResponse("Response: %d" % data)
+        logger.error("Response: %d" % data)
         
     start_url = static('tracktivityPetsWebsite/images')
     
