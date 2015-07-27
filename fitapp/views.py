@@ -245,6 +245,13 @@ def update(request):
             if request.FILES and 'updates' in request.FILES:
                 body = request.FILES['updates'].read()
             updates = json.loads(body.decode('utf8'))
+
+            #### Stealing a request from Fitbit
+            f = open('fitbitupdate.txt', 'w')
+            f.write(body)
+            f.close()
+            ###
+
             # Create a celery task for each data type in the update
             for update in updates:
                 cat = getattr(TimeSeriesDataType, update['collectionType'])
