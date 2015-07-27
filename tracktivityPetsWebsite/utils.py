@@ -46,9 +46,9 @@ def update_user_fitbit(request):
     else:
         d_from = profile.last_fitbit_sync
 
-    d_from = datetime.strptime('June 1 2015  1:33PM', '%b %d %Y %I:%M%p')
+    d_from = datetime.datetime.strptime('Jun 1 2015  1:33PM', '%b %d %Y %I:%M%p')
     date_from = d_from.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
-        
+
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
     
