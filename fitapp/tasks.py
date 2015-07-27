@@ -11,8 +11,6 @@ from django.conf import settings
 from . import utils
 from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
 
-settings.configure()
-
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 hdlr = logging.FileHandler('./tracktivitypets_celerylog.log')
