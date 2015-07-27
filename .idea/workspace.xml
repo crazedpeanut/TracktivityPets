@@ -37,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74271846">
-              <caret line="445" column="4" selection-start-line="445" selection-start-column="4" selection-end-line="445" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="495" column="29" selection-start-line="495" selection-start-column="29" selection-end-line="495" selection-end-column="29" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dashboard.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dashboard.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.22006473">
+              <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -719,16 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -741,10 +731,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74271846">
-          <caret line="445" column="4" selection-start-line="445" selection-start-column="4" selection-end-line="445" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="495" column="29" selection-start-line="495" selection-start-column="29" selection-end-line="495" selection-end-column="29" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22006473">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
