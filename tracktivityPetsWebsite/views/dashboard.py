@@ -58,7 +58,7 @@ def dashboard(request):
     
     if not success:
         error = data #get the error message
-        
+
         data = {}
         data['experience_gained'] = -1
         data['levels_gained'] = -1
