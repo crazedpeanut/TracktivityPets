@@ -74,8 +74,7 @@ def get_fitbit_data(fbuser, resource_type, base_date=None, period=None,
     
     logger.debug("Detail level: %s, startTime: %s, endTime: %s", period, str(base_date), str(end_date))
 
-    data = fb.intraday_time_series(resource_path, user_id=fbuser.fitbit_user,
-                start_time=base_date, end_time=end_date)
+    data = fb.intraday_time_series(resource_path, start_time=base_date, end_time=end_date)
     '''
     data = fb.time_series(resource_path, user_id=fbuser.fitbit_user,
                               period=period, base_date=base_date,

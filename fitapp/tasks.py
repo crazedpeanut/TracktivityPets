@@ -60,6 +60,8 @@ def unsubscribe(*args, **kwargs):
 def get_time_series_data(fitbit_user, cat, resource, date=None):
     """ Get the user's time series data """
 
+    logger.debug("Get time series data for %s" % str(fitbit_user))
+
     try:
         _type = TimeSeriesDataType.objects.get(category=cat, resource=resource)
     except TimeSeriesDataType.DoesNotExist:
