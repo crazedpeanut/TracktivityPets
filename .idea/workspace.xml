@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd34309e-379f-4d5c-bf95-f0d932caee11" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
-    </list>
+    <list default="true" id="fd34309e-379f-4d5c-bf95-f0d932caee11" name="Default" comment="" />
     <ignored path="TracktivityPets.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
