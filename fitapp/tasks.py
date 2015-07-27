@@ -26,21 +26,27 @@ LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 def subscribe(fitbit_user, subscriber_id):
     """ Subscribe to the user's fitbit data """
 
+    logging.debug("Attemping to subscribe fitbit user: %s" % str(fitbit_user))
+
     fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
     for fbuser in fbusers:
         fb = utils.create_fitbit(**fbuser.get_user_data())
         try:
             fb.subscription(fbuser.user.id, subscriber_id)
-            logger.debug("New subscriber: UserId: %s SubscriberId:%s" % (fbuser.user.id, subscriber_id))
+            logger.debug("New subscriber: UserId: %s SubscriberId: %s" % (fbuser.user.id, subscriber_id))
         except:
             exc = sys.exc_info()[1]
             logger.error("Error subscribing user: %s" % exc)
             raise Reject(exc, requeue=False)
 
+    logging.debug("Successfully subscribed fitbit user: %s" % str(fitbit_user))
+
 
 @shared_task
 def unsubscribe(*args, **kwargs):
     """ Unsubscribe from a user's fitbit data """
+
+    logging.debug("Attemping to unsubscribe fitbit user")
 
     fb = utils.create_fitbit(**kwargs)
     try:
@@ -53,6 +59,8 @@ def unsubscribe(*args, **kwargs):
         exc = sys.exc_info()[1]
         logger.error("Error unsubscribing user: %s" % exc)
         raise Reject(exc, requeue=False)
+
+    logging.debug("Successfully unsubscribed fitbit user")
 
 
 
@@ -106,3 +114,5 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
         exc = sys.exc_info()[1]
         logger.error("Exception updating data: %s" % exc)
         raise Reject(exc, requeue=False)
+
+    logging.debug("Successfully got time series data for user")
