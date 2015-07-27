@@ -35,7 +35,7 @@ import hashlib, binascii
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
-hdlr = logging.FileHandler('./tracktivitypets_fitapp.log')
+hdlr = logging.FileHandler('./tracktivitypets_fitapp_views.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
@@ -398,8 +398,6 @@ def get_data(request, category, resource):
 #START OF ADDITION FOR TRACKTIVITY PETS
 #########################################
 
-    logger.debug("Get Data")
-
     user = request.user
     
     if user.is_anonymous(): #if request object doesnt work, like it currently does with urllib, they will be anonymous, which we dont want
@@ -439,6 +437,9 @@ def get_data(request, category, resource):
     base_date = request.GET.get('base_date', None)
     period = request.GET.get('period', None)
     end_date = request.GET.get('end_date', None)
+
+    logger.debug("Get Data: base_date: %s, period: %s, end_date: %s" % base_date, period, end_date)
+
     if period and not end_date:
         form = forms.PeriodForm({'base_date': base_date, 'period': period})
     elif end_date and not period:
