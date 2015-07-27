@@ -21,8 +21,7 @@ logger.setLevel(logging.DEBUG)
 
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 
-## Broker settings.
-BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "TracktivityPets.settings")
 
 @shared_task
 def subscribe(fitbit_user, subscriber_id):

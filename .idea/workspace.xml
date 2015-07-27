@@ -5,9 +5,8 @@
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_celerylog.log" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp.log" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp_utils.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/defaults.py" afterPath="$PROJECT_DIR$/fitapp/defaults.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/tasks.py" afterPath="$PROJECT_DIR$/fitapp/tasks.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/views/user_login.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/views/user_login.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/views.py" afterPath="$PROJECT_DIR$/fitapp/views.py" />
     </list>
     <ignored path="TracktivityPets.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,8 +87,18 @@
       <file leaf-file-name="tasks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fitapp/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38511327">
-              <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.3576052">
+              <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -99,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/fitapp/defaults.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="50" />
+              <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -129,18 +138,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="63" column="20" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -160,6 +157,8 @@
         <option value="$PROJECT_DIR$/fitapp/utils.py" />
         <option value="$PROJECT_DIR$/tracktivityPetsWebsite/views/user_login.py" />
         <option value="$PROJECT_DIR$/fitapp/views.py" />
+        <option value="$PROJECT_DIR$/fitapp/defaults.py" />
+        <option value="$PROJECT_DIR$/TracktivityPets/settings.py" />
         <option value="$PROJECT_DIR$/fitapp/tasks.py" />
       </list>
     </option>
@@ -245,6 +244,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TracktivityPets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TracktivityPets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TracktivityPets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -821,15 +834,23 @@
     <entry file="file://$PROJECT_DIR$/fitapp/defaults.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="26" selection-end-column="50" />
+          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38511327">
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.3576052">
+          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
           <folding />
         </state>
       </provider>
