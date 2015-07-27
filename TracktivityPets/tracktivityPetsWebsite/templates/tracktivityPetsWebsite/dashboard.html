@@ -1,0 +1,35 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+	{% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+	{% if user.is_authenticated %}
+	
+	{{ error }}
+	
+	<div class="container">
+        <div class="row">
+	       <img class="bubbletext_header col-xs-12 col-md-6 col-md-offset-3" src="{% static 'tracktivityPetsWebsite/images/dashboard_img.png' %}">
+	    </div>
+		
+	    <div id="pet_scene_container" class="col-xs-12 infoItem">
+	       {% include 'tracktivityPetsWebsite/dashboardpetscene.html' %}
+	    </div>
+	
+	    <div id="infoRow" class="row">
+            <div class="col-xs-12 col-md-6 text-center">
+			     {% include 'tracktivityPetsWebsite/dashboardstats.html' %}
+		    </div>			
+			
+		    <div class="col-xs-12 col-md-6 text-center">
+		         {% include 'tracktivityPetsWebsite/dashboardupdate.html' %}
+		         <br/>
+		         {% include 'tracktivityPetsWebsite/dashboardunlocks.html' %}
+		    </div>
+	    </div>
+    </div>
+    {% endif %}	
+{% endblock content_block %}

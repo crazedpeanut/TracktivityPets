@@ -1,0 +1,37 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+    {% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+<div class="container text-center">
+    <div class="row text-center col-xs-12 col-md-6 col-md-offset-3">
+        <img id="titleimage" class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/feedback_img.png' %}" alt="Feedback" />           
+    </div>    
+    <div class="row text-center">
+        <p class="col-xs-12">Are you experiencing a technical issue with Tracktivity Pets? Please describe your issue or any other feedback in the box below and we will follow it up as soon as we can!</p>
+        <form role="form" method="POST">
+        	{% csrf_token %}
+            <div class="form-group col-xs-12">
+                <textarea class="form-control" rows="5" id="feedbackComment" placeholder="We would value your feedback!" name="contents"></textarea>
+                <button id="feedbackBtn" class="btn btn-lg btn-primary" type="submit" formaction="#">Send Feedback</button>  
+	            {% if error %}
+				{% comment %} Error made from previous POST {% endcomment %}
+					<div class="alert alert-danger" role="alert">
+						Error: {{ error_message }}
+					</div>
+				{% endif %}
+				
+				{% if success %}
+				{% comment %} Error made from previous POST {% endcomment %}
+					<div class="alert alert-success" role="alert">
+						{{ success }}
+					</div>
+				{% endif %}      
+            </div>
+        </form>
+    </div>    
+</div>
+{% endblock content_block %}

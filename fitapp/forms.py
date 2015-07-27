@@ -4,28 +4,6 @@ from . import utils
 
 
 INPUT_FORMATS = ['%Y-%m-%d']
-
-class IntraDayForm(forms.Form):
-    """Data necessary to request Fitbit data from a period of time."""
-    base_date = forms.DateField(input_formats=INPUT_FORMATS, required=True)
-    end_date = forms.DateField(input_formats=INPUT_FORMATS, required=True)
-    period = forms.ChoiceField(choices=[])
-
-    def __init__(self, *args, **kwargs):
-        super(IntraDayForm, self).__init__(*args, **kwargs)
-        PERIOD_CHOICES = [(p, p) for p in utils.get_valid_periods()]
-        self.fields['period'].choices = PERIOD_CHOICES
-
-    def get_fitbit_data(self):
-        if self.is_valid():
-            return {
-                'base_date': self.cleaned_data['base_date'] or 'today',
-                'period': self.cleaned_data['period'],
-                'end_date': self.cleaned_data['end_date']
-            }
-
-
-
 class PeriodForm(forms.Form):
     """Data necessary to request Fitbit data from a period of time."""
     base_date = forms.DateField(input_formats=INPUT_FORMATS, required=False)

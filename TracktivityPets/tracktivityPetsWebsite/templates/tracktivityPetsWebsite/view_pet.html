@@ -1,0 +1,25 @@
+{% if owns_pet %}
+
+	You own the pet
+	<br/>
+	Pet Pennies: {{ pet_pennies }}
+	<br/>
+	Experience: {{ experience }}
+	<br/>
+    Level: {{ level }}
+    <br/>
+    Owned Items: {{ owned_items }}
+    <br/>
+    Locked Items: {{ locked_items }}
+    <br/>
+    Usable Items: {{ usable_items }}
+    
+{% else %}
+
+	You do not own the pet
+	<br/>
+	Pet Pennies: {{ pet_pennies }}
+	<br/>
+	Cost to buy: {{ cost }}
+	
+{% endif %}
