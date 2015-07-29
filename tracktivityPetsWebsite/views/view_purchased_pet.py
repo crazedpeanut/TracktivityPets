@@ -4,14 +4,15 @@ from django.contrib.auth.decorators import login_required
 from django.templatetags.static import static 
 import fitapp
 from tracktivityPetsWebsite import utils
-from tracktivityPetsWebsite.models import Pet, Item, CollectedItem
+from tracktivityPetsWebsite.models import Pet, Item, CollectedItem, Level
 from django.shortcuts import redirect
 import fitapp.utils
+from django.core import serializers
 import json
 
 
 @login_required
-def view_pet(request, pet_index=""):
+def view_purchased_pet(request, pet_index=""):
 
     #if user owns pet or not
         #experience
@@ -44,39 +45,15 @@ def view_pet(request, pet_index=""):
         #use owned_pet, and they are unlocked
         experience = owned_pet.get_total_experience()
         level = owned_pet.level.level
-        usable_items = Item.objects.filter(usable__pet_usable_on=owned_pet.pet)
-        owned_items = CollectedItem.objects.filter(inventory=request.user.profile.inventory, item__in=usable_items)
-        
-        usable_items = set(usable_items)
-        locked_items = []
+        levelOne = Level.objects.get(level=1)
 
-        for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are locked
-            found = False
-            for i in owned_items:
-                if i.item.name == item.name:
-                    found=True
-                    break
-            if not found:
-                locked_items.append(item)
-                
+        details = {}
+        details['name'] = owned_pet.name
+        details['experience'] = experience
+        details['level'] = level
+        details['story'] = owned_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
         
-        try: #usable items
-            #usable_items = Item.usableon_set.filter(pet_usable_on=owned_pet.pet)
-            pass
-        except Exception as e:
-            #usable_items = str(e)
-            pass
-        
-        return render(request, 'tracktivityPetsWebsite/view_pet.html',  
-        {
-           "owns_pet": owns_pet,
-           "experience": experience,
-           "level": level,
-           "usable_items": usable_items,
-           "owned_items": owned_items,
-           "locked_items": locked_items,
-           
-        })
+        return HttpResponse(json.dumps(details))
     else:
         #use pet, and they are locked
         cost = pet.cost
