@@ -3,10 +3,67 @@
     
 {% else %}
 
-    
-    owned_items: {{ owned_items }}
-    <br/>
-    locked_items: {{ locked_items }}
-    <br/><br/><br/>
-    all_items (for debugging): {{ all_items }}
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"
+	        type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#unlocked > div").click(function(event) 
+			{
+				var name = $(this).html();
+				
+			  	$.ajax( "http://127.0.0.1:8000/view_unlocked_item/" + event.target.id)
+					.done(function(data) {
+					  	var obj = JSON.parse(data);
+					  	var equipped = "is not";
+					  	if(obj[0].fields.equipped_on !== null)
+					  		equipped = "is";
+					    $("#details").html(name + " is unlocked <br/> Item "+ equipped + " equipped.");
+				  	})
+				  	.fail(function() {
+				    
+				  	})
+				  	.always(function() {
+				    
+				  	});
+			});
+			
+			$("#locked > div").click(function(event) {
+			  $.ajax( "http://127.0.0.1:8000/view_locked_item/" + event.target.id )
+				  .done(function(data) {
+				    $("#details").html(data + " is locked ");
+				  })
+				  .fail(function() {
+				    
+				  })
+				  .always(function() {
+				    
+				  });
+			});
+		});
+	</script>
+	
+	
+	
+	
+	
+	
+	<div id="details"> </div>
+	<br/>
+	
+	<div id="unlocked">
+	    <strong>Unlocked:</strong>
+	    {% for item in owned_items %}
+	    	<div id="{{ item.id }}">{{ item }} {% if item.is_equipped %} (Equipped) {% endif %}</div>
+	    {% endfor %}
+	</div>
+	<br/>
+	
+	<div id="locked">
+		<strong>Locked:</strong>
+		
+    	{% for item in locked_items %}
+    		<div id="{{ item.id }}">{{ item }}</div>
+    	{% endfor %}
+	</div>
 {% endif %}

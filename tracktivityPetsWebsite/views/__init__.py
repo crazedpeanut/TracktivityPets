@@ -10,3 +10,6 @@ from .fitbit_link import fitbit_link
 from .view_pet import view_pet
 from .inventory import inventory
 from .store import store
+from .view_locked_item import view_locked_item
+from .view_unlocked_item import view_unlocked_item
+

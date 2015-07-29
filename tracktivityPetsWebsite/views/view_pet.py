@@ -1,13 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.templatetags.static import static 
-import fitapp
-from tracktivityPetsWebsite import utils
-from tracktivityPetsWebsite.models import Pet, Item, CollectedItem
+from tracktivityPetsWebsite.models import Pet
 from django.shortcuts import redirect
-import fitapp.utils
-import json
 
 
 @login_required
@@ -17,16 +11,16 @@ def view_pet(request, pet_index=""):
         #experience
         #level
         #list of usable items
-        #rename pet
+        #rename pet -- this requires a POST, could ajax it
         #make active
     #else
         #purchase pet with pennies
         
-    if pet_index is "":
+    if pet_index is "": #ie <site>/view_pet/
         owned_pet = request.user.profile.current_pet
         owns_pet = True
         name = owned_pet.name
-    else:
+    else: #ie <site>/view_pet/4/
         try:
             pet = Pet.objects.get(id=pet_index) #get the pet in the url
             name = pet.default_name
@@ -39,33 +33,17 @@ def view_pet(request, pet_index=""):
         except Exception as e:
             owns_pet = False
 
+    pet_pennies = request.user.profile.total_pet_pennies
     
     if owns_pet:
         #use owned_pet, and they are unlocked
         experience = owned_pet.get_total_experience()
         level = owned_pet.level.level
-        usable_items = Item.objects.filter(usable__pet_usable_on=owned_pet.pet)
-        owned_items = CollectedItem.objects.filter(inventory=request.user.profile.inventory, item__in=usable_items)
+        usable_items = owned_pet.get_usable_items()
+        owned_items = request.user.profile.inventory.get_owned_items_in_queryset(usable_items)
         
         usable_items = set(usable_items)
-        locked_items = []
-
-        for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are locked
-            found = False
-            for i in owned_items:
-                if i.item.name == item.name:
-                    found=True
-                    break
-            if not found:
-                locked_items.append(item)
-                
-        
-        try: #usable items
-            #usable_items = Item.usableon_set.filter(pet_usable_on=owned_pet.pet)
-            pass
-        except Exception as e:
-            #usable_items = str(e)
-            pass
+        locked_items = request.user.profile.inventory.calculate_locked_items(usable_items, owned_items)
         
         return render(request, 'tracktivityPetsWebsite/view_pet.html',  
         {
@@ -75,7 +53,7 @@ def view_pet(request, pet_index=""):
            "usable_items": usable_items,
            "owned_items": owned_items,
            "locked_items": locked_items,
-           
+           "pet_pennies": pet_pennies,
         })
     else:
         #use pet, and they are locked
@@ -84,4 +62,5 @@ def view_pet(request, pet_index=""):
         {
            "owns_pet": owns_pet,
            "cost": cost,
+           "pet_pennies": pet_pennies,
         })

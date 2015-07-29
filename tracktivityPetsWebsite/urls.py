@@ -17,4 +17,8 @@ urlpatterns = patterns('',
     url(r'^store/$', views.store, name='store'),
     url(r'^inventory/$', views.inventory, name='inventory'),
     url(r'^inventory/(?P<item_index>[0-9]+)/$', views.inventory, name='inventory'),
+    url(r'^view_unlocked_item/$', views.view_unlocked_item, name='view_unlocked_item'),
+    url(r'^view_unlocked_item/(?P<item_index>[0-9]+)/$', views.view_unlocked_item, name='view_unlocked_item'),
+        url(r'^view_locked_item/$', views.view_locked_item, name='view_locked_item'),
+    url(r'^view_locked_item/(?P<item_index>[0-9]+)/$', views.view_locked_item, name='view_locked_item'),
 )
