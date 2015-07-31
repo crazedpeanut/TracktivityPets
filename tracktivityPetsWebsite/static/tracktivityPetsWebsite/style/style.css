@@ -250,8 +250,7 @@ width: 75%;
 
 #pet_scene
 {
-	position: relative;
-	/*width: 100px;*/
+	position: relative;	
     height: 300px;
     padding 0;
 }
