@@ -1,0 +1,26 @@
+<script src="http://code.jquery.com/jquery-latest.min.js"
+	        type="text/javascript"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#unpurchased > div").click(function(event) 
+			{
+				var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
+				
+				$.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_pet' %}" + id)
+					.done(function(data) {
+					  	var obj = JSON.parse(data);
+					    $("#inventory_detail_header").html(obj.name);
+					    $("#inventory_detail_pet_level").html("Cost " + obj.cost);
+					    $("#inventory_detail_pet_description").html(obj.story);
+					    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Buy</button>');
+				  	})
+				  	.fail(function() {
+
+				  	})
+				  	.always(function() {
+
+				  	});
+			  });
+			});
+			</script>
+</script>
