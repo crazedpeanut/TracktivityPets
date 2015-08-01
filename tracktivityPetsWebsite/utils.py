@@ -234,8 +234,13 @@ def get_pet_selection_data():
 def get_current_pet(user):
     return user.profile.current_pet
 
-def set_current_pet(user):
-    pass
+def set_current_pet(user, owned_pet):
+    try:
+        user.profile.current_pet = owned_pet
+        user.profile.save()
+        return True
+    except:
+        return False
 
 def get_user(request):
     return request.user
