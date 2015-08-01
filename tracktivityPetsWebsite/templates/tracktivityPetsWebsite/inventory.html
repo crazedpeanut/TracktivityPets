@@ -37,6 +37,25 @@
 					    $("#inventory_detail_pet_description").html(obj.story);
 					    $("#inventory_detail_image").attr("src", obj.image);
 					    $("#inventory_detail_pet_age").html(obj.age + " Days Old");
+					    $("div[id*='selected_']").attr("id", "selected_" + id);
+				  	})
+				  	.fail(function() {
+
+				  	})
+				  	.always(function() {
+				    
+				  	});
+			});
+			
+			$( ".activate_button" ).click(function() {
+				var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
+				$.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
+					.done(function(data) {
+						
+					  	if(data === "False")
+					  		alert("Failed");
+					  	else
+					  		alert("Successfully Activated");
 					    
 				  	})
 				  	.fail(function() {
@@ -81,6 +100,7 @@
            
         </div>            	
 			<div class="col-xs-6 container hidden-xs" id="inventory_detail">
+				<div hidden id="selected_{{ default.pk }}" > </div>
 			    <div class="row"><h2 class="col-centred" id="inventory_detail_header">{{ default.name }}</h2></div>
 			    <div class="row"><img class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" id="inventory_detail_image"></div>
 			    <div class="row">
@@ -92,7 +112,7 @@
 			    <div class="row"><h5 id="inventory_detail_pet_age">{{ default.age }} Days Old</h5></div>
 			    <div class="row" id="inventory_detail_buttons">
 			        <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Rename</button>
-			        <button class="btn btn-lg btn-primary col-md-3 col-centred" type="submit">Activate!</button>
+			        <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" type="button">Activate!</button>
 			    </div>
 			</div>
 			

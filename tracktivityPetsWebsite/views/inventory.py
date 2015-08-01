@@ -41,6 +41,7 @@ def inventory(request, item_index=""):
         details['story'] = default_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
         details['image'] = utils.generate_pet_image_url(default_pet.pet, image_location)
         details['age'] = default_pet.get_age_in_days()
+        details['pk'] = default_pet.pet.pk
         
         #return HttpResponse(json.dumps(collected))
         return render(request, 'tracktivityPetsWebsite/inventory.html',  

@@ -46,7 +46,8 @@ def view_purchased_pet(request, pet_index=""):
         experience = owned_pet.get_total_experience()
         level = owned_pet.level.level
         levelOne = Level.objects.get(level=1)
-        image_location = pet.mood_set.filter(happiness_needed=-1)[0].image_location
+        current_mood = owned_pet.get_current_mood()
+        image_location = current_mood.image_location
         
         details = {}
         details['name'] = owned_pet.name
