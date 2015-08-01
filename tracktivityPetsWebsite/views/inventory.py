@@ -31,7 +31,8 @@ def inventory(request, item_index=""):
         experience = default_pet.get_total_experience()
         level = default_pet.level.level
         levelOne = Level.objects.get(level=1)
-        image_location = default_pet.pet.mood_set.filter(happiness_needed=-1)[0].image_location
+        current_mood = default_pet.get_current_mood()
+        image_location = current_mood.image_location
         
         details = {}
         details['name'] = default_pet.name
@@ -41,10 +42,6 @@ def inventory(request, item_index=""):
         details['image'] = utils.generate_pet_image_url(default_pet.pet, image_location)
         details['age'] = default_pet.get_age_in_days()
         
-        
-        
-        
-            
         #return HttpResponse(json.dumps(collected))
         return render(request, 'tracktivityPetsWebsite/inventory.html',  
         {

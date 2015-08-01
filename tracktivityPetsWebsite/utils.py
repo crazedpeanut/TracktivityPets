@@ -248,20 +248,6 @@ def generate_pet_image_url(pet, image_location):
     start_url = static('tracktivityPetsWebsite/images')
     return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
-def get_inventory_pet_data():
-    data = {}
-    start_url = static('tracktivityPetsWebsite/images')
-    #3 states purchased, unpurchased, locked
-    image_location = pet.mood_set.filter(happiness_needed=-1)[0].image_location #for unpurchased/locked pets
-    
-    purchased_pets = {}
-    unpurchased_pets = {}
-    locked_pets = {}
-    
-    
-    return purchased_pets, unpurchased_pets, locked_pets
-    pass
-
 
 
 

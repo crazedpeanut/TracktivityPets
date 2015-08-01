@@ -171,6 +171,7 @@ class CollectedPet(models.Model):
     
     def set_name(self, name):
         self.name = name
+    
 
 class Profile(models.Model):
     user = models.OneToOneField(User)
