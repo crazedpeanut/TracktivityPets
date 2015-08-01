@@ -46,12 +46,16 @@ def view_purchased_pet(request, pet_index=""):
         experience = owned_pet.get_total_experience()
         level = owned_pet.level.level
         levelOne = Level.objects.get(level=1)
-
+        image_location = pet.mood_set.filter(happiness_needed=-1)[0].image_location
+        
         details = {}
         details['name'] = owned_pet.name
         details['experience'] = experience
         details['level'] = level
         details['story'] = owned_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
+        details['image'] = utils.generate_pet_image_url(owned_pet.pet, image_location)
+        details['age'] = owned_pet.get_age_in_days()
+        
         
         return HttpResponse(json.dumps(details))
     else:
