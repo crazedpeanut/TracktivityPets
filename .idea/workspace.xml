@@ -1,16 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd34309e-379f-4d5c-bf95-f0d932caee11" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_celerylog.log" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp.log" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\tracktivitypets_fitapp_utils.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/utils.py" afterPath="$PROJECT_DIR$/fitapp/utils.py" />
+    <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\.project" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\.pydevproject" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\settings.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\urls.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\wsgi.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\backup.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\db.sqlite3" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\decorators.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\defaults.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\fixtures\initial_data.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\forms.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\0002_initial_data.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\0003_auto_20150402_1956.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\models.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\0002_auto__add_timeseriesdatatype__add_unique_timeseriesdatatype_category_r.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\0003_auto__add_unique_userfitbit_fitbit_user.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tasks.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\templates\fitapp\error.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\templatetags\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\templatetags\fitbit.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\base.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\celery.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_integration.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_models.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_retrieval.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_utils.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\urls.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\utils.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\views.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\notes.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\admin.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\forms.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\0002_auto_20150720_1440.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\0003_collecteditem_equipped_on.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\models.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\README.md" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\bower.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\changelog.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.ba-throttle-debounce.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.mousewheel.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.touchSwipe.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.transit.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\index.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\jquery.carouFredSel-6.2.1-packed.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\jquery.carouFredSel-6.2.1.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\license.txt" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carousel.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carousel2.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\jquery.mobile-1.4.5.min.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\jquery.mobile-1.4.5.min.map" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\login.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\navigation.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\petselect.js" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\Petscene_Trans.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\clouds.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\dashboard_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\dashboard_pet_background.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-192x192.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-36x36.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-48x48.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-114x114.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-120x120.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-152x152.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-180x180.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-57x57.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-60x60.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-72x72.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-76x76.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-precomposed.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\browserconfig.xml" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon-96x96.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\manifest.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-144x144.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-150x150.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-310x310.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-70x70.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\feedback_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\history_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\left_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\main_story_background.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pawprints.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pawprints_stroke.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pet_selection_background.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Jonathan Huckleberry\huckleberrydefault.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Jonathan Huckleberry\silohuette.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\evolve_2_happy.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\happyface_e1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\happyface_e2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\happyface_e3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\neutralface.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\overcharged.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\reallyhappyface.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\sadface.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\silohuette.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\happyface_e1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\happyface_e2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\happyface_e3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\silohuette.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\happyface_e1.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\happyface_e2.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\happyface_e3.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\silohuette.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\petscene_background.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\petselect_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\right_arrow.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\signup_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\splash_bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\splash_portrait.jpg" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\splash_portrait.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\story_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\trackpets_logo.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\unlocks_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\updates_img.png" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\style\carousel.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\style\carousel2.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\style\style.css" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\base.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\base_footer.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\base_header.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboard.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardpetscene.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardstats.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardunlocks.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardupdate.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\feedback.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\fitbit_link.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\fitbit_success.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\inventory.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\login.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\main_story.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\navigationbar.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\pet_selection.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\petdetails.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\petpicker.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\register.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\splash.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\store.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\storyview.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\view_pet.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\welcome_back.html" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\tests.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\urls.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\utils.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\dashboard.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\feedback.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\fitbit_link.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\fitbit_success.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\inventory.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\main_story.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\pet_selection.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\register.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\store.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\test.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\user_login.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\user_logout.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\view_pet.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivitypets_celerylog.log" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivitypets_fitapp.log" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivitypets_fitapp_utils.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/views.py" afterPath="$PROJECT_DIR$/fitapp/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <ignored path="TracktivityPets.iws" />
+    <ignored path="TPetsProject.iws" />
     <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,16 +201,28 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="TracktivityPets" />
+    <favorites_list name="TPetsProject" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fitapp/utils.py">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65048546">
-              <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.3398058">
+              <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,8 +230,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitapp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.413793">
-              <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
+            <state vertical-scroll-proportion="-2.3448277">
+              <caret line="115" column="10" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="10" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -54,20 +243,10 @@
         <entry file="file://$PROJECT_DIR$/fitapp/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -76,7 +255,17 @@
         <entry file="file://$PROJECT_DIR$/fitapp/defaults.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="error.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fitapp/templates/fitapp/error.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,53 +275,9 @@
         <entry file="file://$PROJECT_DIR$/fitapp/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fitapp/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="35" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="35" />
+              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dates.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Python34/Lib/site-packages/django/views/generic/dates.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="631" column="6" selection-start-line="631" selection-start-column="6" selection-end-line="631" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.7586207">
-              <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
+                <element signature="e#0#42#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,15 +296,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/fitapp/forms.py" />
-        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py" />
-        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
-        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/views/user_login.py" />
+        <option value="$PROJECT_DIR$/TracktivityPets/urls.py" />
+        <option value="$PROJECT_DIR$/TracktivityPets/TracktivityPets/celery.py" />
+        <option value="$PROJECT_DIR$/TracktivityPets/fitapp/tasks.py" />
+        <option value="$PROJECT_DIR$/TracktivityPets/TracktivityPets/__init__.py" />
         <option value="$PROJECT_DIR$/fitapp/views.py" />
-        <option value="$PROJECT_DIR$/fitapp/defaults.py" />
+        <option value="$PROJECT_DIR$/fitapp/urls.py" />
         <option value="$PROJECT_DIR$/TracktivityPets/settings.py" />
-        <option value="$PROJECT_DIR$/fitapp/tasks.py" />
-        <option value="$PROJECT_DIR$/fitapp/utils.py" />
       </list>
     </option>
   </component>
@@ -179,7 +322,7 @@
     <option name="width" value="1382" />
     <option name="height" value="754" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -202,7 +345,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -246,24 +389,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tracktivityPetsWebsite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TracktivityPets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TracktivityPets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="TracktivityPets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -282,23 +407,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TracktivityPets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TracktivityPets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fitapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fitapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.idesettings.debugger.python" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="C:/Python34/python.exe" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="SearchEverywhereHistoryKey" value="today&#9;null&#9;null" />
   </component>
-  <component name="PyDebuggerOptionsProvider">
-    <option name="mySaveCallSignatures" value="true" />
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp" />
+      <recent name="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -577,10 +721,10 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fd34309e-379f-4d5c-bf95-f0d932caee11" name="Default" comment="" />
-      <created>1437958011769</created>
+      <changelist id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="" />
+      <created>1438255347150</created>
       <option name="number" value="Default" />
-      <updated>1437958011769</updated>
+      <updated>1438255347150</updated>
     </task>
     <servers />
   </component>
@@ -591,14 +735,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24597365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -624,60 +768,52 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/fitapp/utils.py">
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <caret line="132" column="0" selection-start-line="130" selection-start-column="3" selection-end-line="132" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/views.py">
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fitapp/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fitapp/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,165 +821,35 @@
     <entry file="file://$PROJECT_DIR$/fitapp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
           <folding>
-            <element signature="e#0#42#0" expanded="false" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/utils.py">
+    <entry file="file://$PROJECT_DIR$/fitapp/templates/fitapp/error.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/dashboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#35#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Python34/Lib/site-packages/fitbit-0.1.3-py3.4.egg!/fitbit/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="372" column="50" selection-start-line="372" selection-start-column="50" selection-end-line="372" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/user_login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="112" selection-start-line="55" selection-start-column="112" selection-end-line="55" selection-end-column="112" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/defaults.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="67" selection-start-line="23" selection-start-column="67" selection-end-line="23" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python34/Lib/site-packages/django/views/generic/dates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="631" column="6" selection-start-line="631" selection-start-column="6" selection-end-line="631" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="35" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.413793">
-          <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
+        <state vertical-scroll-proportion="-2.3448277">
+          <caret line="115" column="10" selection-start-line="115" selection-start-column="10" selection-end-line="115" selection-end-column="10" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.7586207">
-          <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -851,107 +857,20 @@
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fitapp/utils.py">
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65048546">
-          <caret line="75" column="4" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.3398058">
+          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Python</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>TracktivityPets</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

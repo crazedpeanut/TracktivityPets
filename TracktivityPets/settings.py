@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fitapp',
+    'djcelery',
     'tracktivityPetsWebsite',
 )
 
@@ -64,7 +65,7 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -73,7 +74,6 @@ DATABASES = {
 }
 
 '''
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -81,6 +81,18 @@ DATABASES = {
         'USER': 'tracktivitypets',
         'PASSWORD': 'swagcats',
         'HOST': 'tracktivitypets.me',
+        'PORT': '',
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tracktivitypets',
+        'USER': 'tracktivitypets',
+        'PASSWORD': 'swagcats',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
@@ -110,8 +122,8 @@ FITAPP_CONSUMER_SECRET = 'da5e9d2e74c3ea2a4d90b0953aac0a62'
 LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"
 
-#FITAPP_SUBSCRIBE = True
-FITAPP_SUBSCRIBER_ID = 1
+FITAPP_SUBSCRIBE = True
+FITAPP_SUBSCRIBER_ID = 2
 
 APPEND_SLASH = True
 
@@ -123,16 +135,10 @@ User._meta.get_field('email')._blank = False
 REMEMBER_ME_DURATION = 60 * 60 * 24 * 365 # a year
 
 
-
 #########
 '''
 CELERY
 '''
-
-## Broker settings.
-BROKER_URL = 'amqp://guest:guest@localhost:5672//'
-
-# List of modules to import when celery starts.
-CELERY_IMPORTS = ('fitapp.tasks', )
-
-CELERY_MAX_CACHED_RESULTS = -1
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'amqp://guest:guest@localhost'

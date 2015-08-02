@@ -68,7 +68,7 @@ def login(request):
                 try:
                     SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
                 except ImproperlyConfigured as e:
-                    return redirect(reverse('fitbit-error', kwargs={'error':e}))
+                    return redirect(reverse('fitbit-error'))
                                     
                 unsubscribe.apply_async(kwargs=user.userfitbit.get_user_data(), countdown=5)
             user.userfitbit.delete()
@@ -112,16 +112,21 @@ def complete(request):
     URL name:
         `fitbit-complete`
     """
+
+    logger.debug("User fitbit register call back receieved")
+
     fb = utils.create_fitbit()
     try:
         token = request.session.pop('token')
         verifier = request.GET.get('oauth_verifier')
     except KeyError as e:
-        return redirect(reverse('fitbit-error', kwargs={'error':e}))
+        logger.error(str(e))
+        return redirect(reverse('fitbit-error'))
     try:
         fb.client.fetch_access_token(verifier, token=token)
     except Exception as e:
-        return redirect(reverse('fitbit-error', kwargs={'error':e}))
+        logger.error(str(e))
+        return redirect(reverse('fitbit-error'))
 
     if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists():
         UserFitbit.objects.filter(fitbit_user=fb.client.user_id).delete()
@@ -131,6 +136,8 @@ def complete(request):
     fbuser.auth_secret = fb.client.resource_owner_secret
     fbuser.fitbit_user = fb.client.user_id
     fbuser.save()
+
+    logger.debug("Added user fitbit infos to local database")
 
     # Add the Fitbit user info to the session
     request.session['fitbit_profile'] = fb.user_profile_get()
@@ -147,6 +154,8 @@ def complete(request):
             get_time_series_data.apply_async(
                 (fbuser.fitbit_user, _type.category, _type.resource,),
                 countdown=10 + (i * 5))
+
+    logger.debug("Started celery job to retrieve users fitbit steps")
 
     next_url = request.session.pop('fitbit_next', None) or utils.get_setting(
         'FITAPP_LOGIN_REDIRECT')
@@ -215,7 +224,7 @@ def logout(request):
             try:
                 SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
             except ImproperlyConfigured as e:
-                return redirect(reverse('fitbit-error', kwargs={'error':e}))
+                return redirect(reverse('fitbit-error'))
             unsubscribe.apply_async(kwargs=fbuser.get_user_data(), countdown=5)
         fbuser.delete()
     next_url = request.GET.get('next', None) or utils.get_setting(
