@@ -1,5 +1,3 @@
-
-
 """
 Django settings for TracktivityPets project.
 
@@ -7,7 +5,8 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://
+docs.djangoproject.com/en/1.7/ref/settings/
 """
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
@@ -111,7 +110,7 @@ FITAPP_CONSUMER_SECRET = 'da5e9d2e74c3ea2a4d90b0953aac0a62'
 LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"
 
-FITAPP_SUBSCRIBE = True
+#FITAPP_SUBSCRIBE = True
 FITAPP_SUBSCRIBER_ID = 1
 
 APPEND_SLASH = True
@@ -130,3 +129,10 @@ REMEMBER_ME_DURATION = 60 * 60 * 24 * 365 # a year
 CELERY
 '''
 
+## Broker settings.
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
+# List of modules to import when celery starts.
+CELERY_IMPORTS = ('fitapp.tasks', )
+
+CELERY_MAX_CACHED_RESULTS = -1

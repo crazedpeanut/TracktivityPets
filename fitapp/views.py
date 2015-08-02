@@ -35,7 +35,7 @@ import hashlib, binascii
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
-hdlr = logging.FileHandler('./tracktivitypets_fitapp.log')
+hdlr = logging.FileHandler('./tracktivitypets_fitapp_views.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
@@ -123,8 +123,7 @@ def complete(request):
     except Exception as e:
         return redirect(reverse('fitbit-error', kwargs={'error':e}))
 
-    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists(): #For testing purposes, fitbit id is deleted and readded
-        #return redirect(reverse('fitbit-error'))
+    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists():
         UserFitbit.objects.filter(fitbit_user=fb.client.user_id).delete()
 
     fbuser, _ = UserFitbit.objects.get_or_create(user=request.user)
@@ -245,6 +244,13 @@ def update(request):
             if request.FILES and 'updates' in request.FILES:
                 body = request.FILES['updates'].read()
             updates = json.loads(body.decode('utf8'))
+
+            #### Stealing a request from Fitbit
+            f = open('fitbitupdate.txt', 'w')
+            f.write(body)
+            f.close()
+            ###
+
             # Create a celery task for each data type in the update
             for update in updates:
                 cat = getattr(TimeSeriesDataType, update['collectionType'])
@@ -398,7 +404,7 @@ def get_data(request, category, resource):
 #START OF ADDITION FOR TRACKTIVITY PETS
 #########################################
 
-    logger.debug("Get Data")
+    logger.debug("Called get_data method")
 
     user = request.user
     
@@ -418,7 +424,9 @@ def get_data(request, category, resource):
             user = User.objects.get(username=username)
         except Exception as e:
             return make_response(101)
-    
+
+    logger.debug("Found user")
+
 #########################################
 #END OF ADDITION FOR TRACKTIVITY PETS
 #########################################
@@ -439,12 +447,20 @@ def get_data(request, category, resource):
     base_date = request.GET.get('base_date', None)
     period = request.GET.get('period', None)
     end_date = request.GET.get('end_date', None)
+
+    logger.debug("Get Data: ")
+
+    if base_date:
+        logger.debug("Base Date: %s" % base_date)
+    if period:
+        logger.debug("Period: %s", period)
+    if end_date:
+        logger.debug("End Date: %s", end_date)
+
     if period and not end_date:
         form = forms.PeriodForm({'base_date': base_date, 'period': period})
     elif end_date and not period:
         form = forms.RangeForm({'base_date': base_date, 'end_date': end_date})
-    elif end_date and period and base_date:
-        form = forms.IntraDayForm({'base_date': base_date, 'end_date': end_date, 'period': period})
     else:
         # Either end_date or period, but not both, must be specified.
         return make_response(104)
@@ -453,10 +469,13 @@ def get_data(request, category, resource):
     if not fitbit_data:
         return make_response(104)
 
+    logger.debug("If Fitapp_subscribe")
     if fitapp_subscribe:
         # Get the data directly from the database.
-        try:    
+        try:
+            logger.debug("About to normalize data range")
             date_range = normalize_date_range(request, fitbit_data)
+            logger.debug("Done normalizing data range")
         except Exception as e:
             return HttpResponse(str(e))
         

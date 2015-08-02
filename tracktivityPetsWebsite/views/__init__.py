@@ -7,6 +7,8 @@ from .main_story import main_story
 from .pet_selection import pet_selection
 from .register import register
 from .fitbit_link import fitbit_link
-from .view_pet import view_pet
+from .view_purchased_pet import view_purchased_pet
+from .view_unpurchased_pet import view_unpurchased_pet
 from .inventory import inventory
 from .store import store
+from .set_current_pet import set_current_pet

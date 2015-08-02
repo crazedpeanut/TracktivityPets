@@ -20,17 +20,35 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
     def get_owned_items_in_queryset(self, set):
         return CollectedItem.objects.filter(inventory=self, item__in=set)
     
-    def calculate_locked_items(self, usable_items, owned_items):
-        locked_items = []
-        for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are locked
+    def get_owned_pets(self):
+        return CollectedPet.objects.filter(inventory=self)
+     
+    def get_owned_pets_in_queryset(self, set):
+        return CollectedPet.objects.filter(inventory=self, pet__in=set) 
+    
+    def calculate_unpurchased_items(self, usable_items, owned_items):
+        unpurchased_items = []
+        for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are unpurchased
             found = False
             for i in owned_items:
                 if i.item.name == item.name:
                     found=True
                     break
             if not found:
-                locked_items.append(item)
-        return locked_items
+                unpurchased_items.append(item)
+        return unpurchased_items
+    
+    def calculate_unpurchased_pets(self, all_pets, owned_pets):
+        unpurchased_pet = []
+        for pet in all_pets:#remove any pets in all_pets that exist in owned_pets, to get the ones that are unpurchased
+            found = False
+            for i in owned_pets:
+                if i.pet.default_name == pet.default_name:
+                    found=True
+                    break
+            if not found:
+                unpurchased_pet.append(pet)
+        return unpurchased_pet
 
 class Level(models.Model):
     level = models.IntegerField(unique=True)
@@ -153,6 +171,7 @@ class CollectedPet(models.Model):
     
     def set_name(self, name):
         self.name = name
+    
 
 class Profile(models.Model):
     user = models.OneToOneField(User)

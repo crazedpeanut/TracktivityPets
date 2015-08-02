@@ -1,4 +1,5 @@
 import fitapp
+import logging
 from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story, Item, CollectedItem
 import urllib.request #for fitbit http requests
@@ -15,6 +16,13 @@ import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+hdlr = logging.FileHandler('./tracktivitypets_utils.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr)
+logger.setLevel(logging.DEBUG)
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
 #TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
@@ -37,9 +45,9 @@ def update_user_fitbit(request):
         d_from = user.date_joined
     else:
         d_from = profile.last_fitbit_sync
-        
+
     date_from = d_from.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
-        
+
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
     
@@ -47,12 +55,14 @@ def update_user_fitbit(request):
         url = request.META['HTTP_HOST']
         username = user.get_username()
         hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)#compute secure hash so people cant intercept this crappy call (since request object doesnt work)
-        #params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
-        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to),'period': '15min'})
+        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
+        #params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to),'period': '15min'})
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
         data = f.read().decode('utf-8')#whats returned
     except Exception as e:
         return False, str(e) #TODO: make this something useful
+
+    logger.debug(data)
     
     data_json = json.loads(data)#change it from text to something usable
     
@@ -77,7 +87,7 @@ def update_user_fitbit(request):
     '''
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
         return False, data_json['meta']['status_code']#TODO: make this something useful
-    
+
     experience = 0
 
     for date in data_json['objects']: #terrible code reuse
@@ -224,8 +234,13 @@ def get_pet_selection_data():
 def get_current_pet(user):
     return user.profile.current_pet
 
-def set_current_pet(user):
-    pass
+def set_current_pet(user, owned_pet):
+    try:
+        user.profile.current_pet = owned_pet
+        user.profile.save()
+        return True
+    except:
+        return False
 
 def get_user(request):
     return request.user
@@ -233,6 +248,10 @@ def get_user(request):
 ''' Returns whether a user has a linked fitbit account or not '''
 def is_fitbit_linked(user):
     return fitapp.utils.is_integrated(user)
+
+def generate_pet_image_url(pet, image_location):
+    start_url = static('tracktivityPetsWebsite/images')
+    return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
 
 

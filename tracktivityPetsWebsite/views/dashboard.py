@@ -7,6 +7,15 @@ from tracktivityPetsWebsite import utils
 from django.shortcuts import redirect
 import fitapp.utils
 import json
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+hdlr = logging.FileHandler('./tracktivitypets_dashboard.log')
+formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+hdlr.setFormatter(formatter)
+logger.addHandler(hdlr)
+logger.setLevel(logging.DEBUG)
 
 @login_required
 def dashboard(request):
@@ -21,6 +30,12 @@ def dashboard(request):
     
     if not success and data == 103:# :103: Fitbit authentication credentials are invalid and have been removed.
         return redirect('tracktivityPetsWebsite:fitbit_link')
+    if not success:
+        if data is 101 or data is 102 or data is 104:
+            logger.error("Response: %d" % data)
+        else:
+            logger.error("Response: %s" % data)
+
         
     start_url = static('tracktivityPetsWebsite/images')
     
@@ -43,7 +58,7 @@ def dashboard(request):
     
     if not success:
         error = data #get the error message
-        
+
         data = {}
         data['experience_gained'] = -1
         data['levels_gained'] = -1

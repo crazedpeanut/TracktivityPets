@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<div class="infoItem">
+	<div class="row">
+       <img class="dashboard_bubbletext col-xs-6 col-xs-offset-3" src="{% static 'tracktivityPetsWebsite/images/updates_img.png' %}">
+    </div>
+	
+	Experience Gained: {{ experience_gained }} <br/>
+	Levels Gained: {{ levels_gained }}
+	
+	<div class="container-fluid"> 
+		
+		{% if experience_gained > 0 %}
+		    <script type="text/javascript">
+		    $(window).load(function(){
+		        $('#updateModal').modal('show');
+		    });
+			</script>
+			
+		    <!-- Modal -->
+		    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                    <h4 class="modal-title" id="myModalLabel">Since You've Been Gone...</h4>
+		                </div>
+		                <div class="modal-body">
+		                    You have gained another {{ experience_gained }} experience!
+		                    <br/>
+		                    
+		                    {% if levels_gained > 1 %}
+		                    	Your pet has levelled up {{ levels_gained }} times!
+		                    {% elif levels_gained == 1 %}
+		                    	Your pet has levelled up {{ levels_gained }} time!
+		                    {% endif %}
+		                    
+		                    <br/>
+		                    {% if stories_gained|length > 1 %}
+		                    	Your pet has unlocked {{ stories_gained|length }} new stories, check the unlocks section to read them!
+		                    {% elif stories_gained|length == 1 %}
+		                    	Your pet has unlocked {{ stories_gained|length }} new story, check the unlocks section to read it!
+		                    {% endif %}
+		                    
+		                </div>
+		                <div class="modal-footer text-center">
+		                    <button type="button" class="btn btn-default" data-dismiss="modal">Close!</button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+	   {% endif %}
+	</div>
+</div>

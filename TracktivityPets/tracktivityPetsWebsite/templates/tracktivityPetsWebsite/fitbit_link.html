@@ -1,0 +1,23 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+    {% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+<div id="fitbitlinkmessage" class="container text-center jumbotron">
+	<h3>Fitbit Usage</h3>
+	<p>
+		This website is a predominately Fitbit device based product, and as such requires you to link a Fitbit device with an account.</br>
+		Clicking the button below will allow this website to access your Fitbit data.</br>
+		Any time we are unable to gather data from Fitbit due to permissions, you will be brought here to relink, if you wish to use the site.
+	</p>
+	
+	<div class="row">
+		<a class="" href="{{ fitbit_link_link }}?next={{ redirect_to }}">
+			<button class="col-md-3 span7 centre btn btn-lg btn-primary col-xs-5" type="button">Link Fitbit</button>
+		</a>
+	</div>
+</div>
+{% endblock content_block %}

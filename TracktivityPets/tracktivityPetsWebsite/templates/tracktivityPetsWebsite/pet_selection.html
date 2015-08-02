@@ -1,0 +1,179 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+	{% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+<div class="container-fluid">
+    <div class="row">
+        <img src="{% static 'tracktivityPetsWebsite/images/petselect_img.png' %}" class="bubbletext_header col-xs-12 col-md-4 col-md-offset-4">
+	</div>
+			
+	<script type="text/javascript">
+		$(document).ready(function(){
+	  		updateCharacterSelectScreen();
+		});
+		
+		function updateCharacterSelectScreen()
+		{
+					//hide all images
+			$("#pet_selector").children().hide();
+			var insert_into = $("#visible_pets #pets");
+
+			var active = $("#pet_selector").find(".active");
+		
+			var image_alt = active.find("img").attr("alt");
+			$("#pet_content").children().hide();
+			$("[id='"+image_alt+"_content']").show();
+			
+			next_silohuette = active.next('span').next('span').next('span');
+			if(next_silohuette.val() === undefined){next_silohuette = $("#pet_selector .pet_silohuette:first");}
+			
+			prev_silohuette = active.prev('span');
+			if(prev_silohuette.val() === undefined){prev_silohuette = $("#pet_selector .pet_silohuette:last");}
+			
+		
+			insert_into.show();
+			insert_into.empty();
+			insert_into.append(prev_silohuette.html());
+			insert_into.append(active.html());
+			insert_into.append(next_silohuette.html());
+		}
+		
+		var pet_number =  1;
+		var pets_available_count = {{ pets_available_count }}	    
+		
+		$(function () {      
+		    
+		    $('#selectLeft').click(function() {
+		    	pet_number--;
+		    	if(pet_number < 1) { pet_number = pets_available_count; }
+			  	$('#viewing_pet_number').html(pet_number);
+				
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.prev('span').prev('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+				next.toggleClass('active');
+				
+				updateCharacterSelectScreen();
+		
+			});
+			
+
+			$('#selectRight').click(function() {
+				pet_number++;
+		    	if(pet_number > pets_available_count) { pet_number = 1; }
+				$('#viewing_pet_number').html(pet_number);
+				
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.next('span').next('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:first");}
+				next.toggleClass('active');
+				
+				updateCharacterSelectScreen();
+			});
+			
+			$('#visible_pets').on("swipeleft", function(event) {
+		    	pet_number--;
+		    	if(pet_number < 1) { pet_number = pets_available_count; }
+			  	$('#viewing_pet_number').html(pet_number);
+				
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.prev('span').prev('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+				next.toggleClass('active');
+				
+				updateCharacterSelectScreen();
+		
+			});
+			
+			$('#visible_pets').on("swiperight", function(event) {
+		    	pet_number--;
+		    	if(pet_number < 1) { pet_number = pets_available_count; }
+			  	$('#viewing_pet_number').html(pet_number);
+				
+				var active = $("#pet_selector").find(".active");
+				active.toggleClass('active'); //remove the active class
+				next = active.prev('span').prev('span');
+				if(next.val() === undefined){next = $("#pet_selector .pet_image:last");}
+				next.toggleClass('active');
+				
+				updateCharacterSelectScreen();
+		
+			});
+			
+		});
+		
+		function getPet()
+		{
+			var image_alt = $("#pet_selector").find(".active").find("img").attr("alt");
+			$("#petSubmitForm").find("#pet").val(image_alt);
+		}
+	</script>
+	
+	<div id="petselectcontentrow" class="row">	
+		<div class="col-xs-12 col-md-6 col-sm-6">
+			<div id="petSelectionContainer" class="container text-center infoItem">	
+			   <div id="pet_selector_title" class="row">
+			       <p>Viewing pet <span id="viewing_pet_number">1</span> of {{ pets_available_count }}</p>
+			   </div>	
+			   <div class="row">
+		            <div id="pet_selector">
+		            {% for key, value in available_pets.items %}
+		                {% if forloop.first %}
+		                    <span class="active pet_image">
+		                {% else %}
+		                    <span class="pet_image">
+		                {% endif %}                
+		                        <img src="{{ value.image }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
+		                    </span>
+		                <span class="pet_silohuette">
+		                    <img src="{{ value.silohuette }}" alt="{{ value.name }}" class="col-xs-4 col-md-4"/>
+		                </span>
+		            {% endfor %}
+		            
+		            </div>
+		        </div>		
+		        <div class="row" id="visible_pets">
+		        	<span id="pets"></span>
+		        	<div id="petselectionCarouselArrows" class="col-lg-12 col-md-12 col-xs-12">
+		        		<div class="row">
+				        	<img alt="left arrow" src="{% static "tracktivityPetsWebsite/images/left_arrow.png" %}" id="selectLeft" class="col-lg-2 col-md-2 col-xs-2"/>
+				        	<img alt="right arrow" src="{% static "tracktivityPetsWebsite/images/right_arrow.png" %}" id="selectRight" class="col-lg-offset-8 col-xs-offset-8 col-md-offset-8 col-lg-2 col-md-2 col-xs-2"/>
+				        </div>
+			        </div>
+		        </div>
+			</div>	
+			<div id="adoptPetForm" class="text-center">
+		        <form method="POST" onsubmit="getPet()" id="petSubmitForm">
+		        {% csrf_token %}
+		            <input placeholder="Pet Name" type="text" name="user_pet_name"><br/>
+		            <input type="submit" value="Adopt!"/>
+		            <input type="hidden" name="default_pet_name" value="" id="pet"/>                    
+		        </form>
+			</div>
+		</div>
+		
+		
+		<div class="col-xs-12 col-sm-6 col-md-6">
+			<div class="text-center infoItem" id="pet_content">
+				{% for key, value in available_pets.items %}
+					<div id="{{ value.name }}_content">
+						<h3> {{ value.name }}</h3>
+						<img src="{{ value.image }}" alt="{{ value.name }}" width="100%"/>
+						<p> {{ value.story }}</p>
+					</div>
+				{% endfor %}
+		    </div>
+		</div>
+	</div>
+   </div>
+</div>
+
+
+{% endblock content_block %}
