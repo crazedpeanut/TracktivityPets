@@ -123,7 +123,7 @@ LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"
 
 FITAPP_SUBSCRIBE = True
-FITAPP_SUBSCRIBER_ID = 2
+FITAPP_SUBSCRIBER_ID = 1
 
 APPEND_SLASH = True
 
@@ -141,4 +141,10 @@ CELERY
 '''
 import djcelery
 djcelery.setup_loader()
-BROKER_URL = 'amqp://guest:guest@localhost'
+
+#Broker settings
+BROKER_HOST = 'localhost'
+BROKER_PORT = 5672
+BROKER_USER = 'guest'
+BROKER_PASSWORD = 'guest'
+BROKER_VHOST= '/'

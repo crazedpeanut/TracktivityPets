@@ -2,187 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\.project" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\.pydevproject" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\README.md" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\__init__.py" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\settings.py" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\urls.py" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\TracktivityPets\wsgi.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\backup.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\db.sqlite3" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\decorators.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\defaults.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\fixtures\initial_data.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\forms.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\0002_initial_data.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\0003_auto_20150402_1956.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\migrations\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\models.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\0002_auto__add_timeseriesdatatype__add_unique_timeseriesdatatype_category_r.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\0003_auto__add_unique_userfitbit_fitbit_user.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\south_migrations\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tasks.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\templates\fitapp\error.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\templatetags\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\templatetags\fitbit.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\base.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\celery.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_integration.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_models.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_retrieval.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\tests\test_utils.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\urls.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\utils.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\fitapp\views.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\notes.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\admin.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\forms.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\0001_initial.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\0002_auto_20150720_1440.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\0003_collecteditem_equipped_on.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\migrations\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\models.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\README.md" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\bower.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\changelog.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.ba-throttle-debounce.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.mousewheel.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.touchSwipe.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\helper-plugins\jquery.transit.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\index.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\jquery.carouFredSel-6.2.1-packed.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\jquery.carouFredSel-6.2.1.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carouFredSel-master\license.txt" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carousel.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\carousel2.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\jquery.mobile-1.4.5.min.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\jquery.mobile-1.4.5.min.map" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\login.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\navigation.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\behaviour\petselect.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\Petscene_Trans.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\clouds.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\dashboard_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\dashboard_pet_background.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-144x144.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-192x192.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-36x36.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-48x48.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-72x72.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\android-icon-96x96.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-114x114.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-120x120.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-144x144.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-152x152.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-180x180.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-57x57.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-60x60.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-72x72.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-76x76.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon-precomposed.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\apple-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\browserconfig.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon-16x16.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon-32x32.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon-96x96.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\favicon.ico" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\manifest.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-144x144.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-150x150.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-310x310.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\favicon\ms-icon-70x70.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\feedback_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\history_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\left_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\main_story_background.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pawprints.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pawprints_stroke.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pet_selection_background.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Jonathan Huckleberry\huckleberrydefault.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Jonathan Huckleberry\silohuette.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\evolve_2_happy.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\happyface_e1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\happyface_e2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\happyface_e3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\neutralface.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\overcharged.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\reallyhappyface.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\sadface.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Melvin\silohuette.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\happyface_e1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\happyface_e2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\happyface_e3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sheldon\silohuette.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\happyface_e1.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\happyface_e2.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\happyface_e3.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\pets\Sir Oinksalot\silohuette.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\petscene_background.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\petselect_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\right_arrow.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\signup_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\splash_bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\splash_portrait.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\splash_portrait.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\story_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\trackpets_logo.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\unlocks_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\images\updates_img.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\style\carousel.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\style\carousel2.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\static\tracktivityPetsWebsite\style\style.css" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\base.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\base_footer.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\base_header.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboard.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardpetscene.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardstats.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardunlocks.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\dashboardupdate.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\feedback.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\fitbit_link.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\fitbit_success.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\inventory.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\login.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\main_story.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\navigationbar.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\pet_selection.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\petdetails.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\petpicker.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\register.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\splash.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\store.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\storyview.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\view_pet.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\templates\tracktivityPetsWebsite\welcome_back.html" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\tests.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\urls.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\utils.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\dashboard.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\feedback.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\fitbit_link.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\fitbit_success.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\inventory.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\main_story.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\pet_selection.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\register.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\store.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\test.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\user_login.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\user_logout.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivityPetsWebsite\views\view_pet.py" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivitypets_celerylog.log" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivitypets_fitapp.log" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\TracktivityPets\tracktivitypets_fitapp_utils.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitapp/views.py" afterPath="$PROJECT_DIR$/fitapp/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TPetsProject.iws" />
@@ -208,8 +31,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3398058">
-              <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.26578072">
+              <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -317,10 +140,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="x" value="683" />
+    <option name="width" value="683" />
+    <option name="height" value="738" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -729,7 +551,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="683" y="0" width="683" height="738" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -741,7 +563,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24597365" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5037481" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972136" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -866,8 +688,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3398058">
-          <caret line="78" column="24" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.26578072">
+          <caret line="125" column="24" selection-start-line="125" selection-start-column="24" selection-end-line="125" selection-end-column="24" />
           <folding />
         </state>
       </provider>
