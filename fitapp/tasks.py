@@ -35,7 +35,7 @@ def subscribe(fitbit_user, subscriber_id):
             logger.debug("New subscriber: UserId: %s SubscriberId: %s" % (fbuser.user.id, subscriber_id))
         except:
             exc = sys.exc_info()[1]
-            logger.error("Error subscribing user: %s" % exc)
+            logger.exception("Error subscribing user: %s" % exc)
             raise Reject(exc, requeue=False)
 
     logging.debug("Successfully subscribed fitbit user: %s" % str(fitbit_user))
@@ -56,12 +56,10 @@ def unsubscribe(*args, **kwargs):
                 logger.debug("User subscribed: UserId: %s SubscriberId:%s" % (kwargs['user_id'], sub['subscriberId']))
     except:
         exc = sys.exc_info()[1]
-        logger.error("Error unsubscribing user: %s" % exc)
+        logger.exception("Error unsubscribing user: %s" % exc)
         raise Reject(exc, requeue=False)
 
     logging.debug("Successfully unsubscribed fitbit user")
-
-
 
 @shared_task
 def get_time_series_data(fitbit_user, cat, resource, date=None):
@@ -72,7 +70,7 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
     try:
         _type = TimeSeriesDataType.objects.get(category=cat, resource=resource)
     except TimeSeriesDataType.DoesNotExist:
-        logger.error("The resource %s in category %s doesn't exist" % (
+        logger.exception("The resource %s in category %s doesn't exist" % (
             resource, cat))
         raise Reject(sys.exc_info()[1], requeue=False)
 
@@ -111,7 +109,7 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
         raise get_time_series_data.retry(e, countdown=e.retry_after_secs)
     except Exception as e:
         exc = sys.exc_info()[1]
-        logger.error("Exception updating data: %s" % e)
+        logger.exception("Exception updating data: %s" % e)
         raise Reject(exc, requeue=False)
 
     logging.debug("Successfully got time series data for user")
