@@ -109,9 +109,9 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
                      e.retry_after_secs)
         
         raise get_time_series_data.retry(e, countdown=e.retry_after_secs)
-    except Exception:
+    except Exception as e:
         exc = sys.exc_info()[1]
-        logger.error("Exception updating data: %s" % exc)
+        logger.error("Exception updating data: %s" % e)
         raise Reject(exc, requeue=False)
 
     logging.debug("Successfully got time series data for user")
