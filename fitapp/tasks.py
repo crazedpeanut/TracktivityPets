@@ -65,7 +65,7 @@ def unsubscribe(*args, **kwargs):
 def get_time_series_data(fitbit_user, cat, resource, date=None):
     """ Get the user's time series data """
 
-    logger.debug("Get time series data for %s" % str(fitbit_user))
+    logger.debug("Get time series data for %s, resource: %s" % str(fitbit_user), resource)
 
     try:
         _type = TimeSeriesDataType.objects.get(category=cat, resource=resource)
@@ -96,7 +96,8 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
                 tsd, created = TimeSeriesData.objects.get_or_create(
                     user=fbuser.user, resource_type=_type, date=date)
                 tsd.value = datum['value']
-                tsd.save()
+                logger.debug("Data: %s" % tsd.data)
+            tsd.save()
         # Release the lock
         cache.delete(lock_id)
     except HTTPTooManyRequests:
