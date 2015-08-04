@@ -9,12 +9,6 @@ import fitapp
 
 def user_login(request):
 
-    '''
-    TEST
-    '''
-    from fitapp.tasks import test_task
-    test_task.apply_async()
-
     if  request.user.is_authenticated(): #if user is logged in
         return redirect('tracktivityPetsWebsite:dashboard') #go to dashboard
     
