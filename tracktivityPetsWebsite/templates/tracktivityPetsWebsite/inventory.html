@@ -24,49 +24,112 @@
     
 	<script type="text/javascript">
 		$(document).ready(function() {
+			
+			var activeTab = "pets";
+			
 			$("#collected > div").click(function(event) 
 			{
 				var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
 				
-			  	$.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_pet' %}" + id)
-					.done(function(data) {
-						
+				if(activeTab === "pets")
+				{
+				  	$.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_pet' %}" + id)
+					.done(function(data) {	
 					  	var obj = JSON.parse(data);
 					    $("#inventory_detail_header").html(obj.name);
-					    $("#inventory_detail_pet_level").html("Level " + obj.level);
-					    $("#inventory_detail_pet_description").html(obj.story);
+					    $("#inventory_detail_one").html("Level " + obj.level);
+					    $("#inventory_detail_description").html(obj.story);
 					    $("#inventory_detail_image").attr("src", obj.image);
-					    $("#inventory_detail_pet_age").html(obj.age + " Days Old");
+					    $("#inventory_detail_two").html(obj.age + " Days Old");
 					    $("div[id*='selected_']").attr("id", "selected_" + id);
-				  	})
-				  	.fail(function() {
-
-				  	})
-				  	.always(function() {
-				    
-				  	});
+					});
+				}
+				else if(activeTab === "cosmetics")
+				{
+						
+				}
 			});
 			
 			$( ".activate_button" ).click(function() {
 				var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
 				$.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
-					.done(function(data) {
-						
-					  	if(data === "False")
-					  		alert("Failed");
-					  	else
-					  		alert("Successfully Activated");
-					    
-				  	})
-				  	.fail(function() {
+				.done(function(data) {
+				  	if(data === "False")
+				  		alert("Failed");
+				  	else
+				  		alert("Successfully Activated");
+				});
+			});
+			
+			$("#inventory_tabs li").click(function(event) {
+				var newActiveTab = $(this).attr('id');
+				
+				if(newActiveTab !== activeTab)
+				{
+					if(newActiveTab === "pets")
+					{
+						$.ajax( "{% url 'tracktivityPetsWebsite:inventory' %}" + "pets")
+						.done(function(data) {
+						  /*	var obj = JSON.parse(data);
+						    $("#inventory_detail_header").html(obj.name);
+						    $("#inventory_detail_pet_level").html("Level " + obj.level);
+						    $("#inventory_detail_pet_description").html(obj.story);
+						    $("#inventory_detail_image").attr("src", obj.image);
+						    $("#inventory_detail_pet_age").html(obj.age + " Days Old");
+						    $("div[id*='selected_']").attr("id", "selected_" + id);	
+						    <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Rename</button>
+			        		<button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" type="button">Activate!</button>
+						    */
+						});
+					}
+					else if(newActiveTab === "scenery")
+					{
+						$.ajax( "{% url 'tracktivityPetsWebsite:inventory' %}" + "scenery")
+						.done(function(data) {	
+						    alert(data);
+						});
+					}
+					else if(newActiveTab === "cosmetics")
+					{
+						$.ajax( "{% url 'tracktivityPetsWebsite:inventory' %}" + "cosmetics")
+						.done(function(data) {	
+						    var obj = JSON.parse(data);
+						    
+						    var insert_div = $("#collected");
+						    insert_div.html("");
+						    
+						    for(var item in obj.collected) {
+						    	html = "<div class='col-xs-4' class='inventory_pet' id='collected_" + obj.collected[item].pk + "'>";
+						    	html += "<button class=''>";
+						    	html += "<img class='img-responsive img-circle' src='" + obj.collected[item].image + "'>";
+						    	html += "<p class=''>" + item + "</p> </button></div>";
+						    	insert_div.append(html);
+						    }
+						    
+						    
+						    try {
 
-				  	})
-				  	.always(function() {
-				    
-				  	});
+						    	$("#inventory_detail_header").html(obj.details.name);
+						    	$("#inventory_detail_image").attr("src", obj.details.image);
+						    	$("#inventory_detail_description").html(obj.details.description);
+						    	$("#inventory_detail_one").html("Equipped on:  " + obj.details.equipped_on);
+						    	$("#inventory_detail_two").html("");
+						    	var buttons = '<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Unequip</button><button class="btn btn-lg btn-primary col-md-3 col-centred equip_button" type="button">Equip</button>';
+						    	$("#inventory_detail_buttons").html(buttons);
+						    	
+						    }
+						    catch(err) {
+						    	//no items exist yet
+						    }
+						});
+					}
+				}
+				
+				activeTab = newActiveTab;
 			});
 		});
 	</script>
+	
 {{ image }}
     <div class="container" id="inventory_header">
         <div class="row">
@@ -76,16 +139,13 @@
 
     <div class="container" id="inventory_container">
         <ul class="nav nav-tabs" id="inventory_tabs">
-            <li class="active col-md-2 col-xs-4"><a href="#">Pets</a></li>
-            <li class="col-md-2 col-xs-4"><a href="#">Scenery</a></li>
-            <li class="col-md-2 col-xs-4"><a href="#">Cosmetics</a></li>            
+            <li class="active col-md-2 col-xs-4" id="pets"><a href="#">Pets</a></li>
+            <li class="col-md-2 col-xs-4" id="scenery"><a href="#">Scenery</a></li>
+            <li class="col-md-2 col-xs-4"  id="cosmetics"><a href="#">Cosmetics</a></li>            
         </ul>    
         
         <div class="col-md-6 container" id="inventory_grid">  
-        	
 
-        	
-        	
         	<span id="collected">
 	            {% for key, value in collected_pets.items %}
 		            <div class="col-xs-4" class="inventory_pet" id="collected_{{ value.pk }}">
@@ -104,12 +164,12 @@
 			    <div class="row"><h2 class="col-centred" id="inventory_detail_header">{{ default.name }}</h2></div>
 			    <div class="row"><img class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" id="inventory_detail_image"></div>
 			    <div class="row">
-			        <p id="inventory_detail_pet_description" class="col-xs-12 col-md-8 col-centred">
+			        <p id="inventory_detail_description" class="col-xs-12 col-md-8 col-centred">
 			            {{ default.story }}
 			        </p>
 			    </div>        
-			    <div class="row"><h4 id="inventory_detail_pet_level">Level {{ default.level }}</h4></div>
-			    <div class="row"><h5 id="inventory_detail_pet_age">{{ default.age }} Days Old</h5></div>
+			    <div class="row"><h4 id="inventory_detail_one">Level {{ default.level }}</h4></div>
+			    <div class="row"><h5 id="inventory_detail_two">{{ default.age }} Days Old</h5></div>
 			    <div class="row" id="inventory_detail_buttons">
 			        <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Rename</button>
 			        <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" type="button">Activate!</button>

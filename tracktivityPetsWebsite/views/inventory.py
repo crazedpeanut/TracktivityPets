@@ -6,11 +6,11 @@ from django.http import HttpResponse
 import json
 
 @login_required
-def inventory(request, item_index=""):
-    if item_index is "": #ie <site>/inventory/
+def inventory(request, tab=""):
+    if tab == "" or tab == "pets": #(tab == "pets" and request.is_ajax()): #ie <site>/inventory/
         
         #all_items = Item.objects.all()
-        collected_items = request.user.profile.inventory.get_owned_items()
+        
         #locked_items = request.user.profile.inventory.calculate_unpurchased_items(all_items, collected_items)
         #all_pets = Pet.objects.all()
         collected_pets = request.user.profile.inventory.get_owned_pets()
@@ -43,15 +43,62 @@ def inventory(request, item_index=""):
         details['age'] = default_pet.get_age_in_days()
         details['pk'] = default_pet.pet.pk
         
-        #return HttpResponse(json.dumps(collected))
-        return render(request, 'tracktivityPetsWebsite/inventory.html',  
-        {
-            "collected_pets": collected,
-            "collected_items": collected_items,
-            "default": details,
-        })
-    else: #ie <site>/inventory/4/
-        return render(request, 'tracktivityPetsWebsite/inventory.html',  
-        {
-            "view_item": True,
-        })
+        if tab == "":
+            return render(request, 'tracktivityPetsWebsite/inventory.html',  
+            {
+                "collected_pets": collected,
+                "default": details,
+            })
+        if tab == "pets":
+            data = '{ "collected": ' + json.dumps(collected) + ', "details": ' + json.dumps(details) + ' }'
+            
+            return HttpResponse(data)
+
+    elif tab == "scenery": # and request.is_ajax():
+        return HttpResponse("scenery")
+    
+    elif tab == "cosmetics": # and request.is_ajax():
+        collected_items = request.user.profile.inventory.get_owned_items()
+        
+        collected = {}
+        
+        for collected_item in collected_items:
+            image = "TODO"
+            collected[collected_item.item.name] = {}
+            
+            collected[collected_item.item.name]["pk"] = collected_item.item.pk
+            collected[collected_item.item.name]["image"] = image
+           
+        details = {}
+        
+        try:  #may not own any items
+            default_item = collected_items[0]    
+
+            details['name'] = default_item.item.name
+            details['description'] = "Items havent been given a description yet"
+            details['image'] = "TODO"
+            details['pk'] = default_item.item.pk
+            details["equipped_on"] = default_item.equipped_on
+        except Exception as e:
+            details = str(e)
+        
+        data = '{ "collected": ' + json.dumps(collected) + ', "details": ' + json.dumps(details) + ' }'
+        return HttpResponse(data)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
