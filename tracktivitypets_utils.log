@@ -1,0 +1,25 @@
+2015-07-29 17:21:13,296 DEBUG {"objects": [{"value": "4825", "dateTime": "2015-07-20"}, {"value": "6761", "dateTime": "2015-07-21"}, {"value": "11351", "dateTime": "2015-07-22"}, {"value": "8612", "dateTime": "2015-07-23"}, {"value": "4882", "dateTime": "2015-07-24"}, {"value": "8393", "dateTime": "2015-07-25"}, {"value": "2364", "dateTime": "2015-07-26"}, {"value": "8569", "dateTime": "2015-07-27"}, {"value": "6206", "dateTime": "2015-07-28"}, {"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 10}}
+2015-07-29 17:21:28,518 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:32,782 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:34,287 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:35,675 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:37,054 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:38,525 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:39,998 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:41,382 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:21:42,777 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:22:09,286 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:22:12,277 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:22:13,706 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-07-29 17:22:15,078 DEBUG {"objects": [{"value": "5536", "dateTime": "2015-07-29"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-08-01 14:06:07,272 DEBUG {"objects": [{"value": "8084", "dateTime": "2015-07-29"}, {"value": "8727", "dateTime": "2015-07-30"}, {"value": "8285", "dateTime": "2015-07-31"}, {"value": "4049", "dateTime": "2015-08-01"}], "meta": {"status_code": 100, "total_count": 4}}
+2015-08-01 14:06:22,005 DEBUG {"objects": [{"value": "4049", "dateTime": "2015-08-01"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-08-01 14:06:55,980 DEBUG {"objects": [{"value": "4049", "dateTime": "2015-08-01"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-08-01 14:07:22,752 DEBUG {"objects": [{"value": "4049", "dateTime": "2015-08-01"}], "meta": {"status_code": 100, "total_count": 1}}
+2015-08-01 14:57:01,440 DEBUG {"objects": [{"dateTime": "2015-08-01", "value": "4217"}], "meta": {"total_count": 1, "status_code": 100}}
+2015-08-01 15:31:35,936 DEBUG {"meta": {"total_count": 1, "status_code": 100}, "objects": [{"value": "4257", "dateTime": "2015-08-01"}]}
+2015-08-01 15:31:45,432 DEBUG {"meta": {"total_count": 1, "status_code": 100}, "objects": [{"value": "4257", "dateTime": "2015-08-01"}]}
+2015-08-01 15:31:51,977 DEBUG {"meta": {"total_count": 1, "status_code": 100}, "objects": [{"value": "4257", "dateTime": "2015-08-01"}]}
+2015-08-01 15:33:20,939 DEBUG {"meta": {"total_count": 1, "status_code": 100}, "objects": [{"value": "4257", "dateTime": "2015-08-01"}]}
+2015-08-01 15:33:29,457 DEBUG {"meta": {"total_count": 1, "status_code": 100}, "objects": [{"value": "4257", "dateTime": "2015-08-01"}]}
+2015-08-04 13:36:31,638 DEBUG {"meta": {"status_code": 100, "total_count": 4}, "objects": [{"value": "4936", "dateTime": "2015-08-01"}, {"value": "5232", "dateTime": "2015-08-02"}, {"value": "6070", "dateTime": "2015-08-03"}, {"value": "2371", "dateTime": "2015-08-04"}]}
