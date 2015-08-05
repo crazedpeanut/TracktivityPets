@@ -256,7 +256,7 @@ def update(request):
 
             #### Stealing a request from Fitbit
             f = open('fitbitupdate.txt', 'w')
-            f.write(body)
+            f.write(body.decode('utf8'))
             f.close()
             ###
 
