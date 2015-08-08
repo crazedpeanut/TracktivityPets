@@ -44,7 +44,7 @@ def inventory(request, tab=""):
         details['pk'] = default_pet.pet.pk
         
         if tab == "":
-            return render(request, 'tracktivityPetsWebsite/inventory.html',  
+            return render(request, 'tracktivityPetsWebsite/inventory/inventory.html',  
             {
                 "collected_pets": collected,
                 "default": details,
