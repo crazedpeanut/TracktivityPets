@@ -1,0 +1,76 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+    {% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#collected > div").click(function(event) 
+        {
+            var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
+            
+            $.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_pet' %}" + id)
+                .done(function(data) {
+                    
+                    var obj = JSON.parse(data);
+                    $("#inventory_detail_header").html(obj.name);                    
+                    $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
+                    $("#inventory_detail_pet_level").html("Level " + obj.level);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Level " + obj.level); 
+                    $("#inventory_detail_pet_description").html(obj.story);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.story);
+                    $("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_pet_age").html(obj.age + " Days Old");
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(obj.age + " Days Old");
+                    $("div[id*='selected_']").attr("id", "selected_" + id);
+            })
+            .fail(function() {
+
+            })
+            .always(function() {                                      
+                if (screen.width <= 768) {
+                    $('#inventory_detail_modal').modal('show');                            
+                }
+            });
+        });
+        
+        $(".activate_button" ).click(function() {
+            var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
+            $.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
+                .done(function(data) {
+                    
+                    if(data === "False")
+                        alert("Failed");
+                    else
+                        alert("Successfully Activated");
+                    
+            })
+            .fail(function() {
+
+            })
+            .always(function() {
+            
+            });
+        });
+    });
+</script>
+
+<div class="container" id="inventory_header">
+    <div class="row">
+        <img class="bubbletext_header col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4" src="{% static 'tracktivityPetsWebsite/images/inventory_text.png' %}">
+    </div>
+</div>
+
+<div class="container" id="inventory_container">
+    {% include 'tracktivityPetsWebsite/inventory/inventory_tabs.html' %}  
+    {% include 'tracktivityPetsWebsite/inventory/inventory_grid.html' %}
+    {% include 'tracktivityPetsWebsite/inventory/inventory_detail.html' %}        
+    {% include 'tracktivityPetsWebsite/inventory/inventory_modal.html' %}         
+</div>   
+
+{% endblock content_block %}
