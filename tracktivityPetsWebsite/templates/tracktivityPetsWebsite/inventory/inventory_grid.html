@@ -2,9 +2,9 @@
 {% load staticfiles %}
 
 <div class="col-md-6 container tab-content" id="inventory_grid">        
-    <div class="tab-pane fade in active" id="collected">
+    <div class="tab-pane fade in active" id="pets">
         {% for key, value in collected_pets.items %}
-            <div class="col-xs-6" class="inventory_pet" id="collected_{{ value.pk }}">
+            <div class="col-xs-6" class="inventory_pet" id="pets_{{ value.pk }}">
                 <button class="">
                 <img class="img-responsive" src="{{ value.image }}">
                 <p class="">{{ key }}</p>
@@ -36,24 +36,13 @@
     </div>      
     
     <div class="tab-pane fade" id="cosmetics"> 
-        <!-- This static stuff all needs to be updated later -->       
-        <div class="col-xs-6" class="inventory_cosmetics">
-            <button class="">
-            <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/oinksalotshirt.jpg' %}">
-            <p>Awesome Shirt</p>
-            </button>            
-        </div>
-        <div class="col-xs-6" class="inventory_cosmetics">
-            <button class="">
-            <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/oinksalotshirt.jpg' %}">
-            <p>Awesome Shirt</p>
-            </button>            
-        </div>
-        <div class="col-xs-6" class="inventory_cosmetics">
-            <button class="">
-            <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/oinksalotshirt.jpg' %}">
-            <p>Awesome Shirt</p>
-            </button>            
-        </div>
+        {% for key, value in collected_items.items %}
+            <div class="col-xs-6" class="inventory_items" id="cosmetics_{{ value.pk }}">
+                <button class="">
+                <img class="img-responsive" src="{{ value.image }}">
+                <p class="">{{ key }}</p>
+                </button>            
+            </div>
+        {% endfor %}
     </div>   
 </div> 
