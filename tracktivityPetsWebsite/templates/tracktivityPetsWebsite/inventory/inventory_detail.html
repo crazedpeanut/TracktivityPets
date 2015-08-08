@@ -1,0 +1,18 @@
+<!-- inventory_detail.html: Sub-template that displays detail view for a selected (collected) pet. Only displays on tablet/desktop browsers -->
+
+<div class="col-xs-6 container hidden-xs" id="inventory_detail">
+    <div hidden id="selected_{{ default.pk }}" > </div>
+    <div class="row"><h2 class="col-centred" id="inventory_detail_header">{{ default.name }}</h2></div>
+    <div class="row"><img class="img-responsive col-xs-5 col-centred" src="{{ default.image }}" id="inventory_detail_image"></div>
+    <div class="row" id="inventory_detail_pet_description_div">
+        <p id="inventory_detail_pet_description" class="col-xs-12 col-md-8 col-centred">
+            {{ default.story }}
+        </p>
+    </div>        
+    <div class="row"><h4 id="inventory_detail_pet_level">Level {{ default.level }}</h4></div>
+    <div class="row"><h5 id="inventory_detail_pet_age">{{ default.age }} Days Old</h5></div>
+    <div class="row" id="inventory_detail_buttons">
+        <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Rename</button>
+        <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" type="button">Activate!</button>
+    </div>
+</div>

@@ -559,7 +559,16 @@ left: 50%;
     padding-bottom: 1%;    
 }
 
-/* Mobile-devices inventory style rules */
+p#inventory_detail_pet_description {
+    text-align: justify;
+}
+
+#inventory_detail_pet_description_div {
+    height: 220px;
+    overflow: auto;
+}
+
+/* Mobile devices inventory style rules */
 @media only screen 
         and (min-device-width: 375px) 
         and (max-device-width: 667px) 
@@ -573,8 +582,25 @@ left: 50%;
     #inventory_grid
     {
         border-right: 1px solid black;
-        min-height: 100%;
+        min-height: 320px;
     }   
+}
+
+/* Tablet and desktop devices inventory style rules */
+@media only screen
+    and (min-device-width: 668px)
+    and (max-device-width: 5120px)
+{    
+    #inventory_grid
+    {
+        min-height: 600px;
+        max-height: 600px;
+    }   
+    #inventory_detail
+    {
+        min-height: 600px;
+        max-height: 600px;
+    }
 }
 
 /******************************************** End of Inventory Style *************************************************/
