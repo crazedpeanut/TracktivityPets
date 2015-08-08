@@ -1,0 +1,25 @@
+<!-- inventory_modal.html: Sub-template that handles the pop-up (modal) detail view on mobile devices. -->
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="inventory_detail_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{ default.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="inventory_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" />
+                    <p id="inventory_detail_pet_description">{{ default.story }}</p>
+                    <div><h4 id="inventory_detail_pet_level">Level {{ default.level }}</h3></div>
+                    <div><h5 id="inventory_detail_pet_age">{{ default.age }} Days Old</h5></div>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Rename</button>
+                    <button type="button" class="btn btn-default activate_button" data-dismiss="modal">Activate!</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 

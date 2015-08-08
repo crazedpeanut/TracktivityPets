@@ -1,0 +1,59 @@
+<!-- inventory_grid.html: Sub-template that handles displaying each collected pet in grid layout -->
+{% load staticfiles %}
+
+<div class="col-md-6 container tab-content" id="inventory_grid">        
+    <div class="tab-pane fade in active" id="collected">
+        {% for key, value in collected_pets.items %}
+            <div class="col-xs-6" class="inventory_pet" id="collected_{{ value.pk }}">
+                <button class="">
+                <img class="img-responsive" src="{{ value.image }}">
+                <p class="">{{ key }}</p>
+                </button>            
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="tab-pane fade" id="scenery"> 
+        <!-- This static stuff all needs to be updated later -->       
+        <div class="col-xs-6" class="inventory_scenery">
+            <button class="">
+            <img class="img-responsive img-circle" src="{% static 'tracktivityPetsWebsite/images/splash_bg.jpg' %}">
+            <p>Pretty Valley</p>
+            </button>            
+        </div>
+        <div class="col-xs-6" class="inventory_scenery">
+            <button class="">
+            <img class="img-responsive img-circle" src="{% static 'tracktivityPetsWebsite/images/splash_bg.jpg' %}">
+            <p>Pretty Valley</p>
+            </button>            
+        </div>
+        <div class="col-xs-6" class="inventory_scenery">
+            <button class="">
+            <img class="img-responsive img-circle" src="{% static 'tracktivityPetsWebsite/images/splash_bg.jpg' %}">
+            <p>Pretty Valley</p>
+            </button>            
+        </div>
+    </div>      
+    
+    <div class="tab-pane fade" id="cosmetics"> 
+        <!-- This static stuff all needs to be updated later -->       
+        <div class="col-xs-6" class="inventory_cosmetics">
+            <button class="">
+            <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/oinksalotshirt.jpg' %}">
+            <p>Awesome Shirt</p>
+            </button>            
+        </div>
+        <div class="col-xs-6" class="inventory_cosmetics">
+            <button class="">
+            <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/oinksalotshirt.jpg' %}">
+            <p>Awesome Shirt</p>
+            </button>            
+        </div>
+        <div class="col-xs-6" class="inventory_cosmetics">
+            <button class="">
+            <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/oinksalotshirt.jpg' %}">
+            <p>Awesome Shirt</p>
+            </button>            
+        </div>
+    </div>   
+</div> 
