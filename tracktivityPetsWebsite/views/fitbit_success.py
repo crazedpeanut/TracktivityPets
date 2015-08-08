@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 @login_required
 def fitbit_success(request):
-    return render(request, 'tracktivityPetsWebsite/fitbit_success.html')
+    return render(request, 'tracktivityPetsWebsite/fitbit/fitbit_success.html')

@@ -17,4 +17,4 @@ def fitbit_link(request):
     else:
         redirect_to = reverse('tracktivityPetsWebsite:main_story')
     
-    return render(request, 'tracktivityPetsWebsite/fitbit_link.html', {"fitbit_link_link": fitbit_link_link, 'redirect_to': redirect_to})
+    return render(request, 'tracktivityPetsWebsite/fitbit/fitbit_link.html', {"fitbit_link_link": fitbit_link_link, 'redirect_to': redirect_to})
