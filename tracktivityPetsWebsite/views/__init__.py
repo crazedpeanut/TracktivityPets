@@ -12,3 +12,4 @@ from .view_unpurchased_pet import view_unpurchased_pet
 from .inventory import inventory
 from .store import store
 from .set_current_pet import set_current_pet
+from .view_purchased_item import view_purchased_item

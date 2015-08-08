@@ -16,17 +16,29 @@ def inventory(request, tab=""):
         collected_pets = request.user.profile.inventory.get_owned_pets()
         #unpurchased_pets = request.user.profile.inventory.calculate_unpurchased_pets(all_pets, collected_pets) 
         
-        collected = {}
+        pets = {}
         
         for collected_pet in collected_pets:
             current_mood = collected_pet.get_current_mood()
             image = utils.generate_pet_image_url(collected_pet.pet, current_mood.image_location)
-            collected[collected_pet.name] = {}
+            pets[collected_pet.name] = {}
             
-            collected[collected_pet.name]["pk"] = collected_pet.pet.pk #pk is used in the html to get the Pet not the CollectedPet, so this fixes that
-            collected[collected_pet.name]["image"] = image
+            pets[collected_pet.name]["pk"] = collected_pet.pet.pk #pk is used in the html to get the Pet not the CollectedPet, so this fixes that
+            pets[collected_pet.name]["image"] = image
+            
+            
+        collected_items = request.user.profile.inventory.get_owned_items()
         
-        #below is for default details
+        items = {}
+        
+        for collected_item in collected_items:
+            image = "TODO"
+            items[collected_item.item.name] = {}
+            
+            items[collected_item.item.name]["pk"] = collected_item.item.pk
+            items[collected_item.item.name]["image"] = image     
+        
+        #below is for default details for pet (which is first to be shown)
         default_pet = collected_pets[0]
         experience = default_pet.get_total_experience()
         level = default_pet.level.level
@@ -43,32 +55,7 @@ def inventory(request, tab=""):
         details['age'] = default_pet.get_age_in_days()
         details['pk'] = default_pet.pet.pk
         
-        if tab == "":
-            return render(request, 'tracktivityPetsWebsite/inventory/inventory.html',  
-            {
-                "collected_pets": collected,
-                "default": details,
-            })
-        if tab == "pets":
-            data = '{ "collected": ' + json.dumps(collected) + ', "details": ' + json.dumps(details) + ' }'
-            
-            return HttpResponse(data)
-
-    elif tab == "scenery": # and request.is_ajax():
-        return HttpResponse("scenery")
-    
-    elif tab == "cosmetics": # and request.is_ajax():
-        collected_items = request.user.profile.inventory.get_owned_items()
-        
-        collected = {}
-        
-        for collected_item in collected_items:
-            image = "TODO"
-            collected[collected_item.item.name] = {}
-            
-            collected[collected_item.item.name]["pk"] = collected_item.item.pk
-            collected[collected_item.item.name]["image"] = image
-           
+        ''' #code for default item if need it
         details = {}
         
         try:  #may not own any items
@@ -83,6 +70,27 @@ def inventory(request, tab=""):
             details = str(e)
         
         data = '{ "collected": ' + json.dumps(collected) + ', "details": ' + json.dumps(details) + ' }'
+        '''
+        
+        if tab == "":
+            return render(request, 'tracktivityPetsWebsite/inventory/inventory.html',  
+            {
+                "collected_pets": pets,
+                "collected_items": items,
+                "default": details,
+            })
+        if tab == "pets":
+            data = '{ "collected": ' + json.dumps(pets) + ', "details": ' + json.dumps(details) + ' }'
+            
+            return HttpResponse(data)
+
+    elif tab == "scenery": # and request.is_ajax():
+        return HttpResponse("scenery")
+    
+    elif tab == "cosmetics": # and request.is_ajax():
+
+           
+
         return HttpResponse(data)
     
     

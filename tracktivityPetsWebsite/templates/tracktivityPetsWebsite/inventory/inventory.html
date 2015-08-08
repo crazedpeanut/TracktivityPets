@@ -9,7 +9,7 @@
     
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#collected > div").click(function(event) 
+        $("#pets > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
             
@@ -19,18 +19,50 @@
                     var obj = JSON.parse(data);
                     $("#inventory_detail_header").html(obj.name);                    
                     $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
-                    $("#inventory_detail_pet_level").html("Level " + obj.level);
+                    $("#inventory_detail_extra_one").html("Level " + obj.level);
                     $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Level " + obj.level); 
                     $("#inventory_detail_pet_description").html(obj.story);
                     $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.story);
                     $("#inventory_detail_image").attr("src", obj.image);
                     $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
-                    $("#inventory_detail_pet_age").html(obj.age + " Days Old");
+                    $("#inventory_detail_extra_two").html(obj.age + " Days Old");
                     $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(obj.age + " Days Old");
                     $("div[id*='selected_']").attr("id", "selected_" + id);
+                    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Rename</button><button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" type="button">Activate!</button>');
             })
             .fail(function() {
 
+            })
+            .always(function() {                                      
+                if (screen.width <= 768) {
+                    $('#inventory_detail_modal').modal('show');                            
+                }
+            });
+        });
+        
+        $("#cosmetics > div").click(function(event) 
+        {
+            var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
+            
+            $.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_item' %}" + id)
+                .done(function(data) {
+                    
+                    
+                    var obj = JSON.parse(data);
+                    $("#inventory_detail_header").html(obj.name);                    
+                    $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
+                    $("#inventory_detail_extra_one").html("Equipped on: " + obj.equipped_on);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Equipped on: " + obj.equipped_on); 
+                    $("#inventory_detail_pet_description").html(obj.description);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
+                    $("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_extra_two").html('');
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(" ");
+                    $("div[id*='selected_']").attr("id", "selected_" + id);
+                    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Unequip!</button><button class="btn btn-lg btn-primary col-md-3 col-centred equip_button" type="button">Equip!</button>');
+            })
+            .fail(function() {
             })
             .always(function() {                                      
                 if (screen.width <= 768) {
