@@ -9,7 +9,7 @@
     
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#collected > div").click(function(event) 
+        $("#collected > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
             
@@ -32,7 +32,7 @@
             .fail(function() {
 
             })
-            .always(function() {                                      
+            .always(function() {                                   
                 if (screen.width <= 768) {
                     $('#inventory_detail_modal').modal('show');                            
                 }
@@ -68,8 +68,7 @@
 
 <div class="container" id="inventory_container">
     {% include 'tracktivityPetsWebsite/inventory/inventory_tabs.html' %}  
-    {% include 'tracktivityPetsWebsite/inventory/inventory_grid.html' %}
-    {% include 'tracktivityPetsWebsite/inventory/inventory_detail.html' %}        
+    {% include 'tracktivityPetsWebsite/inventory/inventory_grid_detail.html' %}
     {% include 'tracktivityPetsWebsite/inventory/inventory_modal.html' %}         
 </div>   
 

@@ -7,6 +7,7 @@ body {
 .col-centred {
     float: none;
     margin: 0 auto;
+    text-align: center;
 }
 
 #splash_bg {
@@ -228,7 +229,6 @@ width: 75%;
     }
 }
 
-
 .modal-footer {
     text-align: center;
 }
@@ -267,9 +267,7 @@ width: 75%;
 	height: 100%;
 }
 
-
-
-/* Progress bar style stuff */
+/******************************************************************* Progress bar style stuff ***************************************************************/
 
 #pet_progress
 {
@@ -290,7 +288,7 @@ width: 75%;
 #progressbar {
     margin-top: 30%;
 }
-
+/**************************************************************************************************************************************************************/
 
 #pet_phrase
 {
@@ -378,8 +376,7 @@ width: 75%;
 	color: white;
 }
 
-
-.bottomBox{
+.bottomBox {
 	border-radius: 25px;
   	background-color: #ffffff;
     border: 1px solid black;
@@ -388,48 +385,46 @@ width: 75%;
     height: 530px;
 }
 
-
-
 .bubble 
 {
-position: relative;
-height: 120px;
-padding: 0px;
-background: #FFFFFF;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-border: #000000 solid 3px;
+    position: relative;
+    height: 120px;
+    padding: 0px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    border: #000000 solid 3px;
 }
 
 .bubble:after 
 {
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 15px 15px 0;
-border-color: #FFFFFF transparent;
-display: block;
-width: 0;
-z-index: 1;
-margin-left: -15px;
-bottom: -15px;
-left: 50%;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: #FFFFFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+    margin-left: -15px;
+    bottom: -15px;
+    left: 50%;
 }
 
 .bubble:before 
 {
-content: '';
-position: absolute;
-border-style: solid;
-border-width: 17px 17px 0;
-border-color: #000000 transparent;
-display: block;
-width: 0;
-z-index: 0;
-margin-left: -17px;
-bottom: -20px;
-left: 50%;
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 17px 17px 0;
+    border-color: #000000 transparent;
+    display: block;
+    width: 0;
+    z-index: 0;
+    margin-left: -17px;
+    bottom: -20px;
+    left: 50%;
 }
  
 .bottom {
@@ -527,31 +522,29 @@ left: 50%;
 	border: 1px solid black;
 }
 
-/**************************************** Inventory Page Style ******************************************************/
+/*********************************************************************** Inventory and Store Page Style ******************************************************/
 
-#inventory_tabs, #inventory_pet p, #inventory_detail_header, #inventory_detail, #inventory_detail p
+#inventory_tabs, #store_tabs, #challenges_tabs, #inventory_pet p, #inventory_detail_header, .inventory_detail, .inventory_detail p
 {
     text-align: center;
 }
 
-#inventory_tabs {
+#inventory_tabs, #store_tabs, #challenges_tabs {
     margin-bottom: 1%;
 }
 
-#inventory_grid {
+#inventory_window {
     padding-top: 15px;
-    border-left: 1px solid black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border: 1px solid black;
     background: white;     
 }
 
-#inventory_grid button {
+.inventory_button {
     border: none;
     background: white;
 }
 
-#inventory_detail {
+.inventory_detail, {
     border-right: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;;
@@ -559,13 +552,13 @@ left: 50%;
     padding-bottom: 1%;    
 }
 
-p#inventory_detail_pet_description {
-    text-align: justify;
+#inventory_detail_pet_description_div {
+    height: 180px;
+    overflow: auto;
 }
 
-#inventory_detail_pet_description_div {
-    height: 220px;
-    overflow: auto;
+p#inventory_detail_pet_description {
+    text-align: justify;
 }
 
 /* Mobile devices inventory style rules */
@@ -573,15 +566,9 @@ p#inventory_detail_pet_description {
         and (min-device-width: 375px) 
         and (max-device-width: 667px) 
         and (-webkit-min-device-pixel-ratio: 2)
-{
-    #inventory_detail
+{    
+    #collected, #scenery, #cosmetics
     {
-        border-left: 1px solid black;
-    }
-    
-    #inventory_grid
-    {
-        border-right: 1px solid black;
         min-height: 320px;
     }   
 }
@@ -591,16 +578,16 @@ p#inventory_detail_pet_description {
     and (min-device-width: 668px)
     and (max-device-width: 5120px)
 {    
-    #inventory_grid
+    .inventory_grid
     {
         min-height: 600px;
         max-height: 600px;
     }   
-    #inventory_detail
+    .inventory_detail
     {
         min-height: 600px;
         max-height: 600px;
     }
 }
 
-/******************************************** End of Inventory Style *************************************************/
+/*************************************************************************** End of Inventory Style ********************************************************************************/
