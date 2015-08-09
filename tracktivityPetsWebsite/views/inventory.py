@@ -59,31 +59,40 @@ def inventory(request, tab=""):
         current_mood = default_pet.get_current_mood()
         image_location = current_mood.image_location
         
-        details = {}
-        details['name'] = default_pet.name
-        details['experience'] = experience
-        details['level'] = level
-        details['story'] = default_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
-        details['image'] = utils.generate_pet_image_url(default_pet.pet, image_location)
-        details['age'] = default_pet.get_age_in_days()
-        details['pk'] = default_pet.pet.pk
+        details_pet = {}
+        details_pet['name'] = default_pet.name
+        details_pet['experience'] = experience
+        details_pet['level'] = level
+        details_pet['story'] = default_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
+        details_pet['image'] = utils.generate_pet_image_url(default_pet.pet, image_location)
+        details_pet['age'] = default_pet.get_age_in_days()
+        details_pet['pk'] = default_pet.pet.pk
         
-        ''' #code for default item if need it
-        details = {}
+        details_item = {}
         
         try:  #may not own any items
             default_item = collected_items[0]    
 
-            details['name'] = default_item.item.name
-            details['description'] = "Items havent been given a description yet"
-            details['image'] = "TODO"
-            details['pk'] = default_item.item.pk
-            details["equipped_on"] = default_item.equipped_on
+            details_item['name'] = default_item.item.name
+            details_item['description'] = "Items havent been given a description yet"
+            details_item['image'] = "TODO"
+            details_item['pk'] = default_item.item.pk
+            details_item["equipped_on"] = default_item.equipped_on
         except Exception as e:
-            details = str(e)
+            details_item = {}
+            
+        details_scenery = {}
         
-        data = '{ "collected": ' + json.dumps(collected) + ', "details": ' + json.dumps(details) + ' }'
-        '''
+        try:  #may not own any items
+            default_scenery = collected_scenery[0]   
+
+            details_scenery['name'] = default_scenery.scenery.name
+            details_scenery['description'] = default_scenery.scenery.description
+            details_scenery['image'] = default_scenery.scenery.get_image_path()
+            details_scenery['pk'] = default_scenery.scenery.pk
+            details_scenery["equipped_on"] = default_scenery.equipped_on
+        except Exception as e:
+            default_scenery = {}
         
         if tab == "":
             return render(request, 'tracktivityPetsWebsite/inventory/inventory.html',  
@@ -91,7 +100,9 @@ def inventory(request, tab=""):
                 "collected_pets": pets,
                 "collected_items": items,
                 "collected_scenery": scenery,
-                "default": details,
+                "default_pet": details_pet,
+                "default_item": details_item,
+                "default_scenery": details_scenery,
             })
         if tab == "pets":
             data = '{ "collected": ' + json.dumps(pets) + ', "details": ' + json.dumps(details) + ' }'
