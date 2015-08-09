@@ -9,6 +9,9 @@
     
 <script type="text/javascript">
     $(document).ready(function() {
+    	
+    	var modalScreenWidth = 768;
+    	
         $("#pets > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
@@ -34,7 +37,7 @@
 
             })
             .always(function() {                                      
-                if (screen.width <= 768) {
+                if (screen.width <= modalScreenWidth) {
                     $('#inventory_detail_modal').modal('show');                            
                 }
             });
@@ -65,7 +68,38 @@
             .fail(function() {
             })
             .always(function() {                                      
-                if (screen.width <= 768) {
+                if (screen.width <= modalScreenWidth) {
+                    $('#inventory_detail_modal').modal('show');                            
+                }
+            });
+        });
+        
+        $("#scenery > div").click(function(event) 
+        {
+            var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
+            
+            $.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_scenery' %}" + id)
+                .done(function(data) {
+
+                    var obj = JSON.parse(data);
+                    $("#inventory_detail_header").html(obj.name);                    
+                    $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
+                    $("#inventory_detail_extra_one").html("Equipped on: " + obj.equipped_on);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Equipped on: " + obj.equipped_on); 
+                    $("#inventory_detail_pet_description").html(obj.description);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
+                    $("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_extra_two").html('');
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(" ");
+                    $("div[id*='selected_']").attr("id", "selected_" + id);
+                    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Unequip!</button><button class="btn btn-lg btn-primary col-md-3 col-centred equip_button" type="button">Equip!</button>');
+            
+            })
+            .fail(function() {
+            })
+            .always(function() {                                      
+                if (screen.width <= modalScreenWidth) {
                     $('#inventory_detail_modal').modal('show');                            
                 }
             });

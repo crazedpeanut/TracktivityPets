@@ -36,7 +36,20 @@ def inventory(request, tab=""):
             items[collected_item.item.name] = {}
             
             items[collected_item.item.name]["pk"] = collected_item.item.pk
-            items[collected_item.item.name]["image"] = image     
+            items[collected_item.item.name]["image"] = image    
+           
+            
+        collected_scenery = request.user.profile.inventory.get_owned_scenery()
+          
+        scenery = {}
+        counter = 0
+        for s in collected_scenery:
+            counter += 1
+            image = s.scenery.get_image_path()
+            scenery[s.scenery.name] = {}
+            
+            scenery[s.scenery.name]["pk"] = s.scenery.pk
+            scenery[s.scenery.name]["image"] = image    
         
         #below is for default details for pet (which is first to be shown)
         default_pet = collected_pets[0]
@@ -77,6 +90,7 @@ def inventory(request, tab=""):
             {
                 "collected_pets": pets,
                 "collected_items": items,
+                "collected_scenery": scenery,
                 "default": details,
             })
         if tab == "pets":
