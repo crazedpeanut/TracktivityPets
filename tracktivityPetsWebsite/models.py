@@ -26,6 +26,12 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
     def get_owned_pets_in_queryset(self, set):
         return CollectedPet.objects.filter(inventory=self, pet__in=set) 
     
+    def get_owned_scenery(self):
+        return CollectedScenery.objects.filter(inventory=self)
+    
+    def get_owned_scenery_in_queryset(self, set):
+        return CollectedScenery.objects.filter(inventory=self, scenery__in=set)
+    
     def calculate_unpurchased_items(self, usable_items, owned_items):
         unpurchased_items = []
         for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are unpurchased
@@ -49,6 +55,18 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
             if not found:
                 unpurchased_pet.append(pet)
         return unpurchased_pet
+    
+    def calculate_unpurchased_scenery(self, all_scenery, owned_scenery):
+        unpurchased_scenery = []
+        for scenery in all_scenery:#remove any scenery in all_scenery that exist in owned_scenery, to get the ones that are unpurchased
+            found = False
+            for i in owned_scenery:
+                if i.scenery.name == scenery.name:
+                    found=True
+                    break
+            if not found:
+                unpurchased_scenery.append(scenery)
+        return unpurchased_scenery         
 
 class Level(models.Model):
     level = models.IntegerField(unique=True)
@@ -183,6 +201,13 @@ class Profile(models.Model):
     def __str__(self):             
         return self.user.email + " profile"
     
+    def get_total_xp(self):
+        collected_pets = self.inventory.get_owned_pets()
+        total_xp = 0
+        for pet in collected_pets:
+            total_xp += pet.get_total_experience()
+        return total_xp
+    
 class Happiness(models.Model):
     pet = models.ForeignKey(CollectedPet)
     amount = models.IntegerField()
@@ -229,6 +254,23 @@ class Story(models.Model):
 
 #release 2 models below
 
+class Scenery(models.Model):
+    experience_to_unlock = models.IntegerField()
+    image_location = models.TextField(default="")
+    name = models.CharField(max_length=100)
+    cost = models.IntegerField()
+    
+    def __str__(self):             
+        return self.name
+    
+class CollectedScenery(models.Model):
+    scenery = models.ForeignKey(Scenery)
+    inventory = models.ForeignKey(Inventory)
+    equipped_on = models.ForeignKey(CollectedPet, null=True)
+    
+    def __str__(self):             
+        return self.scenery.name
+    
 class Item(models.Model):
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
