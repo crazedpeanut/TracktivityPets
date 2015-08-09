@@ -74,6 +74,33 @@ class Level(models.Model):
     
     def __str__(self):             
         return str(self.level) + ": " + str(self.experience_needed)
+    
+class Scenery(models.Model):
+    experience_to_unlock = models.IntegerField()
+    image_location = models.TextField(default="")
+    description = models.TextField(default="")
+    name = models.CharField(max_length=100)
+    cost = models.IntegerField()
+    
+    def __str__(self):             
+        return self.name
+    
+    def image_tag(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        return u'<img src="{url}/scenery/{location}" />'.format(url=start_url, location=self.image_location)
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+    
+    def get_image_path(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        return "{url}/scenery/{location}".format(url=start_url, location=self.image_location)
+    
+class CollectedScenery(models.Model):
+    scenery = models.ForeignKey(Scenery)
+    inventory = models.ForeignKey(Inventory)
+    
+    def __str__(self):             
+        return self.scenery.name
 
 class Pet(models.Model):
     starter_level = models.ForeignKey(Level)
@@ -90,6 +117,7 @@ class CollectedPet(models.Model):
     level = models.ForeignKey(Level)
     name = models.CharField(max_length=100, default=pet.name)
     date_created = models.DateTimeField()
+    scenery = models.ForeignKey(CollectedScenery, null=True)
     
     def __str__(self):             
         return self.pet.default_name + ": " + self.name
@@ -251,37 +279,7 @@ class Story(models.Model):
     level_unlocked = models.ForeignKey(Level)
     pet = models.ForeignKey(Pet)
     text = models.TextField(default="")
-
-#release 2 models below
-
-class Scenery(models.Model):
-    experience_to_unlock = models.IntegerField()
-    image_location = models.TextField(default="")
-    description = models.TextField(default="")
-    name = models.CharField(max_length=100)
-    cost = models.IntegerField()
-    
-    def __str__(self):             
-        return self.name
-    
-    def image_tag(self):
-        start_url = static('tracktivityPetsWebsite/images')
-        return u'<img src="{url}/scenery/{location}" />'.format(url=start_url, location=self.image_location)
-    image_tag.short_description = 'Image'
-    image_tag.allow_tags = True
-    
-    def get_image_path(self):
-        start_url = static('tracktivityPetsWebsite/images')
-        return "{url}/scenery/{location}".format(url=start_url, location=self.image_location)
-    
-class CollectedScenery(models.Model):
-    scenery = models.ForeignKey(Scenery)
-    inventory = models.ForeignKey(Inventory)
-    equipped_on = models.ForeignKey(CollectedPet, null=True)
-    
-    def __str__(self):             
-        return self.scenery.name
-    
+  
 class Item(models.Model):
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
