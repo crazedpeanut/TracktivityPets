@@ -14,32 +14,21 @@
     </div>
     
     <div class="tab-pane fade" id="scenery"> 
-        <!-- This static stuff all needs to be updated later -->       
-        <div class="col-xs-6" class="inventory_scenery">
-            <button class="">
-            <img class="img-responsive img-circle" src="{% static 'tracktivityPetsWebsite/images/splash_bg.jpg' %}">
-            <p>Pretty Valley</p>
-            </button>            
-        </div>
-        <div class="col-xs-6" class="inventory_scenery">
-            <button class="">
-            <img class="img-responsive img-circle" src="{% static 'tracktivityPetsWebsite/images/splash_bg.jpg' %}">
-            <p>Pretty Valley</p>
-            </button>            
-        </div>
-        <div class="col-xs-6" class="inventory_scenery">
-            <button class="">
-            <img class="img-responsive img-circle" src="{% static 'tracktivityPetsWebsite/images/splash_bg.jpg' %}">
-            <p>Pretty Valley</p>
-            </button>            
-        </div>
+        {% for key, value in collected_scenery.items %}
+            <div class="col-xs-6" class="inventory_items" id="scenery_{{ value.pk }}">
+                <button class="">
+                <img class="img-responsive" src="{{ value.image }}">
+                <p class="">{{ key }}</p>
+                </button>            
+            </div>
+        {% endfor %}
     </div>      
     
     <div class="tab-pane fade" id="cosmetics"> 
         {% for key, value in collected_items.items %}
             <div class="col-xs-6" class="inventory_items" id="cosmetics_{{ value.pk }}">
                 <button class="">
-                <img class="img-responsive" src="{{ value.image }}">
+                <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
                 <p class="">{{ key }}</p>
                 </button>            
             </div>

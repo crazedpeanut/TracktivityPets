@@ -34,8 +34,8 @@ def view_purchased_scenery(request, scenery_index=""):
             default_scenery = owned_scenery   
 
             details['name'] = default_scenery.scenery.name
-            details['description'] = "Sceneries havent been given a description yet"
-            details['image'] = "TODO"
+            details['description'] = default_scenery.scenery.description
+            details['image'] = default_scenery.scenery.get_image_path()
             details['pk'] = default_scenery.scenery.pk
             details["equipped_on"] = default_scenery.equipped_on
         except Exception as e:

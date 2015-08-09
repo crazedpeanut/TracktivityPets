@@ -257,11 +257,22 @@ class Story(models.Model):
 class Scenery(models.Model):
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
+    description = models.TextField(default="")
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
     
     def __str__(self):             
         return self.name
+    
+    def image_tag(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        return u'<img src="{url}/scenery/{location}" />'.format(url=start_url, location=self.image_location)
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+    
+    def get_image_path(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        return "{url}/scenery/{location}".format(url=start_url, location=self.image_location)
     
 class CollectedScenery(models.Model):
     scenery = models.ForeignKey(Scenery)
@@ -274,6 +285,7 @@ class CollectedScenery(models.Model):
 class Item(models.Model):
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
+    description = models.TextField(default="")
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
     

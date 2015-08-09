@@ -117,9 +117,8 @@ class ItemAdmin(admin.ModelAdmin):
 #########################################
 
 class SceneryAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
-    ] 
+    fields = ('name', 'experience_to_unlock', 'cost', 'description', 'image_location')
+    readonly_fields = ('image_tag',)
     
 #########################################
 
