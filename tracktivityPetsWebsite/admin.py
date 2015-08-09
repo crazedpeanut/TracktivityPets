@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Usable, CollectedItem
+from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, Usable, CollectedItem, CollectedScenery
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib import admin
@@ -50,9 +50,13 @@ class CollectedPetsInline(admin.TabularInline):
 class CollectedItemsInline(admin.TabularInline):
     model = CollectedItem
     extra = 1 
+    
+class CollectedScenerysInLine(admin.TabularInline):
+    model = CollectedScenery
+    extra = 1
         
 class InventoryAdmin(admin.ModelAdmin):
-    inlines = [CollectedPetsInline, CollectedItemsInline]
+    inlines = [CollectedPetsInline, CollectedItemsInline, CollectedScenerysInLine]
 
 #########################################
 class ProfileInline(admin.StackedInline):
@@ -109,12 +113,23 @@ class ItemAdmin(admin.ModelAdmin):
         (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
     ] 
     inlines = [UsableInline]
+    
+#########################################
+
+class SceneryAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
+    ] 
+    
+#########################################
+
 
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
 admin.site.register(Mood, MoodAdmin)
 admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(Item, ItemAdmin)
+admin.site.register(Scenery, SceneryAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

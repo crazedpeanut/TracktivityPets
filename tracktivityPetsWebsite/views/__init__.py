@@ -13,3 +13,4 @@ from .inventory import inventory
 from .store import store
 from .set_current_pet import set_current_pet
 from .view_purchased_item import view_purchased_item
+from .view_purchased_scenery import view_purchased_scenery
