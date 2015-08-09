@@ -328,7 +328,7 @@ class MicroChallengeGoal(models.Model):
 class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet)
     to_pet = models.ForeignKey(CollectedPet)
-    time_swapped = models.DateTimeField(auto_now=True)
+    time_swapped = models.DateTimeField()
     
     
 
