@@ -1,7 +1,8 @@
 import fitapp
 import logging
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Experience, Happiness, Story, Item, CollectedItem
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet
+from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
 import urllib.request #for fitbit http requests
 import urllib.parse
 import django
@@ -236,9 +237,12 @@ def get_current_pet(user):
 
 def set_current_pet(user, owned_pet):
     try:
-        user.profile.current_pet = owned_pet
-        user.profile.save()
-        return True
+        num_pets = CollectedPet.objects.filter(inventory=user.profile.inventory)
+        if(num_pets.count > 0):
+            pet_swap = PetSwap(from_pet=user.profile.current_pet, to_pet=owned_pet)
+            user.profile.current_pet = owned_pet
+            user.profile.save()
+            return True
     except:
         return False
 
