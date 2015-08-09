@@ -326,9 +326,9 @@ class MicroChallengeGoal(models.Model):
     pet_pennies_reward = models.IntegerField()
 
 class PetSwap(models.Model):
-    from_pet = models.ForeignKey(CollectedPet)
-    to_pet = models.ForeignKey(CollectedPet)
-    time_swapped = models.DateTimeField()
+    from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
+    to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
+    time_swapped = models.DateTimeField(auto_now=True)
     
     
 
