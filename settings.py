@@ -13,6 +13,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+HOST_NAME = "tracktivitypets.me"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 

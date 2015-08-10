@@ -25,6 +25,51 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
 
+
+#TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
+'''
+ When everything goes well, the *status_code* is 100 and the requested data
+is included. However, there are a number of things that can 'go wrong'
+with this call. For each type of error, we return an empty data list with
+a *status_code* to describe what went wrong on our end:
+
+    :100: OK - Response contains JSON data.
+    :101: User is not logged in.
+    :102: User is not integrated with Fitbit.
+    :103: Fitbit authentication credentials are invalid and have been
+        removed.
+    :104: Invalid input parameters. Either *period* or *end_date*, but not
+        both, must be supplied. *period* should be one of [1d, 7d, 30d,
+        1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
+        'yyyy-mm-dd'.
+    :105: User exceeded the Fitbit limit of 150 calls/hour.
+    :106: Fitbit error - please try again soon.
+'''
+def retrieve_fitapp_data(user, d_from, date_to):
+    if not is_fitbit_linked(user):
+        return False, 'No fitbit found'
+    elif user.profile.current_pet is None:
+        return False, 'No current pet'
+
+    try:
+        url = settings.HOST_NAME
+        username = user.get_username()
+        #compute secure hash so people cant intercept this crappy call (since request object doesnt work)
+        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
+        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash),
+                                         'username': username,
+                                         'base_date': str(date_from),
+                                         'end_date': str(date_to)})
+        #make a request to this page
+        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
+        data = f.read().decode('utf-8')#whats returned
+    except Exception as e:
+        return False, str(e) #TODO: make this something useful
+
+    logger.debug(data)
+
+    return json.loads(data)#change it from text to something usable
+
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
 #TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
 this method will probably take 2-3 seconds to run, since fitbit API can take a while to respond, so ajax would be good
@@ -33,17 +78,12 @@ means it should go in the update_user_fitbit
 #TODO: Gets all steps for the day, and doesnt consider other pets already having steps for it
 #Not going to effect release 1, but needs to change for release 2. Will have to loop through each pet in users inventory, get the experience for the day, add it all up, minus that from the total steps, and then add that to the pet
 def update_user_fitbit(request):
-    if not is_fitbit_linked(request.user):
-        return False, 'No fitbit found'
-    elif request.user.profile.current_pet is None:
-        return False, 'No current pet'
-    
-    user = request.user
-    profile = user.profile
-    
+
+    profile = request.user.profile
+
     #pull steps from last_fitbit_sync upto today
     if profile.last_fitbit_sync is None:
-        d_from = user.date_joined
+        d_from = request.user.date_joined
     else:
         d_from = profile.last_fitbit_sync
 
@@ -51,55 +91,29 @@ def update_user_fitbit(request):
 
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
-    
-    try:
-        url = request.META['HTTP_HOST']
-        username = user.get_username()
-        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)#compute secure hash so people cant intercept this crappy call (since request object doesnt work)
-        params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to)})
-        #params = urllib.parse.urlencode({'hash': binascii.hexlify(hash), 'username': username, 'base_date': str(date_from), 'end_date': str(date_to),'period': '15min'})
-        f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)#make a request to this page
-        data = f.read().decode('utf-8')#whats returned
-    except Exception as e:
-        return False, str(e) #TODO: make this something useful
 
-    logger.debug(data)
-    
-    data_json = json.loads(data)#change it from text to something usable
-    
-    #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
-    '''
-     When everything goes well, the *status_code* is 100 and the requested data
-    is included. However, there are a number of things that can 'go wrong'
-    with this call. For each type of error, we return an empty data list with
-    a *status_code* to describe what went wrong on our end:
+    data_json = retrieve_fitapp_data(request.user, d_from, date_to)
 
-        :100: OK - Response contains JSON data.
-        :101: User is not logged in.
-        :102: User is not integrated with Fitbit.
-        :103: Fitbit authentication credentials are invalid and have been
-            removed.
-        :104: Invalid input parameters. Either *period* or *end_date*, but not
-            both, must be supplied. *period* should be one of [1d, 7d, 30d,
-            1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
-            'yyyy-mm-dd'.
-        :105: User exceeded the Fitbit limit of 150 calls/hour.
-        :106: Fitbit error - please try again soon.
-    '''
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
         return False, data_json['meta']['status_code']#TODO: make this something useful
 
     experience = 0
 
     for date in data_json['objects']: #terrible code reuse
+
+        datetime_object = datetime.strptime(date['dateTime'])
+        swap_counts = count_pet_swaps_for_day(datetime_object)
+        swap_counts += 1
+
         if date['dateTime'] == date_from: #this day may already have data, if its synced multiple times a day, should do this a less exhaustive way though
             try:#update it
                 existing_experience = Experience.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
                 existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
 
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
+                happiness / swap_counts #Division of happiness and experience for pets active throughout day
                 existing_happiness.amount = happiness
-                existing_experience.amount = date['value']
+                existing_experience.amount = date['value'] / swap_counts #Division of happiness and experience for pets active throughout day
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
                 existing_experience.save()
                 existing_happiness.save()
@@ -108,11 +122,13 @@ def update_user_fitbit(request):
                 exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
                 experience += exp.amount
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
+                happiness / swap_counts #Division of happiness and experience for pets active throughout day
                 Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
         else:
             exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
             experience += exp.amount
             happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
+            happiness / swap_counts #Division of happiness and experience for pets active throughout day
             Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
             
     current_level = profile.current_pet.level.level
@@ -148,6 +164,10 @@ def update_user_fitbit(request):
         #return ajax friendly data
     #else
         #render dashboard page
+
+def count_pet_swaps_for_day(day):
+    swaps = PetSwap.objects.filter(time_swapped__year=day.date.year, time_swapped__day=day.date.day, time_swapped__month=day.date.month)
+    return swaps.count()
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
 def register_user(first_name=None, last_name=None, email=None, username=None, password=None, confirm_password=None, registerForm=None):
