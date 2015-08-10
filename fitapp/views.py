@@ -200,7 +200,7 @@ def error(request):
     URL name:
         `fitbit-error`
     """
-    return render(request, utils.get_setting('FITAPP_ERROR_TEMPLATE'), {})
+    return render(request, utils.get_setting('FITAPP_ERROR_TEMPLATE'))
 
 
 @login_required
