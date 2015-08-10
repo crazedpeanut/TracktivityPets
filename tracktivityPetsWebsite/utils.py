@@ -58,7 +58,7 @@ def retrieve_fitapp_data(user, d_from, date_to):
         hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
         params = urllib.parse.urlencode({'hash': binascii.hexlify(hash),
                                          'username': username,
-                                         'base_date': str(date_from),
+                                         'base_date': str(d_from),
                                          'end_date': str(date_to)})
         #make a request to this page
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
