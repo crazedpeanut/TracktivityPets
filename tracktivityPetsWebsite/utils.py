@@ -64,6 +64,7 @@ def retrieve_fitapp_data(user, d_from, date_to):
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
         data = f.read().decode('utf-8')#whats returned
     except Exception as e:
+        logger.exception(str(e))
         return False, str(e) #TODO: make this something useful
 
     logger.debug(data)
