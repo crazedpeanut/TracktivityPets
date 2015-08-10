@@ -19,7 +19,7 @@ from django.templatetags.static import static
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler('/var/log/TracktivityPets/tracktivitypets_utils.log')
+hdlr = logging.FileHandler(settings.BASE_DIR + 'tracktivitypets_utils.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
@@ -93,7 +93,12 @@ def update_user_fitbit(request):
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
 
-    result, data_json = retrieve_fitapp_data(request.user, d_from, date_to)
+    result, data = retrieve_fitapp_data(request.user, d_from, date_to)
+
+    if(result is False):
+        logger.debug(data)
+
+    data_json = data
 
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
         return False, data_json['meta']['status_code']#TODO: make this something useful
