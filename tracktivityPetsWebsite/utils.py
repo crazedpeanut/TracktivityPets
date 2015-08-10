@@ -46,6 +46,14 @@ a *status_code* to describe what went wrong on our end:
     :106: Fitbit error - please try again soon.
 '''
 def retrieve_fitapp_data(user, d_from, date_to):
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    hdlr = logging.FileHandler(settings.BASE_DIR + 'tracktivitypets_utils.log')
+    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
+    hdlr.setFormatter(formatter)
+    logger.addHandler(hdlr)
+    logger.setLevel(logging.DEBUG)
     if not is_fitbit_linked(user):
         return False, 'No fitbit found'
     elif user.profile.current_pet is None:
