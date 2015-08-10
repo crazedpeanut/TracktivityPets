@@ -12,7 +12,7 @@ from .utils import update_user_fitbit
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler(settings.BASE_DIR + 'tracktivitypets_tasks.log')
+hdlr = logging.FileHandler(settings.BASE_DIR + '/tracktivitypets_tasks.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
