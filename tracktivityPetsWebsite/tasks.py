@@ -18,6 +18,8 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
 
+from django.core.mail import send_mail
+
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 
 @shared_task
@@ -36,6 +38,8 @@ def update_user_with_fitbit(fitbit_user):
 
     for fbuser in fbusers:
         update_user_fitbit(fbuser.user)
+
+    send_mail("Fitbit update for user: %s" % (fitbit_user), "", "john@johnkendall.net", ["john@johnkendall.net"] )
 
     #release lock
     cache.delete(lock_id)
