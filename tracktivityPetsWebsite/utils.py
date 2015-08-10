@@ -68,7 +68,7 @@ def retrieve_fitapp_data(user, d_from, date_to):
 
     logger.debug(data)
 
-    return json.loads(data)#change it from text to something usable
+    return True, json.loads(data)#change it from text to something usable
 
 ''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
 #TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
@@ -92,7 +92,7 @@ def update_user_fitbit(request):
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
 
-    data_json = retrieve_fitapp_data(request.user, d_from, date_to)
+    result, data_json = retrieve_fitapp_data(request.user, d_from, date_to)
 
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
         return False, data_json['meta']['status_code']#TODO: make this something useful
