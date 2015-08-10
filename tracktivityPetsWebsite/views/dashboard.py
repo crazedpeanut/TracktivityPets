@@ -20,24 +20,12 @@ logger.setLevel(logging.DEBUG)
 
 @login_required
 def dashboard(request):
-    
     if not utils.is_fitbit_linked(request.user) or not fitapp.utils.is_integrated(request.user):
        return redirect('tracktivityPetsWebsite:fitbit_link')
     
     elif request.user.profile.current_pet is None:#take them to the page to select a pet
         return redirect('tracktivityPetsWebsite:pet_selection')
-        
-    success, data = utils.update_user_fitbit(request)
-    
-    if not success and data == 103:# :103: Fitbit authentication credentials are invalid and have been removed.
-        return redirect('tracktivityPetsWebsite:fitbit_link')
-    if not success:
-        if data is 101 or data is 102 or data is 104:
-            logger.error("Response: %d" % data)
-        else:
-            logger.error("Response: %s" % data)
 
-        
     start_url = static('tracktivityPetsWebsite/images')
     
     current_pet = utils.get_current_pet(request.user)
@@ -54,17 +42,7 @@ def dashboard(request):
         experience_needed = next_level.experience_needed
     
     age = current_pet.get_age_in_days()
-    
-    error = "" 
-    
-    if not success:
-        error = data #get the error message
 
-        data = {}
-        data['experience_gained'] = -1
-        data['levels_gained'] = -1
-        data['stories'] = ''
-    
     happiness_data = current_pet.get_happiness_last_seven_days()
     experience_data = current_pet.get_all_accumulative_experience()
     

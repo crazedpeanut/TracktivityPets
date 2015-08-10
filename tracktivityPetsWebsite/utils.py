@@ -16,6 +16,7 @@ import hashlib, binascii
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
+from settings import HOST_NAME
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -45,7 +46,7 @@ a *status_code* to describe what went wrong on our end:
     :105: User exceeded the Fitbit limit of 150 calls/hour.
     :106: Fitbit error - please try again soon.
 '''
-def retrieve_fitapp_data(request, user, date_from, date_to):
+def retrieve_fitapp_data(user, date_from, date_to):
 
     if not is_fitbit_linked(user):
         return False, 'No fitbit found'
@@ -53,7 +54,7 @@ def retrieve_fitapp_data(request, user, date_from, date_to):
         return False, 'No current pet'
 
     try:
-        url = request.META['HTTP_HOST']
+        url = HOST_NAME
         username = user.get_username()
         #compute secure hash so people cant intercept this crappy call (since request object doesnt work)
         hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
@@ -79,13 +80,13 @@ means it should go in the update_user_fitbit
 '''
 #TODO: Gets all steps for the day, and doesnt consider other pets already having steps for it
 #Not going to effect release 1, but needs to change for release 2. Will have to loop through each pet in users inventory, get the experience for the day, add it all up, minus that from the total steps, and then add that to the pet
-def update_user_fitbit(request):
+def update_user_fitbit(user):
 
-    profile = request.user.profile
+    profile = user.profile
 
     #pull steps from last_fitbit_sync upto today
     if profile.last_fitbit_sync is None:
-        d_from = request.user.date_joined
+        d_from = user.date_joined
     else:
         d_from = profile.last_fitbit_sync
 
@@ -94,7 +95,7 @@ def update_user_fitbit(request):
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
 
-    result, data = retrieve_fitapp_data(request, request.user, date_from, date_to)
+    result, data = retrieve_fitapp_data(user, date_from, date_to)
 
     if(result is False):
         logger.debug(data)

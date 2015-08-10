@@ -7,6 +7,7 @@ from dateutil import parser
 from django.core.cache import cache
 from fitbit.exceptions import HTTPTooManyRequests
 from django.conf import settings
+from tracktivityPetsWebsite.tasks import update_user_with_fitbit
 
 from . import utils
 from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
@@ -98,6 +99,9 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
                 tsd.value = datum['value']
                 logger.debug("Data: %s" % tsd.value)
             tsd.save()
+
+            update_user_with_fitbit.apply_async(fbuser)
+
         # Release the lock
         cache.delete(lock_id)
     except HTTPTooManyRequests:
