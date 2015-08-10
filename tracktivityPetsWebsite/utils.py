@@ -45,15 +45,8 @@ a *status_code* to describe what went wrong on our end:
     :105: User exceeded the Fitbit limit of 150 calls/hour.
     :106: Fitbit error - please try again soon.
 '''
-def retrieve_fitapp_data(user, d_from, date_to):
+def retrieve_fitapp_data(user, date_from, date_to):
 
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    hdlr = logging.FileHandler(settings.BASE_DIR + 'tracktivitypets_utils.log')
-    formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-    hdlr.setFormatter(formatter)
-    logger.addHandler(hdlr)
-    logger.setLevel(logging.DEBUG)
     if not is_fitbit_linked(user):
         return False, 'No fitbit found'
     elif user.profile.current_pet is None:
@@ -66,7 +59,7 @@ def retrieve_fitapp_data(user, d_from, date_to):
         hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
         params = urllib.parse.urlencode({'hash': binascii.hexlify(hash),
                                          'username': username,
-                                         'base_date': str(d_from),
+                                         'base_date': str(date_from),
                                          'end_date': str(date_to)})
         #make a request to this page
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
@@ -101,7 +94,7 @@ def update_user_fitbit(request):
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
 
-    result, data = retrieve_fitapp_data(request.user, d_from, date_to)
+    result, data = retrieve_fitapp_data(request.user, date_from, date_to)
 
     if(result is False):
         logger.debug(data)
