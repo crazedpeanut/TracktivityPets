@@ -77,6 +77,8 @@ def dashboard(request):
     stories_unlocked = current_pet.get_unlocked_stories()
     stories_available = current_pet.get_stories_available()
 
+    error = ""
+
     return render(request, 'tracktivityPetsWebsite/dashboard/dashboard.html',  
                   {
                    "pet_name": pet_name,
