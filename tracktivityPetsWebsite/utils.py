@@ -93,7 +93,12 @@ def update_user_fitbit(request):
     now = datetime.datetime.now()
     date_to = now.strftime('%Y-%m-%d') #todays date in format yyyy-mm-dd
 
-    result, data_json = retrieve_fitapp_data(request.user, d_from, date_to)
+    result, data = retrieve_fitapp_data(request.user, d_from, date_to)
+
+    if(result is False):
+        logger.debug(data)
+
+    data_json = data
 
     if data_json['meta']['status_code'] != 100:#temp stuff for testing
         return False, data_json['meta']['status_code']#TODO: make this something useful
