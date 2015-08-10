@@ -3,7 +3,6 @@ import logging
 from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet
 from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
-import urllib.request #for fitbit http requests
 import urllib.parse
 import django
 from django.core.urlresolvers import reverse
