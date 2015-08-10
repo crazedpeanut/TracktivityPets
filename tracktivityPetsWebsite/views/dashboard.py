@@ -12,7 +12,7 @@ from django.conf import settings
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler(settings.BASE_DIR + 'tracktivitypets_dashboard.log')
+hdlr = logging.FileHandler(settings.BASE_DIR + '/tracktivitypets_dashboard.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
