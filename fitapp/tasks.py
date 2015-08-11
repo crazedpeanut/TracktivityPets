@@ -14,7 +14,7 @@ from .models import UserFitbit, TimeSeriesData, TimeSeriesDataType
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler(settings.BASE_DIR + '/tracktivitypets_celerylog.log')
+hdlr = logging.FileHandler(settings.LOG_LOCATION + '/tracktivitypets_fitapp_celerylog.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 
