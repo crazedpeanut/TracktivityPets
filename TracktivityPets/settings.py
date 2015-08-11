@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'fitapp',
     'djcelery',
     'tracktivityPetsWebsite',
-    "kombu.transport.django",
+#    "kombu.transport.django",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -144,8 +144,8 @@ import djcelery
 djcelery.setup_loader()
 
 #Broker settings
-#BROKER_URL='amqp://guest:guest@localhost:5672//'
-BROKER_URL = 'django://'
+BROKER_URL='amqp://guest:guest@localhost:5672//'
+#BROKER_URL = 'django://'
 #CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 
 '''
