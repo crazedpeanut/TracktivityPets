@@ -147,7 +147,7 @@ djcelery.setup_loader()
 BROKER_URL='amqp://guest:guest@localhost:5672//'
 #BROKER_URL = 'django://'
 #CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
-
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 '''
 BROKER_HOST = 'localhost'
 BROKER_PORT = 5672
