@@ -8,7 +8,7 @@ from django.core.cache import cache
 from django.conf import settings
 from django.contrib.auth.models import User
 from fitapp.models import UserFitbit
-from .utils import update_user_fitbit
+from tracktivityPetsWebsite.utils import update_user_fitbit
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
