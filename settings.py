@@ -13,8 +13,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-HOST_NAME = "tracktivitypets.me"
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -35,7 +33,7 @@ EMAIL_HOST_USER = 'john@johnkendall.net'
 EMAIL_HOST_PASSWORD = 'hx--xq5iRGYZ-I3MT9kdPg'
 EMAIL_PORT = 587
 
-
+HOST_NAME = "tracktivitypets.me"
 # Application definition
 
 INSTALLED_APPS = (
@@ -48,6 +46,7 @@ INSTALLED_APPS = (
     'fitapp',
     'djcelery',
     'tracktivityPetsWebsite',
+    #    "kombu.transport.django",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,7 +124,7 @@ LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"
 
 FITAPP_SUBSCRIBE = True
-FITAPP_SUBSCRIBER_ID = 1
+FITAPP_SUBSCRIBER_ID = "1"
 
 APPEND_SLASH = True
 
@@ -145,8 +144,10 @@ import djcelery
 djcelery.setup_loader()
 
 #Broker settings
-BROKER_HOST = 'localhost'
-BROKER_PORT = 5672
-BROKER_USER = 'guest'
-BROKER_PASSWORD = 'guest'
-BROKER_VHOST= '/'
+BROKER_URL='amqp://guest:guest@localhost:5672//'
+
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+#Logging options
+#LOG_LOCATION = BASE_DIR
+LOG_LOCATION = "/var/log/TracktivityPets/"

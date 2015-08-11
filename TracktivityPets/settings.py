@@ -12,6 +12,7 @@ docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+HOST_NAME = "tracktivitypets.me"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -145,16 +146,8 @@ djcelery.setup_loader()
 
 #Broker settings
 BROKER_URL='amqp://guest:guest@localhost:5672//'
-#BROKER_URL = 'django://'
-#CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-'''
-BROKER_HOST = 'localhost'
-BROKER_PORT = 5672
-BROKER_USER = 'guest'
-BROKER_PASSWORD = 'guest'
-BROKER_VHOST= '/'
-'''
 
 #Logging options
 #LOG_LOCATION = BASE_DIR

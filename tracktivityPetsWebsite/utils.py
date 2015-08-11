@@ -15,11 +15,11 @@ import hashlib, binascii
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
-from settings import HOST_NAME
+from settings import HOST_NAME, LOG_LOCATION
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler(settings.LOG_LOCATION + '/tracktivitypets_utils.log')
+hdlr = logging.FileHandler(LOG_LOCATION + '/tracktivitypets_utils.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
