@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'fitapp',
     'djcelery',
     'tracktivityPetsWebsite',
-    "kombu.transport.django",
+#    "kombu.transport.django",
 )
 
 MIDDLEWARE_CLASSES = (
