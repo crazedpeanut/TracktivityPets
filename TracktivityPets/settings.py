@@ -143,11 +143,14 @@ import djcelery
 djcelery.setup_loader()
 
 #Broker settings
+BROKER_URL='amqp://guest:guest@localhost:5672//'
+'''
 BROKER_HOST = 'localhost'
 BROKER_PORT = 5672
 BROKER_USER = 'guest'
 BROKER_PASSWORD = 'guest'
 BROKER_VHOST= '/'
+'''
 
 #Logging options
 #LOG_LOCATION = BASE_DIR
