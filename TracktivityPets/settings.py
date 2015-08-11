@@ -143,7 +143,10 @@ import djcelery
 djcelery.setup_loader()
 
 #Broker settings
-BROKER_URL='amqp://guest:guest@localhost:5672//'
+#BROKER_URL='amqp://guest:guest@localhost:5672//'
+BROKER_URL = 'django://'
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+
 '''
 BROKER_HOST = 'localhost'
 BROKER_PORT = 5672
