@@ -15,7 +15,7 @@
             {% endfor %}
         </div>
         
-        <div class="col-md-6 hidden-xs inventory_detail">
+        <div class="col-md-6 hidden-xs inventory_detail" id="selected_pet_{{ default_pet.pk }}">
             <div hidden id="selected_{{ default_pet.pk }}" > </div>
             <div class="row"><h2 class="col-centred" id="inventory_detail_header">{{ default_pet.name }}</h2></div>
             <div class="row"><img class="img-responsive col-centred" src="{{ default_pet.image }}" id="inventory_detail_image"></div>
@@ -47,9 +47,9 @@
         </div>
         
         
-        <div class="col-md-6 hidden-xs inventory_detail">
-            <div class="row"><h2 class="col-centred" id="inventory_scenery_detail_header">{{ default_scenery.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="inventory_detail_image"></div>
+        <div class="col-md-6 hidden-xs inventory_detail" id="selected_scenery_{{ default_scenery.pk}}">
+            <div class="row"><h2 class="col-centred" id="inventory_detail_scenery_header">{{ default_scenery.name }}</h2></div>
+            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="inventory_detail_scenery_image"></div>
             <div class="row" id="inventory_detail_scenery_description_div">
                 <p id="inventory_detail_scenery_description" class="col-xs-12 col-md-8 col-centred">
                      {{ default_scenery.description }}
@@ -74,9 +74,9 @@
         {% endfor %}
         </div>
 
-        <div class="col-md-6 hidden-xs inventory_detail">
-            <div class="row"><h2 class="col-centred" id="inventory_cosmetics_detail_header">{{ default_item.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_image"></div>
+        <div class="col-md-6 hidden-xs inventory_detail" id="selected_cosmetic_{{ default_item.pk }}">
+            <div class="row"><h2 class="col-centred" id="inventory_detail_cosmetics_header">{{ default_item.name }}</h2></div>
+            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
                 <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-md-8 col-centred">
                     {{ default_item.description }}

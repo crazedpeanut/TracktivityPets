@@ -101,6 +101,24 @@ class CollectedScenery(models.Model):
     
     def __str__(self):             
         return self.scenery.name
+    
+class Item(models.Model):
+    experience_to_unlock = models.IntegerField()
+    image_location = models.TextField(default="")
+    description = models.TextField(default="")
+    name = models.CharField(max_length=100)
+    cost = models.IntegerField()
+    
+    def __str__(self):             
+        return self.name
+
+class CollectedItem(models.Model):
+    item = models.ForeignKey(Item)
+    inventory = models.ForeignKey(Inventory)
+    equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
+    
+    def __str__(self):             
+        return self.item.name
 
 class Pet(models.Model):
     starter_level = models.ForeignKey(Level)
@@ -284,28 +302,6 @@ class Story(models.Model):
     level_unlocked = models.ForeignKey(Level)
     pet = models.ForeignKey(Pet)
     text = models.TextField(default="")
-  
-class Item(models.Model):
-    experience_to_unlock = models.IntegerField()
-    image_location = models.TextField(default="")
-    description = models.TextField(default="")
-    name = models.CharField(max_length=100)
-    cost = models.IntegerField()
-    
-    def __str__(self):             
-        return self.name
-
-class CollectedItem(models.Model):
-    item = models.ForeignKey(Item)
-    inventory = models.ForeignKey(Inventory)
-    equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
-    
-    def __str__(self):             
-        return self.item.name
-
-class Usable(models.Model):
-    pet_usable_on = models.ForeignKey(Pet)
-    item_to_use = models.ForeignKey(Item)
 
 class MicroChallenge(models.Model):
     name = models.CharField(max_length=100)

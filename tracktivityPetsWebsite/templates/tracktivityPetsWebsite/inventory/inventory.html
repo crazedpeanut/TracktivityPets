@@ -12,7 +12,7 @@
     	
     	var modalScreenWidth = 768;
     	
-        $("#pets > div").click(function(event) 
+        $("#pets > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
             
@@ -22,16 +22,15 @@
                     var obj = JSON.parse(data);
                     $("#inventory_detail_header").html(obj.name);                    
                     $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
-                    $("#inventory_detail_extra_one").html("Level " + obj.level);
+                    $("#inventory_detail_pet_level").html("Level " + obj.level);
                     $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Level " + obj.level); 
                     $("#inventory_detail_pet_description").html(obj.story);
                     $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.story);
                     $("#inventory_detail_image").attr("src", obj.image);
                     $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
-                    $("#inventory_detail_extra_two").html(obj.age + " Days Old");
+                    $("#inventory_detail_pet_age").html(obj.age + " Days Old");
                     $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(obj.age + " Days Old");
-                    $("div[id*='selected_']").attr("id", "selected_" + id);
-                    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Rename</button><button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" type="button">Activate!</button>');
+                    $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
             })
             .fail(function() {
 
@@ -43,38 +42,34 @@
             });
         });
         
-        $("#cosmetics > div").click(function(event) 
+        $("#cosmetics > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
             
             $.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_item' %}" + id)
                 .done(function(data) {
                     
-                    
                     var obj = JSON.parse(data);
-                    $("#inventory_detail_header").html(obj.name);                    
+                    $("#inventory_detail_cosmetics_header").html(obj.name);                    
                     $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
-                    $("#inventory_detail_extra_one").html("Equipped on: " + obj.equipped_on);
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Equipped on: " + obj.equipped_on); 
-                    $("#inventory_detail_pet_description").html(obj.description);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html(''); 
+                    $("#inventory_detail_cosmetics_description").html(obj.description);
                     $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
-                    $("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_cosmetics_image").attr("src", obj.image);
                     $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
-                    $("#inventory_detail_extra_two").html('');
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(" ");
-                    $("div[id*='selected_']").attr("id", "selected_" + id);
-                    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Unequip!</button><button class="btn btn-lg btn-primary col-md-3 col-centred equip_button" type="button">Equip!</button>');
+                    $("div[id*='selected_cosmetic_']").attr("id", "selected_cosmetic_" + id);
             })
             .fail(function() {
             })
-            .always(function() {                                      
+            .always(function() {                                    
                 if (screen.width <= modalScreenWidth) {
                     $('#inventory_detail_modal').modal('show');                            
                 }
+                
             });
         });
         
-        $("#scenery > div").click(function(event) 
+        $("#scenery > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
             
@@ -82,19 +77,16 @@
                 .done(function(data) {
 
                     var obj = JSON.parse(data);
-                    $("#inventory_detail_header").html(obj.name);                    
+                    $("#inventory_detail_scenery_header").html(obj.name);  
+                    $("#inventory_detail_scenery_description").html(obj.description);                   
                     $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
-                    $("#inventory_detail_extra_one").html("Equipped on: " + obj.equipped_on);
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Equipped on: " + obj.equipped_on); 
-                    $("#inventory_detail_pet_description").html(obj.description);
+                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html(''); 
                     $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
-                    $("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_scenery_image").attr("src", obj.image);
                     $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
-                    $("#inventory_detail_extra_two").html('');
                     $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(" ");
-                    $("div[id*='selected_']").attr("id", "selected_" + id);
-                    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Unequip!</button><button class="btn btn-lg btn-primary col-md-3 col-centred equip_button" type="button">Equip!</button>');
-            
+                    $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);
+                    
             })
             .fail(function() {
             })
@@ -106,18 +98,19 @@
         });
         
         $(".activate_pet_button" ).click(function() {
-            var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
+            var id = $("div[id*='selected_pet_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
+            alert(id);
             $.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
                 .done(function(data) {
-                    
+                    alert(data);
                     if(data === "False")
-                        alert("Failed");
+                        alert("Failed to Activate.");
                     else
                         alert("Successfully Activated");
                     
             })
             .fail(function() {
-
+			alert("failed");
             })
             .always(function() {
             
@@ -125,10 +118,9 @@
         });
         
         $(".activate_scenery_button" ).click(function() {
-            var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
+            var id = $("div[id*='selected_scenery_']").attr("id").split("_")[2]; //unpurchased_x becomes x
             $.ajax( "{% url 'tracktivityPetsWebsite:set_current_scenery' %}" + id)
                 .done(function(data) {
-                    
                     if(data === "False")
                         alert("Failed");
                     else
@@ -136,7 +128,6 @@
                     
             })
             .fail(function() {
-				alert("failed")
             })
             .always(function() {
             
