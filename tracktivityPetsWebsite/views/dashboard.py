@@ -76,6 +76,8 @@ def dashboard(request):
     
     stories_unlocked = current_pet.get_unlocked_stories()
     stories_available = current_pet.get_stories_available()
+    
+    scenery_image = current_pet.get_current_scenery_image()
 
     error = ""
 
@@ -88,6 +90,7 @@ def dashboard(request):
                    "mood": mood,
                    "level_data": level_data,
                    "age": age,
+                   "scenery_image": scenery_image,
                    #"experience_gained": data['experience_gained'],
                    #"levels_gained": data['levels_gained'],
                    "error": error,

@@ -217,6 +217,11 @@ class CollectedPet(models.Model):
     
     def set_name(self, name):
         self.name = name
+        
+    def get_current_scenery_image(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        image_location = self.scenery.scenery.image_location
+        return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
     
 
 class Profile(models.Model):
@@ -293,7 +298,7 @@ class Item(models.Model):
 class CollectedItem(models.Model):
     item = models.ForeignKey(Item)
     inventory = models.ForeignKey(Inventory)
-    equipped_on = models.ForeignKey(CollectedPet, null=True)
+    equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
     
     def __str__(self):             
         return self.item.name
