@@ -212,7 +212,12 @@ def register_pet_selection(user, pet, name):
             level = Level.objects.get(level=1) #dodgy code, but can presume level 1 will always exist
             now = datetime.datetime.now()
             profile = Profile.objects.get(user=user) #should change this to form of user.profile, but it doesnt seem to work 
-            collected_pet = CollectedPet.objects.create(pet=pet, inventory=profile.inventory, level=level, name=name, date_created=now) #create new collected pet
+            
+            scenery = Scenery.objects.get(name="Trees")
+            collected_scenery = CollectedScenery.objects.create(scenery=scenery, inventory=profile.inventory)
+            collected_scenery.save()#these 3 lines of code are untested
+            
+            collected_pet = CollectedPet.objects.create(pet=pet, inventory=profile.inventory, level=level, name=name, date_created=now, scenery=collected_scenery) #create new collected pet
             collected_pet.save()
             profile.current_pet = collected_pet #link it to user.profile.current_pet 
             profile.save()
