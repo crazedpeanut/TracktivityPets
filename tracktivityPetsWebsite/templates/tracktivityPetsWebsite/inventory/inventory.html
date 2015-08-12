@@ -105,7 +105,7 @@
             });
         });
         
-        $(".activate_button" ).click(function() {
+        $(".activate_pet_button" ).click(function() {
             var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
             $.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
                 .done(function(data) {
@@ -118,6 +118,25 @@
             })
             .fail(function() {
 
+            })
+            .always(function() {
+            
+            });
+        });
+        
+        $(".activate_scenery_button" ).click(function() {
+            var id = $("div[id*='selected_']").attr("id").split("_").pop(); //unpurchased_x becomes x
+            $.ajax( "{% url 'tracktivityPetsWebsite:set_current_scenery' %}" + id)
+                .done(function(data) {
+                    
+                    if(data === "False")
+                        alert("Failed");
+                    else
+                        alert("Successfully Activated");
+                    
+            })
+            .fail(function() {
+				alert("failed")
             })
             .always(function() {
             

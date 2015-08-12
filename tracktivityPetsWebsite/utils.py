@@ -277,6 +277,14 @@ def set_current_pet(user, owned_pet):
             return True
     except:
         return False
+    
+def set_current_scenery(collected_pet, collected_scenery):
+    try:
+        collected_pet.scenery = collected_scenery
+        collected_pet.save()
+        return True
+    except:
+        return False
 
 def get_user(request):
     return request.user

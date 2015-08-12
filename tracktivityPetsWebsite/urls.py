@@ -25,5 +25,6 @@ urlpatterns = patterns('',
     url(r'^view_purchased_item/(?P<item_index>[0-9]+)/$', views.view_purchased_item, name='view_purchased_item'),
     url(r'^view_purchased_scenery/$', views.view_purchased_scenery, name='view_purchased_scenery'),
     url(r'^view_purchased_scenery/(?P<scenery_index>[0-9]+)/$', views.view_purchased_scenery, name='view_purchased_scenery'),
-    
+    url(r'^set_current_scenery/$', views.set_current_scenery, name='set_current_scenery'),
+    url(r'^set_current_scenery/(?P<scenery_index>[0-9]+)/$', views.set_current_scenery, name='set_current_scenery'),
 )
