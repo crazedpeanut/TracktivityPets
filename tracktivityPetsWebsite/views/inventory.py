@@ -77,7 +77,6 @@ def inventory(request, tab=""):
             details_item['description'] = "Items havent been given a description yet"
             details_item['image'] = "TODO"
             details_item['pk'] = default_item.item.pk
-            details_item["equipped_on"] = default_item.equipped_on
         except Exception as e:
             details_item = {}
             
@@ -90,7 +89,6 @@ def inventory(request, tab=""):
             details_scenery['description'] = default_scenery.scenery.description
             details_scenery['image'] = default_scenery.scenery.get_image_path()
             details_scenery['pk'] = default_scenery.scenery.pk
-            details_scenery["equipped_on"] = default_scenery.equipped_on
         except Exception as e:
             default_scenery = {}
         

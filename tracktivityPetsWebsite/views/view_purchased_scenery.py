@@ -25,6 +25,7 @@ def view_purchased_scenery(request, scenery_index=""):
         owns_scenery = True
     except Exception as e:
         owns_scenery = False
+        return HttpResponse(str(e))
 
     
     if owns_scenery:
@@ -37,10 +38,9 @@ def view_purchased_scenery(request, scenery_index=""):
             details['description'] = default_scenery.scenery.description
             details['image'] = default_scenery.scenery.get_image_path()
             details['pk'] = default_scenery.scenery.pk
-            details["equipped_on"] = default_scenery.equipped_on
         except Exception as e:
             details = str(e)
             
         return HttpResponse(json.dumps(details))
     else:
-        return HttpResponse("")
+        return HttpResponse(scenery.name)

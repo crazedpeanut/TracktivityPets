@@ -202,7 +202,7 @@ def register_user(first_name=None, last_name=None, email=None, username=None, pa
             
         
 
-''' Used for when a user picks their first pet. Creates a new current pet and assigns it to the user '''
+''' Used for when a user picks their first pet. Creates a new current pet and assigns it to the user (and default scenery)'''
 #TODO: Untested
 def register_pet_selection(user, pet, name):
     if user.profile.current_pet is not None:
@@ -212,7 +212,12 @@ def register_pet_selection(user, pet, name):
             level = Level.objects.get(level=1) #dodgy code, but can presume level 1 will always exist
             now = datetime.datetime.now()
             profile = Profile.objects.get(user=user) #should change this to form of user.profile, but it doesnt seem to work 
-            collected_pet = CollectedPet.objects.create(pet=pet, inventory=profile.inventory, level=level, name=name, date_created=now) #create new collected pet
+            
+            scenery = Scenery.objects.get(name="Trees")
+            collected_scenery = CollectedScenery.objects.create(scenery=scenery, inventory=profile.inventory)
+            collected_scenery.save()#these 3 lines of code are untested
+            
+            collected_pet = CollectedPet.objects.create(pet=pet, inventory=profile.inventory, level=level, name=name, date_created=now, scenery=collected_scenery) #create new collected pet
             collected_pet.save()
             profile.current_pet = collected_pet #link it to user.profile.current_pet 
             profile.save()
@@ -265,11 +270,19 @@ def get_current_pet(user):
 def set_current_pet(user, owned_pet):
     try:
         num_pets = CollectedPet.objects.filter(inventory=user.profile.inventory)
-        if(num_pets.count > 0):
+        if(num_pets.count() > 0):
             pet_swap = PetSwap(from_pet=user.profile.current_pet, to_pet=owned_pet)
             user.profile.current_pet = owned_pet
             user.profile.save()
             return True
+    except:
+        return False
+    
+def set_current_scenery(collected_pet, collected_scenery):
+    try:
+        collected_pet.scenery = collected_scenery
+        collected_pet.save()
+        return True
     except:
         return False
 
