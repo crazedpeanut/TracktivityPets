@@ -1,0 +1,112 @@
+<!-- challenges_list_detail.html: Sub-template that handles displaying each kind of challenge in a list format, along with its detail view -->
+{% load staticfiles %}
+
+<div class="collection_window container tab-content col-xs-12">
+    <!-- Available challenges tab -->
+    <div class="tab-pane fade in active" id="available">
+        <div class="collection_view_desktop col-xs-12 col-md-4">
+            <h4>Choose a Challenge!</h4>             
+            <div class="available_challenge" id="">                
+                <a href="#">Stretch Your Legs</a>
+            </div>
+            <div class="available_challenge" id="">                
+                <a href="#">Get a Wriggle On</a>
+            </div>
+            <div class="available_challenge" id="">                
+                <a href="#">Are you Swag Enough?</a>
+            </div>
+        </div>        
+        
+        <div class="detail_view_desktop col-md-8 hidden-xs">
+            <div class="row"><h2 class="col-centred" id="challenge_detail_header">Stretch Your Legs</h2></div>
+            <div class="row"><img class="img-responsive col-centred col-xs-4" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" id="challenge_detail_image"></div>
+            <div class="row" id="challenge_detail_description_div">
+                <p id="challenge_detail_description" class="col-xs-12 col-md-8 col-centred">
+                    My milkshake brings all the boys to the yard, and they're like, "This is all completely static images and text", damn right, it's all completely static images
+                    and text, I could fix it but I'd have to charge
+                </p>
+            </div>
+            
+            <h5>Completion Requirements and Rewards (currently not showing Pet Penny rewards)</h5>
+            <div class="available_challenge_rewards">
+                <p>Bronze: Take 500 steps in one hour</p>
+                <p>Silver: Take 800 steps in one hour</p>
+                <p>Gold: Take 1000 steps in one hour</p>
+            </div>            
+            <div class="row col-centred" id="challenge_detail_buttons">
+                <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Accept</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Current challenges tab -->
+    <div class="tab-pane fade" id="current">
+        <div class="collection_view_desktop col-xs-12 col-md-4">
+            <h4>Your Currently Active Challenges:</h4>             
+            <div class="active_challenge" id="">                
+                <a href="#">The Tortoise and the Hare</a>
+            </div>
+            <div class="active_challenge" id="">                
+                <a href="#">I scream you scream we all scream for...jogging</a>
+            </div>   
+            <div class="active_challenge" id="">                
+                <a href="#">Turbo-Charged</a>
+            </div>           
+        </div>        
+        
+        <div class="detail_view_desktop col-md-8 hidden-xs">
+            <div class="row"><h2 class="col-centred" id="challenge_detail_header">The Tortoise and the Hare</h2></div>
+            <div class="row"><img class="img-responsive col-centred col-xs-4" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" id="challenge_detail_image"></div>
+            <div class="row" id="challenge_detail_description_div">
+                <p id="challenge_detail_description" class="col-xs-12 col-md-8 col-centred">
+                    My milkshake brings all the boys to the yard, and they're like, "This is all completely static images and text", damn right, it's all completely static images
+                    and text, I could fix it but I'd have to charge
+                </p>
+            </div>            
+            
+            <p>Your progress: 1,000 of 10,000 Steps</p>
+            <div class="progress">                
+                <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                10%
+                </div>
+            </div>
+                     
+            <div class="row col-centred" id="challenge_reward">
+                <h4>Reward for completion:</h4>
+                <p>(Pet Penny Image) x 20</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Completed challenges tab -->
+    <div class="tab-pane fade" id="completed">
+        <div class="collection_view_desktop col-xs-12 col-md-4">
+            <h4>Your Completed Challenges:</h4>             
+            <div class="completed_challenge" id="">                
+                <a href="#">Tired...so tired</a>
+            </div>
+            <div class="completed_challenge" id="">                 
+                <a href="#">Exercise is the bomb</a>
+            </div>   
+            <div class="completed_challenge" id="">                
+                <a href="#">How Dank Was That Walk</a>
+            </div>           
+        </div>        
+        
+        <div class="detail_view_desktop col-md-8 hidden-xs">
+            <div class="row"><h2 class="col-centred" id="challenge_detail_header">Tired...so tired</h2></div>
+            <div class="row"><img class="img-responsive col-centred col-xs-4" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" id="challenge_detail_image"></div>
+            <div class="row" id="challenge_detail_description_div">
+                <p id="challenge_detail_description" class="col-xs-12 col-md-8 col-centred">
+                    My milkshake brings all the boys to the yard, and they're like, "This is all completely static images and text", damn right, it's all completely static images
+                    and text, I could fix it but I'd have to charge
+                </p>
+            </div>            
+            
+            <div class="row col-centred" id="challenge_reward">
+                <h4>Your reward for this challenge was:</h4>
+                <p>(Pet Penny Image) x 20</p>
+            </div>
+        </div>
+    </div>
+</div>

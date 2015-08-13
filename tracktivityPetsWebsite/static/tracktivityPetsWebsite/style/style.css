@@ -524,16 +524,16 @@ width: 75%;
 
 /*********************************************************************** Inventory and Store Page Style ******************************************************/
 
-#inventory_tabs, #store_tabs, #challenges_tabs, #inventory_pet p, #inventory_detail_header, .inventory_detail, .inventory_detail p
+.tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p
 {
     text-align: center;
 }
 
-#inventory_tabs, #store_tabs, #challenges_tabs {
+.tabs, {
     margin-bottom: 1%;
 }
 
-#inventory_window {
+.collection_window {
     padding-top: 15px;
     border: 1px solid black;
     background: white;     
@@ -567,7 +567,7 @@ p#inventory_detail_pet_description {
         and (max-device-width: 667px) 
         and (-webkit-min-device-pixel-ratio: 2)
 {    
-    #collected, #scenery, #cosmetics
+    #pets, #scenery, #cosmetics, #available, #current, #completed
     {
         min-height: 320px;
     }   
@@ -578,12 +578,7 @@ p#inventory_detail_pet_description {
     and (min-device-width: 668px)
     and (max-device-width: 5120px)
 {    
-    .inventory_grid
-    {
-        min-height: 600px;
-        max-height: 600px;
-    }   
-    .inventory_detail
+    .collection_view_desktop
     {
         min-height: 600px;
         max-height: 600px;
