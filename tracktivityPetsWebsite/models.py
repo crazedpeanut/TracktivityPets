@@ -101,24 +101,6 @@ class CollectedScenery(models.Model):
     
     def __str__(self):             
         return self.scenery.name
-    
-class Item(models.Model):
-    experience_to_unlock = models.IntegerField()
-    image_location = models.TextField(default="")
-    description = models.TextField(default="")
-    name = models.CharField(max_length=100)
-    cost = models.IntegerField()
-    
-    def __str__(self):             
-        return self.name
-
-class CollectedItem(models.Model):
-    item = models.ForeignKey(Item)
-    inventory = models.ForeignKey(Inventory)
-    equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
-    
-    def __str__(self):             
-        return self.item.name
 
 class Pet(models.Model):
     starter_level = models.ForeignKey(Level)
@@ -241,7 +223,24 @@ class CollectedPet(models.Model):
         image_location = self.scenery.scenery.image_location
         return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
     
+class Item(models.Model):
+    experience_to_unlock = models.IntegerField()
+    image_location = models.TextField(default="")
+    description = models.TextField(default="")
+    name = models.CharField(max_length=100)
+    cost = models.IntegerField()
+    
+    def __str__(self):             
+        return self.name
 
+class CollectedItem(models.Model):
+    item = models.ForeignKey(Item)
+    inventory = models.ForeignKey(Inventory)
+    equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
+    
+    def __str__(self):             
+        return self.item.name
+    
 class Profile(models.Model):
     user = models.OneToOneField(User)
     inventory = models.OneToOneField(Inventory)  
@@ -328,6 +327,10 @@ class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
     to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
     time_swapped = models.DateTimeField(auto_now=True)
+    
+class Usable(models.Model):
+    pet_usable_on = models.ForeignKey(Pet)
+    item_to_use = models.ForeignKey(Item)
     
     
 
