@@ -26,7 +26,7 @@ LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 def update_user_with_fitbit(fitbit_user):
     """ Get the user's time series data """
 
-    logger.debug("Updating TracktivityPets local db: %s" % (str(fitbit_user)))
+    logger.debug("Updating TracktivityPets local db: %s" % (fitbit_user))
 
     # Create a lock so we don't try to run the same task multiple times
     lock_id = '{0}-lock-{1}'.format(__name__, fitbit_user)
