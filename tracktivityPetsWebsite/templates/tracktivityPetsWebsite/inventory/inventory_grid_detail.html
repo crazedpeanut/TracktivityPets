@@ -39,7 +39,7 @@
         {% for key, value in collected_scenery.items %}
             <div class="col-xs-6" class="inventory_items" id="scenery_{{ value.pk }}">
                 <button class="inventory_button">
-                <img class="img-responsive  img-circle" src="{{ value.image }}">
+                <img class="img-responsive img-thumbnail" src="{{ value.image }}">
                 <p class="scenery_description">{{ key }}</p>
                 </button>            
             </div>

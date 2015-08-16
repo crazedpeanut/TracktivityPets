@@ -522,7 +522,7 @@ width: 75%;
 	border: 1px solid black;
 }
 
-/*********************************************************************** Inventory and Store Page Style ******************************************************/
+/*********************************************************************** Inventory, Store and Challenges Pages Style ******************************************************/
 
 .tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p
 {
@@ -557,7 +557,7 @@ width: 75%;
     overflow: auto;
 }
 
-p#inventory_detail_pet_description {
+p#inventory_detail_pet_description, #challenge_detail_description {
     text-align: justify;
 }
 
@@ -583,6 +583,36 @@ p#inventory_detail_pet_description {
         min-height: 600px;
         max-height: 600px;
     }
+}
+
+#challenge_detail_container {
+    border: 1px solid black;
+    height: 585px;
+}
+
+#challenge_subdetail {
+    height: 530px;
+    padding-top: 5%;
+    text-align: center;
+}
+
+#challenge_img_title {
+    height: 400px;
+    margin-top: 15%;
+}
+
+#challenge_img_subhead {
+    margin-top: 15%;
+}
+
+#challenge_detail_description {
+    margin-top: 5%;
+    height: 200px;
+    overflow: auto;
+}
+
+.available_challenge_rewards {
+    margin-top: 7%;
 }
 
 /*************************************************************************** End of Inventory Style ********************************************************************************/
