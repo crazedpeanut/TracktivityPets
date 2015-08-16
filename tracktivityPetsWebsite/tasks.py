@@ -8,7 +8,7 @@ from django.core.cache import cache
 from django.conf import settings
 from django.contrib.auth.models import User
 from fitapp.models import UserFitbit
-from tracktivityPetsWebsite.utils import update_user_fitbit
+from tracktivityPetsWebsite.utils import update_user_fitbit, update_user_challenges
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -40,6 +40,8 @@ def update_user_with_fitbit(fitbit_user):
 
         for fbuser in fbusers:
             update_user_fitbit(fbuser.user)
+            update_user_challenges(fbuser.user)
+
 
         send_mail("Fitbit update for user: %s" % (fitbit_user), "", "john@johnkendall.net", ["john@johnkendall.net"] )
 
