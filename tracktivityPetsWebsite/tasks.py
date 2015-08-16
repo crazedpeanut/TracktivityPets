@@ -28,18 +28,22 @@ def update_user_with_fitbit(fitbit_user):
 
     logger.debug("Updating TracktivityPets local db: %s" % (fitbit_user))
 
-    # Create a lock so we don't try to run the same task multiple times
-    lock_id = '{0}-lock-{1}'.format(__name__, fitbit_user)
-    if not cache.add(lock_id, 'true', LOCK_EXPIRE):
-        logger.debug('Already updating fitbit name: %s' % (fitbit_user))
-        raise Ignore()
+    try:
 
-    fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
+        # Create a lock so we don't try to run the same task multiple times
+        lock_id = '{0}-lock-{1}'.format(__name__, fitbit_user)
+        if not cache.add(lock_id, 'true', LOCK_EXPIRE):
+            logger.debug('Already updating fitbit name: %s' % (fitbit_user))
+            raise Ignore()
 
-    for fbuser in fbusers:
-        update_user_fitbit(fbuser.user)
+        fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
 
-    send_mail("Fitbit update for user: %s" % (fitbit_user), "", "john@johnkendall.net", ["john@johnkendall.net"] )
+        for fbuser in fbusers:
+            update_user_fitbit(fbuser.user)
 
-    #release lock
-    cache.delete(lock_id)
+        send_mail("Fitbit update for user: %s" % (fitbit_user), "", "john@johnkendall.net", ["john@johnkendall.net"] )
+
+        #release lock
+        cache.delete(lock_id)
+    except Exception as e:
+        logger.debug(e)
