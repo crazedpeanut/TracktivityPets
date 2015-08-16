@@ -297,7 +297,8 @@ def generate_pet_image_url(pet, image_location):
     start_url = static('tracktivityPetsWebsite/images')
     return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
-
+def update_user_challenges(user):
+    logger.debug("Updating user challenges")
 
 
 
