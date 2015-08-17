@@ -1,0 +1,50 @@
+<!-- challenges_modal.html: Sub-template that handles the pop-up (modal) detail view on mobile devices. -->
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="challenges_detail_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">This Is An Available Challenge!</h4>
+                </div>
+                <div class="modal-body">                    
+                    <p id="challenge_detail_description">This is where all the text for the available challenge will go!
+                    This is where all the text for the available challenge will go! This is where all the text for the available challenge will go!</p>                    
+                </div>
+                <div id="available_challenge_rewards">                                 
+                        <table class="table available_challenge_rewards">    
+                        <tbody>
+                            <tr>
+                                <td>Bronze</td>
+                                <td id="bronze_req">Take 500 steps in one hour</td>
+                                <td id="bronze_reward">P x 5</td>
+                            </tr>
+                            <tr>
+                                <td>Silver</td>
+                                <td id="silver_req">Take 800 steps in one hour</td>
+                                <td id="silver_reward">P x 10</td>
+                            </tr>
+                            <tr id="gold">
+                                <td>Gold</td>
+                                <td id="gold_req">Take 1000 steps in one hour</td>
+                                <td id="gold_reward">P x 20</td>
+                            </tr>
+                            </tbody>
+                      </table>
+                </div>
+                <div id="completed_challenge_reward">
+                    <h5>Your reward for this challenge was:</h5>
+                        <p id="completed_challenge_reward">[Gold Trophy] P x 20</p>
+                        <h5>You completed the challenge on:</h5>
+                        <p id="completed_challenge_date">16 August, 2015</p>
+                        <h3 id="challenge_feedback">Congratulations, you're awesome!</h5>
+                </div>                  
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="btn btn-default activate_button" data-dismiss="modal" id="challenge_accept_btn">Accept!</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 

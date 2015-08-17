@@ -1,0 +1,65 @@
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}
+    {% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
+
+{% block content_block %}
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {        
+        var modalScreenWidth = 768;
+        
+        $("#avail_challenges > a").click(function(event) 
+        {
+            if (screen.width <= modalScreenWidth)
+            {
+                $("#challenges_detail_modal").find("#challenge_accept_btn").show();
+                $("#challenges_detail_modal").find("#available_challenge_rewards").show();
+                $("#challenges_detail_modal").find("#completed_challenge_reward").hide();
+                $('#challenges_detail_modal').modal('show');                            
+            }
+        })
+        
+        $("#current_challenges > a").click(function(event) 
+        {
+            if (screen.width <= modalScreenWidth)
+            {
+                $("#challenges_detail_modal").find(".modal-title").html("This is a current challenge");
+                $("#challenges_detail_modal").find("#challenge_accept_btn").hide();
+                $("#challenges_detail_modal").find("#available_challenge_rewards").show();
+                $("#challenges_detail_modal").find("#completed_challenge_reward").hide();
+                $('#challenges_detail_modal').modal('show');                            
+            }
+        })
+        
+        $("#completed_challenges > a").click(function(event) 
+        {
+            if (screen.width <= modalScreenWidth)
+            {
+                $("#challenges_detail_modal").find("#challenge_accept_btn").hide();
+                $("#challenges_detail_modal").find(".modal-title").html("This is a completed challenge");
+                $("#challenges_detail_modal").find("#completed_challenge_reward").show();
+                $("#challenges_detail_modal").find("#available_challenge_rewards").hide();
+                $('#challenges_detail_modal').modal('show');                            
+            }
+        })
+    })       
+</script>
+
+
+<div class="container" id="challenges_header">
+    <div class="row">
+        <img class="bubbletext_header col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4" src="{% static 'tracktivityPetsWebsite/images/challenges_text.png' %}">
+    </div>
+</div>
+
+<div class="container" id="challenges_container">
+    {% include 'tracktivityPetsWebsite/challenges/challenge_tabs.html' %}  
+    {% include 'tracktivityPetsWebsite/challenges/challenges_list_detail.html' %}
+    {% include 'tracktivityPetsWebsite/challenges/challenges_modal.html' %}         
+</div>   
+
+{% endblock content_block %}

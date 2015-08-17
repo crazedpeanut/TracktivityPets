@@ -522,18 +522,18 @@ width: 75%;
 	border: 1px solid black;
 }
 
-/*********************************************************************** Inventory and Store Page Style ******************************************************/
+/*********************************************************************** Inventory, Store and Challenges Pages Style ******************************************************/
 
-#inventory_tabs, #store_tabs, #challenges_tabs, #inventory_pet p, #inventory_detail_header, .inventory_detail, .inventory_detail p
+.tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p
 {
     text-align: center;
 }
 
-#inventory_tabs, #store_tabs, #challenges_tabs {
+.tabs, {
     margin-bottom: 1%;
 }
 
-#inventory_window {
+.collection_window {
     padding-top: 15px;
     border: 1px solid black;
     background: white;     
@@ -557,7 +557,7 @@ width: 75%;
     overflow: auto;
 }
 
-p#inventory_detail_pet_description {
+p#inventory_detail_pet_description, #challenge_detail_description {
     text-align: justify;
 }
 
@@ -567,7 +567,7 @@ p#inventory_detail_pet_description {
         and (max-device-width: 667px) 
         and (-webkit-min-device-pixel-ratio: 2)
 {    
-    #collected, #scenery, #cosmetics
+    #pets, #scenery, #cosmetics, #available, #current, #completed
     {
         min-height: 320px;
     }   
@@ -578,16 +578,41 @@ p#inventory_detail_pet_description {
     and (min-device-width: 668px)
     and (max-device-width: 5120px)
 {    
-    .inventory_grid
-    {
-        min-height: 600px;
-        max-height: 600px;
-    }   
-    .inventory_detail
+    .collection_view_desktop
     {
         min-height: 600px;
         max-height: 600px;
     }
+}
+
+#challenge_detail_container {
+    border: 1px solid black;
+    height: 585px;
+}
+
+#challenge_subdetail {
+    height: 530px;
+    padding-top: 5%;
+    text-align: center;
+}
+
+#challenge_img_title {
+    height: 400px;
+    margin-top: 15%;
+}
+
+#challenge_img_subhead {
+    margin-top: 15%;
+}
+
+#challenge_detail_description {
+    margin-top: 5%;
+    height: 200px;
+    overflow: auto;
+}
+
+.available_challenge_rewards {
+    margin-top: 7%;
 }
 
 /*************************************************************************** End of Inventory Style ********************************************************************************/

@@ -1,9 +1,9 @@
-<!-- inventory_grid.html: Sub-template that handles displaying each collected pet in grid layout -->
+<!-- inventory_grid_detail.html: Sub-template that handles displaying each collected pet/item in grid layout with matching detail view -->
 {% load staticfiles %}
 
-<div class="container tab-content col-xs-12" id="inventory_window">
+<div class="collection_window container tab-content col-xs-12">
     <!-- Collected Pets Tab -->
-    <div class="tab-pane fade in active" id="pets">
+    <div class="collection_view_desktop tab-pane fade in active" id="pets">
         <div class="col-xs-12 col-md-6">
             {% for key, value in collected_pets.items %}
             <div class="col-xs-6" class="inventory_pet" id="collected_{{ value.pk }}">
@@ -15,7 +15,7 @@
             {% endfor %}
         </div>
         
-        <div class="col-md-6 hidden-xs inventory_detail" id="selected_pet_{{ default_pet.pk }}">
+        <div class="col-md-6 hidden-xs " id="selected_pet_{{ default_pet.pk }}">
             <div hidden id="selected_{{ default_pet.pk }}" > </div>
             <div class="row"><h2 class="col-centred" id="inventory_detail_header">{{ default_pet.name }}</h2></div>
             <div class="row"><img class="img-responsive col-centred" src="{{ default_pet.image }}" id="inventory_detail_image"></div>
@@ -34,12 +34,12 @@
     </div>
     
     <!-- Collected Scenery Tab -->
-    <div class="tab-pane fade" id="scenery">
+    <div class="collection_view_desktop tab-pane fade" id="scenery">
         <div class="col-xs-12 col-md-6">
         {% for key, value in collected_scenery.items %}
             <div class="col-xs-6" class="inventory_items" id="scenery_{{ value.pk }}">
                 <button class="inventory_button">
-                <img class="img-responsive  img-circle" src="{{ value.image }}">
+                <img class="img-responsive img-thumbnail" src="{{ value.image }}">
                 <p class="scenery_description">{{ key }}</p>
                 </button>            
             </div>
@@ -47,7 +47,7 @@
         </div>
         
         
-        <div class="col-md-6 hidden-xs inventory_detail" id="selected_scenery_{{ default_scenery.pk}}">
+        <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.pk}}">
             <div class="row"><h2 class="col-centred" id="inventory_detail_scenery_header">{{ default_scenery.name }}</h2></div>
             <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="inventory_detail_scenery_image"></div>
             <div class="row" id="inventory_detail_scenery_description_div">
@@ -62,7 +62,7 @@
     </div>
     
     <!-- Collected Cosmetics Tab -->
-    <div class="tab-pane fade" id="cosmetics">
+    <div class="collection_view_desktop tab-pane fade" id="cosmetics">
         <div class="col-xs-12 col-md-6">
         {% for key, value in collected_items.items %}
             <div class="col-xs-6" class="inventory_items" id="cosmetics_{{ value.pk }}">
@@ -74,7 +74,7 @@
         {% endfor %}
         </div>
 
-        <div class="col-md-6 hidden-xs inventory_detail" id="selected_cosmetic_{{ default_item.pk }}">
+        <div class="col-md-6 hidden-xs" id="selected_cosmetic_{{ default_item.pk }}">
             <div class="row"><h2 class="col-centred" id="inventory_detail_cosmetics_header">{{ default_item.name }}</h2></div>
             <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
