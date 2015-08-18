@@ -97,7 +97,7 @@ def get_time_series_data(fitbit_user, cat, resource, date=None):
                 tsd, created = TimeSeriesData.objects.get_or_create(
                     user=fbuser.user, resource_type=_type, date=date)
                 tsd.value = datum['value']
-                logger.debug("Data: %s" % tsd.value)
+                #logger.debug("Data: %s" % tsd.value)
             tsd.save()
 
             update_user_with_fitbit.delay(fbuser.fitbit_user)
