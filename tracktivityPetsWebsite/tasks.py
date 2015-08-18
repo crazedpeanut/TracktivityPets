@@ -24,7 +24,7 @@ LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 def update_user_with_fitbit(fitbit_user):
     """ Get the user's time series data """
 
-    logger.debug("Updating TracktivityPets local db: %s" % (fitbit_user))
+    logger.debug("Updating TracktivityPets local db for fitbit user: %s" % (fitbit_user))
 
     try:
 
@@ -39,6 +39,7 @@ def update_user_with_fitbit(fitbit_user):
         fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
 
         for fbuser in fbusers:
+            logger.debug("About to update TracktivityPets local db for TPets user: %s" % (fbuser.user.get_username()))
             update_user_fitbit(fbuser.user)
             update_user_challenges(fbuser.user)
 
