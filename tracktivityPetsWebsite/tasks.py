@@ -41,7 +41,7 @@ def update_user_with_fitbit(fitbit_user):
         for fbuser in fbusers:
             logger.debug("About to update TracktivityPets local db for TPets user: %s" % (fbuser.user.get_username()))
             update_user_fitbit(fbuser.user)
-            update_user_challenges(fbuser.user)
+            #update_user_challenges(fbuser.user)
 
         #release lock
         #cache.delete(lock_id)
