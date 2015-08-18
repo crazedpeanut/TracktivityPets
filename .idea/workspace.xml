@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="" />
+    <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
+    </list>
     <ignored path="TPetsProject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -22,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.64239484">
+              <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -48,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="300" column="42" selection-start-line="300" selection-start-column="42" selection-end-line="300" selection-end-column="42" />
+              <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -122,11 +125,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38996765">
-              <caret line="121" column="59" selection-start-line="121" selection-start-column="59" selection-end-line="121" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="131" column="51" selection-start-line="131" selection-start-column="51" selection-end-line="131" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -156,10 +159,10 @@
         <option value="$PROJECT_DIR$/fitapp/views.py" />
         <option value="$PROJECT_DIR$/fitapp/utils.py" />
         <option value="$PROJECT_DIR$/fitapp/tasks.py" />
-        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" />
-        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
         <option value="$PROJECT_DIR$/settings.py" />
         <option value="$PROJECT_DIR$/TracktivityPets/settings.py" />
+        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" />
+        <option value="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
       </list>
     </option>
   </component>
@@ -202,6 +205,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -363,8 +368,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1059,26 +1062,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="300" column="42" selection-start-line="300" selection-start-column="42" selection-end-line="300" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fitapp/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1109,9 +1092,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TracktivityPets/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38996765">
-          <caret line="121" column="59" selection-start-line="121" selection-start-column="59" selection-end-line="121" selection-end-column="59" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="131" column="51" selection-start-line="131" selection-start-column="51" selection-end-line="131" selection-end-column="51" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64239484">
+          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

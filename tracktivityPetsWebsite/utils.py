@@ -97,7 +97,7 @@ def update_user_fitbit(user):
     result, data = retrieve_fitapp_data(user, date_from, date_to)
 
     if(result is False):
-        logger.debug(data)
+        logger.debug("data dump: " + data)
 
     data_json = data
 
