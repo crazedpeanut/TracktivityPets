@@ -524,6 +524,18 @@ width: 75%;
 
 /*********************************************************************** Inventory, Store and Challenges Pages Style ******************************************************/
 
+.nav-tabs > li > a {
+    /* Override default Bootstrap tab style */
+    background: #DADADA;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li > a:hover, {
+    background: white;
+    border: 1px solid white;
+}
+
+
+
 .tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p
 {
     text-align: center;
@@ -535,7 +547,6 @@ width: 75%;
 
 .collection_window {
     padding-top: 15px;
-    border: 1px solid black;
     background: white;     
 }
 
