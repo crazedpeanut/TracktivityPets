@@ -18,8 +18,6 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
 
-from django.core.mail import send_mail
-
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 
 @shared_task
@@ -31,10 +29,12 @@ def update_user_with_fitbit(fitbit_user):
     try:
 
         # Create a lock so we don't try to run the same task multiple times
+        '''
         lock_id = '{0}-lock-{1}'.format(__name__, fitbit_user)
         if not cache.add(lock_id, 'true', LOCK_EXPIRE):
             logger.debug('Already updating fitbit name: %s' % (fitbit_user))
             raise Ignore()
+        '''
 
         fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
 
@@ -42,10 +42,7 @@ def update_user_with_fitbit(fitbit_user):
             update_user_fitbit(fbuser.user)
             update_user_challenges(fbuser.user)
 
-
-        send_mail("Fitbit update for user: %s" % (fitbit_user), "", "john@johnkendall.net", ["john@johnkendall.net"] )
-
         #release lock
-        cache.delete(lock_id)
+        #cache.delete(lock_id)
     except Exception as e:
         logger.debug(e)
