@@ -232,6 +232,7 @@ class Item(models.Model):
     description = models.TextField(default="")
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
+    #belongs_to = models.ForeignKey(Pet, null=True, default=1)
     
     def __str__(self):             
         return self.name
@@ -239,7 +240,8 @@ class Item(models.Model):
 class CollectedItem(models.Model):
     item = models.ForeignKey(Item)
     inventory = models.ForeignKey(Inventory)
-    equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
+    #equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
+    equipped = models.BooleanField(default=False)
     
     def __str__(self):             
         return self.item.name
@@ -330,11 +332,6 @@ class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
     to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
     time_swapped = models.DateTimeField(auto_now=True)
-    
-class Usable(models.Model):
-    pet_usable_on = models.ForeignKey(Pet)
-    item_to_use = models.ForeignKey(Item)
-    
     
 
 
