@@ -1,0 +1,68 @@
+[
+{
+    "pk": 1,
+    "fields": {
+        "experience_to_unlock": 0,
+        "description": "",
+        "name": "Hat",
+        "cost": 0,
+        "image_location": ""
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 2,
+    "fields": {
+        "experience_to_unlock": 0,
+        "description": "",
+        "name": "Sword",
+        "cost": 0,
+        "image_location": ""
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 3,
+    "fields": {
+        "experience_to_unlock": 0,
+        "description": "",
+        "name": "Pants",
+        "cost": 0,
+        "image_location": ""
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 4,
+    "fields": {
+        "experience_to_unlock": 0,
+        "description": "",
+        "name": "Hands",
+        "cost": 0,
+        "image_location": ""
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 5,
+    "fields": {
+        "experience_to_unlock": 0,
+        "description": "",
+        "name": "Glasses",
+        "cost": 0,
+        "image_location": ""
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 6,
+    "fields": {
+        "experience_to_unlock": 0,
+        "description": "",
+        "name": "Gun",
+        "cost": 0,
+        "image_location": ""
+    },
+    "model": "tracktivityPetsWebsite.item"
+}
+]

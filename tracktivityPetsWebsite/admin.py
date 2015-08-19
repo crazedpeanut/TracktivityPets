@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, Usable, CollectedItem, CollectedScenery
+from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, CollectedItem, CollectedScenery
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib import admin
@@ -103,16 +103,11 @@ None of this code seems to work
         
     
 #########################################
-
-class UsableInline(admin.TabularInline):
-    model = Usable
-    extra = 1
     
 class ItemAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
     ] 
-    inlines = [UsableInline]
     
 #########################################
 
