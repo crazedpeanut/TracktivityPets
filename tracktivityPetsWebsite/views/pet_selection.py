@@ -25,7 +25,7 @@ def pet_selection(request):
                 return redirect('tracktivityPetsWebsite:dashboard')
             else:
                 if error is not None:
-                    return HttpResponse(error)
+                    return HttpResponse("Error: " + error)
                 else:
                     return HttpResponse('You already have a pet, please contact admin')#this should never appear
             
