@@ -173,7 +173,7 @@ def update_user_fitbit(user):
         #render dashboard page
 
 def count_pet_swaps_for_day(day):
-    swaps = PetSwap.objects.filter(time_swapped__year=day.date.year, time_swapped__day=day.date.day, time_swapped__month=day.date.month)
+    swaps = PetSwap.objects.filter(time_swapped__year=day.year, time_swapped__day=day.day, time_swapped__month=day.month)
     return swaps.count()
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
