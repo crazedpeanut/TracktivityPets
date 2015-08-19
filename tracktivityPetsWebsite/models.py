@@ -217,11 +217,14 @@ class CollectedPet(models.Model):
     
     def set_name(self, name):
         self.name = name
-        
-    def get_current_scenery_image(self):
-        start_url = static('tracktivityPetsWebsite/images')
+
+def get_current_scenery_image(self):
+    start_url = static('tracktivityPetsWebsite/images')
+    try:
         image_location = self.scenery.scenery.image_location
-        return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
+    except:
+        image_location = ""
+    return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
     
 class Item(models.Model):
     experience_to_unlock = models.IntegerField()
