@@ -226,13 +226,20 @@ class CollectedPet(models.Model):
             image_location = ""
         return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
     
+class BodyPart(models.Model):
+    name = models.CharField(max_length=100)
+        
+    def __str__(self):             
+        return self.name
+    
 class Item(models.Model):
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
     description = models.TextField(default="")
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
-    #belongs_to = models.ForeignKey(Pet, null=True, default=1)
+    belongs_to = models.ForeignKey(Pet)
+    body_part = models.ForeignKey(BodyPart)
     
     def __str__(self):             
         return self.name

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, CollectedItem, CollectedScenery
+from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, CollectedItem, CollectedScenery, BodyPart
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib import admin
@@ -106,7 +106,7 @@ None of this code seems to work
     
 class ItemAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
+        (None,               {'fields': ['name', 'experience_to_unlock', 'cost', "belongs_to", "body_part"]}),
     ] 
     
 #########################################
@@ -117,6 +117,14 @@ class SceneryAdmin(admin.ModelAdmin):
     
 #########################################
 
+class BodyPartAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name']}),
+    ] 
+
+#########################################
+
+
 
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
@@ -124,6 +132,7 @@ admin.site.register(Mood, MoodAdmin)
 admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Scenery, SceneryAdmin)
+admin.site.register(BodyPart, BodyPartAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
