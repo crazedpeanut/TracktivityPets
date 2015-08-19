@@ -107,8 +107,8 @@ def update_user_fitbit(user):
     experience = 0
 
     for date in data_json['objects']: #terrible code reuse
-        
-        datetime_object = datetime.datetime.strptime(date['dateTime'])
+
+        datetime_object = datetime.datetime.strptime(date['dateTime'], '%Y-%m-%d')
         swap_counts = count_pet_swaps_for_day(datetime_object)
         swap_counts += 1
 
