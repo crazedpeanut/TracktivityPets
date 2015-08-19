@@ -112,6 +112,8 @@ def update_user_fitbit(user):
         swap_counts = count_pet_swaps_for_day(datetime_object)
         swap_counts += 1
 
+        logger.debug("Swap Count: " + swap_counts)
+
         if date['dateTime'] == date_from: #this day may already have data, if its synced multiple times a day, should do this a less exhaustive way though
             try:#update it
                 existing_experience = Experience.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
