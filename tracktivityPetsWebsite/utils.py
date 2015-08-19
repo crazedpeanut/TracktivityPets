@@ -112,8 +112,6 @@ def update_user_fitbit(user):
         swap_counts = count_pet_swaps_for_day(datetime_object)
         swap_counts += 1
 
-        logger.debug("Swap Count: " + swap_counts)
-
         if date['dateTime'] == date_from: #this day may already have data, if its synced multiple times a day, should do this a less exhaustive way though
             try:#update it
                 existing_experience = Experience.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
@@ -122,7 +120,7 @@ def update_user_fitbit(user):
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
                 happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
                 existing_happiness.amount = happiness
-                existing_experience.amount = date['value'] / swap_counts #Division of happiness and experience for pets active throughout day
+                existing_experience.amount = int(date['value']) / swap_counts #Division of happiness and experience for pets active throughout day
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
                 existing_experience.save()
                 existing_happiness.save()
