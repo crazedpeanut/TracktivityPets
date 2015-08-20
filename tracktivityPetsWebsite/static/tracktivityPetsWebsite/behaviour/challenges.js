@@ -12,7 +12,7 @@ function get_available_challenges()
         size++;
 
         chal = document.createElement("div");
-        chal.setAttribute("id", data[d]['fields']['name']);
+        chal.setAttribute("id", data[d]['pk']);
         chal.setAttribute("class", "list-group-item");
         chal.innerHTML = data[d]['fields']['name'];
         parent.appendChild(chal);
@@ -30,12 +30,12 @@ function get_available_challenges()
 
 function get_challenge_details()
 {
-    var challenge = this.innerHTML;
+    var challenge = this.getAttribute("id");
     alert(challenge);
     $.ajax({
         url:"get_challenge_details/",
         data:{
-            "challenge_name":challenge
+            "challenge_pk":challenge
         },
         type:"GET",
         success: function( data )
