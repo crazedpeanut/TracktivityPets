@@ -1,7 +1,6 @@
 from django.contrib import admin
-from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet
-from tracktivityPetsWebsite.models import Inventory, Item, Scenery, CollectedItem, CollectedScenery
-from tracktivityPetsWebsite.models import MicroChallenge, MicroChallengeGoal
+
+from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, CollectedItem, CollectedScenery, BodyPart, MicroChallenge, MicroChallengeGoal
 
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
@@ -109,7 +108,7 @@ None of this code seems to work
     
 class ItemAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'experience_to_unlock', 'cost']}),
+        (None,               {'fields': ['name', 'experience_to_unlock', 'cost', "belongs_to", "body_part"]}),
     ] 
     
 #########################################
@@ -120,6 +119,17 @@ class SceneryAdmin(admin.ModelAdmin):
     
 #########################################
 
+class BodyPartAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['name']}),
+    ] 
+
+#########################################
+
+class CollectedItemAdmin(admin.ModelAdmin):
+    fields = ('item', 'inventory', 'equipped')
+    
+#########################################
 
 class MicroChallengeAdmin(admin.ModelAdmin):
     fields = ('name', 'overview')
@@ -138,8 +148,14 @@ admin.site.register(Mood, MoodAdmin)
 admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Scenery, SceneryAdmin)
+admin.site.register(BodyPart, BodyPartAdmin)
 admin.site.register(MicroChallenge, MicroChallengeAdmin)
 admin.site.register(MicroChallengeGoal, MicroChallengeGoalAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+##### below are for TEST purposes only in admin, they can screw up if people link the wrong stuff
+admin.site.register(CollectedItem, CollectedItemAdmin)
+
+

@@ -28,6 +28,9 @@ urlpatterns = patterns('',
     url(r'^view_purchased_scenery/(?P<scenery_index>[0-9]+)/$', views.view_purchased_scenery, name='view_purchased_scenery'),
     url(r'^set_current_scenery/$', views.set_current_scenery, name='set_current_scenery'),
     url(r'^set_current_scenery/(?P<scenery_index>[0-9]+)/$', views.set_current_scenery, name='set_current_scenery'),
+    url(r'^equip_item/$', views.equip_item, name='equip_item'),
+    url(r'^equip_item/(?P<item_index>[0-9]+)/$', views.equip_item, name='equip_item'),
+    url(r'^equip_item/(?P<item_index>[0-9]+)/(?P<equip>[a-z]+)/$', views.equip_item, name='equip_item'),
     url(r'^challenges/get_available_challenges/$', views.get_available_challenge_names, name="get_available_challenges"),
     url(r'^challenges/get_challenge_details/(?P<challenge_pk>[0-9]+)/$', views.get_challenge_details, name="challenge_detail")
 )

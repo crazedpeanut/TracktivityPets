@@ -32,6 +32,21 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
     def get_owned_scenery_in_queryset(self, set):
         return CollectedScenery.objects.filter(inventory=self, scenery__in=set)
     
+    def get_collected_items_for_pet(self, pet):
+        all = self.get_owned_items()
+        data = []
+        for collected_item in all:
+            if collected_item.item.belongs_to == pet:
+                data.append(collected_item)
+        return data
+    
+    def is_item_owned_by_pet(self, pet, item):
+        owned = self.get_collected_items_for_pet(pet)
+        for i in owned:
+            if i.item == item:
+                return True
+        return False
+    
     def calculate_unpurchased_items(self, usable_items, owned_items):
         unpurchased_items = []
         for item in usable_items:#remove any items in usable_items that exist in owned_items, to get the ones that are unpurchased
@@ -226,16 +241,23 @@ class CollectedPet(models.Model):
             image_location = ""
         return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
     
+class BodyPart(models.Model):
+    name = models.CharField(max_length=100)
+        
+    def __str__(self):             
+        return self.name
+    
 class Item(models.Model):
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
     description = models.TextField(default="")
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
-    #belongs_to = models.ForeignKey(Pet, null=True, default=1)
+    belongs_to = models.ForeignKey(Pet)
+    body_part = models.ForeignKey(BodyPart)
     
     def __str__(self):             
-        return self.name
+        return self.belongs_to.default_name + ": " + self.name
 
 class CollectedItem(models.Model):
     item = models.ForeignKey(Item)
