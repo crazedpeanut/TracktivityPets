@@ -308,9 +308,19 @@ class Story(models.Model):
     text = models.TextField(default="")
 
 class MicroChallenge(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     overview = models.TextField(default="")
-    
+
+    def __str__(self):
+        return "Micro Challenge: " + self.name
+
+class MicroChallengeMedal(models.Model):
+    name = models.CharField(max_length=100)
+
+class MicroChallengeState(models.Model):
+    date_started = models.DateTimeField(auto_now=True)
+    steps = models.IntegerField()
+
 class UserMicroChallengeState(models.Model):
     state = models.ForeignKey(MicroChallengeState)
 
@@ -318,9 +328,11 @@ class UserMicroChallenge(models.Model):
     micro_challenge = models.ForeignKey(MicroChallenge)
     state = models.ForeignKey(UserMicroChallengeState)
     user = models.OneToOneField(User)
-    
-class MicroChallengeMedal(models.Model):
-    name = models.CharField(max_length=100)
+
+class PetSwap(models.Model):
+    from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
+    to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
+    time_swapped = models.DateTimeField(auto_now=True)
 
 class MicroChallengeGoal(models.Model):
     micro_challenge = models.ForeignKey(MicroChallenge)
@@ -329,14 +341,8 @@ class MicroChallengeGoal(models.Model):
     pet_pennies_reward = models.IntegerField()
     goal_state = models.ForeignKey(MicroChallengeState)
 
-class MicroChallengeState(models.Model):
-    date_started = models.DateTimeField(auto_now=True)
-    steps = models.IntegerField()
-
-class PetSwap(models.Model):
-    from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
-    to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
-    time_swapped = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return "Micro Challenge Goal: " + self.micro_challenge.name + " medal: " + self.medal
     
 
 

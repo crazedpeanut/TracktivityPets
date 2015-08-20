@@ -1,16 +1,23 @@
 <!-- challenges_list_detail.html: Sub-template that handles displaying each kind of challenge in a list format, along with its detail view -->
 {% load staticfiles %}
 
+<script src="{% static 'tracktivityPetsWebsite/behaviour/challenges.js' %}">
+</script>
+
 <div class="collection_window container tab-content col-xs-12">
     <!-- Available challenges tab -->
     <div class="tab-pane fade in active" id="available">
         <div class="collection_view_desktop col-xs-12 col-md-3">
             <h4>Choose a Challenge!</h4>
             <div class="list-group" id="avail_challenges">
-              <a href="#" class="list-group-item">Stretch Your Legs</a>
+              <!--<a href="#" class="list-group-item">Stretch Your Legs</a>
               <a href="#" class="list-group-item">Get a Wriggle On</a>
-              <a href="#" class="list-group-item">Are You Swag Enough?</a>
+              <a href="#" class="list-group-item">Are You Swag Enough?</a>-->
             </div>
+
+            <script>
+                get_available_challenges();
+            </script>
         </div>        
         
         <div class="detail_view_desktop col-md-9 hidden-xs" id="challenge_detail_container">
