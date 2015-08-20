@@ -65,7 +65,7 @@ def retrieve_fitapp_data(user, date_from, date_to):
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
         data = f.read().decode('utf-8')#whats returned
     except Exception as e:
-        logger.debug(str(e))
+        logger.exception(str(e))
         return False, str(e) #TODO: make this something useful
 
     logger.debug(data)
@@ -120,7 +120,7 @@ def update_user_fitbit(user):
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
                 happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
                 existing_happiness.amount = happiness
-                existing_experience.amount = date['value'] / swap_counts #Division of happiness and experience for pets active throughout day
+                existing_experience.amount = int(date['value']) / swap_counts #Division of happiness and experience for pets active throughout day
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
                 existing_experience.save()
                 existing_happiness.save()
