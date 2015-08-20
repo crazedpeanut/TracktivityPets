@@ -1,5 +1,7 @@
 from django.contrib import admin
-from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, CollectedItem, CollectedScenery, BodyPart
+
+from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, Item, Scenery, CollectedItem, CollectedScenery, BodyPart, MicroChallenge, MicroChallengeGoal
+
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib import admin
@@ -129,6 +131,17 @@ class CollectedItemAdmin(admin.ModelAdmin):
     
 #########################################
 
+class MicroChallengeAdmin(admin.ModelAdmin):
+    fields = ('name', 'overview')
+
+#########################################
+
+class MicroChallengeGoalAdmin(admin.ModelAdmin):
+    fields = ('micro_challenge', 'medal', 'description', 'pet_pennies_reward', 'goal_state')
+
+
+#########################################
+
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
 admin.site.register(Mood, MoodAdmin)
@@ -136,6 +149,8 @@ admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Scenery, SceneryAdmin)
 admin.site.register(BodyPart, BodyPartAdmin)
+admin.site.register(MicroChallenge, MicroChallengeAdmin)
+admin.site.register(MicroChallengeGoal, MicroChallengeGoalAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
