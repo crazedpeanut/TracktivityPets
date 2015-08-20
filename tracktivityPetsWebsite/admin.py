@@ -124,7 +124,10 @@ class BodyPartAdmin(admin.ModelAdmin):
 
 #########################################
 
-
+class CollectedItemAdmin(admin.ModelAdmin):
+    fields = ('item', 'inventory', 'equipped')
+    
+#########################################
 
 admin.site.register(Pet, PetAdmin)
 admin.site.register(Level, LevelAdmin)
@@ -136,3 +139,8 @@ admin.site.register(BodyPart, BodyPartAdmin)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+
+##### below are for TEST purposes only in admin, they can screw up if people link the wrong stuff
+admin.site.register(CollectedItem, CollectedItemAdmin)
+
+

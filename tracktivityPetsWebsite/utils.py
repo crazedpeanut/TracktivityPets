@@ -285,6 +285,23 @@ def set_current_scenery(collected_pet, collected_scenery):
         return True
     except:
         return False
+  
+#returns true if an item is already on that body part  
+def is_item_on_bodypart(part, collected_pet):
+    collected_items = collected_pet.inventory.get_collected_items_for_pet(collected_pet.pet)
+    for c in collected_items:
+        if c.item.body_part == part and c.equipped:
+            return True   
+    return False #no objects on the body part were found
+
+def equip_item(collected_pet, item, part):
+    collected_items = collected_pet.inventory.get_collected_items_for_pet(collected_pet.pet)
+    for c in collected_items:
+        if c.item.body_part == part and c.equipped:
+            c.equipped = False
+            c.save()
+    item.equipped = True
+    item.save()
 
 def get_user(request):
     return request.user

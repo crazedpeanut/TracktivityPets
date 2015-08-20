@@ -16,3 +16,4 @@ from .view_purchased_item import view_purchased_item
 from .view_purchased_scenery import view_purchased_scenery
 from .set_current_scenery import set_current_scenery
 from .challenges import challenges
+from .equip_item import equip_item
