@@ -11,7 +11,7 @@ function get_available_challenges()
      {
         size++;
 
-        chal = document.createElement("div");
+        chal = document.createElement("a");
         chal.setAttribute("id", data[d]['pk']);
         chal.setAttribute("class", "list-group-item");
         chal.innerHTML = data[d]['fields']['name'];
@@ -23,7 +23,7 @@ function get_available_challenges()
 
       if(size <= 0)
       {
-         $( "#avail_challenges" ).append("<div class='list-group-item'> No available challenges!</div>");
+         $( "#avail_challenges" ).append("<a class='list-group-item'> No available challenges!</a>");
       }
         setSetUpClickListeners();
      });
@@ -39,6 +39,7 @@ function get_challenge_details()
         {
             $(".challenge_detail_description").html(data[0]['fields']['overview']);
             $(".challenge_detail_header").html(data[0]['fields']['name']);
+            $(".challenge_detail_header").html(data[0]['fields']['name']);
         }
     });
 }
@@ -47,7 +48,7 @@ function setSetUpClickListeners()
 {
     var modalScreenWidth = 768;
 
-    $("#avail_challenges > div").click(function(event)
+    $("#avail_challenges > a").click(function(event)
     {
         if (screen.width <= modalScreenWidth)
         {
@@ -58,7 +59,7 @@ function setSetUpClickListeners()
         }
     });
 
-    $("#current_challenges > div").click(function(event)
+    $("#current_challenges > a").click(function(event)
     {
         if (screen.width <= modalScreenWidth)
         {
@@ -70,7 +71,7 @@ function setSetUpClickListeners()
         }
     });
 
-    $("#completed_challenges > div").click(function(event)
+    $("#completed_challenges > a").click(function(event)
     {
         if (screen.width <= modalScreenWidth)
         {
