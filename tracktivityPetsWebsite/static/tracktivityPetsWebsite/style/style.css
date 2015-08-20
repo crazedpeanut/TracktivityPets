@@ -572,6 +572,14 @@ p#inventory_detail_pet_description, #challenge_detail_description {
     text-align: justify;
 }
 
+#rename_modal,#equip_override_modal {
+    text-align: center;
+}
+
+#rename_input {
+    margin-bottom: 5%;
+}
+
 /* Mobile devices inventory style rules */
 @media only screen 
         and (min-device-width: 375px) 
