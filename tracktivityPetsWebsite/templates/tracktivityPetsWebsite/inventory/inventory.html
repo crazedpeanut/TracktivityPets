@@ -36,8 +36,14 @@
 
             })
             .always(function() {                                      
-                if (screen.width <= modalScreenWidth) {
-                    $('#inventory_detail_modal').modal('show');                            
+                if (screen.width <= modalScreenWidth)
+                {
+                    $('#inventory_detail_modal').modal('show');
+                    $('#inv_modal_rename').click(function(event)
+                    {
+                        $('#inventory_detail_modal').modal('hide');
+                        $('#rename_modal').modal('show');                                                     
+                    });
                 }
             });
         });
@@ -62,7 +68,8 @@
             .fail(function() {
             })
             .always(function() {                                    
-                if (screen.width <= modalScreenWidth) {
+                if (screen.width <= modalScreenWidth)
+                {
                     $('#inventory_detail_modal').modal('show');                            
                 }
                 
@@ -132,6 +139,15 @@
             .always(function() {
             
             });
+        });
+        
+        $(".equip_item_button" ).click(function() {
+            /* Always triggers at the moment, to see if it actually works */
+            $('#equip_override_modal').modal('show');
+        });
+        
+        $("#rename_button" ).click(function() {
+            $('#rename_modal').modal('show'); 
         });
     });
 </script>
