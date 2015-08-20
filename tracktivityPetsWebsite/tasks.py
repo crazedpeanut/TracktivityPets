@@ -8,7 +8,7 @@ from django.core.cache import cache
 from django.conf import settings
 from django.contrib.auth.models import User
 from fitapp.models import UserFitbit
-from tracktivityPetsWebsite.utils import update_user_fitbit
+from tracktivityPetsWebsite.utils import update_user_fitbit, update_user_challenges
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -18,28 +18,32 @@ hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
 
-from django.core.mail import send_mail
-
 LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 
 @shared_task
 def update_user_with_fitbit(fitbit_user):
     """ Get the user's time series data """
 
-    logger.debug("Updating TracktivityPets local db: %s" % (str(fitbit_user)))
+    logger.debug("Updating TracktivityPets local db for fitbit user: %s" % (fitbit_user))
 
-    # Create a lock so we don't try to run the same task multiple times
-    lock_id = '{0}-lock-{1}'.format(__name__, fitbit_user)
-    if not cache.add(lock_id, 'true', LOCK_EXPIRE):
-        logger.debug('Already updating fitbit name: %s' % (fitbit_user))
-        raise Ignore()
+    try:
 
-    fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
+        # Create a lock so we don't try to run the same task multiple times
+        '''
+        lock_id = '{0}-lock-{1}'.format(__name__, fitbit_user)
+        if not cache.add(lock_id, 'true', LOCK_EXPIRE):
+            logger.debug('Already updating fitbit name: %s' % (fitbit_user))
+            raise Ignore()
+        '''
 
-    for fbuser in fbusers:
-        update_user_fitbit(fbuser.user)
+        fbusers = UserFitbit.objects.filter(fitbit_user=fitbit_user)
 
-    send_mail("Fitbit update for user: %s" % (fitbit_user), "", "john@johnkendall.net", ["john@johnkendall.net"] )
+        for fbuser in fbusers:
+            logger.debug("About to update TracktivityPets local db for TPets user: %s" % (fbuser.user.get_username()))
+            update_user_fitbit(fbuser.user)
+            #update_user_challenges(fbuser.user)
 
-    #release lock
-    cache.delete(lock_id)
+        #release lock
+        #cache.delete(lock_id)
+    except Exception as e:
+        logger.debug(e)

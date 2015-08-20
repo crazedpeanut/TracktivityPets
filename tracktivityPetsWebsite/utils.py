@@ -1,7 +1,7 @@
 import fitapp
 import logging
 from django.contrib.auth.models import User
-from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet
+from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Scenery, CollectedScenery
 from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
 import urllib
 import django
@@ -65,7 +65,7 @@ def retrieve_fitapp_data(user, date_from, date_to):
         f = urllib.request.urlopen("http://" + url + "/fitbit/get_data/activities/steps/?" + params)
         data = f.read().decode('utf-8')#whats returned
     except Exception as e:
-        logger.debug(str(e))
+        logger.exception(str(e))
         return False, str(e) #TODO: make this something useful
 
     logger.debug(data)
@@ -97,7 +97,7 @@ def update_user_fitbit(user):
     result, data = retrieve_fitapp_data(user, date_from, date_to)
 
     if(result is False):
-        logger.debug(data)
+        logger.debug("data dump: " + data)
 
     data_json = data
 
@@ -108,7 +108,7 @@ def update_user_fitbit(user):
 
     for date in data_json['objects']: #terrible code reuse
 
-        datetime_object = datetime.strptime(date['dateTime'])
+        datetime_object = datetime.datetime.strptime(date['dateTime'], '%Y-%m-%d')
         swap_counts = count_pet_swaps_for_day(datetime_object)
         swap_counts += 1
 
@@ -118,9 +118,9 @@ def update_user_fitbit(user):
                 existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
 
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
-                happiness / swap_counts #Division of happiness and experience for pets active throughout day
+                happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
                 existing_happiness.amount = happiness
-                existing_experience.amount = date['value'] / swap_counts #Division of happiness and experience for pets active throughout day
+                existing_experience.amount = int(date['value']) / swap_counts #Division of happiness and experience for pets active throughout day
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
                 existing_experience.save()
                 existing_happiness.save()
@@ -129,13 +129,13 @@ def update_user_fitbit(user):
                 exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
                 experience += exp.amount
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
-                happiness / swap_counts #Division of happiness and experience for pets active throughout day
+                happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
                 Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
         else:
             exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
             experience += exp.amount
             happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
-            happiness / swap_counts #Division of happiness and experience for pets active throughout day
+            happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
             Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
             
     current_level = profile.current_pet.level.level
@@ -173,7 +173,7 @@ def update_user_fitbit(user):
         #render dashboard page
 
 def count_pet_swaps_for_day(day):
-    swaps = PetSwap.objects.filter(time_swapped__year=day.date.year, time_swapped__day=day.date.day, time_swapped__month=day.date.month)
+    swaps = PetSwap.objects.filter(time_swapped__year=day.year, time_swapped__day=day.day, time_swapped__month=day.month)
     return swaps.count()
 
 ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
@@ -297,7 +297,8 @@ def generate_pet_image_url(pet, image_location):
     start_url = static('tracktivityPetsWebsite/images')
     return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
-
+def update_user_challenges(user):
+    logger.debug("Updating user challenges")
 
 
 

@@ -1,0 +1,464 @@
+[
+{
+    "pk": 10,
+    "fields": {
+        "inventory": 18,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 1,
+        "current_pet": 4
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 12,
+    "fields": {
+        "inventory": 20,
+        "last_fitbit_sync": "2015-08-09T00:00:00Z",
+        "total_pet_pennies": 500,
+        "user": 3,
+        "current_pet": 29
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 13,
+    "fields": {
+        "inventory": 21,
+        "last_fitbit_sync": "2015-06-01T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 4,
+        "current_pet": 20
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 14,
+    "fields": {
+        "inventory": 22,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 5,
+        "current_pet": 14
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 15,
+    "fields": {
+        "inventory": 23,
+        "last_fitbit_sync": "2015-05-25T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 6,
+        "current_pet": 15
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 16,
+    "fields": {
+        "inventory": 24,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 7,
+        "current_pet": 19
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 18,
+    "fields": {
+        "inventory": 26,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 25,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 23,
+    "fields": {
+        "inventory": 31,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 30,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 24,
+    "fields": {
+        "inventory": 52,
+        "last_fitbit_sync": "2015-07-26T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 2,
+        "current_pet": 7
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 25,
+    "fields": {
+        "inventory": 33,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 31,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 27,
+    "fields": {
+        "inventory": 35,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 33,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 28,
+    "fields": {
+        "inventory": 36,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 34,
+        "current_pet": 8
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 29,
+    "fields": {
+        "inventory": 37,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 35,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 30,
+    "fields": {
+        "inventory": 38,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 36,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 31,
+    "fields": {
+        "inventory": 39,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 37,
+        "current_pet": 9
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 32,
+    "fields": {
+        "inventory": 40,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 38,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 34,
+    "fields": {
+        "inventory": 42,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 40,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 35,
+    "fields": {
+        "inventory": 43,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 41,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 36,
+    "fields": {
+        "inventory": 44,
+        "last_fitbit_sync": "2015-05-15T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 42,
+        "current_pet": 10
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 37,
+    "fields": {
+        "inventory": 45,
+        "last_fitbit_sync": "2015-05-15T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 43,
+        "current_pet": 11
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 38,
+    "fields": {
+        "inventory": 46,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 44,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 39,
+    "fields": {
+        "inventory": 47,
+        "last_fitbit_sync": "2015-06-27T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 45,
+        "current_pet": 12
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 40,
+    "fields": {
+        "inventory": 48,
+        "last_fitbit_sync": "2015-05-15T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 46,
+        "current_pet": 13
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 41,
+    "fields": {
+        "inventory": 49,
+        "last_fitbit_sync": "2015-06-04T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 47,
+        "current_pet": 16
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 42,
+    "fields": {
+        "inventory": 50,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 48,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 43,
+    "fields": {
+        "inventory": 51,
+        "last_fitbit_sync": "2015-06-02T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 49,
+        "current_pet": 17
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 46,
+    "fields": {
+        "inventory": 54,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 52,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 47,
+    "fields": {
+        "inventory": 55,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 53,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 48,
+    "fields": {
+        "inventory": 56,
+        "last_fitbit_sync": "2015-05-24T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 56,
+        "current_pet": 21
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 49,
+    "fields": {
+        "inventory": 57,
+        "last_fitbit_sync": "2015-05-25T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 57,
+        "current_pet": 22
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 50,
+    "fields": {
+        "inventory": 58,
+        "last_fitbit_sync": "2015-05-28T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 58,
+        "current_pet": 23
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 51,
+    "fields": {
+        "inventory": 59,
+        "last_fitbit_sync": "2015-05-27T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 59,
+        "current_pet": 25
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 52,
+    "fields": {
+        "inventory": 60,
+        "last_fitbit_sync": "2015-05-27T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 60,
+        "current_pet": 24
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 53,
+    "fields": {
+        "inventory": 61,
+        "last_fitbit_sync": "2015-06-03T00:00:00Z",
+        "total_pet_pennies": 0,
+        "user": 61,
+        "current_pet": 26
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 54,
+    "fields": {
+        "inventory": 62,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 62,
+        "current_pet": 27
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 55,
+    "fields": {
+        "inventory": 63,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 63,
+        "current_pet": 28
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 56,
+    "fields": {
+        "inventory": 64,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 64,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 57,
+    "fields": {
+        "inventory": 65,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 65,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 58,
+    "fields": {
+        "inventory": 66,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 66,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 59,
+    "fields": {
+        "inventory": 67,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 67,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 60,
+    "fields": {
+        "inventory": 68,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 68,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+},
+{
+    "pk": 61,
+    "fields": {
+        "inventory": 69,
+        "last_fitbit_sync": null,
+        "total_pet_pennies": 0,
+        "user": 69,
+        "current_pet": null
+    },
+    "model": "tracktivityPetsWebsite.profile"
+}
+]
