@@ -15,7 +15,8 @@ def get_available_challenge_names(request):
 
 @login_required
 def get_challenge_details(request, challenge_pk):
-    challenge = MicroChallenge.objects.filter(name=challenge_pk)
+    challenge = MicroChallenge.objects.filter(pk=challenge_pk)
+    print((serializers.serialize("json", challenge)))
     return HttpResponse((serializers.serialize("json", challenge)), content_type="application/json")
 
 def get_active_challenge_names(request):

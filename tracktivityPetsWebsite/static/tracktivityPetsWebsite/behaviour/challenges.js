@@ -31,16 +31,12 @@ function get_available_challenges()
 function get_challenge_details()
 {
     var challenge = this.getAttribute("id");
-    alert(challenge);
     $.ajax({
-        url:"get_challenge_details/",
-        data:{
-            "challenge_pk":challenge
-        },
+        url:"get_challenge_details/" + challenge,
         type:"GET",
         success: function( data )
         {
-            $("#challenge_detail_description").html(data[0]['fields']['description']);
+            $("#challenge_detail_description").html(data[0]['fields']['overview']);
         }
     });
 }
