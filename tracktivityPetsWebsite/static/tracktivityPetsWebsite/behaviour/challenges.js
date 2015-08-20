@@ -38,6 +38,7 @@ function get_challenge_details()
         success: function( data )
         {
             $(".challenge_detail_description").html(data[0]['fields']['overview']);
+            $(".challenge_detail_header").html(data[0]['fields']['name']);
         }
     });
 }
