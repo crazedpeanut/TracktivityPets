@@ -10,6 +10,12 @@ body {
     text-align: center;
 }
 
+.loadimg
+{
+    width: 75px;
+    height: 75px;
+}
+
 #splash_bg {
     position: absolute;
     top:0; right:0;

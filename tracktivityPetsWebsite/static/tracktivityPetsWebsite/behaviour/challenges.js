@@ -1,11 +1,16 @@
 function get_available_challenges()
 {
+    $("#avail_challenges").html("");
+    $("#avail_challenges").prepend("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+
     $.get("get_available_challenges/", function( data )
      {
 
      var size = 0;
 
-    parent = document.getElementById("avail_challenges");
+        $("#avail_challenges").html("");
+
+        parent = document.getElementById("avail_challenges");
 
      for(d in data)
      {
@@ -32,6 +37,9 @@ function get_available_challenges()
 function get_challenge_details()
 {
     var challenge = this.getAttribute("id");
+
+    $(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+
     $.ajax({
         url:"get_challenge_details/" + challenge,
         type:"GET",

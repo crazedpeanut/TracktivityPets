@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -86,7 +86,7 @@ DATABASES = {
     }
 }
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -149,5 +149,5 @@ BROKER_URL='amqp://guest:guest@localhost:5672//'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 #Logging options
-#LOG_LOCATION = BASE_DIR
-LOG_LOCATION = "/var/log/TracktivityPets/"
+LOG_LOCATION = BASE_DIR
+#LOG_LOCATION = "/var/log/TracktivityPets/"
