@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -74,30 +74,6 @@ DATABASES = {
     }
 }
 
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tracktivitypets',
-        'USER': 'tracktivitypets',
-        'PASSWORD': 'swagcats',
-        'HOST': 'tracktivitypets.me',
-        'PORT': '',
-    }
-}
-
-'''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tracktivitypets',
-        'USER': 'tracktivitypets',
-        'PASSWORD': 'swagcats',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-'''
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
