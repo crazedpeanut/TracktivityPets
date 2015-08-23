@@ -1,26 +1,21 @@
-<script src="http://code.jquery.com/jquery-latest.min.js"
-	        type="text/javascript"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#unpurchased > div").click(function(event) 
-			{
-				var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
-				
-				$.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_pet' %}" + id)
-					.done(function(data) {
-					  	var obj = JSON.parse(data);
-					    $("#inventory_detail_header").html(obj.name);
-					    $("#inventory_detail_pet_level").html("Cost " + obj.cost);
-					    $("#inventory_detail_pet_description").html(obj.story);
-					    $("#inventory_detail_buttons").html('<button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Buy</button>');
-				  	})
-				  	.fail(function() {
+{% extends 'tracktivityPetsWebsite/base.html' %}
+{% load staticfiles %}
 
-				  	})
-				  	.always(function() {
+{% block navbar %}
+    {% include 'tracktivityPetsWebsite/navigationbar.html' %}
+{% endblock navbar %}
 
-				  	});
-			  });
-			});
-			</script>
-</script>
+{% block content_block %}
+
+<div class="container" id="store_header">
+    <div class="row col-centred">
+        <img class="bubbletext_header col-xs-8 col-xs-offset-2 col-md-3 col-centred" src="{% static 'tracktivityPetsWebsite/images/store_text.png' %}">
+    </div>
+</div>
+
+<div class="container" id="inventory_container">
+    {% include 'tracktivityPetsWebsite/store/store_tabs.html' %}        
+    {% include 'tracktivityPetsWebsite/store/store_grid_detail.html' %}  
+</div>   
+
+{% endblock content_block %}

@@ -530,6 +530,16 @@ width: 75%;
 
 /*********************************************************************** Inventory, Store and Challenges Pages Style ******************************************************/
 
+.nav-tabs > li > a {
+    /* Override default Bootstrap tab style */
+    background: #DADADA;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li > a:hover, {
+    background: white;
+    border: 1px solid white;
+}
+
 .tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p
 {
     text-align: center;
@@ -541,11 +551,10 @@ width: 75%;
 
 .collection_window {
     padding-top: 15px;
-    border: 1px solid black;
     background: white;     
 }
 
-.inventory_button {
+.inventory_button, #store_button {
     border: none;
     background: white;
 }
@@ -558,13 +567,26 @@ width: 75%;
     padding-bottom: 1%;    
 }
 
-#inventory_detail_pet_description_div {
+#inventory_detail_scenery_description_div, #store_detail_scenery_description_div {
+    height: 250px;
+    overflow: auto;
+}
+
+#inventory_detail_pet_description_div, #store_detail_pet_description_div {
     height: 180px;
     overflow: auto;
 }
 
-p#inventory_detail_pet_description, #challenge_detail_description {
+#inventory_detail_scenery_image, store_detail_scenery_image {
+    height: 200px;
+}
+
+p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inventory_detail_cosmetics_description, #challenge_detail_description {
     text-align: justify;
+}
+
+#inventory_detail_scenery_image, #inventory_detail_scenery_description_div, #store_detail_scenery_description_div, #store_detail_scenery_image, .activate_scenery_button {
+    margin-top: 3%;
 }
 
 /* Mobile devices inventory style rules */
@@ -576,6 +598,12 @@ p#inventory_detail_pet_description, #challenge_detail_description {
     #pets, #scenery, #cosmetics, #available, #current, #completed
     {
         min-height: 320px;
+    }
+    
+    #scenery_collection_view_img
+    {
+        width: 150px;
+        height: 70px;
     }   
 }
 
@@ -588,6 +616,12 @@ p#inventory_detail_pet_description, #challenge_detail_description {
     {
         min-height: 600px;
         max-height: 600px;
+    }
+    
+    #scenery_collection_view_img
+    {
+        width: 220px;
+        height: 150px;
     }
 }
 
