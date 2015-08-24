@@ -655,4 +655,8 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     margin-top: 7%;
 }
 
+.locked{
+	-webkit-filter: greyscale(100%);
+}
+
 /*************************************************************************** End of Inventory Style ********************************************************************************/

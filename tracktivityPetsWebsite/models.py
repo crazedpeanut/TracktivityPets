@@ -258,6 +258,10 @@ class Item(models.Model):
     
     def __str__(self):             
         return self.belongs_to.default_name + ": " + self.name
+    
+    def get_image_path(self):
+        start_url = static('tracktivityPetsWebsite/images')
+        return '{url}/items/{location}'.format(url=start_url, location=self.image_location)
 
 class CollectedItem(models.Model):
     item = models.ForeignKey(Item)

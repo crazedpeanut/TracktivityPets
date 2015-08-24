@@ -6,100 +6,128 @@
     <div class="collection_view_desktop tab-pane fade in active" id="pets">
         <div class="col-xs-12 col-md-6">
             
-            <div class="col-xs-6" class="store_pet" id="">
-                <button class="store_button">
-                    <img class="img-responsive" src="http://tinyurl.com/npgwgxh">
-                    <p class="">Hairless Noreen</p>
-                </button>            
-            </div>
-            <div class="col-xs-6" class="store_pet" id="">
-                <button class="store_button">
-                    <img class="img-responsive" src="http://tinyurl.com/npgwgxh">
-                    <p class="">Bald Betsy</p>
-                </button>            
-            </div>
+            {% if own_all_pets == True %}
+	        	<p>You own all pets</p>
+	        {% else %}
+	        	 {% for key, value in unlocked_pets.items %}
+	            <div class="col-xs-6" class="store_pet" id="unlocked_{{ value.pk }}">
+	                <button class="store_button">
+	                    <img class="img-responsive" src="{{ value.image }}">
+	                    <p class="">{{ key }}</p>
+	                </button>            
+	            </div>
+	            {% endfor %}
+	
+	            {% for key, value in locked_pets.items %}
+	            <div class="col-xs-6" class="store_pet" id="locked_{{ value.pk }}">
+	                <button class="store_button">
+	                    <img class="img-responsive locked" src="{{ value.image }}">
+	                    <p class="">{{ key }}</p>
+	                </button>            
+	            </div>
+	            {% endfor %}
+	        {% endif %}
         </div>
         
         <div class="col-md-6 hidden-xs" id="">
+        	{% if not own_all_pets %}
             <div hidden id=""></div>
-            <div class="row"><h2 class="col-centred" id="store_detail_header">Hairless Noreen</h2></div>
-            <div class="row"><img class="img-responsive col-centred" src="http://tinyurl.com/npgwgxh" id="store_detail_image"></div>
+            <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
+            <div class="row"><img class="img-responsive col-centred" src="{{ default_pet.image }}" id="store_detail_image"></div>
             <div class="row" id="store_detail_pet_description_div">
                 <p id="store_detail_pet_description" class="col-xs-12 col-md-8 col-centred">
-                    Q: What did the big black bucket say to the little white bucket?
-                    A: "You're a little pail."
+                    {{ default_pet.story }}
                 </p>
             </div>
             <div class="row" id="store_detail_buttons">
                 <button class="btn btn-lg btn-primary col-md-3 col-centred buy_pet_button" type="button">Purchase</button>
             </div>
+            {% endif %}
         </div>
     </div>
     
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
         <div class="col-xs-12 col-md-6">
- 
-            <div class="col-xs-6" class="store_items" id="">
-                <button class="store_button">
-                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="http://whyfiles.org/wp-content/uploads/2011/03/1landfill.jpg">
-                    <p class="scenery_description">Down in the Dumps</p>
-                </button>            
-            </div>
-
+            {% if own_all_scenerys == True %}
+	        	<p>You own all scenery</p>
+	        {% else %}
+	 			{% for key, value in unlocked_scenery.items %}
+	            <div class="col-xs-6" class="store_items" id="unlocked_{{ value.pk }}">
+	                <button class="store_button">
+	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
+	                    <p class="scenery_description">{{ key }}</p>
+	                </button>            
+	            </div>
+				{% endfor %}
+				
+	 			{% for key, value in locked_scenery.items %}
+	            <div class="col-xs-6" class="store_items" id="locked_{{ value.pk }}">
+	                <button class="store_button">
+	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail locked" src="{{ value.image }}">
+	                    <p class="scenery_description">{{ key }}</p>
+	                </button>            
+	            </div>
+				{% endfor %}
+			{% endif %}
         </div>
         
         
         <div class="col-md-6 hidden-xs" id="">
-            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">Down in the Dumps</h2></div>
-            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="http://whyfiles.org/wp-content/uploads/2011/03/1landfill.jpg" id="store_detail_scenery_image"></div>
-            <div class="row" id="store_detail_scenery_description_div">
-                <p id="store_detail_scenery_description" class="col-xs-12 col-md-8 col-centred">
-                     Man, this place is a dump! You should totally buy it.
-                </p>
-            </div>
-            <div class="row">
-                <button class="btn btn-lg btn-primary col-md-3 col-centred buy_scenery_button" type="button">Purchase</button>
-            </div>
+        	{% if not owns_all_scenerys %}
+	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
+	            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
+	            <div class="row" id="store_detail_scenery_description_div">
+	                <p id="store_detail_scenery_description" class="col-xs-12 col-md-8 col-centred">
+	                     {{ default_scenery.description }}
+	                </p>
+	            </div>
+	            <div class="row">
+	                <button class="btn btn-lg btn-primary col-md-3 col-centred buy_scenery_button" type="button">Purchase</button>
+	            </div>
+	         {% endif %}
         </div>
     </div>
     
     <!-- Collected Cosmetics Tab -->
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
         <div class="col-xs-12 col-md-6">
-        
-            <div class="col-xs-6" class="store_items" id="">
-                <button class="">
-                    <img class="img-responsive" src="http://cdn2.hellogiggles.com/wp-content/uploads/2015/03/11/Funny-Dogs-with-Wigs-12-700x525c.jpg" width="200px" height="200px">
-                    <p class="cosmetics_description">Fabulous Wig</p>
-                </button>            
-            </div>        
+            {% if own_all_items == True %}
+	        	<p>You own all items</p>
+	        {% else %}
+	        	{% for key, value in unlocked_items.items %}
+	            <div class="col-xs-6" class="store_items" id="unlocked_{{ value.pk }}">
+	                <button class="">
+	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
+	                    <p class="cosmetics_description">{{ key }}</p>
+	                </button>            
+	            </div>   
+	            {% endfor %}    
+	            
+	        	{% for key, value in locked_items.items %}
+	            <div class="col-xs-6" class="store_items" id="locked_{{ value.pk }}">
+	                <button class="">
+	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
+	                    <p class="cosmetics_description">{{ key }}</p>
+	                </button>            
+	            </div>   
+	            {% endfor %}  
+	        {% endif %}
         </div>
 
         <div class="col-md-6 hidden-xs" id="">
-            <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">Fabulous Wig</h2></div>
-            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="http://cdn2.hellogiggles.com/wp-content/uploads/2015/03/11/Funny-Dogs-with-Wigs-12-700x525c.jpg" id="inventory_detail_cosmetics_image"></div>
+            {% if not own_all_items %}
+            <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
+            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
                 <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-md-8 col-centred">
-                    Gimme head with hair
-                    Long beautiful hair
-                    Shining, gleaming
-                    Streaming, flaxen, waxen
-                    
-                    Give me down to there hair
-                    Shoulder length or longer
-                    Here baby, there mama
-                    Everywhere daddy daddy
-                    
-                    Hair, hair, hair, hair, hair, hair, hair
-                    Flow it, show it
-                    Long as God can grow it
-                    My hair
+                    {{ default_item.description }}
                 </p>
             </div>
             <div class="row">
                 <button class="btn btn-lg btn-primary col-md-3 col-centred buy_cosmetics_button" type="button">Purchase</button>
             </div>
+            {% endif %}
         </div>
     </div>
 </div> 
