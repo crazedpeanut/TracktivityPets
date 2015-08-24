@@ -1,20 +1,20 @@
 [
 {
-    "model": "tracktivityPetsWebsite.collecteditem",
-    "pk": 1,
     "fields": {
-        "item": 1,
-        "equipped_on": null,
+        "equipped": false,
+        "item": 2,
         "inventory": 20
-    }
+    },
+    "pk": 2,
+    "model": "tracktivityPetsWebsite.collecteditem"
 },
 {
-    "model": "tracktivityPetsWebsite.collecteditem",
-    "pk": 2,
     "fields": {
+        "equipped": true,
         "item": 3,
-        "equipped_on": null,
         "inventory": 20
-    }
+    },
+    "pk": 3,
+    "model": "tracktivityPetsWebsite.collecteditem"
 }
 ]

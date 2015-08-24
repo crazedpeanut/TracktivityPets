@@ -1,607 +1,607 @@
 [
 {
-    "pk": 3,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Melvin, level 1 required, 25 happiness required",
-        "happiness_needed": 25
+        "pet": 3,
+        "happiness_needed": 25,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 3
 },
 {
-    "pk": 4,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Melvin, level 1 required, 50 happiness required",
-        "happiness_needed": 50
+        "pet": 3,
+        "happiness_needed": 50,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 4
 },
 {
-    "pk": 5,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Melvin, level 1 required, 75 happiness required",
-        "happiness_needed": 75
+        "pet": 3,
+        "happiness_needed": 75,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 5
 },
 {
-    "pk": 6,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Melvin, level 1 required, 100 happiness required",
-        "happiness_needed": 100
+        "pet": 3,
+        "happiness_needed": 100,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 6
 },
 {
-    "pk": 7,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Melvin, level 10 required, 75 happiness required",
-        "happiness_needed": 75
+        "pet": 3,
+        "happiness_needed": 75,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 7
 },
 {
-    "pk": 8,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sir Oinskalot, level 1, 0 happiness",
-        "happiness_needed": 0
+        "pet": 1,
+        "happiness_needed": 0,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 8
 },
 {
-    "pk": 9,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sheldon 1, 0 happiness",
-        "happiness_needed": 0
+        "pet": 2,
+        "happiness_needed": 0,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 9
 },
 {
-    "pk": 10,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Melvin, pet selection profile pic",
-        "happiness_needed": -1
+        "pet": 3,
+        "happiness_needed": -1,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 10
 },
 {
-    "pk": 11,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sheldon, pet selection profile pic",
-        "happiness_needed": -1
+        "pet": 2,
+        "happiness_needed": -1,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 11
 },
 {
-    "pk": 12,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sir Oinksalot, pet selection profile pic",
-        "happiness_needed": -1
+        "pet": 1,
+        "happiness_needed": -1,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 12
 },
 {
-    "pk": 13,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 4,
         "image_location": "huckleberrydefault.png",
-        "level": 1,
         "description": "Jonathan Huckleberry, pet selection profile pic",
-        "happiness_needed": -1
+        "pet": 4,
+        "happiness_needed": -1,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 13
 },
 {
-    "pk": 14,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 4,
         "image_location": "huckleberrydefault.png",
-        "level": 1,
         "description": "Jonathan Huckleberry, level 1 required, 0 happiness required",
-        "happiness_needed": 0
+        "pet": 4,
+        "happiness_needed": 0,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 14
 },
 {
-    "pk": 15,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 4,
         "image_location": "huckleberrydefault.png",
-        "level": 1,
         "description": "Jonathan Huckleberr, level 1 required, 25 happiness required",
-        "happiness_needed": 25
-    },
-    "model": "tracktivityPetsWebsite.mood"
-},
-{
-    "pk": 16,
-    "fields": {
-        "pet": 1,
-        "image_location": "silohuette.png",
-        "level": 1,
-        "description": "Sir Oinskalot, silohuette",
-        "happiness_needed": -2
-    },
-    "model": "tracktivityPetsWebsite.mood"
-},
-{
-    "pk": 17,
-    "fields": {
-        "pet": 2,
-        "image_location": "silohuette.png",
-        "level": 1,
-        "description": "Sheldon, silohuette",
-        "happiness_needed": -2
-    },
-    "model": "tracktivityPetsWebsite.mood"
-},
-{
-    "pk": 18,
-    "fields": {
-        "pet": 3,
-        "image_location": "silohuette.png",
-        "level": 1,
-        "description": "Melvin, silohuette",
-        "happiness_needed": -2
-    },
-    "model": "tracktivityPetsWebsite.mood"
-},
-{
-    "pk": 19,
-    "fields": {
         "pet": 4,
+        "happiness_needed": 25,
+        "level": 1
+    },
+    "pk": 15
+},
+{
+    "model": "tracktivityPetsWebsite.mood",
+    "fields": {
         "image_location": "silohuette.png",
-        "level": 1,
+        "description": "Sir Oinskalot, silohuette",
+        "pet": 1,
+        "happiness_needed": -2,
+        "level": 1
+    },
+    "pk": 16
+},
+{
+    "model": "tracktivityPetsWebsite.mood",
+    "fields": {
+        "image_location": "silohuette.png",
+        "description": "Sheldon, silohuette",
+        "pet": 2,
+        "happiness_needed": -2,
+        "level": 1
+    },
+    "pk": 17
+},
+{
+    "model": "tracktivityPetsWebsite.mood",
+    "fields": {
+        "image_location": "silohuette.png",
+        "description": "Melvin, silohuette",
+        "pet": 3,
+        "happiness_needed": -2,
+        "level": 1
+    },
+    "pk": 18
+},
+{
+    "model": "tracktivityPetsWebsite.mood",
+    "fields": {
+        "image_location": "silohuette.png",
         "description": "Jonathan Huckleberr, silohuette",
-        "happiness_needed": -2
+        "pet": 4,
+        "happiness_needed": -2,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 19
 },
 {
-    "pk": 20,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sheldon 1, 25 happiness",
-        "happiness_needed": 25
+        "pet": 2,
+        "happiness_needed": 25,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 20
 },
 {
-    "pk": 21,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sheldon 1, 50 happiness",
-        "happiness_needed": 50
+        "pet": 2,
+        "happiness_needed": 50,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 21
 },
 {
-    "pk": 22,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sheldon 1, 75 happiness",
-        "happiness_needed": 75
+        "pet": 2,
+        "happiness_needed": 75,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 22
 },
 {
-    "pk": 23,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sheldon 1, 100 happiness",
-        "happiness_needed": 100
+        "pet": 2,
+        "happiness_needed": 100,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 23
 },
 {
-    "pk": 24,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sheldon 5, 0 happiness",
-        "happiness_needed": 0
+        "pet": 2,
+        "happiness_needed": 0,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 24
 },
 {
-    "pk": 25,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sheldon 5, 25 happiness",
-        "happiness_needed": 25
+        "pet": 2,
+        "happiness_needed": 25,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 25
 },
 {
-    "pk": 26,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sheldon 5, 50 happiness",
-        "happiness_needed": 50
+        "pet": 2,
+        "happiness_needed": 50,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 26
 },
 {
-    "pk": 27,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sheldon 5, 75 happiness",
-        "happiness_needed": 75
+        "pet": 2,
+        "happiness_needed": 75,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 27
 },
 {
-    "pk": 28,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sheldon 5, 100 happiness",
-        "happiness_needed": 100
+        "pet": 2,
+        "happiness_needed": 100,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 28
 },
 {
-    "pk": 29,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sheldon 10, 0 happiness",
-        "happiness_needed": 0
+        "pet": 2,
+        "happiness_needed": 0,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 29
 },
 {
-    "pk": 30,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sheldon 10, 25 happiness",
-        "happiness_needed": 25
+        "pet": 2,
+        "happiness_needed": 25,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 30
 },
 {
-    "pk": 31,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sheldon 10, 50 happiness",
-        "happiness_needed": 50
+        "pet": 2,
+        "happiness_needed": 50,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 31
 },
 {
-    "pk": 32,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 2,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sheldon 10, 75 happiness",
-        "happiness_needed": 75
-    },
-    "model": "tracktivityPetsWebsite.mood"
-},
-{
-    "pk": 33,
-    "fields": {
         "pet": 2,
+        "happiness_needed": 75,
+        "level": 10
+    },
+    "pk": 32
+},
+{
+    "model": "tracktivityPetsWebsite.mood",
+    "fields": {
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sheldon 10, 100 happiness",
-        "happiness_needed": 100
+        "pet": 2,
+        "happiness_needed": 100,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 33
 },
 {
-    "pk": 34,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Melvin, level 10 required, 0 happiness required",
-        "happiness_needed": 0
+        "pet": 3,
+        "happiness_needed": 0,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 34
 },
 {
-    "pk": 35,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sir Oinksalot 1, 25 happiness",
-        "happiness_needed": 25
+        "pet": 1,
+        "happiness_needed": 25,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 35
 },
 {
-    "pk": 36,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sir Oinksalot 1, 50 happiness",
-        "happiness_needed": 50
+        "pet": 1,
+        "happiness_needed": 50,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 36
 },
 {
-    "pk": 37,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sir Oinksalot 1, 75 happiness",
-        "happiness_needed": 75
+        "pet": 1,
+        "happiness_needed": 75,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 37
 },
 {
-    "pk": 38,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Sir Oinksalot 1, 100 happiness",
-        "happiness_needed": 100
+        "pet": 1,
+        "happiness_needed": 100,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 38
 },
 {
-    "pk": 39,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sir Oinksalot 5, 0 happiness",
-        "happiness_needed": 0
+        "pet": 1,
+        "happiness_needed": 0,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 39
 },
 {
-    "pk": 40,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sir Oinksalot 5, 25 happiness",
-        "happiness_needed": 25
+        "pet": 1,
+        "happiness_needed": 25,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 40
 },
 {
-    "pk": 41,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sir Oinksalot 5, 50 happiness",
-        "happiness_needed": 50
+        "pet": 1,
+        "happiness_needed": 50,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 41
 },
 {
-    "pk": 42,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sir Oinksalot 5, 75 happiness",
-        "happiness_needed": 75
+        "pet": 1,
+        "happiness_needed": 75,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 42
 },
 {
-    "pk": 43,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Sir Oinksalot 5, 100 happiness",
-        "happiness_needed": 100
+        "pet": 1,
+        "happiness_needed": 100,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 43
 },
 {
-    "pk": 44,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sir Oinksalot 10, 0 happiness",
-        "happiness_needed": 0
+        "pet": 1,
+        "happiness_needed": 0,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 44
 },
 {
-    "pk": 45,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sir Oinksalot 10, 25 happiness",
-        "happiness_needed": 25
+        "pet": 1,
+        "happiness_needed": 25,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 45
 },
 {
-    "pk": 46,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sir Oinksalot 10, 50 happiness",
-        "happiness_needed": 50
+        "pet": 1,
+        "happiness_needed": 50,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 46
 },
 {
-    "pk": 47,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 1,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sir Oinksalot 10, 75 happiness",
-        "happiness_needed": 75
-    },
-    "model": "tracktivityPetsWebsite.mood"
-},
-{
-    "pk": 48,
-    "fields": {
         "pet": 1,
+        "happiness_needed": 75,
+        "level": 10
+    },
+    "pk": 47
+},
+{
+    "model": "tracktivityPetsWebsite.mood",
+    "fields": {
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Sir Oinksalot 10, 100 happiness",
-        "happiness_needed": 100
+        "pet": 1,
+        "happiness_needed": 100,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 48
 },
 {
-    "pk": 49,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Melvin 5, 0 happiness",
-        "happiness_needed": 0
+        "pet": 3,
+        "happiness_needed": 0,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 49
 },
 {
-    "pk": 50,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Melvin 5, 25 happiness",
-        "happiness_needed": 25
+        "pet": 3,
+        "happiness_needed": 25,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 50
 },
 {
-    "pk": 51,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Melvin 5, 50 happiness",
-        "happiness_needed": 50
+        "pet": 3,
+        "happiness_needed": 50,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 51
 },
 {
-    "pk": 52,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Melvin 5, 75 happiness",
-        "happiness_needed": 75
+        "pet": 3,
+        "happiness_needed": 75,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 52
 },
 {
-    "pk": 53,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e2.png",
-        "level": 5,
         "description": "Melvin 5, 100 happiness",
-        "happiness_needed": 100
+        "pet": 3,
+        "happiness_needed": 100,
+        "level": 5
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 53
 },
 {
-    "pk": 54,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Melvin 10, 25 happiness",
-        "happiness_needed": 25
+        "pet": 3,
+        "happiness_needed": 25,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 54
 },
 {
-    "pk": 55,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Melvin 10, 50 happiness",
-        "happiness_needed": 50
+        "pet": 3,
+        "happiness_needed": 50,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 55
 },
 {
-    "pk": 56,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e3.png",
-        "level": 10,
         "description": "Melvin 10, 100 happiness",
-        "happiness_needed": 100
+        "pet": 3,
+        "happiness_needed": 100,
+        "level": 10
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 56
 },
 {
-    "pk": 57,
+    "model": "tracktivityPetsWebsite.mood",
     "fields": {
-        "pet": 3,
         "image_location": "happyface_e1.png",
-        "level": 1,
         "description": "Melvin 1, 0 happiness",
-        "happiness_needed": 0
+        "pet": 3,
+        "happiness_needed": 0,
+        "level": 1
     },
-    "model": "tracktivityPetsWebsite.mood"
+    "pk": 57
 }
 ]

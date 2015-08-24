@@ -1,68 +1,28 @@
 [
 {
-    "pk": 1,
     "fields": {
-        "experience_to_unlock": 0,
-        "description": "",
+        "body_part": 1,
+        "image_location": "",
+        "description": "A hat for melvin",
+        "belongs_to": 3,
         "name": "Hat",
         "cost": 0,
-        "image_location": ""
+        "experience_to_unlock": 0
     },
-    "model": "tracktivityPetsWebsite.item"
+    "model": "tracktivityPetsWebsite.item",
+    "pk": 2
 },
 {
-    "pk": 2,
     "fields": {
-        "experience_to_unlock": 0,
-        "description": "",
-        "name": "Sword",
+        "body_part": 1,
+        "image_location": "",
+        "description": "A beanie for melvin",
+        "belongs_to": 3,
+        "name": "Beanie",
         "cost": 0,
-        "image_location": ""
+        "experience_to_unlock": 1000000
     },
-    "model": "tracktivityPetsWebsite.item"
-},
-{
-    "pk": 3,
-    "fields": {
-        "experience_to_unlock": 0,
-        "description": "",
-        "name": "Pants",
-        "cost": 0,
-        "image_location": ""
-    },
-    "model": "tracktivityPetsWebsite.item"
-},
-{
-    "pk": 4,
-    "fields": {
-        "experience_to_unlock": 0,
-        "description": "",
-        "name": "Hands",
-        "cost": 0,
-        "image_location": ""
-    },
-    "model": "tracktivityPetsWebsite.item"
-},
-{
-    "pk": 5,
-    "fields": {
-        "experience_to_unlock": 0,
-        "description": "",
-        "name": "Glasses",
-        "cost": 0,
-        "image_location": ""
-    },
-    "model": "tracktivityPetsWebsite.item"
-},
-{
-    "pk": 6,
-    "fields": {
-        "experience_to_unlock": 0,
-        "description": "",
-        "name": "Gun",
-        "cost": 0,
-        "image_location": ""
-    },
-    "model": "tracktivityPetsWebsite.item"
+    "model": "tracktivityPetsWebsite.item",
+    "pk": 3
 }
 ]
