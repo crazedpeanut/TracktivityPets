@@ -108,7 +108,7 @@ None of this code seems to work
     
 class ItemAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,               {'fields': ['name', 'experience_to_unlock', 'cost', "belongs_to", "body_part"]}),
+        (None,               {'fields': ['name', 'experience_to_unlock', 'cost', "belongs_to", "body_part", "description"]}),
     ] 
     
 #########################################

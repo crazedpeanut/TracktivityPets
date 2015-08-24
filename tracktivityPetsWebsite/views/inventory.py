@@ -32,11 +32,10 @@ def inventory(request, tab=""):
         items = {}
         
         for collected_item in collected_items:
-            image = "TODO"
             items[collected_item.item.name] = {}
             
             items[collected_item.item.name]["pk"] = collected_item.item.pk
-            items[collected_item.item.name]["image"] = image    
+            items[collected_item.item.name]["image"] = collected_item.item.get_image_path()    
            
             
         collected_scenery = request.user.profile.inventory.get_owned_scenery()
@@ -74,8 +73,8 @@ def inventory(request, tab=""):
             default_item = collected_items[0]    
 
             details_item['name'] = default_item.item.name
-            details_item['description'] = "Items havent been given a description yet"
-            details_item['image'] = "TODO"
+            details_item['description'] = default_item.item.description
+            details_item['image'] = default_item.item.get_image_path()
             details_item['pk'] = default_item.item.pk
         except Exception as e:
             details_item = {}
