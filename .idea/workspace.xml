@@ -4,29 +4,8 @@
     <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="">
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\initial_data.json" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/CollectedItem.json" afterPath="$PROJECT_DIR$/DataBackups/CollectedItem.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/CollectedPet.json" afterPath="$PROJECT_DIR$/DataBackups/CollectedPet.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/CollectedScenery.json" afterPath="$PROJECT_DIR$/DataBackups/CollectedScenery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Experience.json" afterPath="$PROJECT_DIR$/DataBackups/Experience.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Happiness.json" afterPath="$PROJECT_DIR$/DataBackups/Happiness.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Inventory.json" afterPath="$PROJECT_DIR$/DataBackups/Inventory.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Item.json" afterPath="$PROJECT_DIR$/DataBackups/Item.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Level.json" afterPath="$PROJECT_DIR$/DataBackups/Level.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/MicroChallengeState.json" afterPath="$PROJECT_DIR$/DataBackups/MicroChallengeState.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Mood.json" afterPath="$PROJECT_DIR$/DataBackups/Mood.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Pet.json" afterPath="$PROJECT_DIR$/DataBackups/Pet.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Phrase.json" afterPath="$PROJECT_DIR$/DataBackups/Phrase.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Profile.json" afterPath="$PROJECT_DIR$/DataBackups/Profile.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Scenery.json" afterPath="$PROJECT_DIR$/DataBackups/Scenery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Story.json" afterPath="$PROJECT_DIR$/DataBackups/Story.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/TimeSeriesDataType.json" afterPath="$PROJECT_DIR$/DataBackups/TimeSeriesDataType.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/User.json" afterPath="$PROJECT_DIR$/DataBackups/User.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/UserFitbit.json" afterPath="$PROJECT_DIR$/DataBackups/UserFitbit.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/admin.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/models.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.py" afterPath="$PROJECT_DIR$/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TracktivityPets/settings.py" afterPath="$PROJECT_DIR$/TracktivityPets/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TPetsProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +29,8 @@
             <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.5050505">
-                    <caret line="354" column="53" selection-start-line="354" selection-start-column="53" selection-end-line="354" selection-end-column="53" />
+                  <state vertical-scroll-proportion="0.28619528">
+                    <caret line="360" column="48" selection-start-line="360" selection-start-column="48" selection-end-line="360" selection-end-column="48" />
                     <folding>
                       <element signature="e#0#28#0" expanded="true" />
                     </folding>
@@ -93,8 +72,8 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.717608">
-              <caret line="155" column="34" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.54318935">
+              <caret line="160" column="65" selection-start-line="160" selection-start-column="65" selection-end-line="160" selection-end-column="65" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -887,8 +866,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.717608">
-          <caret line="155" column="34" selection-start-line="155" selection-start-column="34" selection-end-line="155" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.54318935">
+          <caret line="160" column="65" selection-start-line="160" selection-start-column="65" selection-end-line="160" selection-end-column="65" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -897,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5050505">
-          <caret line="354" column="53" selection-start-line="354" selection-start-column="53" selection-end-line="354" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.28619528">
+          <caret line="360" column="48" selection-start-line="360" selection-start-column="48" selection-end-line="360" selection-end-column="48" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
