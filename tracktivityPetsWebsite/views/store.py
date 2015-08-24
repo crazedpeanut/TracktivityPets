@@ -4,4 +4,4 @@ from django.http import HttpResponse
 
 @login_required
 def store(request):
-    pass
+    return render(request, 'tracktivityPetsWebsite/store/store.html')
