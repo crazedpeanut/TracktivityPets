@@ -1,290 +1,290 @@
 [
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "calories"
+        "resource": "calories",
+        "category": 1
     },
-    "pk": 1
+    "pk": 1,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "caloriesBMR"
+        "resource": "caloriesBMR",
+        "category": 1
     },
-    "pk": 2
+    "pk": 2,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "steps"
+        "resource": "steps",
+        "category": 1
     },
-    "pk": 3
+    "pk": 3,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "distance"
+        "resource": "distance",
+        "category": 1
     },
-    "pk": 4
+    "pk": 4,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "floors"
+        "resource": "floors",
+        "category": 1
     },
-    "pk": 5
+    "pk": 5,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "elevation"
+        "resource": "elevation",
+        "category": 1
     },
-    "pk": 6
+    "pk": 6,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "minutesSedentary"
+        "resource": "minutesSedentary",
+        "category": 1
     },
-    "pk": 7
+    "pk": 7,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "minutesLightlyActive"
+        "resource": "minutesLightlyActive",
+        "category": 1
     },
-    "pk": 8
+    "pk": 8,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "minutesFairlyActive"
+        "resource": "minutesFairlyActive",
+        "category": 1
     },
-    "pk": 9
+    "pk": 9,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "minutesVeryActive"
+        "resource": "minutesVeryActive",
+        "category": 1
     },
-    "pk": 11
+    "pk": 11,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "activeScore"
+        "resource": "activeScore",
+        "category": 1
     },
-    "pk": 12
+    "pk": 12,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "activityCalories"
+        "resource": "activityCalories",
+        "category": 1
     },
-    "pk": 13
+    "pk": 13,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/minutesSedentary"
+        "resource": "tracker/minutesSedentary",
+        "category": 1
     },
-    "pk": 14
+    "pk": 14,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/minutesLightlyActive"
+        "resource": "tracker/minutesLightlyActive",
+        "category": 1
     },
-    "pk": 15
+    "pk": 15,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/minutesFairlyActive"
+        "resource": "tracker/minutesFairlyActive",
+        "category": 1
     },
-    "pk": 16
+    "pk": 16,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/minutesVeryActive"
+        "resource": "tracker/minutesVeryActive",
+        "category": 1
     },
-    "pk": 17
+    "pk": 17,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/activeScore"
+        "resource": "tracker/activeScore",
+        "category": 1
     },
-    "pk": 18
+    "pk": 18,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/activityCalories"
+        "resource": "tracker/activityCalories",
+        "category": 1
     },
-    "pk": 19
+    "pk": 19,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/calories"
+        "resource": "tracker/calories",
+        "category": 1
     },
-    "pk": 20
+    "pk": 20,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/steps"
+        "resource": "tracker/steps",
+        "category": 1
     },
-    "pk": 22
+    "pk": 22,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/distance"
+        "resource": "tracker/distance",
+        "category": 1
     },
-    "pk": 23
+    "pk": 23,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/floors"
+        "resource": "tracker/floors",
+        "category": 1
     },
-    "pk": 24
+    "pk": 24,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 1,
-        "resource": "tracker/elevation"
+        "resource": "tracker/elevation",
+        "category": 1
     },
-    "pk": 25
+    "pk": 25,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 3,
-        "resource": "weight"
+        "resource": "weight",
+        "category": 3
     },
-    "pk": 26
+    "pk": 26,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 3,
-        "resource": "bmi"
+        "resource": "bmi",
+        "category": 3
     },
-    "pk": 27
+    "pk": 27,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 3,
-        "resource": "fat"
+        "resource": "fat",
+        "category": 3
     },
-    "pk": 28
+    "pk": 28,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 0,
-        "resource": "log/caloriesIn"
+        "resource": "log/caloriesIn",
+        "category": 0
     },
-    "pk": 29
+    "pk": 29,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 0,
-        "resource": "log/water"
+        "resource": "log/water",
+        "category": 0
     },
-    "pk": 30
+    "pk": 30,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "startTime"
+        "resource": "startTime",
+        "category": 2
     },
-    "pk": 31
+    "pk": 31,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "timeInBed"
+        "resource": "timeInBed",
+        "category": 2
     },
-    "pk": 32
+    "pk": 32,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "minutesAsleep"
+        "resource": "minutesAsleep",
+        "category": 2
     },
-    "pk": 33
+    "pk": 33,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "awakeningsCount"
+        "resource": "awakeningsCount",
+        "category": 2
     },
-    "pk": 34
+    "pk": 34,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "minutesAwake"
+        "resource": "minutesAwake",
+        "category": 2
     },
-    "pk": 35
+    "pk": 35,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "minutesToFallAsleep"
+        "resource": "minutesToFallAsleep",
+        "category": 2
     },
-    "pk": 36
+    "pk": 36,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "minutesAfterWakeup"
+        "resource": "minutesAfterWakeup",
+        "category": 2
     },
-    "pk": 37
+    "pk": 37,
+    "model": "fitapp.timeseriesdatatype"
 },
 {
-    "model": "fitapp.timeseriesdatatype",
     "fields": {
-        "category": 2,
-        "resource": "efficiency"
+        "resource": "efficiency",
+        "category": 2
     },
-    "pk": 38
+    "pk": 38,
+    "model": "fitapp.timeseriesdatatype"
 }
 ]
