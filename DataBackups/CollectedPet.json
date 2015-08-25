@@ -1,302 +1,302 @@
 [
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 4,
     "fields": {
         "name": "Dayuuuum",
-        "level": 10,
-        "pet": 1,
-        "inventory": 18,
         "scenery": null,
-        "date_created": "2015-05-05T12:21:25Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-05T12:21:25Z",
+        "level": 10,
+        "inventory": 18
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 5,
     "fields": {
         "name": "Melv",
-        "level": 10,
-        "pet": 3,
-        "inventory": 20,
         "scenery": 2,
-        "date_created": "2015-04-25T13:43:21Z"
-    }
+        "pet": 3,
+        "date_created": "2015-04-25T13:43:21Z",
+        "level": 10,
+        "inventory": 20
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 7,
     "fields": {
         "name": "YoloMan",
-        "level": 6,
-        "pet": 4,
-        "inventory": 32,
         "scenery": null,
-        "date_created": "2015-05-13T10:28:12Z"
-    }
+        "pet": 4,
+        "date_created": "2015-05-13T10:28:12Z",
+        "level": 6,
+        "inventory": 32
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 8,
     "fields": {
         "name": "Sheldz",
-        "level": 1,
-        "pet": 2,
-        "inventory": 36,
         "scenery": null,
-        "date_created": "2015-05-14T14:41:09.768Z"
-    }
+        "pet": 2,
+        "date_created": "2015-05-14T14:41:09.768Z",
+        "level": 1,
+        "inventory": 36
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 9,
     "fields": {
         "name": "Loser",
-        "level": 1,
-        "pet": 3,
-        "inventory": 39,
         "scenery": null,
-        "date_created": "2015-05-14T04:58:07.217Z"
-    }
+        "pet": 3,
+        "date_created": "2015-05-14T04:58:07.217Z",
+        "level": 1,
+        "inventory": 39
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 10,
     "fields": {
         "name": "YoloMAn",
-        "level": 1,
-        "pet": 1,
-        "inventory": 44,
         "scenery": null,
-        "date_created": "2015-05-15T10:08:19.926Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-15T10:08:19.926Z",
+        "level": 1,
+        "inventory": 44
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 11,
     "fields": {
         "name": "Redic",
-        "level": 1,
-        "pet": 4,
-        "inventory": 45,
         "scenery": null,
-        "date_created": "2015-05-15T01:14:56.855Z"
-    }
+        "pet": 4,
+        "date_created": "2015-05-15T01:14:56.855Z",
+        "level": 1,
+        "inventory": 45
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 12,
     "fields": {
         "name": "Curly Fries",
-        "level": 10,
-        "pet": 1,
-        "inventory": 47,
         "scenery": null,
-        "date_created": "2015-05-15T02:40:04Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-15T02:40:04Z",
+        "level": 10,
+        "inventory": 47
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 13,
     "fields": {
         "name": "turtlecopter",
-        "level": 1,
-        "pet": 2,
-        "inventory": 48,
         "scenery": null,
-        "date_created": "2015-05-15T03:12:50.684Z"
-    }
+        "pet": 2,
+        "date_created": "2015-05-15T03:12:50.684Z",
+        "level": 1,
+        "inventory": 48
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 14,
     "fields": {
         "name": "Snailton",
-        "level": 1,
-        "pet": 3,
-        "inventory": 22,
         "scenery": null,
-        "date_created": "2015-05-15T05:36:33.091Z"
-    }
+        "pet": 3,
+        "date_created": "2015-05-15T05:36:33.091Z",
+        "level": 1,
+        "inventory": 22
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 15,
     "fields": {
         "name": "rabis",
-        "level": 1,
-        "pet": 4,
-        "inventory": 23,
         "scenery": null,
-        "date_created": "2015-05-15T05:46:47.059Z"
-    }
+        "pet": 4,
+        "date_created": "2015-05-15T05:46:47.059Z",
+        "level": 1,
+        "inventory": 23
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 16,
     "fields": {
         "name": "tuckcoptor",
-        "level": 10,
-        "pet": 2,
-        "inventory": 49,
         "scenery": null,
-        "date_created": "2015-05-15T13:15:32.008Z"
-    }
+        "pet": 2,
+        "date_created": "2015-05-15T13:15:32.008Z",
+        "level": 10,
+        "inventory": 49
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 17,
     "fields": {
         "name": "Little Pig",
-        "level": 10,
-        "pet": 1,
-        "inventory": 51,
         "scenery": null,
-        "date_created": "2015-05-18T09:01:47.942Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-18T09:01:47.942Z",
+        "level": 10,
+        "inventory": 51
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 18,
     "fields": {
         "name": "",
-        "level": 1,
-        "pet": 4,
-        "inventory": 53,
         "scenery": null,
-        "date_created": "2015-05-20T16:11:35.549Z"
-    }
+        "pet": 4,
+        "date_created": "2015-05-20T16:11:35.549Z",
+        "level": 1,
+        "inventory": 53
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 19,
     "fields": {
         "name": "test",
-        "level": 1,
-        "pet": 1,
-        "inventory": 24,
         "scenery": null,
-        "date_created": "2015-05-21T04:24:03.280Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-21T04:24:03.280Z",
+        "level": 1,
+        "inventory": 24
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 20,
     "fields": {
         "name": "Pickle Bunny",
-        "level": 1,
-        "pet": 4,
-        "inventory": 21,
         "scenery": null,
-        "date_created": "2015-05-21T06:48:50.401Z"
-    }
+        "pet": 4,
+        "date_created": "2015-05-21T06:48:50.401Z",
+        "level": 1,
+        "inventory": 21
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 21,
     "fields": {
         "name": "Shelly",
-        "level": 1,
-        "pet": 2,
-        "inventory": 56,
         "scenery": null,
-        "date_created": "2015-05-24T23:43:57.247Z"
-    }
+        "pet": 2,
+        "date_created": "2015-05-24T23:43:57.247Z",
+        "level": 1,
+        "inventory": 56
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 22,
     "fields": {
         "name": "Shelly",
-        "level": 1,
-        "pet": 2,
-        "inventory": 57,
         "scenery": null,
-        "date_created": "2015-05-25T00:37:55.092Z"
-    }
+        "pet": 2,
+        "date_created": "2015-05-25T00:37:55.092Z",
+        "level": 1,
+        "inventory": 57
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 23,
     "fields": {
         "name": "John",
-        "level": 4,
-        "pet": 2,
-        "inventory": 58,
         "scenery": null,
-        "date_created": "2015-05-27T11:28:50.125Z"
-    }
+        "pet": 2,
+        "date_created": "2015-05-27T11:28:50.125Z",
+        "level": 4,
+        "inventory": 58
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 24,
     "fields": {
         "name": "Fred",
-        "level": 3,
-        "pet": 3,
-        "inventory": 60,
         "scenery": null,
-        "date_created": "2015-05-27T11:52:33.251Z"
-    }
+        "pet": 3,
+        "date_created": "2015-05-27T11:52:33.251Z",
+        "level": 3,
+        "inventory": 60
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 25,
     "fields": {
         "name": "Lachlan",
-        "level": 4,
-        "pet": 1,
-        "inventory": 59,
         "scenery": null,
-        "date_created": "2015-05-27T11:53:11.200Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-27T11:53:11.200Z",
+        "level": 4,
+        "inventory": 59
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 26,
     "fields": {
         "name": "Sir Oinksalot",
-        "level": 1,
-        "pet": 1,
-        "inventory": 61,
         "scenery": null,
-        "date_created": "2015-05-31T06:24:09.236Z"
-    }
+        "pet": 1,
+        "date_created": "2015-05-31T06:24:09.236Z",
+        "level": 1,
+        "inventory": 61
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 27,
     "fields": {
         "name": "nj",
-        "level": 1,
-        "pet": 1,
-        "inventory": 62,
         "scenery": null,
-        "date_created": "2015-07-14T10:00:09.943Z"
-    }
+        "pet": 1,
+        "date_created": "2015-07-14T10:00:09.943Z",
+        "level": 1,
+        "inventory": 62
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 28,
     "fields": {
         "name": "e",
-        "level": 1,
-        "pet": 2,
-        "inventory": 63,
         "scenery": null,
-        "date_created": "2015-07-14T14:55:11.533Z"
-    }
+        "pet": 2,
+        "date_created": "2015-07-14T14:55:11.533Z",
+        "level": 1,
+        "inventory": 63
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 },
 {
-    "model": "tracktivityPetsWebsite.collectedpet",
     "pk": 29,
     "fields": {
         "name": "Turtz",
-        "level": 5,
-        "pet": 2,
-        "inventory": 20,
         "scenery": null,
-        "date_created": "2015-08-01T14:56:58.970Z"
-    }
+        "pet": 2,
+        "date_created": "2015-08-01T14:56:58.970Z",
+        "level": 5,
+        "inventory": 20
+    },
+    "model": "tracktivityPetsWebsite.collectedpet"
 }
 ]

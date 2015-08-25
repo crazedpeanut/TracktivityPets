@@ -1,28 +1,2 @@
 [
-{
-    "fields": {
-        "body_part": 1,
-        "image_location": "",
-        "description": "A hat for melvin",
-        "belongs_to": 3,
-        "name": "Hat",
-        "cost": 0,
-        "experience_to_unlock": 0
-    },
-    "model": "tracktivityPetsWebsite.item",
-    "pk": 2
-},
-{
-    "fields": {
-        "body_part": 1,
-        "image_location": "",
-        "description": "A beanie for melvin",
-        "belongs_to": 3,
-        "name": "Beanie",
-        "cost": 0,
-        "experience_to_unlock": 1000000
-    },
-    "model": "tracktivityPetsWebsite.item",
-    "pk": 3
-}
 ]

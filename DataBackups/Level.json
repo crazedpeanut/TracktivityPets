@@ -1,82 +1,82 @@
 [
 {
-    "fields": {
-        "level": 1,
-        "experience_needed": 0
-    },
+    "pk": 1,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 1
+    "fields": {
+        "experience_needed": 0,
+        "level": 1
+    }
 },
 {
-    "fields": {
-        "level": 2,
-        "experience_needed": 2268
-    },
+    "pk": 2,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 2
+    "fields": {
+        "experience_needed": 2268,
+        "level": 2
+    }
 },
 {
-    "fields": {
-        "level": 3,
-        "experience_needed": 5566
-    },
+    "pk": 3,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 3
+    "fields": {
+        "experience_needed": 5566,
+        "level": 3
+    }
 },
 {
-    "fields": {
-        "level": 4,
-        "experience_needed": 10361
-    },
+    "pk": 4,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 4
+    "fields": {
+        "experience_needed": 10361,
+        "level": 4
+    }
 },
 {
-    "fields": {
-        "level": 5,
-        "experience_needed": 17331
-    },
+    "pk": 5,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 5
+    "fields": {
+        "experience_needed": 17331,
+        "level": 5
+    }
 },
 {
-    "fields": {
-        "level": 6,
-        "experience_needed": 27464
-    },
+    "pk": 6,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 6
+    "fields": {
+        "experience_needed": 27464,
+        "level": 6
+    }
 },
 {
-    "fields": {
-        "level": 7,
-        "experience_needed": 42195
-    },
+    "pk": 7,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 7
+    "fields": {
+        "experience_needed": 42195,
+        "level": 7
+    }
 },
 {
-    "fields": {
-        "level": 8,
-        "experience_needed": 63610
-    },
+    "pk": 8,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 8
+    "fields": {
+        "experience_needed": 63610,
+        "level": 8
+    }
 },
 {
-    "fields": {
-        "level": 9,
-        "experience_needed": 94742
-    },
+    "pk": 9,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 9
+    "fields": {
+        "experience_needed": 94742,
+        "level": 9
+    }
 },
 {
-    "fields": {
-        "level": 10,
-        "experience_needed": 140000
-    },
+    "pk": 10,
     "model": "tracktivityPetsWebsite.level",
-    "pk": 10
+    "fields": {
+        "experience_needed": 140000,
+        "level": 10
+    }
 }
 ]
