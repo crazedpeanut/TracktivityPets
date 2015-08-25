@@ -1,42 +1,42 @@
 [
 {
-    "pk": 1,
-    "model": "tracktivityPetsWebsite.pet",
     "fields": {
         "default_name": "Sir Oinksalot",
-        "experience_to_unlock": 0,
         "starter_level": 1,
+        "experience_to_unlock": 0,
         "cost": 15
-    }
+    },
+    "model": "tracktivityPetsWebsite.pet",
+    "pk": 1
 },
 {
-    "pk": 2,
-    "model": "tracktivityPetsWebsite.pet",
     "fields": {
         "default_name": "Sheldon",
-        "experience_to_unlock": 0,
         "starter_level": 1,
+        "experience_to_unlock": 0,
         "cost": 0
-    }
+    },
+    "model": "tracktivityPetsWebsite.pet",
+    "pk": 2
 },
 {
-    "pk": 3,
-    "model": "tracktivityPetsWebsite.pet",
     "fields": {
         "default_name": "Melvin",
-        "experience_to_unlock": 0,
         "starter_level": 1,
+        "experience_to_unlock": 0,
         "cost": 20
-    }
+    },
+    "model": "tracktivityPetsWebsite.pet",
+    "pk": 3
 },
 {
-    "pk": 4,
-    "model": "tracktivityPetsWebsite.pet",
     "fields": {
         "default_name": "Jonathan Huckleberry",
-        "experience_to_unlock": 1000000,
         "starter_level": 1,
+        "experience_to_unlock": 1000000,
         "cost": 5
-    }
+    },
+    "model": "tracktivityPetsWebsite.pet",
+    "pk": 4
 }
 ]

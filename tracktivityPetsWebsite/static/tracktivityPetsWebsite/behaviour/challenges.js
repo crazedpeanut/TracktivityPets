@@ -45,9 +45,15 @@ function get_challenge_details()
         type:"GET",
         success: function( data )
         {
-            $(".challenge_detail_description").html(data[0]['fields']['overview']);
-            $(".challenge_detail_header").html(data[0]['fields']['name']);
-            $(".challenge_detail_header").html(data[0]['fields']['name']);
+            $(".challenge_detail_description").html(data['challenge']['overview']);
+            $(".challenge_detail_header").html(data['challenge']['name']);
+
+            $("#available_challenge_rewards_table").html("");
+            for(var d in data['goals'])
+            {
+                $("#available_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+            }
         }
     });
 }

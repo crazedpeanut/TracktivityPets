@@ -253,7 +253,7 @@ class Item(models.Model):
     description = models.TextField(default="")
     name = models.CharField(max_length=100)
     cost = models.IntegerField()
-    belongs_to = models.ForeignKey(Pet)
+    belongs_to = models.ForeignKey(Pet, null=True)
     body_part = models.ForeignKey(BodyPart)
     
     def __str__(self):             
@@ -333,9 +333,14 @@ class Story(models.Model):
     pet = models.ForeignKey(Pet)
     text = models.TextField(default="")
 
+MicroChallengeTypes = (
+    ('STEPS_IN_DURATION','STEPS_IN_DURATION'),
+)
+
 class MicroChallenge(models.Model):
     name = models.CharField(max_length=100, unique=True)
     overview = models.TextField(default="")
+    challenge_type = models.CharField(choices=MicroChallengeTypes, max_length=100, null=True)
 
     def __str__(self):
         return "Micro Challenge: " + self.name

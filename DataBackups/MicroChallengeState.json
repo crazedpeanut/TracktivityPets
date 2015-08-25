@@ -1,2 +1,23 @@
 [
+{
+    "fields": {
+        "steps": 1000
+    },
+    "pk": 1,
+    "model": "tracktivityPetsWebsite.microchallengestate"
+},
+{
+    "fields": {
+        "steps": 2000
+    },
+    "pk": 2,
+    "model": "tracktivityPetsWebsite.microchallengestate"
+},
+{
+    "fields": {
+        "steps": 3000
+    },
+    "pk": 3,
+    "model": "tracktivityPetsWebsite.microchallengestate"
+}
 ]
