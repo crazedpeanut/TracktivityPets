@@ -2,36 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="">
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\CollectedItem.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\CollectedPet.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\CollectedScenery.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Experience.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Happiness.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Inventory.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Item.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Level.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallenge.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallengeGoal.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallengeMedal.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallengeState.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Mood.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Pet.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\PetSwap.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Phrase.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Profile.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Scenery.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Story.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\TimeSeriesData.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\TimeSeriesDataType.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\User.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\UserFitbit.json" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\UserMicroChallenge.json" afterPath="" />
       <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\initial_data.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/CollectedPet.json" afterPath="$PROJECT_DIR$/DataBackups/CollectedPet.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/CollectedScenery.json" afterPath="$PROJECT_DIR$/DataBackups/CollectedScenery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Experience.json" afterPath="$PROJECT_DIR$/DataBackups/Experience.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Happiness.json" afterPath="$PROJECT_DIR$/DataBackups/Happiness.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Level.json" afterPath="$PROJECT_DIR$/DataBackups/Level.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/MicroChallenge.json" afterPath="$PROJECT_DIR$/DataBackups/MicroChallenge.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/MicroChallengeGoal.json" afterPath="$PROJECT_DIR$/DataBackups/MicroChallengeGoal.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/MicroChallengeMedal.json" afterPath="$PROJECT_DIR$/DataBackups/MicroChallengeMedal.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/MicroChallengeState.json" afterPath="$PROJECT_DIR$/DataBackups/MicroChallengeState.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Mood.json" afterPath="$PROJECT_DIR$/DataBackups/Mood.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Pet.json" afterPath="$PROJECT_DIR$/DataBackups/Pet.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Phrase.json" afterPath="$PROJECT_DIR$/DataBackups/Phrase.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Profile.json" afterPath="$PROJECT_DIR$/DataBackups/Profile.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Scenery.json" afterPath="$PROJECT_DIR$/DataBackups/Scenery.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/Story.json" afterPath="$PROJECT_DIR$/DataBackups/Story.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/TimeSeriesDataType.json" afterPath="$PROJECT_DIR$/DataBackups/TimeSeriesDataType.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/User.json" afterPath="$PROJECT_DIR$/DataBackups/User.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/UserFitbit.json" afterPath="$PROJECT_DIR$/DataBackups/UserFitbit.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataBackups/UserMicroChallenge.json" afterPath="$PROJECT_DIR$/DataBackups/UserMicroChallenge.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/views/__init__.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/views/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/admin.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/static/tracktivityPetsWebsite/behaviour/challenges.js" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/static/tracktivityPetsWebsite/behaviour/challenges.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/views/challenges.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/views/challenges.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/templates/tracktivityPetsWebsite/challenges/challenges_list_detail.html" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/templates/tracktivityPetsWebsite/challenges/challenges_list_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/models.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/urls.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
     </list>
     <ignored path="TPetsProject.iws" />
     <ignored path=".idea/workspace.xml" />
