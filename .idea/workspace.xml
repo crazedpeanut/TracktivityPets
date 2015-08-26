@@ -2,32 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="375569db-6621-4e8f-b463-96101ece8043" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\CollectedItem.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\CollectedPet.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\CollectedScenery.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Experience.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Happiness.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Inventory.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Item.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Level.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallenge.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallengeGoal.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallengeMedal.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\MicroChallengeState.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Mood.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Pet.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\PetSwap.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Phrase.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Profile.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Scenery.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\Story.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\TimeSeriesData.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\TimeSeriesDataType.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\User.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\UserFitbit.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\DataBackups\UserMicroChallenge.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\John\Workspace\TracktivityPets\initial_data.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" afterPath="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fitapp/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TPetsProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,10 +37,22 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fitapp/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="challenges.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/static/tracktivityPetsWebsite/behaviour/challenges.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.724138">
+            <state vertical-scroll-proportion="0.0">
               <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
               <folding />
             </state>
@@ -83,13 +71,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22977346">
-              <caret line="318" column="82" selection-start-line="318" selection-start-column="82" selection-end-line="318" selection-end-column="82" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="334" column="46" selection-start-line="334" selection-start-column="46" selection-end-line="334" selection-end-column="46" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fitapp/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19255663">
+              <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,31 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="challenges_list_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/templates/tracktivityPetsWebsite/challenges/challenges_list_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.384615">
-              <caret line="22" column="90" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="157" column="62" selection-start-line="157" selection-start-column="62" selection-end-line="157" selection-end-column="62" />
+              <caret line="165" column="66" selection-start-line="165" selection-start-column="66" selection-end-line="165" selection-end-column="66" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -201,6 +181,7 @@
         <option value="$PROJECT_DIR$/tracktivityPetsWebsite/models.py" />
         <option value="$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py" />
         <option value="$PROJECT_DIR$/tracktivityPetsWebsite/utils.py" />
+        <option value="$PROJECT_DIR$/fitapp/admin.py" />
       </list>
     </option>
   </component>
@@ -243,7 +224,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -478,8 +460,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -851,6 +832,100 @@
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="368" column="49" selection-start-line="368" selection-start-column="49" selection-end-line="368" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/static/tracktivityPetsWebsite/behaviour/challenges.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/tasks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TracktivityPets/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/challenges.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="122" column="39" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/views/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/templates/tracktivityPetsWebsite/challenges/challenges_list_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="73" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="62" selection-start-line="157" selection-start-column="62" selection-end-line="157" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="338" column="0" selection-start-line="338" selection-start-column="0" selection-end-line="338" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -878,7 +953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="111" column="42" selection-start-line="111" selection-start-column="42" selection-end-line="111" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -886,7 +960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -912,7 +984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="111" column="42" selection-start-line="111" selection-start-column="42" selection-end-line="111" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -920,7 +991,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -938,7 +1008,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,7 +1025,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -964,7 +1032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="129" column="0" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -972,7 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,7 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,7 +1095,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,7 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="111" column="42" selection-start-line="111" selection-start-column="42" selection-end-line="111" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,7 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,17 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="157" column="62" selection-start-line="157" selection-start-column="62" selection-end-line="157" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1076,20 +1127,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/templates/tracktivityPetsWebsite/challenges/challenges_list_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
-          <caret line="22" column="90" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="90" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="73" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="90" />
           <folding />
         </state>
       </provider>
@@ -1124,6 +1165,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/static/tracktivityPetsWebsite/behaviour/challenges.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="334" column="46" selection-start-line="334" selection-start-column="46" selection-end-line="334" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="165" column="66" selection-start-line="165" selection-start-column="66" selection-end-line="165" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1134,20 +1213,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/static/tracktivityPetsWebsite/behaviour/challenges.js">
+    <entry file="file://$PROJECT_DIR$/fitapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.724138">
-          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tracktivityPetsWebsite/utils.py">
+    <entry file="file://$PROJECT_DIR$/fitapp/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22977346">
-          <caret line="318" column="82" selection-start-line="318" selection-start-column="82" selection-end-line="318" selection-end-column="82" />
+        <state vertical-scroll-proportion="0.19255663">
+          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
