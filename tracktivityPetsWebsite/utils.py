@@ -3,6 +3,7 @@ import logging
 from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Scenery, CollectedScenery
 from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
+from tracktivityPetsWebsite.models import UserMicroChallenge, UserMicroChallengeState, MicroChallengeGoal, MicroChallengeState, STEPS_IN_DURATION
 import urllib
 import django
 from django.core.urlresolvers import reverse
@@ -315,7 +316,26 @@ def generate_pet_image_url(pet, image_location):
     return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
 def update_user_challenges(user):
-    logger.debug("Updating user challenges")
+    uc_queryset = UserMicroChallenge.objects.filter(profile=user.profile, complete=False)
+
+    for uc in uc_queryset:
+        micro_chal = uc.micro_challenge
+        micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal)
+
+        if micro_chal.challenge_type == STEPS_IN_DURATION:
+            steps_during_json = retrieve_fitapp_data(user, uc.start_date, uc.end_date)
+            steps = 0
+
+            for date in steps_during_json:
+                steps += date['value']
+                uc.state.state.steps = steps
+                uc.save()
+
+                for goal in micro_chal_goals:
+                    if uc.state.state.steps >= goal.state.steps:
+                        logger.debug("User achieved goal for challenge: %s", micro_chal.name)
+
+
 
 
 

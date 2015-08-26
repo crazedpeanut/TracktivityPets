@@ -28,7 +28,9 @@ function get_available_challenges()
 
       if(size <= 0)
       {
-         $( "#avail_challenges" ).append("<a class='list-group-item'> No available challenges!</a>");
+         $( "#avail_challenges" ).append("<a class='list-group-item'>No available challenges!</a>");
+         $( "#available" ).find("#challenge_detail_container").html("No available challenges!");
+
       }
         setSetUpClickListeners();
      });
@@ -86,15 +88,15 @@ function get_completed_challenge_details()
 {
     var challenge = this.getAttribute("id");
 
-    $("#completed_challenges").find(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+    $("#completed").find(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
 
     $.ajax({
         url:"get_complete_challenge_details/" + challenge,
         type:"GET",
         success: function( data )
         {
-            $("#completed_challenges").find(".challenge_detail_description").html(data['challenge']['overview']);
-            $("#completed_challenges").find(".challenge_detail_header").html(data['challenge']['name']);
+            $("#completed").find(".challenge_detail_description").html(data['challenge']['overview']);
+            $("#completed").find(".challenge_detail_header").html(data['challenge']['name']);
 
 
             for(var d in data['goals'])
@@ -136,7 +138,8 @@ function get_active_challenges()
 
       if(size <= 0)
       {
-         $( "#avail_challenges" ).append("<a class='list-group-item'> No active challenges!</a>");
+         $( "#current_challenges" ).append("<a class='list-group-item'> No active challenges!</a>");
+         $( "#current" ).find("#challenge_detail_container").html("No current challenges!");
       }
         setSetUpClickListeners();
      });
@@ -166,13 +169,14 @@ function get_completed_challenges()
         chal.innerHTML = data[d]['name'];
         parent.appendChild(chal);
 
-        chal.addEventListener("click", get_comepleted_challenge_details);
+        chal.addEventListener("click", get_completed_challenge_details);
 
      }
 
       if(size <= 0)
       {
          $( "#completed_challenges" ).append("<a class='list-group-item'> No completed challenges!</a>");
+         $( "#completed" ).find("#challenge_detail_container").html("No completed challenges!");
       }
         setSetUpClickListeners();
      });
