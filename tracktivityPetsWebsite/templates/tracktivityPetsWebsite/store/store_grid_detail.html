@@ -10,7 +10,7 @@
 	        	<p>You own all pets</p>
 	        {% else %}
 	        	 {% for key, value in unlocked_pets.items %}
-	            <div class="col-xs-6" class="store_pet" id="unlocked_{{ value.pk }}">
+	            <div class="col-xs-6" class="store_pet" id="unlocked_pet_{{ value.id }}">
 	                <button class="store_button">
 	                    <img class="img-responsive" src="{{ value.image }}">
 	                    <p class="">{{ key }}</p>
@@ -19,7 +19,7 @@
 	            {% endfor %}
 	
 	            {% for key, value in locked_pets.items %}
-	            <div class="col-xs-6" class="store_pet" id="locked_{{ value.pk }}">
+	            <div class="col-xs-6" class="store_pet" id="locked_pet_{{ value.id }}">
 	                <button class="store_button">
 	                    <img class="img-responsive locked" src="{{ value.image }}">
 	                    <p class="">{{ key }}</p>
@@ -29,7 +29,7 @@
 	        {% endif %}
         </div>
         
-        <div class="col-md-6 hidden-xs" id="">
+        <div class="col-md-6 hidden-xs" id="selected_pet_{{ default_pet.id }}">
         	{% if not own_all_pets %}
             <div hidden id=""></div>
             <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
@@ -53,7 +53,7 @@
 	        	<p>You own all scenery</p>
 	        {% else %}
 	 			{% for key, value in unlocked_scenery.items %}
-	            <div class="col-xs-6" class="store_items" id="unlocked_{{ value.pk }}">
+	            <div class="col-xs-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
 	                <button class="store_button">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
 	                    <p class="scenery_description">{{ key }}</p>
@@ -62,7 +62,7 @@
 				{% endfor %}
 				
 	 			{% for key, value in locked_scenery.items %}
-	            <div class="col-xs-6" class="store_items" id="locked_{{ value.pk }}">
+	            <div class="col-xs-6" class="store_items" id="locked_scenery_{{ value.id }}">
 	                <button class="store_button">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail locked" src="{{ value.image }}">
 	                    <p class="scenery_description">{{ key }}</p>
@@ -73,7 +73,7 @@
         </div>
         
         
-        <div class="col-md-6 hidden-xs" id="">
+        <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
         	{% if not owns_all_scenerys %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
 	            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
@@ -96,7 +96,7 @@
 	        	<p>You own all items</p>
 	        {% else %}
 	        	{% for key, value in unlocked_items.items %}
-	            <div class="col-xs-6" class="store_items" id="unlocked_{{ value.pk }}">
+	            <div class="col-xs-6" class="store_items" id="unlocked_item_{{ value.id }}">
 	                <button class="">
 	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
 	                    <p class="cosmetics_description">{{ key }}</p>
@@ -105,7 +105,7 @@
 	            {% endfor %}    
 	            
 	        	{% for key, value in locked_items.items %}
-	            <div class="col-xs-6" class="store_items" id="locked_{{ value.pk }}">
+	            <div class="col-xs-6" class="store_items" id="locked_item_{{ value.id }}">
 	                <button class="">
 	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
 	                    <p class="cosmetics_description">{{ key }}</p>
@@ -115,7 +115,7 @@
 	        {% endif %}
         </div>
 
-        <div class="col-md-6 hidden-xs" id="">
+        <div class="col-md-6 hidden-xs" id="selected_item_{{ default_item.id }}">
             {% if not own_all_items %}
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
             <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>

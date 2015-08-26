@@ -36,7 +36,7 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
         all = self.get_owned_items()
         data = []
         for collected_item in all:
-            if collected_item.item.belongs_to == pet:
+            if collected_item.item.belongs_to.pk == pet.pk:
                 data.append(collected_item)
         return data
     
@@ -125,6 +125,11 @@ class Pet(models.Model):
     
     def __str__(self):             
         return self.default_name
+    
+    def get_default_image_path(self):
+        image_location = self.mood_set.filter(happiness_needed=-1)[0].image_location
+        start_url = static('tracktivityPetsWebsite/images')
+        return '{url}/pets/{name}/{location}'.format(url=start_url, name=self.default_name, location=image_location)
 
 class CollectedPet(models.Model):
     pet = models.ForeignKey(Pet)
@@ -240,6 +245,9 @@ class CollectedPet(models.Model):
         except:
             image_location = ""
         return '{url}/scenery/{location}'.format(url=start_url, location=image_location)
+    
+    def get_default_image_path(self):
+        self.pet.get_default_image_path()
     
 class BodyPart(models.Model):
     name = models.CharField(max_length=100)

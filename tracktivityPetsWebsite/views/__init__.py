@@ -9,8 +9,11 @@ from .register import register
 from .fitbit_link import fitbit_link
 from .view_purchased_pet import view_purchased_pet
 from .view_unpurchased_pet import view_unpurchased_pet
+from .view_unpurchased_item import view_unpurchased_item
+from .view_unpurchased_scenery import view_unpurchased_scenery
 from .inventory import inventory
 from .store import store
+from .purchase import purchase
 from .set_current_pet import set_current_pet
 from .view_purchased_item import view_purchased_item
 from .view_purchased_scenery import view_purchased_scenery

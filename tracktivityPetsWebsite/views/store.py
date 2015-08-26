@@ -42,14 +42,14 @@ def store(request):
         details_pet['experience'] = default_pet.experience_to_unlock
         details_pet['story'] = default_pet.story_set.filter(level_unlocked=levelOne)[0].text
         details_pet['image'] = utils.generate_pet_image_url(default_pet, default_pet.mood_set.filter(happiness_needed=-1)[0].image_location)
-        details_pet['pk'] = default_pet.pk  
+        details_pet['id'] = default_pet.pk  
     except Exception as e:
         return HttpResponse(str(e))
         own_all_pets = True
             
     #item specific
     current_pet_xp = request.user.profile.current_pet.get_total_experience()
-    collected_items = request.user.profile.inventory.get_collected_items_for_pet(request.user.profile.current_pet)
+    collected_items = request.user.profile.inventory.get_collected_items_for_pet(request.user.profile.current_pet.pet)
     uncollected_items = Item.objects.exclude(id__in=[i.item.id for i in collected_items]) #every item not in collected_items
     
     unlocked_items = {}
@@ -80,10 +80,11 @@ def store(request):
         details_item['experience'] = default_item.experience_to_unlock
         details_item['description'] = default_item.description
         details_item['image'] = default_item.get_image_path()
-        details_item['pk'] = default_item.pk  
+        details_item['id'] = default_item.pk  
     except:
         own_all_items = True
-            
+        
+  
     #scenery specific
     collected_scenery = request.user.profile.inventory.get_owned_scenery()
     uncollected_scenery = Scenery.objects.exclude(id__in=[s.scenery.id for s in collected_scenery]) #every scenery not in collected_scenery
@@ -117,7 +118,7 @@ def store(request):
         details_scenery['experience'] = default_scenery.experience_to_unlock
         details_scenery['description'] = default_scenery.description
         details_scenery['image'] = default_scenery.get_image_path()
-        details_scenery['pk'] = default_scenery.pk  
+        details_scenery['id'] = default_scenery.pk  
     except:
         own_all_scenerys = True
             
