@@ -1,464 +1,464 @@
 [
 {
+    "pk": 10,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 18,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 1,
+        "total_pet_pennies": 0,
         "current_pet": 4
-    },
-    "pk": 10,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 12,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 20,
         "last_fitbit_sync": "2015-08-09T00:00:00Z",
-        "total_pet_pennies": 500,
         "user": 3,
+        "total_pet_pennies": 500,
         "current_pet": 5
-    },
-    "pk": 12,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 13,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 21,
         "last_fitbit_sync": "2015-06-01T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 4,
+        "total_pet_pennies": 0,
         "current_pet": 20
-    },
-    "pk": 13,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 14,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 22,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 5,
+        "total_pet_pennies": 0,
         "current_pet": 14
-    },
-    "pk": 14,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 15,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 23,
         "last_fitbit_sync": "2015-05-25T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 6,
+        "total_pet_pennies": 0,
         "current_pet": 15
-    },
-    "pk": 15,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 16,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 24,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 7,
+        "total_pet_pennies": 0,
         "current_pet": 19
-    },
-    "pk": 16,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 18,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 26,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 25,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 18,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 23,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 31,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 30,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 23,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 24,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 52,
         "last_fitbit_sync": "2015-07-26T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 2,
+        "total_pet_pennies": 0,
         "current_pet": 7
-    },
-    "pk": 24,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 25,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 33,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 31,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 25,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 27,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 35,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 33,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 27,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 28,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 36,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 34,
+        "total_pet_pennies": 0,
         "current_pet": 8
-    },
-    "pk": 28,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 29,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 37,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 35,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 29,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 30,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 38,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 36,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 30,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 31,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 39,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 37,
+        "total_pet_pennies": 0,
         "current_pet": 9
-    },
-    "pk": 31,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 32,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 40,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 38,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 32,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 34,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 42,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 40,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 34,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 35,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 43,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 41,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 35,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 36,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 44,
         "last_fitbit_sync": "2015-05-15T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 42,
+        "total_pet_pennies": 0,
         "current_pet": 10
-    },
-    "pk": 36,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 37,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 45,
         "last_fitbit_sync": "2015-05-15T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 43,
+        "total_pet_pennies": 0,
         "current_pet": 11
-    },
-    "pk": 37,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 38,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 46,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 44,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 38,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 39,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 47,
         "last_fitbit_sync": "2015-06-27T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 45,
+        "total_pet_pennies": 0,
         "current_pet": 12
-    },
-    "pk": 39,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 40,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 48,
         "last_fitbit_sync": "2015-05-15T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 46,
+        "total_pet_pennies": 0,
         "current_pet": 13
-    },
-    "pk": 40,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 41,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 49,
         "last_fitbit_sync": "2015-06-04T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 47,
+        "total_pet_pennies": 0,
         "current_pet": 16
-    },
-    "pk": 41,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 42,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 50,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 48,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 42,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 43,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 51,
         "last_fitbit_sync": "2015-06-02T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 49,
+        "total_pet_pennies": 0,
         "current_pet": 17
-    },
-    "pk": 43,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 46,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 54,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 52,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 46,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 47,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 55,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 53,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 47,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 48,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 56,
         "last_fitbit_sync": "2015-05-24T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 56,
+        "total_pet_pennies": 0,
         "current_pet": 21
-    },
-    "pk": 48,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 49,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 57,
         "last_fitbit_sync": "2015-05-25T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 57,
+        "total_pet_pennies": 0,
         "current_pet": 22
-    },
-    "pk": 49,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 50,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 58,
         "last_fitbit_sync": "2015-05-28T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 58,
+        "total_pet_pennies": 0,
         "current_pet": 23
-    },
-    "pk": 50,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 51,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 59,
         "last_fitbit_sync": "2015-05-27T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 59,
+        "total_pet_pennies": 0,
         "current_pet": 25
-    },
-    "pk": 51,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 52,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 60,
         "last_fitbit_sync": "2015-05-27T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 60,
+        "total_pet_pennies": 0,
         "current_pet": 24
-    },
-    "pk": 52,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 53,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 61,
         "last_fitbit_sync": "2015-06-03T00:00:00Z",
-        "total_pet_pennies": 0,
         "user": 61,
+        "total_pet_pennies": 0,
         "current_pet": 26
-    },
-    "pk": 53,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 54,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 62,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 62,
+        "total_pet_pennies": 0,
         "current_pet": 27
-    },
-    "pk": 54,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 55,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 63,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 63,
+        "total_pet_pennies": 0,
         "current_pet": 28
-    },
-    "pk": 55,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 56,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 64,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 64,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 56,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 57,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 65,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 65,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 57,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 58,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 66,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 66,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 58,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 59,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 67,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 67,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 59,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 60,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 68,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 68,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 60,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 },
 {
+    "pk": 61,
+    "model": "tracktivityPetsWebsite.profile",
     "fields": {
         "inventory": 69,
         "last_fitbit_sync": null,
-        "total_pet_pennies": 0,
         "user": 69,
+        "total_pet_pennies": 0,
         "current_pet": null
-    },
-    "pk": 61,
-    "model": "tracktivityPetsWebsite.profile"
+    }
 }
 ]

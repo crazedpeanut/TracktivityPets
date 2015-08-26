@@ -1,41 +1,24 @@
 [
 {
-    "pk": 1,
+    "model": "tracktivityPetsWebsite.microchallengegoal",
     "fields": {
-        "goal_state": 3,
-        "date_end": null,
-        "date_started": "2015-08-24T08:13:46.017Z",
-        "description": "Micro Challenge: Gold",
-        "micro_challenge": 1,
         "medal": 1,
+        "description": "Run run run ",
+        "goal_state": 3,
+        "micro_challenge": 1,
         "pet_pennies_reward": 20
     },
-    "model": "tracktivityPetsWebsite.microchallengegoal"
+    "pk": 1
 },
 {
-    "pk": 2,
+    "model": "tracktivityPetsWebsite.microchallengegoal",
     "fields": {
-        "goal_state": 2,
-        "date_end": null,
-        "date_started": "2015-08-24T08:14:35.966Z",
-        "description": "Run heaps: silver",
-        "micro_challenge": 1,
         "medal": 2,
+        "description": "Silver",
+        "goal_state": 2,
+        "micro_challenge": 1,
         "pet_pennies_reward": 10
     },
-    "model": "tracktivityPetsWebsite.microchallengegoal"
-},
-{
-    "pk": 3,
-    "fields": {
-        "goal_state": 1,
-        "date_end": null,
-        "date_started": "2015-08-24T08:14:50.153Z",
-        "description": "Run heaps: bronze",
-        "micro_challenge": 1,
-        "medal": 3,
-        "pet_pennies_reward": 5
-    },
-    "model": "tracktivityPetsWebsite.microchallengegoal"
+    "pk": 2
 }
 ]

@@ -1,1 +1,11 @@
 [
+{
+    "pk": 1,
+    "model": "tracktivityPetsWebsite.microchallenge",
+    "fields": {
+        "name": "Run run run",
+        "challenge_type": null,
+        "overview": "Runnity run run"
+    }
+}
+]

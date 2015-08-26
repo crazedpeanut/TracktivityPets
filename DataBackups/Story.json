@@ -1,288 +1,288 @@
 [
 {
     "fields": {
+        "text": "Times have changed since Melvin was a young man! He is experiencing a world of great technological advancement... almost an unnatural amount.  He is sick of being considered an old, slow and out of date snail. His family is vastly wealthy and Melvin has noticed many other pet kingdom inhabitants with cybernetic components, and has decided that he himself should invest in this technology. However, he cannot achieve complete cyberisation alone and has requested your help in obtaining the various components he needs. What's in it for you? Money and friendship!",
         "level_unlocked": 1,
-        "pet": 3,
-        "text": "Times have changed since Melvin was a young man! He is experiencing a world of great technological advancement... almost an unnatural amount.  He is sick of being considered an old, slow and out of date snail. His family is vastly wealthy and Melvin has noticed many other pet kingdom inhabitants with cybernetic components, and has decided that he himself should invest in this technology. However, he cannot achieve complete cyberisation alone and has requested your help in obtaining the various components he needs. What's in it for you? Money and friendship!"
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 1
 },
 {
     "fields": {
+        "text": "Having grown up on the slow-moving, slothful Turtle Isles, Sheldon grew envious of the quicker creatures, especially those who could fly. He once lost a bet with a hare about which of them would win a running race, even though the hare had been so arrogant as to sleep during the race! Sheldon came to a conclusion: as a turtle, he saw no way to remedy his natural evolution in order to obtain the speeds and flight he so desired. That is, until now! Recently Sheldon has been provided with the rotors and abilities of a helicopter. However, Sheldon\u2019s technological cyberisation is not yet complete, and he requests your help in obtaining the various other components he needs. ",
         "level_unlocked": 1,
-        "pet": 2,
-        "text": "Having grown up on the slow-moving, slothful Turtle Isles, Sheldon grew envious of the quicker creatures, especially those who could fly. He once lost a bet with a hare about which of them would win a running race, even though the hare had been so arrogant as to sleep during the race! Sheldon came to a conclusion: as a turtle, he saw no way to remedy his natural evolution in order to obtain the speeds and flight he so desired. That is, until now! Recently Sheldon has been provided with the rotors and abilities of a helicopter. However, Sheldon\u2019s technological cyberisation is not yet complete, and he requests your help in obtaining the various other components he needs. "
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 2
 },
 {
     "fields": {
+        "text": "Sir Oinksalot, the noble boar knight, a true hero throughout the pet kingdoms, and kingsguard and adviser to King Rupert. When he first joined the kingsguard he was gifted the powers of lighting and fire by Merlin the Magpie (yes... magpie), but this magic has taken a terrible toll on Sir Oinksalot's body. Under the advice of the king and other advisers, he has been told to seek out the components to make himself a cyborg in order to maintain control over his body.  But he cannot do this alone! King Rupert has issued a royal requisition for assistance, will you answer the call?",
         "level_unlocked": 1,
-        "pet": 1,
-        "text": "Sir Oinksalot, the noble boar knight, a true hero throughout the pet kingdoms, and kingsguard and adviser to King Rupert. When he first joined the kingsguard he was gifted the powers of lighting and fire by Merlin the Magpie (yes... magpie), but this magic has taken a terrible toll on Sir Oinksalot's body. Under the advice of the king and other advisers, he has been told to seek out the components to make himself a cyborg in order to maintain control over his body.  But he cannot do this alone! King Rupert has issued a royal requisition for assistance, will you answer the call?"
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 3
 },
 {
     "fields": {
+        "text": "Needs to keep up his training to become the strongest!",
         "level_unlocked": 2,
-        "pet": 3,
-        "text": "Needs to keep up his training to become the strongest!"
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 4
 },
 {
     "fields": {
+        "text": "Slowly becoming faster, Melvin is becoming one of the strongest in the beginners' class.",
         "level_unlocked": 3,
-        "pet": 3,
-        "text": "Slowly becoming faster, Melvin is becoming one of the strongest in the beginners' class."
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 5
 },
 {
     "fields": {
+        "text": "He's a hare, he's a well-renowned athlete, he has a nuclear reactor for a heart and electricity is constantly flowing through his body, supercharging his athletic abilities. Although - with his over the top cockiness in his race against Sheldon (a turtle), many other citizens of the pet kingdoms have dubbed Huckleberry \"Sportie Splice\"...a cheeky reference to his arrogance, athleticism and spliced mechanised components. He is currently working towards gaining more mechanised components, and will happily accept help from any willing trainers. Will you help Jonathan?",
         "level_unlocked": 1,
-        "pet": 4,
-        "text": "He's a hare, he's a well-renowned athlete, he has a nuclear reactor for a heart and electricity is constantly flowing through his body, supercharging his athletic abilities. Although - with his over the top cockiness in his race against Sheldon (a turtle), many other citizens of the pet kingdoms have dubbed Huckleberry \"Sportie Splice\"...a cheeky reference to his arrogance, athleticism and spliced mechanised components. He is currently working towards gaining more mechanised components, and will happily accept help from any willing trainers. Will you help Jonathan?"
+        "pet": 4
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 6
 },
 {
     "fields": {
+        "text": "Jonathon's on fire! Not literally...or at least, not all the time. Lately his nuclear reactor heart has been working overtime to generate all the energy he needs to keep up with the other ambitious pet kingdom inhabitants. Luckily, he has you to keep a close eye on him and stop him from going into total meltdown!",
         "level_unlocked": 5,
-        "pet": 4,
-        "text": "Jonathon's on fire! Not literally...or at least, not all the time. Lately his nuclear reactor heart has been working overtime to generate all the energy he needs to keep up with the other ambitious pet kingdom inhabitants. Luckily, he has you to keep a close eye on him and stop him from going into total meltdown!"
+        "pet": 4
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 7
 },
 {
     "fields": {
+        "text": "Top of the beginners' class, Melvin is keen to find new ways to improve.",
         "level_unlocked": 4,
-        "pet": 3,
-        "text": "Top of the beginners' class, Melvin is keen to find new ways to improve."
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 8
 },
 {
     "fields": {
+        "text": "Moving out of the beginners' class, Melvin is keen to lose his training wheels.",
         "level_unlocked": 5,
-        "pet": 3,
-        "text": "Moving out of the beginners' class, Melvin is keen to lose his training wheels."
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 9
 },
 {
     "fields": {
+        "text": "Now in the next level of class, Melvin is becoming stronger each day.",
         "level_unlocked": 6,
-        "pet": 3,
-        "text": "Now in the next level of class, Melvin is becoming stronger each day."
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 10
 },
 {
     "fields": {
+        "text": "Melvin is now looking to graduate top of his class!",
         "level_unlocked": 9,
-        "pet": 3,
-        "text": "Melvin is now looking to graduate top of his class!"
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 13
 },
 {
     "fields": {
+        "text": "Is it a bird? Is it a plane? No, it's Melvin speeding by!",
         "level_unlocked": 10,
-        "pet": 3,
-        "text": "Is it a bird? Is it a plane? No, it's Melvin speeding by!"
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 14
 },
 {
     "fields": {
+        "text": "Melvin is now zooming around everywhere!",
         "level_unlocked": 7,
-        "pet": 3,
-        "text": "Melvin is now zooming around everywhere!"
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 17
 },
 {
     "fields": {
+        "text": "Melvin is now becoming so fast, no one would believe he was ever slow!\r\n\r\n",
         "level_unlocked": 8,
-        "pet": 3,
-        "text": "Melvin is now becoming so fast, no one would believe he was ever slow!\r\n\r\n"
+        "pet": 3
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 18
 },
 {
     "fields": {
+        "text": "Is slowly becoming stronger.",
         "level_unlocked": 2,
-        "pet": 1,
-        "text": "Is slowly becoming stronger."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 19
 },
 {
     "fields": {
+        "text": "Becoming more focused each day aiming to achieve more.",
         "level_unlocked": 3,
-        "pet": 1,
-        "text": "Becoming more focused each day aiming to achieve more."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 20
 },
 {
     "fields": {
+        "text": "Working to build up his sword fighting skills.",
         "level_unlocked": 4,
-        "pet": 1,
-        "text": "Working to build up his sword fighting skills."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 21
 },
 {
     "fields": {
+        "text": "Is now made the middle of his class and is becoming one of the strongest there.",
         "level_unlocked": 5,
-        "pet": 1,
-        "text": "Is now made the middle of his class and is becoming one of the strongest there."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 22
 },
 {
     "fields": {
+        "text": "Learns new shielding skills allowing him to become stronger.",
         "level_unlocked": 6,
-        "pet": 1,
-        "text": "Learns new shielding skills allowing him to become stronger."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 23
 },
 {
     "fields": {
+        "text": "Can now fight off two different opponents at once. Watch out!",
         "level_unlocked": 7,
-        "pet": 1,
-        "text": "Can now fight off two different opponents at once. Watch out!"
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 24
 },
 {
     "fields": {
+        "text": "Getting to be the strongest in his class.",
         "level_unlocked": 8,
-        "pet": 1,
-        "text": "Getting to be the strongest in his class."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 25
 },
 {
     "fields": {
+        "text": "Looking to graduate top of his sword fighting class.",
         "level_unlocked": 9,
-        "pet": 1,
-        "text": "Looking to graduate top of his sword fighting class."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 26
 },
 {
     "fields": {
+        "text": "That'll do pig, that'll do.",
         "level_unlocked": 10,
-        "pet": 1,
-        "text": "That'll do pig, that'll do."
+        "pet": 1
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 27
 },
 {
     "fields": {
+        "text": "Up Sheldon goes! Not very high...but he's getting there.",
         "level_unlocked": 2,
-        "pet": 2,
-        "text": "Up Sheldon goes! Not very high...but he's getting there."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 28
 },
 {
     "fields": {
+        "text": "Taking up flying school, Sheldon is becoming better at flying.",
         "level_unlocked": 3,
-        "pet": 2,
-        "text": "Taking up flying school, Sheldon is becoming better at flying."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 29
 },
 {
     "fields": {
+        "text": "Sheldon can now stay up in the air for a full 5 minutes. Go Sheldon!",
         "level_unlocked": 4,
-        "pet": 2,
-        "text": "Sheldon can now stay up in the air for a full 5 minutes. Go Sheldon!"
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 30
 },
 {
     "fields": {
+        "text": "Sheldon is getting more skilled in flying and is moving up in his overall flying skills.",
         "level_unlocked": 5,
-        "pet": 2,
-        "text": "Sheldon is getting more skilled in flying and is moving up in his overall flying skills."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 31
 },
 {
     "fields": {
+        "text": "Sheldon is now getting a lot better and can now make small flights.",
         "level_unlocked": 6,
-        "pet": 2,
-        "text": "Sheldon is now getting a lot better and can now make small flights."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 32
 },
 {
     "fields": {
+        "text": "Sheldon is now becoming one of the strongest flyers in his class.",
         "level_unlocked": 7,
-        "pet": 2,
-        "text": "Sheldon is now becoming one of the strongest flyers in his class."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 33
 },
 {
     "fields": {
+        "text": "Up Sheldon goes flying. Soaring through the air, he makes for an interesting sight for ground-dwelling creatures.",
         "level_unlocked": 8,
-        "pet": 2,
-        "text": "Up Sheldon goes flying. Soaring through the air, he makes for an interesting sight for ground-dwelling creatures."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 34
 },
 {
     "fields": {
+        "text": "Sheldon is looking to graduate top of his class!",
         "level_unlocked": 9,
-        "pet": 2,
-        "text": "Sheldon is looking to graduate top of his class!"
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 35
 },
 {
     "fields": {
+        "text": "He can FLY.",
         "level_unlocked": 10,
-        "pet": 2,
-        "text": "He can FLY."
+        "pet": 2
     },
     "model": "tracktivityPetsWebsite.story",
     "pk": 36

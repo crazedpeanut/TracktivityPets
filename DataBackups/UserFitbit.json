@@ -1,162 +1,162 @@
 [
 {
+    "pk": 18,
     "fields": {
-        "auth_token": "76048b7d9993c9e2f13047b6391b0577",
-        "fitbit_user": "38JRVC",
         "auth_secret": "72ee1ed4f4e0990d47550f939acc6708",
-        "user": 2
+        "auth_token": "76048b7d9993c9e2f13047b6391b0577",
+        "user": 2,
+        "fitbit_user": "38JRVC"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 18
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 22,
     "fields": {
-        "auth_token": "286114d718dff85d735e1eb91118b590",
-        "fitbit_user": "3FFNS4",
         "auth_secret": "929b1cc82e7f39f011e73d9d9397fe9c",
-        "user": 42
+        "auth_token": "286114d718dff85d735e1eb91118b590",
+        "user": 42,
+        "fitbit_user": "3FFNS4"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 22
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 23,
     "fields": {
-        "auth_token": "4676f67717d20a20ddee35b8dad5ee5a",
-        "fitbit_user": "3FFSHD",
         "auth_secret": "93baaffbdf2c4d3234ba96006f9a09ab",
-        "user": 43
+        "auth_token": "4676f67717d20a20ddee35b8dad5ee5a",
+        "user": 43,
+        "fitbit_user": "3FFSHD"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 23
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 24,
     "fields": {
-        "auth_token": "de44d4a78261b034d70f2aa8ed4fb5bc",
-        "fitbit_user": "2GY3GX",
         "auth_secret": "1461eb2901482a89098e2e7ef38db9c3",
-        "user": 45
+        "auth_token": "de44d4a78261b034d70f2aa8ed4fb5bc",
+        "user": 45,
+        "fitbit_user": "2GY3GX"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 24
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 25,
     "fields": {
-        "auth_token": "4a7d2a5499b204be40c5e1668c06734a",
-        "fitbit_user": "27NZL8",
         "auth_secret": "ccc372035814f29e9217b7cecb349a53",
-        "user": 46
+        "auth_token": "4a7d2a5499b204be40c5e1668c06734a",
+        "user": 46,
+        "fitbit_user": "27NZL8"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 25
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 26,
     "fields": {
-        "auth_token": "7fbd755b8954736b7b95b72b7ca4314b",
-        "fitbit_user": "2T2QCS",
         "auth_secret": "708c7d1d416933f384995d8aa0e06b1c",
-        "user": 47
+        "auth_token": "7fbd755b8954736b7b95b72b7ca4314b",
+        "user": 47,
+        "fitbit_user": "2T2QCS"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 26
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 27,
     "fields": {
-        "auth_token": "b6cbe8e53e963ff1efd08c6069c0a9a7",
-        "fitbit_user": "3DD7VR",
         "auth_secret": "01c5800ec1f4f2196aef85236c84bc64",
-        "user": 49
+        "auth_token": "b6cbe8e53e963ff1efd08c6069c0a9a7",
+        "user": 49,
+        "fitbit_user": "3DD7VR"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 27
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 28,
     "fields": {
-        "auth_token": "93fe9793c7dda7411b16055a28a3217c",
-        "fitbit_user": "3FX2CW",
         "auth_secret": "5512d3244f60f6e82b85c577b72a7073",
-        "user": 6
+        "auth_token": "93fe9793c7dda7411b16055a28a3217c",
+        "user": 6,
+        "fitbit_user": "3FX2CW"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 28
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 29,
     "fields": {
-        "auth_token": "bbe432052843d5545ae8496d574f9f72",
-        "fitbit_user": "3FWTNP",
         "auth_secret": "3dd09d7e83b5c8df91dd63fd9b7deeca",
-        "user": 4
+        "auth_token": "bbe432052843d5545ae8496d574f9f72",
+        "user": 4,
+        "fitbit_user": "3FWTNP"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 29
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 30,
     "fields": {
-        "auth_token": "bbf9d6648aec4d301163cfdaca7ab441",
-        "fitbit_user": "3G6RMT",
         "auth_secret": "11bb1c05b4fb3a01efb53c1af9572092",
-        "user": 56
+        "auth_token": "bbf9d6648aec4d301163cfdaca7ab441",
+        "user": 56,
+        "fitbit_user": "3G6RMT"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 30
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 31,
     "fields": {
-        "auth_token": "d3f6b45443ba6665ce2c06eac911acc1",
-        "fitbit_user": "3G6LYC",
         "auth_secret": "1be18234103aa9358a3c7b14f3c7b346",
-        "user": 57
+        "auth_token": "d3f6b45443ba6665ce2c06eac911acc1",
+        "user": 57,
+        "fitbit_user": "3G6LYC"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 31
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 32,
     "fields": {
-        "auth_token": "d4376f13dc62676ea143d0e268401974",
-        "fitbit_user": "39FLL6",
         "auth_secret": "2ede2af76cb6c779ad4241a6c72943cc",
-        "user": 58
+        "auth_token": "d4376f13dc62676ea143d0e268401974",
+        "user": 58,
+        "fitbit_user": "39FLL6"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 32
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 33,
     "fields": {
-        "auth_token": "cf7304df0872a3d6f43431711f4e15de",
-        "fitbit_user": "35SH7L",
         "auth_secret": "57e40ea3562f145cf53d9bb9a067f6ed",
-        "user": 60
+        "auth_token": "cf7304df0872a3d6f43431711f4e15de",
+        "user": 60,
+        "fitbit_user": "35SH7L"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 33
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 34,
     "fields": {
-        "auth_token": "9c2f4d3496a9b347f7cd9d986082e507",
-        "fitbit_user": "3GCN63",
         "auth_secret": "b3d4315e0b020b32bc195ab22731ec9f",
-        "user": 59
+        "auth_token": "9c2f4d3496a9b347f7cd9d986082e507",
+        "user": 59,
+        "fitbit_user": "3GCN63"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 34
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 35,
     "fields": {
-        "auth_token": "3c612f05003cd1c21972f074f21b6995",
-        "fitbit_user": "3GN4WN",
         "auth_secret": "2f2de89cb5f724ba1891ea5602535b19",
-        "user": 61
+        "auth_token": "3c612f05003cd1c21972f074f21b6995",
+        "user": 61,
+        "fitbit_user": "3GN4WN"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 35
+    "model": "fitapp.userfitbit"
 },
 {
+    "pk": 36,
     "fields": {
-        "auth_token": "a49a6eb469c22bc08ca2f17126b66feb",
-        "fitbit_user": "38NXDJ",
         "auth_secret": "83227d1380e9925bb36498663181ad5f",
-        "user": 3
+        "auth_token": "a49a6eb469c22bc08ca2f17126b66feb",
+        "user": 3,
+        "fitbit_user": "38NXDJ"
     },
-    "model": "fitapp.userfitbit",
-    "pk": 36
+    "model": "fitapp.userfitbit"
 }
 ]
