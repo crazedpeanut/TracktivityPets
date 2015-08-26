@@ -71,6 +71,37 @@ def get_active_challenge_details(request, user_challenge_pk):
             'medal':g.medal.name
         })
 
+    response = {
+        'challenge':challenge_response,
+        'goals':goals_list,
+        'max_steps':uc.state.state.steps
+    }
+
+    response_json = json.dumps(response)
+
+    return HttpResponse( response_json, content_type="application/json")
+
+@login_required
+def get_complete_challenge_details(request, user_challenge_pk):
+    uc = UserMicroChallenge.objects.get(pk=user_challenge_pk)
+
+    challenge = uc.micro_challenge
+
+    challenge_response = {
+        'name':challenge.name,
+        'overview':challenge.overview,
+    }
+
+    goals_list = []
+    goals = list(MicroChallengeGoal.objects.filter(micro_challenge=challenge))
+
+    for g in goals:
+        goals_list.append({
+            'description':g.description,
+            'pet_pennies':g.pet_pennies_reward,
+            'medal':g.medal.name
+        })
+
 
 
     response = {
@@ -81,7 +112,7 @@ def get_active_challenge_details(request, user_challenge_pk):
 
     response_json = json.dumps(response)
 
-    return HttpResponse()
+    return HttpResponse(response_json, content_type="application/json")
 
 @login_required
 def get_active_challenge_names(request):
@@ -89,7 +120,7 @@ def get_active_challenge_names(request):
     challenge_names = []
 
     for uc in user_challenges:
-        challenge_names.append({'pk':uc.micro_challenge.pk, 'name':uc.micro_challenge.name})
+        challenge_names.append({'pk':uc.pk, 'name':uc.micro_challenge.name})
 
     return HttpResponse(json.dumps(challenge_names), content_type="json/application")
 

@@ -7,6 +7,8 @@ from collections import OrderedDict
 
 #TODO add helper functions and __name__
 
+STEPS_IN_DURATION = 0
+
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
     def __str__(self):    
         try:         
@@ -342,7 +344,7 @@ class Story(models.Model):
     text = models.TextField(default="")
 
 MicroChallengeTypes = (
-    ('STEPS_IN_DURATION','STEPS_IN_DURATION'),
+    (STEPS_IN_DURATION,'STEPS_IN_DURATION'),
 )
 
 class MicroChallenge(models.Model):
@@ -373,6 +375,8 @@ class UserMicroChallenge(models.Model):
     state = models.ForeignKey(UserMicroChallengeState)
     profile = models.OneToOneField(Profile, null=True)
     complete = models.BooleanField(default=False)
+    date_started = models.DateTimeField(auto_now=True, null=True)
+    date_end = models.DateTimeField(null=True)
 
 class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
@@ -385,8 +389,6 @@ class MicroChallengeGoal(models.Model):
     description = models.TextField(default="")
     pet_pennies_reward = models.IntegerField()
     goal_state = models.ForeignKey(MicroChallengeState)
-    date_started = models.DateTimeField(auto_now=True, null=True)
-    date_end = models.DateTimeField(null=True)
 
     def __str__(self):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name

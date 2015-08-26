@@ -41,9 +41,18 @@ def update_user_with_fitbit(fitbit_user):
         for fbuser in fbusers:
             logger.debug("About to update TracktivityPets local db for TPets user: %s" % (fbuser.user.get_username()))
             update_user_fitbit(fbuser.user)
-            #update_user_challenges(fbuser.user)
-
+            check_user_challenges.apply_async(fbuser.user)
         #release lock
         #cache.delete(lock_id)
     except Exception as e:
         logger.debug(e)
+
+@shared_task
+def check_user_challenges(user):
+    logger.debug("check user challenges task started for user: %s" % user.get_username())
+
+    try:
+        update_user_challenges(user)
+    except Exception as e:
+        logger.exception("Error occured during user challenge check. User: %s", user.get_username())
+    logger.debug("check user challenges task finished for user: %s" % user.get_username())
