@@ -35,22 +35,7 @@
                     <div class="available_challenge_rewards">                                 
                         <table id="available_challenge_rewards_table" class="table available_challenge_rewards">
                         <tbody>
-                            <tr>
-                                <td>Bronze</td>
-                                <td id="bronze_req">Take 500 steps in one hour</td>
-                                <td id="bronze_reward">P x 5</td>
-                            </tr>
-                            <tr>
-                                <td>Silver</td>
-                                <td id="silver_req">Take 800 steps in one hour</td>
-                                <td id="silver_reward">P x 10</td>
-                            </tr>
-                            <tr id="gold">
-                                <td>Gold</td>
-                                <td id="gold_req">Take 1000 steps in one hour</td>
-                                <td id="gold_reward">P x 20</td>
-                            </tr>
-                            </tbody>
+                        </tbody>
                       </table>
                     </div>
                     <div class="row col-centred" id="challenge_detail_buttons">
@@ -66,76 +51,43 @@
         <div class="collection_view_desktop col-xs-12 col-md-3">
             <h4>Your Active Challenges:</h4>
             <div class="list-group" id="current_challenges">
-              <a href="#" class="list-group-item">The Tortoise and the Hare</a>
-              <a href="#" class="list-group-item">I scream, you scream, we all scream for...jogging?</a>
-              <a href="#" class="list-group-item">Turbo-Charged</a>
+
             </div>
         </div>        
         
         <div class="detail_view_desktop col-md-9 hidden-xs" id="challenge_detail_container">
-            <div class="col-md-4 pull-left" id="challenge_img_title">
+           <div class="col-md-4 pull-left" id="challenge_img_title">
                 <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" id="challenge_detail_image">
                 <h4 class="col-centred" id="challenge_img_subhead">The Tortoise and the Hare</h4>
             </div>
             <div class="col-md-8" id="challenge_subdetail">
                 <div class="row">                    
-                    <h2 class="col-centred" id="challenge_detail_header">The Tortoise and the Hare</h2>                    
+                    <h2 class="col-centred challenge_detail_header"></h2>
                 </div>
-                <div class="row" id="challenge_detail_description_div">
-                    <p id="challenge_detail_description" class="col-centred">
-                        If it hadn't been for Cotton-Eye Joe 
-                        I'd been married long time ago 
-                        Where did you come from where did you go 
-                        Where did you come from Cotton-Eye Joe 
-                        
-                        [Chorus x 2]
-                        If it hadn't been for Cotton-Eye Joe 
-                        I'd been married long time ago 
-                        Where did you come from where did you go 
-                        Where did you come from Cotton-Eye Joe 
-                        
-                        He came to town like a midwinter storm 
-                        He rode through the fields so handsome and strong 
-                        His eyes was his tools and his smile was his gun 
-                        But all he had come for was having some fun 
-                        
-                        [Chorus x 2]
-                        If it hadn't been for Cotton-Eye Joe 
-                        I'd been married long time ago 
-                        Where did you come from where did you go 
-                        Where did you come from Cotton-Eye Joe
+                <div class="row" class="challenge_detail_description_div">
+                    <p class="challenge_detail_description col-centred">
 
                     </p>
-                    <table class="table available_challenge_rewards">    
+                    <table id="current_challenge_rewards_table" class="table available_challenge_rewards">
                         <tbody>
-                            <tr>
-                                <td>Bronze</td>
-                                <td id="bronze_req">Take 500 steps in one hour</td>
-                                <td id="bronze_reward">P x 5</td>
-                            </tr>
-                            <tr>
-                                <td>Silver</td>
-                                <td id="silver_req">Take 800 steps in one hour</td>
-                                <td id="silver_reward">P x 10</td>
-                            </tr>
-                            <tr id="gold">
-                                <td>Gold</td>
-                                <td id="gold_req">Take 1000 steps in one hour</td>
-                                <td id="gold_reward">P x 20</td>
-                            </tr>
+
                             </tbody>
-                      </table>  
-                    <div class="progress">                        
-                        <div id="challenge_progress" class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                            70%
-                        </div>
-                    </div>
+                      </table>
+                    <!--       <div class="progress">
+                                   <div id="challenge_progress" class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                         70%
+                                    </div>
+                           </div>-->
                     <div class="row col-centred" id="challenge_detail_buttons">
                         <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Accept</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <script>
+            get_active_challenges();
+        </script>
     </div>
     
     <!-- Completed challenges tab -->
@@ -143,9 +95,6 @@
         <div class="collection_view_desktop col-xs-12 col-md-3">
             <h4>Your Completed Challenges:</h4>            
             <div class="list-group" id="completed_challenges">
-              <a href="#" class="list-group-item">Tired...so tired</a>
-              <a href="#" class="list-group-item">Exercise is the bomb</a>
-              <a href="#" class="list-group-item">Gee, You're Fat!</a>
             </div>
         </div>
         
@@ -156,37 +105,24 @@
             </div>
             <div class="col-md-8" id="challenge_subdetail">
                 <div class="row">                    
-                    <h2 class="col-centred" id="challenge_detail_header">Gee, You're Fat!</h2>                    
+                    <h2 class="col-centred challenge_detail_header"></h2>
                 </div>
                 <div class="row" id="challenge_detail_description_div">
-                    <p id="challenge_detail_description" class="col-centred">
-                        [C] I saw you walking down the street just the other day
-                        [C] I didn't see your damage from that far away
-                        [C] I should have got a clue when the kids started screaming
-                        [C] You walked up to me with your buck teethe a gleaming
-                        [C] Your hair was all frizzy and your face was a mess
-                        [C] I thought it was a sack but it's your favourite dress
-                        [C] You hurt the trees feelings and the birds all flew
-                        [C] I don't mean to insult you
-                        [C] Oh wait! Yes I do.
-                        [D] Your teeth are yellow, they're covered in mould
-                        [D] You're only fourteen you look a hundred years old
-                        [C] When looks were handed out you were last in line
-                        [C] Your face looks like where the sun don't shine
-                        [D] Did you fall off a building and land on your head
-                        [D) Or did a truck run over your face instead
-                        [C] There ain't no pill cos you ain't ill
-                        [D&C] You're ugly!
+                    <p class="challenge_detail_description col-centred">
+
                     </p>                     
                     <div>
                         <h5>Your reward for this challenge was:</h5>
                         <p id="completed_challenge_reward">[Gold Trophy] P x 20</p>
                         <h5>You completed the challenge on:</h5>
                         <p id="completed_challenge_date">16 August, 2015</p>
-                        <h3 id="challenge_feedback">Congratulations, you're awesome!</h5>
+                        <h5 id="challenge_feedback">Congratulations, you're awesome!</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        get_completed_challenges();
+    </script>
 </div>

@@ -22,7 +22,7 @@ function get_available_challenges()
         chal.innerHTML = data[d]['fields']['name'];
         parent.appendChild(chal);
 
-        chal.addEventListener("click", get_challenge_details);
+        chal.addEventListener("click", get_available_challenge_details);
 
      }
 
@@ -34,19 +34,19 @@ function get_available_challenges()
      });
 }
 
-function get_challenge_details()
+function get_available_challenge_details()
 {
     var challenge = this.getAttribute("id");
 
-    $(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+    $("#available .challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
 
     $.ajax({
         url:"get_challenge_details/" + challenge,
         type:"GET",
         success: function( data )
         {
-            $(".challenge_detail_description").html(data['challenge']['overview']);
-            $(".challenge_detail_header").html(data['challenge']['name']);
+            $("#available").find(".challenge_detail_description").html(data['challenge']['overview']);
+            $("#available").find(".challenge_detail_header").html(data['challenge']['name']);
 
             $("#available_challenge_rewards_table").html("");
             for(var d in data['goals'])
@@ -57,6 +57,127 @@ function get_challenge_details()
         }
     });
 }
+
+function get_active_challenge_details()
+{
+    var challenge = this.getAttribute("id");
+
+    $("#current").find(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+
+    $.ajax({
+        url:"get_challenge_details/" + challenge,
+        type:"GET",
+        success: function( data )
+        {
+            $("#current").find(".challenge_detail_description").html(data['challenge']['overview']);
+            $("#current").find(".challenge_detail_header").html(data['challenge']['name']);
+
+            $("#current_challenge_rewards_table").html("");
+            for(var d in data['goals'])
+            {
+                $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+            }
+        }
+    });
+}
+
+function get_completed_challenge_details()
+{
+    var challenge = this.getAttribute("id");
+
+    $("#completed_challenges").find(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+
+    $.ajax({
+        url:"get_complete_challenge_details/" + challenge,
+        type:"GET",
+        success: function( data )
+        {
+            $("#completed_challenges").find(".challenge_detail_description").html(data['challenge']['overview']);
+            $("#completed_challenges").find(".challenge_detail_header").html(data['challenge']['name']);
+
+
+            for(var d in data['goals'])
+            {
+             /**   $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");**/
+            }
+        }
+    });
+}
+
+function get_active_challenges()
+{
+    $("#current_challenges").html("");
+    $("#current_challenges").prepend("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+
+    $.get("get_active_challenges/", function( data )
+     {
+
+     var size = 0;
+
+        $("#current_challenges").html("");
+
+        parent = document.getElementById("current_challenges");
+
+     for(d in data)
+     {
+        size++;
+
+        chal = document.createElement("a");
+        chal.setAttribute("id", data[d]['pk']);
+        chal.setAttribute("class", "list-group-item");
+        chal.innerHTML = data[d]['name'];
+        parent.appendChild(chal);
+
+        chal.addEventListener("click", get_active_challenge_details);
+
+     }
+
+      if(size <= 0)
+      {
+         $( "#avail_challenges" ).append("<a class='list-group-item'> No active challenges!</a>");
+      }
+        setSetUpClickListeners();
+     });
+}
+
+function get_completed_challenges()
+{
+    $("#completed_challenges").html("");
+    $("#completed_challenges").prepend("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+
+    $.get("get_complete_challenges/", function( data )
+     {
+
+     var size = 0;
+
+        $("#completed_challenges").html("");
+
+        parent = document.getElementById("completed_challenges");
+
+     for(d in data)
+     {
+        size++;
+
+        chal = document.createElement("a");
+        chal.setAttribute("id", data[d]['pk']);
+        chal.setAttribute("class", "list-group-item");
+        chal.innerHTML = data[d]['name'];
+        parent.appendChild(chal);
+
+        chal.addEventListener("click", get_comepleted_challenge_details);
+
+     }
+
+      if(size <= 0)
+      {
+         $( "#completed_challenges" ).append("<a class='list-group-item'> No completed challenges!</a>");
+      }
+        setSetUpClickListeners();
+     });
+}
+
 
 function setSetUpClickListeners()
 {

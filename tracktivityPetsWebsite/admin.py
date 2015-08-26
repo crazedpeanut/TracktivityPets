@@ -149,6 +149,11 @@ class MicroChallengeStateAdmin(admin.ModelAdmin):
 
 #########################################
 
+class UserMicroChallengeStateAdmin(admin.ModelAdmin):
+    fields = ('state',)
+
+#########################################
+
 class UserMicroChallengeAdmin(admin.ModelAdmin):
     fields = ('micro_challenge', 'state', 'profile')
 
@@ -159,6 +164,7 @@ class MicroChallengeMedalAdmin(admin.ModelAdmin):
 
 
 admin.site.register(MicroChallengeMedal, MicroChallengeMedalAdmin)
+admin.site.register(UserMicroChallengeState, UserMicroChallengeStateAdmin)
 admin.site.register(UserMicroChallenge, UserMicroChallengeAdmin)
 admin.site.register(MicroChallengeState, MicroChallengeStateAdmin)
 admin.site.register(Pet, PetAdmin)
