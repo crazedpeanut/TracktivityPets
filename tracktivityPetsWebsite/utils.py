@@ -316,7 +316,7 @@ def generate_pet_image_url(pet, image_location):
     return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
 def update_user_challenges(user):
-    uc_queryset = UserMicroChallenge.objects.filter(profile=user.profile)
+    uc_queryset = UserMicroChallenge.objects.filter(profile=user.profile, complete=False)
 
     for uc in uc_queryset:
         micro_chal = uc.micro_challenge
