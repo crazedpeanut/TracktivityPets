@@ -19,3 +19,6 @@ from .challenges import challenges
 from .equip_item import equip_item
 from .challenges import get_available_challenge_names
 from .challenges import get_challenge_details
+from .challenges import get_active_challenge_names
+from .challenges import get_completed_challenge_names
+from .challenges import get_active_challenge_details
