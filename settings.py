@@ -93,8 +93,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-FITAPP_CONSUMER_KEY = 'b715db8e526a6f27b1223c4096ae14d5'
-FITAPP_CONSUMER_SECRET = 'b06fb3fca1481a53de5aeaa5263baea9'
+FITAPP_CONSUMER_KEY = 'c7386d7a6a275a01b74d875218c52a4b'
+FITAPP_CONSUMER_SECRET = '4af0aab93c7bc0c0a1e919c188dfb39d'
 
 LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"
@@ -125,5 +125,5 @@ BROKER_URL='amqp://guest:guest@localhost:5672//'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 #Logging options
-#LOG_LOCATION = BASE_DIR
-LOG_LOCATION = "/var/log/TracktivityPets/"
+LOG_LOCATION = BASE_DIR
+#LOG_LOCATION = "/var/log/TracktivityPets/"
