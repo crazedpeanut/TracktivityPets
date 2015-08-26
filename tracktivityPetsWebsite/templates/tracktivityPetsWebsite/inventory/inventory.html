@@ -42,6 +42,20 @@
             });
         });
         
+        $("#rename_button").click(function(event) {
+            $('#rename_pet_modal').modal('show');
+        });
+        
+        $("#modal_rename").click(function(event) {
+            $('#inventory_detail_modal').modal('hide');  
+            $('#rename_pet_modal').modal('show');
+        });
+        
+        $("#equip_item_btn").click(function(event) {
+            $('#inventory_detail_modal').modal('hide');  
+            $('#equip_confirm_modal').modal('show');
+        });
+        
         $("#cosmetics > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
@@ -90,9 +104,10 @@
             })
             .fail(function() {
             })
-            .always(function() {                                      
+            .always(function() {                                   
                 if (screen.width <= modalScreenWidth) {
-                    $('#inventory_detail_modal').modal('show');                            
+                    $("#inventory_detail_modal").find("#rename_button").hide();
+                    $('#inventory_detail_modal').modal('show'); 
                 }
             });
         });
