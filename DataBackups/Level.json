@@ -1,0 +1,82 @@
+[
+{
+    "fields": {
+        "level": 1,
+        "experience_needed": 0
+    },
+    "pk": 1,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 2,
+        "experience_needed": 2268
+    },
+    "pk": 2,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 3,
+        "experience_needed": 5566
+    },
+    "pk": 3,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 4,
+        "experience_needed": 10361
+    },
+    "pk": 4,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 5,
+        "experience_needed": 17331
+    },
+    "pk": 5,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 6,
+        "experience_needed": 27464
+    },
+    "pk": 6,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 7,
+        "experience_needed": 42195
+    },
+    "pk": 7,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 8,
+        "experience_needed": 63610
+    },
+    "pk": 8,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 9,
+        "experience_needed": 94742
+    },
+    "pk": 9,
+    "model": "tracktivityPetsWebsite.level"
+},
+{
+    "fields": {
+        "level": 10,
+        "experience_needed": 140000
+    },
+    "pk": 10,
+    "model": "tracktivityPetsWebsite.level"
+}
+]

@@ -45,7 +45,7 @@ def update_user_with_fitbit(fitbit_user):
         #release lock
         #cache.delete(lock_id)
     except Exception as e:
-        logger.debug(e)
+        logger.exception(e)
 
 @shared_task
 def check_user_challenges(user):
