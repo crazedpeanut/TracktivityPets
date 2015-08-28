@@ -19,6 +19,11 @@
             <li><a href="/feedback">Feedback</a></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li class="navbar-text">
+            Pet Penny Balance:                   
+            <img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+            x 500        
+        </li>
         <li class="navbar-text">Signed in as: {{ user.get_username }}</li>
         <li><a href="{% url 'tracktivityPetsWebsite:user_logout' %}"><span class="glyphicon glyphicon-log-in"></span>Sign Out</a></li>
       </ul>

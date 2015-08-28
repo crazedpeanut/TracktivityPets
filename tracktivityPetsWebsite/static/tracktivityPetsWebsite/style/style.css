@@ -198,6 +198,10 @@ width: 75%;
     text-decoration: none;
 }
 
+#penny_img {
+    width: 20px;
+}
+
 @media (max-width: 910px) {
     .navbar-header {
         float: none;
@@ -308,7 +312,6 @@ width: 75%;
 
 .infoItem
 {
-	//background: #eee;
 	background:url('/static/tracktivityPetsWebsite/images/clouds.jpg');
 	height: 100%;
 	border-radius: 8px;
@@ -554,7 +557,7 @@ width: 75%;
     background: white;     
 }
 
-.inventory_button, #store_button {
+.inventory_button, .store_button {
     border: none;
     background: white;
 }
@@ -567,9 +570,14 @@ width: 75%;
     padding-bottom: 1%;    
 }
 
-#inventory_detail_scenery_description_div, #store_detail_scenery_description_div {
+#inventory_detail_scenery_description_div {
     height: 250px;
     overflow: auto;
+}
+
+#store_detail_scenery_description_div {
+    height: 210px;
+    overflow: auto;     
 }
 
 #inventory_detail_pet_description_div, #store_detail_pet_description_div {
@@ -577,16 +585,28 @@ width: 75%;
     overflow: auto;
 }
 
-#inventory_detail_scenery_image, store_detail_scenery_image {
+#inventory_detail_scenery_image, #store_detail_scenery_image {
     height: 200px;
 }
 
-p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inventory_detail_cosmetics_description, #challenge_detail_description {
+p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inventory_detail_cosmetics_description, #challenge_detail_description, #store_detail_pet_description, #store_detail_scenery_description {
     text-align: justify;
 }
 
 #inventory_detail_scenery_image, #inventory_detail_scenery_description_div, #store_detail_scenery_description_div, #store_detail_scenery_image, .activate_scenery_button {
     margin-top: 3%;
+}
+
+#store_detail_pet_description_div {
+    margin-bottom: 15px;
+}
+
+#store_penny_img {
+    width: 40px;
+}
+
+.buy_pet_button, .buy_scenery_button, .buy_cosmetics_button {
+    margin-top: 15px;
 }
 
 /* Mobile devices inventory style rules */

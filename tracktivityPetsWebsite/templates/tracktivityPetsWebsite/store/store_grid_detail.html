@@ -4,7 +4,7 @@
 <div class="collection_window container tab-content col-xs-12">
     <!-- Pet Store Tab -->
     <div class="collection_view_desktop tab-pane fade in active" id="pets">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-sm-6">
             
             {% if own_all_pets == True %}
 	        	<p>You own all pets</p>
@@ -29,18 +29,22 @@
 	        {% endif %}
         </div>
         
-        <div class="col-md-6 hidden-xs" id="selected_pet_{{ default_pet.id }}">
+        <div class="col-sm-6 hidden-xs" id="selected_pet_{{ default_pet.id }}">
         	{% if not own_all_pets %}
             <div hidden id=""></div>
             <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
             <div class="row"><img class="img-responsive col-centred" src="{{ default_pet.image }}" id="store_detail_image"></div>
             <div class="row" id="store_detail_pet_description_div">
-                <p id="store_detail_pet_description" class="col-xs-12 col-md-8 col-centred">
+                <p id="store_detail_pet_description" class="col-xs-12 col-sm-8 col-centred">
                     {{ default_pet.story }}
                 </p>
             </div>
+            <span style="font-weight: bold" id="item_price">Available for:                   
+                <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                x 500
+            </span>
             <div class="row" id="store_detail_buttons">
-                <button class="btn btn-lg btn-primary col-md-3 col-centred buy_pet_button" type="button">Purchase</button>
+                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_pet_button" type="button">Purchase</button>
             </div>
             {% endif %}
         </div>
@@ -48,7 +52,7 @@
     
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-sm-6">
             {% if own_all_scenerys == True %}
 	        	<p>You own all scenery</p>
 	        {% else %}
@@ -73,17 +77,21 @@
         </div>
         
         
-        <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
+        <div class="col-sm-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
         	{% if not owns_all_scenerys %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
 	            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
 	            <div class="row" id="store_detail_scenery_description_div">
-	                <p id="store_detail_scenery_description" class="col-xs-12 col-md-8 col-centred">
+	                <p id="store_detail_scenery_description" class="col-xs-12 col-sm-8 col-centred">
 	                     {{ default_scenery.description }}
 	                </p>
 	            </div>
+	            <span style="font-weight: bold" id="item_price">Available for:                   
+                <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                x 500
+            </span>
 	            <div class="row">
-	                <button class="btn btn-lg btn-primary col-md-3 col-centred buy_scenery_button" type="button">Purchase</button>
+	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_scenery_button" type="button">Purchase</button>
 	            </div>
 	         {% endif %}
         </div>
@@ -91,7 +99,7 @@
     
     <!-- Collected Cosmetics Tab -->
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-sm-6">
             {% if own_all_items == True %}
 	        	<p>You own all items</p>
 	        {% else %}
@@ -115,17 +123,17 @@
 	        {% endif %}
         </div>
 
-        <div class="col-md-6 hidden-xs" id="selected_item_{{ default_item.id }}">
+        <div class="col-sm-6 hidden-xs" id="selected_item_{{ default_item.id }}">
             {% if not own_all_items %}
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
             <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
-                <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-md-8 col-centred">
+                <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-sm-8 col-centred">
                     {{ default_item.description }}
                 </p>
             </div>
             <div class="row">
-                <button class="btn btn-lg btn-primary col-md-3 col-centred buy_cosmetics_button" type="button">Purchase</button>
+                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_cosmetics_button" type="button">Purchase</button>
             </div>
             {% endif %}
         </div>

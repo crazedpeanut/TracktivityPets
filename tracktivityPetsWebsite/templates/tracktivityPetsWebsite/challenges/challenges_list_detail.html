@@ -7,25 +7,21 @@
 <div class="collection_window container tab-content col-xs-12">
     <!-- Available challenges tab -->
     <div class="tab-pane fade in active" id="available">
-        <div class="collection_view_desktop col-xs-12 col-md-3">
+        <div class="collection_view_desktop col-xs-12 col-sm-3">
             <h4>Choose a Challenge!</h4>
             <div class="list-group" id="avail_challenges">
-              <!--<a href="#" class="list-group-item">Stretch Your Legs</a>
-              <a href="#" class="list-group-item">Get a Wriggle On</a>
-              <a href="#" class="list-group-item">Are You Swag Enough?</a>-->
             </div>
-
             <script>
                 get_available_challenges();
             </script>
         </div>        
         
-        <div class="detail_view_desktop col-md-9 hidden-xs" id="challenge_detail_container">
+        <div class="detail_view_desktop col-sm-9 hidden-xs" id="challenge_detail_container">
        <!--     <div class="col-md-4 pull-left" id="challenge_img_title">
                 <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" class="challenge_detail_image">
                 <h4 class="col-centred" id="challenge_img_subhead">Stretch Your Legs</h4>
             </div>-->
-            <div class="col-md-12" id="challenge_subdetail">
+            <div class="col-sm-12" id="challenge_subdetail">
                 <div class="row">                    
                     <h2 class="col-centred challenge_detail_header"></h2>
                 </div>
@@ -39,7 +35,7 @@
                       </table>
                     </div>
                     <div class="row col-centred" id="challenge_detail_buttons">
-                        <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Accept</button>
+                        <button class="btn btn-lg btn-primary col-sm-3 col-centred" type="button">Accept</button>
                     </div>
                 </div>
             </div>
@@ -48,19 +44,19 @@
     
     <!-- Current challenges tab -->
     <div class="tab-pane fade" id="current">
-        <div class="collection_view_desktop col-xs-12 col-md-3">
+        <div class="collection_view_desktop col-xs-12 col-sm-3">
             <h4>Your Active Challenges:</h4>
             <div class="list-group" id="current_challenges">
 
             </div>
         </div>        
         
-        <div class="detail_view_desktop col-md-9 hidden-xs" id="challenge_detail_container">
+        <div class="detail_view_desktop col-sm-9 hidden-xs" id="challenge_detail_container">
   <!--         <div class="col-md-4 pull-left" id="challenge_img_title">
                 <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" id="challenge_detail_image">
                 <h4 class="col-centred" id="challenge_img_subhead">The Tortoise and the Hare</h4>
             </div>-->
-            <div class="col-md-12" id="challenge_subdetail">
+            <div class="col-sm-12" id="challenge_subdetail">
                 <div class="row">                    
                     <h2 class="col-centred challenge_detail_header"></h2>
                 </div>
@@ -70,17 +66,8 @@
                     </p>
                     <table id="current_challenge_rewards_table" class="table available_challenge_rewards">
                         <tbody>
-
-                            </tbody>
-                      </table>
-                    <!--       <div class="progress">
-                                   <div id="challenge_progress" class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-                                         70%
-                                    </div>
-                           </div>-->
-                    <div class="row col-centred" id="challenge_detail_buttons">
-                     <!--   <button class="btn btn-lg btn-primary col-md-3 col-centred" type="button">Accept</button>-->
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -92,18 +79,18 @@
     
     <!-- Completed challenges tab -->
     <div class="tab-pane fade" id="completed">
-        <div class="collection_view_desktop col-xs-12 col-md-3">
+        <div class="collection_view_desktop col-xs-12 col-sm-3">
             <h4>Your Completed Challenges:</h4>            
             <div class="list-group" id="completed_challenges">
             </div>
         </div>
         
-        <div class="detail_view_desktop col-md-9 hidden-xs" id="challenge_detail_container">
-            <div class="col-md-4 pull-left" id="challenge_img_title">
+        <div class="detail_view_desktop col-sm-9 hidden-xs" id="challenge_detail_container">
+            <div class="col-sm-4 pull-left" id="challenge_img_title">
                 <img class="img-responsive" src="{% static 'tracktivityPetsWebsite/images/you_tried.png' %}" id="challenge_detail_image">
                 <h4 class="col-centred" id="challenge_img_subhead">Gee, You're Fat!</h4>
             </div>
-            <div class="col-md-8" id="challenge_subdetail">
+            <div class="col-sm-8" id="challenge_subdetail">
                 <div class="row">                    
                     <h2 class="col-centred challenge_detail_header"></h2>
                 </div>
