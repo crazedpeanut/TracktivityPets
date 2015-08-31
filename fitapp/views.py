@@ -270,7 +270,7 @@ def update(request):
                     get_time_series_data.apply_async(
                         (update['ownerId'], _type.category, _type.resource,),
                         {'date': parser.parse(update['date'])},
-                        countdown=(2 * i))
+                        countdown=(0.2 * i))
         except Exception as e:
             logger.error("Error trying to update fibit records: %s" % str(e))
             raise 500
