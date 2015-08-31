@@ -12,7 +12,7 @@ from django.contrib.sites.models import get_current_site
 import datetime
 from django.conf import settings
 import binascii
-import _hashlib as hashlib
+from hashlib import pbkdf2_hmac
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
@@ -57,7 +57,7 @@ def retrieve_fitapp_data(user, date_from, date_to):
         url = HOST_NAME
         username = user.get_username()
         #compute secure hash so people cant intercept this crappy call (since request object doesnt work)
-        hash = hashlib.pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
+        hash = pbkdf2_hmac('sha256', username.encode(), settings.SECRET_KEY.encode(), 100000)
         params = urllib.parse.urlencode({'hash': binascii.hexlify(hash),
                                          'username': username,
                                          'base_date': str(date_from),
