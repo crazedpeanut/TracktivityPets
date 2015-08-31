@@ -12,7 +12,7 @@ from django.contrib.sites.models import get_current_site
 import datetime
 from django.conf import settings
 import binascii
-import hashlib.pbkdf2_hmac
+import hashlib
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
