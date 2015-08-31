@@ -26,3 +26,4 @@ from .challenges import get_active_challenge_names
 from .challenges import get_completed_challenge_names
 from .challenges import get_active_challenge_details
 from .challenges import get_complete_challenge_details
+from .tests import test_challenge_check
