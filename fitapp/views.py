@@ -146,7 +146,7 @@ def complete(request):
             SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
         except ImproperlyConfigured:
             return redirect(reverse('fitbit-error'))
-        subscribe.apply_async((fbuser.fitbit_user, SUBSCRIBER_ID), countdown=5)
+        subscribe.apply_async((fbuser.fitbit_user, SUBSCRIBER_ID), countdown=0.5)
         # Create tasks for all data in all data types
         for i, _type in enumerate(TimeSeriesDataType.objects.all()):
             # Delay execution for a few seconds to speed up response
@@ -226,7 +226,7 @@ def logout(request):
                 SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
             except ImproperlyConfigured as e:
                 return redirect(reverse('fitbit-error'))
-            unsubscribe.apply_async(kwargs=fbuser.get_user_data(), countdown=5)
+            unsubscribe.apply_async(kwargs=fbuser.get_user_data(), countdown=1)
         fbuser.delete()
     next_url = request.GET.get('next', None) or utils.get_setting(
         'FITAPP_LOGOUT_REDIRECT')
