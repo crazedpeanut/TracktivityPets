@@ -39,12 +39,12 @@
                     {{ default_pet.story }}
                 </p>
             </div>
-            <span style="font-weight: bold" id="item_price">Available for:                   
+            <div style="font-weight: bold" id="item_price_div">Available for:                   
                 <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                x 500
-            </span>
+                x <span id="item_price">500</span>
+            </div>
             <div class="row" id="store_detail_buttons">
-                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_pet_button" type="button">Purchase</button>
+                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_button" type="button">Purchase</button>
             </div>
             {% endif %}
         </div>
@@ -86,12 +86,12 @@
 	                     {{ default_scenery.description }}
 	                </p>
 	            </div>
-	            <span style="font-weight: bold" id="item_price">Available for:                   
-                <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                x 500
-            </span>
+	            <div style="font-weight: bold" id="item_price_div">Available for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span id="item_price">500</span>
+                </div>
 	            <div class="row">
-	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_scenery_button" type="button">Purchase</button>
+	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_button" type="button">Purchase</button>
 	            </div>
 	         {% endif %}
         </div>
@@ -132,8 +132,12 @@
                     {{ default_item.description }}
                 </p>
             </div>
+            <div style="font-weight: bold" id="item_price_div">Available for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span id="item_price">500</span>
+                </div>
             <div class="row">
-                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_cosmetics_button" type="button">Purchase</button>
+                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_button" type="button">Purchase</button>
             </div>
             {% endif %}
         </div>

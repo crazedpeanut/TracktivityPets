@@ -543,7 +543,7 @@ width: 75%;
     border: 1px solid white;
 }
 
-.tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p, #rename_pet_modal, #equip_confirm_modal 
+.tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p, #rename_pet_modal, #equip_confirm_modal, #store_confirm_modal, #item_purchased_modal 
 {
     text-align: center;
 }
@@ -605,8 +605,8 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     width: 40px;
 }
 
-.buy_pet_button, .buy_scenery_button, .buy_cosmetics_button {
-    margin-top: 15px;
+#item_price_div, #item_price {
+     margin-bottom: 10px;
 }
 
 /* Mobile devices inventory style rules */

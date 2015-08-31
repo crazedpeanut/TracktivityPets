@@ -21,11 +21,11 @@
                     
                     var obj = JSON.parse(data);
                     $("#store_detail_header").html(obj.name);                    
-                    //$("#store_detail_modal").find(".modal-title").html(obj.name);                   
+                    $("#store_detail_modal").find(".modal-title").html(obj.name);                   
                     $("#store_detail_pet_description").html(obj.story);
-                    //$("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
+                    $("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
                     $("#store_detail_image").attr("src", obj.image);
-                    //$("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
+                    $("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
                     $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
             })
             .fail(function() {
@@ -47,11 +47,11 @@
                     
                     var obj = JSON.parse(data);
                     $("#store_detail_scenery_header").html(obj.name);                    
-                    //$("#store_detail_modal").find(".modal-title").html(obj.name);                   
+                    $("#store_detail_modal").find(".modal-title").html(obj.name);                   
                     $("#store_detail_scenery_description").html(obj.description);
-                    //$("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
+                    $("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
                     $("#store_detail_scenery_image").attr("src", obj.image);
-                    //$("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
+                    $("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
                     $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);
             })
             .fail(function() {
@@ -73,11 +73,11 @@
                     
                     var obj = JSON.parse(data);
                     $("#store_detail_cosmetics_header").html(obj.name);                    
-                    //$("#store_detail_modal").find(".modal-title").html(obj.name);                   
+                    $("#store_detail_modal").find(".modal-title").html(obj.name);                   
                     $("#inventory_detail_cosmetics_description").html(obj.description);
-                    //$("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
+                    $("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
                     $("#inventory_detail_cosmetics_image").attr("src", obj.image);
-                    //$("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
+                    $("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
                     $("div[id*='selected_item_']").attr("id", "selected_item_" + id);
             })
             .fail(function() {
@@ -90,23 +90,15 @@
             });
         });
         
-        /*$(".buy_scenery_button" ).click(function() {
-            var id = $("div[id*='selected_scenery_']").attr("id").split("_")[2]; //unpurchased_x becomes x
-            $.ajax( "{% url 'tracktivityPetsWebsite:purchase' %}scenery/" + id)
-                .done(function(data) {
-                    if(data === "False")
-                        alert("Failed");
-                    else
-                        alert("Successfully Activated");
-                        //remove item from list here
-                    
-            })
-            .fail(function() {
-            })
-            .always(function() {
-            
-            });
-        });*/
+        $(".buy_button").click(function(event) {
+            $('#store_detail_modal').modal('hide');  
+            $('#store_confirm_modal').modal('show');
+        });
+        
+        $(".confirm_buy_button").click(function(event) {
+            $('#store_confirm_modal').modal('hide');  
+            $('#item_purchased_modal').modal('show');
+        });
         
         $(".buy_cosmetics_button" ).click(function() {
             var id = $("div[id*='selected_item_']").attr("id").split("_")[2]; //unpurchased_x becomes x
@@ -158,13 +150,14 @@
 
 <div class="container" id="store_header">
     <div class="row col-centred">
-        <img class="bubbletext_header col-xs-8 col-xs-offset-2 col-sm-4 col-md-3 col-centred" src="{% static 'tracktivityPetsWebsite/images/store_text.png' %}">
+        <img class="bubbletext_header col-xs-6 col-xs-offset-2 col-sm-4 col-md-3 col-centred" src="{% static 'tracktivityPetsWebsite/images/store_text.png' %}">
     </div>
 </div>
 
 <div class="container" id="inventory_container">
     {% include 'tracktivityPetsWebsite/store/store_tabs.html' %}        
-    {% include 'tracktivityPetsWebsite/store/store_grid_detail.html' %}  
+    {% include 'tracktivityPetsWebsite/store/store_grid_detail.html' %} 
+    {% include 'tracktivityPetsWebsite/store/store_modal.html' %} 
 </div>   
 
 {% endblock content_block %}
