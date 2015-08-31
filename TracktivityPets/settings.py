@@ -74,7 +74,7 @@ DATABASES = {
         'NAME': 'tracktivitypets',
         'USER': 'tracktivitypets',
         'PASSWORD': 'tracktivitypets',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'HOST': '192.168.0.9',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
