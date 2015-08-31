@@ -257,6 +257,7 @@ def update(request):
 
             # Create a celery task for each data type in the update
             for update in updates:
+                logger.debug("Updating users record, collection type: %s", update['collectionType'])
                 cat = getattr(TimeSeriesDataType, update['collectionType'])
                 resources = TimeSeriesDataType.objects.filter(category=cat)
                 for i, _type in enumerate(resources):
