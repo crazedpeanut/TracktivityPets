@@ -10,9 +10,9 @@ from django.core.urlresolvers import reverse
 import fitapp
 from django.contrib.sites.models import get_current_site
 import datetime
-import hashlib
 from django.conf import settings
-import hashlib, binascii
+import binascii
+import _hashlib as hashlib
 import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
