@@ -254,18 +254,13 @@ def update(request):
                 body = request.FILES['updates'].read()
             updates = json.loads(body.decode('utf8'))
 
-            #### Stealing a request from Fitbit
-            f = open('fitbitupdate.txt', 'w')
-            f.write(body.decode('utf8'))
-            f.close()
-            ###
 
             # Create a celery task for each data type in the update
             for update in updates:
                 cat = getattr(TimeSeriesDataType, update['collectionType'])
                 resources = TimeSeriesDataType.objects.filter(category=cat)
                 for i, _type in enumerate(resources):
-                    # Offset each call by 2 seconds so they don't bog down the
+                    # Offset each call by 0.2 seconds so they don't bog down the
                     # server
                     get_time_series_data.apply_async(
                         (update['ownerId'], _type.category, _type.resource,),
