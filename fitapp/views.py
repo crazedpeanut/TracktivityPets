@@ -151,9 +151,10 @@ def complete(request):
         for i, _type in enumerate(TimeSeriesDataType.objects.all()):
             # Delay execution for a few seconds to speed up response
             # Offset each call by 2 seconds so they don't bog down the server
+            logger.debug("Updating fitbit resource: %s", _type.resource)
             get_time_series_data.apply_async(
                 (fbuser.fitbit_user, _type.category, _type.resource,),
-                countdown=10 + (i * 5))
+                countdown=(i * 1))
 
     logger.debug("Started celery job to retrieve users fitbit steps")
 
