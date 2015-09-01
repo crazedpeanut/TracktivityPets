@@ -334,6 +334,8 @@ def update_user_challenges(user):
                 for goal in micro_chal_goals:
                     if uc.state.state.steps >= goal.state.steps:
                         logger.debug("User achieved goal for challenge: %s", micro_chal.name)
+                    else:
+                        logger.debug("User has not achieved goal for challenge: %s", micro_chal.name)
 
 
 
