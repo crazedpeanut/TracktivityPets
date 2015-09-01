@@ -318,9 +318,13 @@ def generate_pet_image_url(pet, image_location):
 def update_user_challenges(user):
     uc_queryset = UserMicroChallenge.objects.filter(profile=user.profile, complete=False)
 
+    logger.debug("Checking challenged for user: %s", user.get_username())
+
     for uc in uc_queryset:
         micro_chal = uc.micro_challenge
         micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal)
+
+        logger.debug("Checking challenge: %s" % micro_chal.name )
 
         if micro_chal.challenge_type == STEPS_IN_DURATION:
             steps_during_json = retrieve_fitapp_data(user, uc.start_date, uc.end_date)
@@ -333,9 +337,9 @@ def update_user_challenges(user):
 
                 for goal in micro_chal_goals:
                     if uc.state.state.steps >= goal.state.steps:
-                        logger.debug("User achieved goal for challenge: %s", micro_chal.name)
+                        logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
                     else:
-                        logger.debug("User has not achieved goal for challenge: %s", micro_chal.name)
+                        logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
 
 
 
