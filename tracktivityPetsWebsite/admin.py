@@ -155,7 +155,7 @@ class UserMicroChallengeStateAdmin(admin.ModelAdmin):
 #########################################
 
 class UserMicroChallengeAdmin(admin.ModelAdmin):
-    fields = ('micro_challenge', 'state', 'profile', 'complete', 'date_started', 'date_end')
+    fields = ('micro_challenge', 'state', 'profile', 'complete', 'date_end')
 
 #########################################
 
