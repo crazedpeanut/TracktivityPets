@@ -17,6 +17,7 @@ import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.templatetags.static import static
 from settings import HOST_NAME, LOG_LOCATION
+from datetime import timezone
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -348,7 +349,7 @@ def update_user_challenges(user):
                 else:
                     logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
 
-            if datetime.datetime.now() > uc.date_end:
+            if datetime.datetime.now(timezone.utc) > uc.date_end:
                 uc.complete = True
 
 
