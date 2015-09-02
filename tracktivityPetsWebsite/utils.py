@@ -346,6 +346,7 @@ def update_user_challenges(user):
                     logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
                     if goal.medal.name == "Gold":
                         uc.complete = True
+                        uc.save() # Save complete challenge
                 else:
                     logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
 
