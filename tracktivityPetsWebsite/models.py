@@ -375,13 +375,13 @@ class UserMicroChallenge(models.Model):
     state = models.ForeignKey(UserMicroChallengeState)
     profile = models.OneToOneField(Profile, null=True)
     complete = models.BooleanField(default=False)
-    date_started = models.DateTimeField(auto_now=True, null=True)
+    date_started = models.DateTimeField(default=datetime.datetime.now, null=True)
     date_end = models.DateTimeField(null=True)
 
 class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
     to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
-    time_swapped = models.DateTimeField(auto_now=True)
+    time_swapped = models.DateTimeField(default=datetime.datetime.now)
 
 class MicroChallengeGoal(models.Model):
     micro_challenge = models.ForeignKey(MicroChallenge)
