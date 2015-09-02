@@ -332,6 +332,7 @@ def update_user_challenges(user):
 
             for date in steps_during_json:
                 steps += date['value']
+                logger.debug("Updating state steps from: %d to %d" % (uc.state.state.steps, uc.state.state.steps + steps))
                 uc.state.state.steps = steps
                 uc.save()
 

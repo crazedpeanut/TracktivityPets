@@ -7,7 +7,7 @@ from collections import OrderedDict
 
 #TODO add helper functions and __name__
 
-STEPS_IN_DURATION = 0
+STEPS_IN_DURATION = 'steps_in_duration'
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
     def __str__(self):    
