@@ -331,20 +331,26 @@ def update_user_challenges(user):
 
             logger.debug("Checking dates from %s to %s" % (str(uc.date_started),str(uc.date_end)))
 
-            steps = 0
+            steps = 0 # Reset steps back to zero
 
+            #Update steps for UserMicroChallenge
             for date in steps_during_json['objects']:
                 steps += int(date['value'])
-
                 logger.debug("Updating state steps from: %d to %d" % (uc.state.state.steps, uc.state.state.steps + steps))
-                uc.state.state.steps = steps
-                uc.save()
+                uc.state.state.steps += steps
+            uc.save() # Save new step count for challenge
 
-                for goal in micro_chal_goals:
-                    if uc.state.state.steps >= goal.goal_state.steps:
-                        logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
-                    else:
-                        logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
+            for goal in micro_chal_goals:
+                if uc.state.state.steps >= goal.goal_state.steps:
+                    logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
+                    if goal.medal.name == "Gold":
+                        uc.complete = True
+                else:
+                    logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
+                    uc.state.state.steps = steps
+
+            if datetime.datetime.now > uc.date_end:
+                uc.complete = True
 
 
 
