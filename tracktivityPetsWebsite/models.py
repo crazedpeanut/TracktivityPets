@@ -351,6 +351,7 @@ class MicroChallenge(models.Model):
     name = models.CharField(max_length=100, unique=True)
     overview = models.TextField(default="")
     challenge_type = models.CharField(choices=MicroChallengeTypes, max_length=100, null=True)
+    duration_mins = models.IntegerField(default=0)
 
     def __str__(self):
         return "Micro Challenge: " + self.name
