@@ -347,9 +347,8 @@ def update_user_challenges(user):
                         uc.complete = True
                 else:
                     logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
-                    uc.state.state.steps = steps
 
-            if datetime.datetime.now > uc.date_end:
+            if datetime.datetime.now() > uc.date_end:
                 uc.complete = True
 
 
