@@ -324,10 +324,10 @@ def update_user_challenges(user):
         micro_chal = uc.micro_challenge
         micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal)
 
-        logger.debug("Checking challenge: %s" % micro_chal.name )
+        logger.debug("Checking challenge: %s" % micro_chal.name)
 
         if micro_chal.challenge_type == STEPS_IN_DURATION:
-            result, steps_during_json = retrieve_fitapp_data(user, uc.date_started, uc.date_end)
+            result, steps_during_json = retrieve_fitapp_data(user, uc.date_started.strftime('%Y-%m-%d'), uc.date_end.strftime('%Y-%m-%d'))
 
             logger.debug("Checking dates from %s to %s" % (str(uc.date_started),str(uc.date_end)))
 
