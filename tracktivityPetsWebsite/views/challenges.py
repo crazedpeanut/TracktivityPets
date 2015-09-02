@@ -148,6 +148,6 @@ def accept_challenge(request, challenge_pk):
 
     user_chal = UserMicroChallenge(state=user_chal_state, micro_challenge=micro_chal,profile=request.user.profile, date_end=date_end)
 
-#    chal_state.save()
-#    user_chal_state.save()
+    chal_state.save()
+    user_chal_state.save()
     user_chal.save()
