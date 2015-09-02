@@ -140,7 +140,9 @@ def get_completed_challenge_names(request):
 def accept_challenge(request, challenge_pk):
     micro_chal = MicroChallenge(pk=challenge_pk)
     chal_state = MicroChallengeState(steps=0)
-    user_chal_state = UserMicroChallengeState(state=chal_state)
+    
+    user_chal_state = UserMicroChallengeState()
+    user_chal_state.state = chal_state
 
     date_end = datetime.datetime.now() + datetime.timedelta(minutes=micro_chal.duration_mins)
 
