@@ -144,7 +144,7 @@ def accept_challenge(request, challenge_pk):
 
     date_end = datetime.datetime.now() + datetime.timedelta(minutes=micro_chal.duration_mins)
 
-    user_chal = UserMicroChallenge(state=user_chal_state, micro_challenge=challenge_pk,profile=request.user.profile, date_end=date_end)
+    user_chal = UserMicroChallenge(state=user_chal_state, micro_challenge=micro_chal,profile=request.user.profile, date_end=date_end)
 
     chal_state.save()
     user_chal_state.save()
