@@ -138,7 +138,7 @@ def get_completed_challenge_names(request):
 
 @login_required
 def accept_challenge(request, challenge_pk):
-    micro_chal = MicroChallenge(pk=challenge_pk)
+    micro_chal = MicroChallenge.objects.get(pk=challenge_pk)
     chal_state = MicroChallengeState(steps=0)
 
     user_chal_state = UserMicroChallengeState()
