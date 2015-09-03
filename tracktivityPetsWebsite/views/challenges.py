@@ -15,12 +15,13 @@ def challenges(request):
 @login_required
 def get_available_challenge_names(request):
     challenges = list(MicroChallenge.objects.all())
+    new_chal_list = []
     current_challenges = UserMicroChallenge.objects.filter(profile=request.user.profile)
 
     for c in challenges:
         for cc in current_challenges:
-            if c == cc.micro_challenge:
-                challenges.remove(c)
+            if c is not cc.micro_challenge:
+                new_chal_list.append(c)
 
     return HttpResponse((serializers.serialize("json", challenges)), content_type="application/json")
 
