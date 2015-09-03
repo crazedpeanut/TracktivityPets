@@ -139,15 +139,14 @@ def get_completed_challenge_names(request):
 @login_required
 def accept_challenge(request, challenge_pk):
     micro_chal = MicroChallenge.objects.get(pk=challenge_pk)
+
     chal_state = MicroChallengeState(steps=0)
+    chal_state.save()
 
     user_chal_state = UserMicroChallengeState()
     user_chal_state.state = chal_state
+    user_chal_state.save()
 
     date_end = datetime.datetime.now() + datetime.timedelta(minutes=micro_chal.duration_mins)
-
     user_chal = UserMicroChallenge(state=user_chal_state, micro_challenge=micro_chal,profile=request.user.profile, date_end=date_end)
-
-    chal_state.save()
-    user_chal_state.save()
     user_chal.save()
