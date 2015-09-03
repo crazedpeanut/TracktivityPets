@@ -374,7 +374,7 @@ class UserMicroChallengeState(models.Model):
 class UserMicroChallenge(models.Model):
     micro_challenge = models.ForeignKey(MicroChallenge)
     state = models.ForeignKey(UserMicroChallengeState)
-    profile = models.OneToOneField(Profile, null=True)
+    profile = models.ForeignKey(Profile, null=True)
     complete = models.BooleanField(default=False)
     date_started = models.DateTimeField(default=datetime.datetime.now, null=True)
     date_end = models.DateTimeField(null=True)
