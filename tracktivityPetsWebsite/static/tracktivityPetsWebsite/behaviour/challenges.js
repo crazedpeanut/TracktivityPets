@@ -46,7 +46,7 @@ function avail_challenges_click_handler()
     get_available_challenge_details(challenge);
 }
 
-active_challenge_click_handler()
+function active_challenge_click_handler()
 {
     var challenge = this.getAttribute("id");
 
