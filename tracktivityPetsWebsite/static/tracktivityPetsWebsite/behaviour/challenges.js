@@ -82,6 +82,18 @@ function get_active_challenge_details()
             }
         }
     });
+
+    $(".accept-chal-button").click(function(event)
+    {
+         $.ajax({
+            url:"accept_challenge/" + challenge,
+            type:"GET",
+            success: function( data )
+            {
+
+            }
+        });
+    });
 }
 
 function get_completed_challenge_details()
