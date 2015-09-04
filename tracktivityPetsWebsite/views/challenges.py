@@ -62,6 +62,8 @@ def get_active_challenge_details(request, user_challenge_pk):
     challenge_response = {
         'name':challenge.name,
         'overview':challenge.overview,
+        'date_started':challenge.date_started,
+        'date_end':challenge.date_end
     }
 
     goals_list = []
@@ -77,7 +79,7 @@ def get_active_challenge_details(request, user_challenge_pk):
     response = {
         'challenge':challenge_response,
         'goals':goals_list,
-        'max_steps':uc.state.state.steps
+        'current_steps':uc.state.state.steps
     }
 
     response_json = json.dumps(response)
