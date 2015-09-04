@@ -102,7 +102,7 @@ function get_active_challenge_details(challenge)
         {
             $("#current").find(".challenge_detail_description").html(data['challenge']['overview']);
             $("#current").find(".challenge_detail_header").html(data['challenge']['name']);
-            $("#current").find(."active_chal_end_date").html(data['challenge']['date_end']);
+            $("#current").find(".active_chal_end_date").html(data['challenge']['date_end']);
 
             $("#current_challenge_rewards_table").html("");
             for(var d in data['goals'])
