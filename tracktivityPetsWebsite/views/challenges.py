@@ -62,8 +62,8 @@ def get_active_challenge_details(request, user_challenge_pk):
     challenge_response = {
         'name':challenge.name,
         'overview':challenge.overview,
-        'date_started':uc.date_started.strftime("%Y-%m-%d %H:%M:%S"),
-        'date_end':uc.date_end.strftime("%Y-%m-%d %H:%M:%S")
+        'date_started':uc.date_started.strftime("%d-%m-%Y %H:%M:%S"),
+        'date_end':uc.date_end.strftime("%d-%m-%Y %H:%M:%S")
     }
 
     goals_list = []
