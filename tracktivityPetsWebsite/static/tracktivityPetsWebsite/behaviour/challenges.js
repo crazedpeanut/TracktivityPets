@@ -85,12 +85,14 @@ function get_active_challenge_details()
 
     $(".accept-chal-button").click(function(event)
     {
+        alert("About to accept challenge: " + challenge);
+        
          $.ajax({
             url:"accept_challenge/" + challenge,
             type:"GET",
             success: function( data )
             {
-
+                alert("Accepted Challenge: " + challenge);
             }
         });
     });
