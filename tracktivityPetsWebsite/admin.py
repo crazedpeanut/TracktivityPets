@@ -134,7 +134,7 @@ class CollectedItemAdmin(admin.ModelAdmin):
 #########################################
 
 class MicroChallengeAdmin(admin.ModelAdmin):
-    fields = ('name', 'overview', 'challenge_type')
+    fields = ('name', 'overview', 'challenge_type', 'duration_mins')
 
 #########################################
 
