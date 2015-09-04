@@ -76,7 +76,7 @@ function get_active_challenge_details()
 
             $("#current_challenge_rewards_table").html("");
             for(var d in data['goals'])
-            {`
+            {
                 $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
                 "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
             }
