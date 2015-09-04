@@ -58,6 +58,20 @@ function get_available_challenge_details()
             }
         }
     });
+
+
+    $(".accept-chal-button").click(function(event)
+    {
+    alert("About to accept challenge: " + challenge);
+            $.ajax({
+               url:"accept_challenge/" + challenge,
+               type:"GET",
+               success: function( data )
+               {
+                   alert("Accepted Challenge: " + challenge);
+               }
+           });
+       });
 }
 
 function get_active_challenge_details()
@@ -81,20 +95,6 @@ function get_active_challenge_details()
                 "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
             }
         }
-    });
-
-    $(".accept-chal-button").click(function(event)
-    {
-        alert("About to accept challenge: " + challenge);
-        
-         $.ajax({
-            url:"accept_challenge/" + challenge,
-            type:"GET",
-            success: function( data )
-            {
-                alert("Accepted Challenge: " + challenge);
-            }
-        });
     });
 }
 
