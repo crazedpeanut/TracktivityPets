@@ -67,7 +67,7 @@ function get_active_challenge_details()
     $("#current").find(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
 
     $.ajax({
-        url:"get_challenge_details/" + challenge,
+        url:"get_active_challenge_details/" + challenge,
         type:"GET",
         success: function( data )
         {
@@ -76,7 +76,7 @@ function get_active_challenge_details()
 
             $("#current_challenge_rewards_table").html("");
             for(var d in data['goals'])
-            {
+            {`
                 $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
                 "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
             }
