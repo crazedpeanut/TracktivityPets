@@ -176,6 +176,10 @@ function get_active_challenges()
          $( "#current_challenges" ).append("<a class='list-group-item'> No active challenges!</a>");
          $( "#current" ).find("#challenge_detail_container").html("No current challenges!");
       }
+      else
+      {
+        get_active_challenge_details(data[0]['pk']);
+      }
         setSetUpClickListeners();
      });
 }
