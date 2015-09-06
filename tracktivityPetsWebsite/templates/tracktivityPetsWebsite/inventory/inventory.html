@@ -114,10 +114,8 @@
         
         $(".activate_pet_button" ).click(function() {
             var id = $("div[id*='selected_pet_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
-            alert(id);
             $.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
                 .done(function(data) {
-                    alert(data);
                     if(data === "False")
                         alert("Failed to Activate.");
                     else

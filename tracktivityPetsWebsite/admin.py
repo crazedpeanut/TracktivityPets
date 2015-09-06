@@ -133,6 +133,16 @@ class CollectedItemAdmin(admin.ModelAdmin):
     
 #########################################
 
+class CollectedPetAdmin(admin.ModelAdmin):
+    fields = ('pet', 'inventory')
+    
+#########################################
+
+class CollectedSceneryAdmin(admin.ModelAdmin):
+    fields = ('scenery', 'inventory')
+    
+#########################################
+
 class MicroChallengeAdmin(admin.ModelAdmin):
     fields = ('name', 'overview', 'challenge_type', 'duration_mins')
 
@@ -182,5 +192,7 @@ admin.site.register(User, UserAdmin)
 
 ##### below are for TEST purposes only in admin, they can screw up if people link the wrong stuff
 admin.site.register(CollectedItem, CollectedItemAdmin)
+admin.site.register(CollectedScenery, CollectedSceneryAdmin)
+admin.site.register(CollectedPet, CollectedPetAdmin)
 
 
