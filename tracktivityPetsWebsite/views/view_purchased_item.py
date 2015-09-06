@@ -13,6 +13,7 @@ import json
 
 @login_required
 def view_purchased_item(request, item_index=""):
+    
     try:
         item = Item.objects.get(id=item_index) #get the item in the url
         name = item.name
@@ -34,10 +35,10 @@ def view_purchased_item(request, item_index=""):
             default_item = owned_item    
 
             details['name'] = default_item.item.name
-            details['description'] = "Items havent been given a description yet"
-            details['image'] = "TODO"
+            details['description'] = default_item.item.description
+            details['image'] = default_item.item.get_image_path()
             details['pk'] = default_item.item.pk
-            details["equipped_on"] = default_item.equipped_on
+            details["equipped"] = ("equipped" if default_item.equipped else "not_equipped")
         except Exception as e:
             details = str(e)
             

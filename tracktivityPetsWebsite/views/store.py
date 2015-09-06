@@ -124,7 +124,7 @@ def store(request):
             
         
     #return HttpResponse(json.dumps(locked_scenery)) #json.dumps(locked_pets)
-
+    #return HttpResponse(own_all_items)
 
     return render(request, 'tracktivityPetsWebsite/store/store.html', 
     {

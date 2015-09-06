@@ -21,7 +21,7 @@ logger.setLevel(logging.DEBUG)
 @login_required
 def dashboard(request):
     if not utils.is_fitbit_linked(request.user) or not fitapp.utils.is_integrated(request.user):
-       return redirect('tracktivityPetsWebsite:fitbit_link')
+        return redirect('tracktivityPetsWebsite:fitbit_link')
     
     elif request.user.profile.current_pet is None:#take them to the page to select a pet
         return redirect('tracktivityPetsWebsite:pet_selection')
@@ -78,6 +78,8 @@ def dashboard(request):
     stories_available = current_pet.get_stories_available()
     
     scenery_image = current_pet.get_current_scenery_image()
+    
+    equipped_item_images = current_pet.get_all_equipped_items_image_paths()
 
     error = ""
 
@@ -98,5 +100,10 @@ def dashboard(request):
                    "stories_available_count": stories_available.count(),
                    "stories_unlocked": stories_unlocked,
                    #"stories_gained": data['stories'],
-                   "progress_bar_colour": progress_bar_colour
+                   "progress_bar_colour": progress_bar_colour,
+                   "equipped_item_images": equipped_item_images,
                    })
+    
+    
+    
+    
