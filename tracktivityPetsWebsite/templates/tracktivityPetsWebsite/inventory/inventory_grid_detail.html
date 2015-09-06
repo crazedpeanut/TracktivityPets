@@ -75,16 +75,23 @@
         </div>
 
         <div class="col-md-6 hidden-xs" id="selected_cosmetic_{{ default_item.pk }}">
-            <div class="row"><h2 class="col-centred" id="inventory_detail_cosmetics_header">{{ default_item.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
-            <div class="row" id="inventory_detail_cosmetics_description_div">
-                <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-md-8 col-centred">
-                    {{ default_item.description }}
-                </p>
-            </div>
-            <div class="row">
-                <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" id="equip_item_btn" type="button">Equip!</button>
-            </div>
+        	{%if is_items %}
+	            <div class="row"><h2 class="col-centred" id="inventory_detail_cosmetics_header">{{ default_item.name }}</h2></div>
+	            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
+	            <div class="row" id="inventory_detail_cosmetics_description_div">
+	                <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-md-8 col-centred">
+	                    {{ default_item.description }}
+	                </p>
+	                <p> </p>
+	            </div>
+	            <div class="row">
+	            	{% if default_item.equipped == "Equipped" %}
+	            	<button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" id="equip_item_btn" type="button">Unequip!</button>
+	            	{% else %}
+	                <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" id="equip_item_btn" type="button">Equip!</button>
+	            	{% endif %}
+	            </div>
+	        {% endif %}
         </div>
     </div>
 </div> 

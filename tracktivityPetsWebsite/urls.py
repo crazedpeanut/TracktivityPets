@@ -44,5 +44,8 @@ urlpatterns = patterns('',
     url(r'^challenges/accept_challenge/(?P<challenge_pk>[0-9]+)/$', views.accept_challenge, name="accept_challenge"),
     url(r'^challenges/get_active_challenge_details/(?P<user_challenge_pk>[0-9]+)/$', views.get_active_challenge_details, name="active_challenge_detail"),
     url(r'^challenges/get_complete_challenge_details/(?P<user_challenge_pk>[0-9]+)/$', views.get_complete_challenge_details, name="active_challenge_detail"),
-    url(r'^test_challenges/$', views.test_challenge_check, name="challenge_check")
+    url(r'^test_challenges/$', views.test_challenge_check, name="challenge_check"),
+    url(r'^set_pet_name/$', views.set_pet_name, name='set_pet_name'),
+    url(r'^set_pet_name/(?P<pet_index>[0-9]+)/$', views.set_pet_name, name='set_pet_name'),
+    url(r'^set_pet_name/(?P<pet_index>[0-9]+)/(?P<name>[a-zA-Z0-9_]+)/$', views.set_pet_name, name='set_pet_name'),
 )

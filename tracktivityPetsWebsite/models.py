@@ -250,6 +250,15 @@ class CollectedPet(models.Model):
     
     def get_default_image_path(self):
         self.pet.get_default_image_path()
+        
+    def get_all_equipped_items_image_paths(self):
+        images = []
+        all_items = self.inventory.get_collected_items_for_pet(self.pet)
+        for item in all_items:
+            if item.equipped:
+                images.append(item.item.get_image_path())
+        return images
+        
     
 class BodyPart(models.Model):
     name = models.CharField(max_length=100)
