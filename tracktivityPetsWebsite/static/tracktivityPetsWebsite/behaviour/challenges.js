@@ -119,7 +119,7 @@ function complete_challenge_click_handler(challenge)
 {
     var challenge = this.getAttribute("id");
 
-    get_active_challenge_details(challenge);
+    get_complete_challenge_details(challenge);
 }
 
 function get_completed_challenge_details(challenge)
@@ -135,7 +135,7 @@ function get_completed_challenge_details(challenge)
             $("#completed").find(".challenge_detail_header").html(data['challenge']['name']);
 
             alert("Swag");
-            
+
             $("#completed_challenge_rewards_table").html("");
             for(var d in data['goals'])
             {
