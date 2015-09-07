@@ -404,7 +404,7 @@ class MicroChallengeGoal(models.Model):
     def __str__(self):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name
 
-class UserMicroChallengeGoalStatus(models):
+class UserMicroChallengeGoalStatus(models.Model):
     micro_chal_goal = models.ForeignKey(MicroChallengeGoal)
     user_micro_chal = models.ForeignKey(UserMicroChallenge)
     complete = models.BooleanField(default=False)
