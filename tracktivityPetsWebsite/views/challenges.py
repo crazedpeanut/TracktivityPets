@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from tracktivityPetsWebsite.models import MicroChallenge, MicroChallengeGoal, MicroChallengeMedal,\
-    UserMicroChallenge, UserMicroChallengeState, MicroChallengeState
+    UserMicroChallenge, UserMicroChallengeState, MicroChallengeState, UserMicroChallengeGoalStatus
 from django.core import serializers
 import datetime
 
@@ -152,5 +152,9 @@ def accept_challenge(request, challenge_pk):
     date_end = datetime.datetime.now() + datetime.timedelta(minutes=micro_chal.duration_mins)
     user_chal = UserMicroChallenge(state=user_chal_state, micro_challenge=micro_chal,profile=request.user.profile, date_end=date_end)
     user_chal.save()
+
+    for g in MicroChallengeGoal(micro_challenge=micro_chal):
+        user_micro_chal_goal_status = UserMicroChallengeGoalStatus(micro_chal_goal=g, user_micro_chal=user_chal, complete=False)
+        user_micro_chal_goal_status.save()
 
     return HttpResponse()

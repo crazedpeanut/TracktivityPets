@@ -3,7 +3,8 @@ import logging
 from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Scenery, CollectedScenery
 from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
-from tracktivityPetsWebsite.models import UserMicroChallenge, UserMicroChallengeState, MicroChallengeGoal, MicroChallengeState, STEPS_IN_DURATION
+from tracktivityPetsWebsite.models import UserMicroChallenge, UserMicroChallengeState, MicroChallengeGoal,\
+    MicroChallengeState, STEPS_IN_DURATION, UserMicroChallengeGoalStatus
 import urllib
 import django
 from django.core.urlresolvers import reverse
@@ -323,7 +324,7 @@ def update_user_challenges(user):
 
     for uc in uc_queryset:
         micro_chal = uc.micro_challenge
-        micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal, achieved=False)
+        micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal)
 
         logger.debug("Checking challenge: %s" % micro_chal.name)
 
@@ -342,18 +343,22 @@ def update_user_challenges(user):
             uc.save() # Save new step count for challenge
 
             for goal in micro_chal_goals:
-                if uc.state.state.steps >= goal.goal_state.steps:
-                    logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
-                    goal.achieved = True
 
-                    user.profile.total_pet_pennies += goal.pet_pennies_reward
+                user_micro_chal_goal_status = UserMicroChallengeGoalStatus.objects.get(user_micro_chal=uc, micro_chal_goal=goal)
+                if(user_micro_chal_goal_status.complete is not True):
+                    if uc.state.state.steps >= goal.goal_state.steps:
+                        logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
 
-                    if goal.medal.name == "Gold":
-                        uc.complete = True
-                        uc.date_completed = date['dateTime'] + " 00:00:00+00:00"
-                        uc.save() # Save complete challenge
-                else:
-                    logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
+                        user.profile.total_pet_pennies += goal.pet_pennies_reward
+                        user_micro_chal_goal_status.complete = True
+                        user_micro_chal_goal_status.save()
+
+                        if goal.medal.name == "Gold":
+                            uc.complete = True
+                            uc.date_completed = date['dateTime'] + " 00:00:00+00:00"
+                            uc.save() # Save complete challenge
+                    else:
+                        logger.debug("User has not achieved goal for challenge: %s" % micro_chal.name)
 
             if datetime.datetime.now(timezone.utc) > uc.date_end:
                 uc.complete = True
