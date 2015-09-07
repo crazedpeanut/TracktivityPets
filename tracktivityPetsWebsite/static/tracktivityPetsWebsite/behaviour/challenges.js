@@ -83,6 +83,7 @@ function get_available_challenge_details(challenge)
                type:"GET",
                success: function( data )
                {
+                    alert("accept chal");
                    get_active_challenges();
                }
            });
