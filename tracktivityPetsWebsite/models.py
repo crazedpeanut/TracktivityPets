@@ -389,11 +389,6 @@ class UserMicroChallenge(models.Model):
     date_end = models.DateTimeField(null=True)
     date_completed = models.DateTimeField(null=True)
 
-class UserMicroChallengeGoalStatus(models):
-    micro_chal_goal = models.ForeignKey(MicroChallengeGoal)
-    user_micro_chal = models.ForeignKey(UserMicroChallenge)
-    complete = models.BooleanField(default=False)
-
 class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
     to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
@@ -408,8 +403,11 @@ class MicroChallengeGoal(models.Model):
 
     def __str__(self):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name
-    
 
+class UserMicroChallengeGoalStatus(models):
+    micro_chal_goal = models.ForeignKey(MicroChallengeGoal)
+    user_micro_chal = models.ForeignKey(UserMicroChallenge)
+    complete = models.BooleanField(default=False)
 
     
     
