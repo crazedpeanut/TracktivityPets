@@ -400,7 +400,7 @@ class MicroChallengeGoal(models.Model):
     description = models.TextField(default="")
     pet_pennies_reward = models.IntegerField()
     goal_state = models.ForeignKey(MicroChallengeState)
-    achieved = models.BooleanField()
+    achieved = models.BooleanField(default=False)
 
     def __str__(self):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name
