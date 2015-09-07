@@ -75,6 +75,7 @@ function get_available_challenge_details(challenge)
     });
 
 
+    $(".accept-chal-button").unbind("click");
     $(".accept-chal-button").click(function(event)
     {
 
