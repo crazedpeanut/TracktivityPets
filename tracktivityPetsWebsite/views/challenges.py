@@ -153,7 +153,7 @@ def accept_challenge(request, challenge_pk):
     user_chal = UserMicroChallenge(state=user_chal_state, micro_challenge=micro_chal,profile=request.user.profile, date_end=date_end)
     user_chal.save()
 
-    for g in MicroChallengeGoal(micro_challenge=micro_chal):
+    for g in MicroChallengeGoal.objects.filter(micro_challenge=micro_chal):
         user_micro_chal_goal_status = UserMicroChallengeGoalStatus(micro_chal_goal=g, user_micro_chal=user_chal, complete=False)
         user_micro_chal_goal_status.save()
 
