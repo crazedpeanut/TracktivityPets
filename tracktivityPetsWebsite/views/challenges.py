@@ -98,7 +98,7 @@ def get_complete_challenge_details(request, user_challenge_pk):
     }
 
     goals_list = []
-    goals = list(MicroChallengeGoal.objects.filter(micro_challenge=challenge))
+    goals = list(MicroChallengeGoal.objects.filter(micro_challenge=challenge, achieved=True))
 
     for g in goals:
         goals_list.append({
@@ -107,12 +107,11 @@ def get_complete_challenge_details(request, user_challenge_pk):
             'medal':g.medal.name
         })
 
-
-
     response = {
         'challenge':challenge_response,
         'goals':goals_list,
-        'steps_taken':uc.state.state.steps
+        'steps_taken':uc.state.state.steps,
+        'date_completed':uc.date_completed
     }
 
     response_json = json.dumps(response)

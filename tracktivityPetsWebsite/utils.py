@@ -323,7 +323,7 @@ def update_user_challenges(user):
 
     for uc in uc_queryset:
         micro_chal = uc.micro_challenge
-        micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal)
+        micro_chal_goals = MicroChallengeGoal.objects.filter(micro_challenge=micro_chal, achieved=False)
 
         logger.debug("Checking challenge: %s" % micro_chal.name)
 
@@ -345,6 +345,9 @@ def update_user_challenges(user):
                 if uc.state.state.steps >= goal.goal_state.steps:
                     logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
                     goal.achieved = True
+
+                    user.profile.total_pet_pennies += goal.pet_pennies_reward
+
                     if goal.medal.name == "Gold":
                         uc.complete = True
                         uc.date_completed = date['dateTime'] + " 00:00:00+00:00"
