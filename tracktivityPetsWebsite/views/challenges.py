@@ -112,7 +112,7 @@ def get_complete_challenge_details(request, user_challenge_pk):
     response = {
         'challenge':challenge_response,
         'goals':goals_list,
-        'max_steps':uc.state.state.steps
+        'steps_taken':uc.state.state.steps
     }
 
     response_json = json.dumps(response)

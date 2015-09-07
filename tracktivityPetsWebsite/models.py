@@ -387,6 +387,7 @@ class UserMicroChallenge(models.Model):
     complete = models.BooleanField(default=False)
     date_started = models.DateTimeField(default=datetime.datetime.now, null=True)
     date_end = models.DateTimeField(null=True)
+    date_completed = models.DateTimeField(null=True)
 
 class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
@@ -399,6 +400,7 @@ class MicroChallengeGoal(models.Model):
     description = models.TextField(default="")
     pet_pennies_reward = models.IntegerField()
     goal_state = models.ForeignKey(MicroChallengeState)
+    achieved = models.BooleanField()
 
     def __str__(self):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name
