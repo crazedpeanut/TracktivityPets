@@ -119,7 +119,7 @@ function complete_challenge_click_handler(challenge)
 {
     var challenge = this.getAttribute("id");
 
-    get_complete_challenge_details(challenge);
+    get_completed_challenge_details(challenge);
 }
 
 function get_completed_challenge_details(challenge)
