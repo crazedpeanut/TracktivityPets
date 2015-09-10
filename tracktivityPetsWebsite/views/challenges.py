@@ -89,6 +89,7 @@ def get_active_challenge_details(request, user_challenge_pk):
 @login_required
 def get_complete_challenge_details(request, user_challenge_pk):
     uc = UserMicroChallenge.objects.get(pk=user_challenge_pk)
+    completed_goals = []
 
     challenge = uc.micro_challenge
 
@@ -98,9 +99,14 @@ def get_complete_challenge_details(request, user_challenge_pk):
     }
 
     goals_list = []
-    goals = list(MicroChallengeGoal.objects.filter(micro_challenge=challenge, achieved=True))
+    goals = list(MicroChallengeGoal.objects.filter(micro_challenge=challenge))
 
     for g in goals:
+        chal_goal_stat = UserMicroChallengeGoalStatus.objects.get(micro_chal_goal=g, user_micro_chal=uc)
+        if(chal_goal_stat.complete is True):
+            completed_goals.append(g)
+
+    for g in completed_goals:
         goals_list.append({
             'description':g.description,
             'pet_pennies':g.pet_pennies_reward,
@@ -111,7 +117,7 @@ def get_complete_challenge_details(request, user_challenge_pk):
         'challenge':challenge_response,
         'goals':goals_list,
         'steps_taken':uc.state.state.steps,
-        'date_completed':uc.date_completed
+        'date_completed':uc.date_completed.strftime("%d-%m-%Y %H:%M:%S"),
     }
 
     response_json = json.dumps(response)

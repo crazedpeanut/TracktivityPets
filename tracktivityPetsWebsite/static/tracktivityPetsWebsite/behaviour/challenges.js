@@ -135,8 +135,6 @@ function get_completed_challenge_details(challenge)
             $("#completed").find(".challenge_detail_description").html(data['challenge']['overview']);
             $("#completed").find(".challenge_detail_header").html(data['challenge']['name']);
 
-            alert("Swag");
-
             $("#completed_challenge_rewards_table").html("");
             for(var d in data['goals'])
             {

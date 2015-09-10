@@ -367,13 +367,3 @@ def update_user_challenges(user):
 
 
 
-
-
-
-
-
-
-
-
-
-

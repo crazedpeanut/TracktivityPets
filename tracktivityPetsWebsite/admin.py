@@ -2,7 +2,8 @@ from django.contrib import admin
 
 from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, \
     Item, Scenery, CollectedItem, CollectedScenery, BodyPart, MicroChallenge, MicroChallengeGoal,\
-    MicroChallengeState, UserMicroChallenge, UserMicroChallengeState, MicroChallengeMedal
+    MicroChallengeState, UserMicroChallenge, UserMicroChallengeState, MicroChallengeMedal,\
+    UserMicroChallengeGoalStatus
 
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
@@ -165,14 +166,22 @@ class UserMicroChallengeStateAdmin(admin.ModelAdmin):
 #########################################
 
 class UserMicroChallengeAdmin(admin.ModelAdmin):
-    fields = ('micro_challenge', 'state', 'profile', 'complete', 'date_end')
+    fields = ('micro_challenge', 'state', 'profile', 'complete', 'date_end', 'date_completed', 'date_started')
 
 #########################################
+
 
 class MicroChallengeMedalAdmin(admin.ModelAdmin):
     fields = ('name',)
 
+#########################################
 
+class UserMicroChallengeGoalStatusAdmin(admin.ModelAdmin):
+    fields = ('complete', 'user_micro_chal', 'micro_chal_goal')
+
+#########################################
+
+admin.site.register(UserMicroChallengeGoalStatus, UserMicroChallengeGoalStatusAdmin)
 admin.site.register(MicroChallengeMedal, MicroChallengeMedalAdmin)
 admin.site.register(UserMicroChallengeState, UserMicroChallengeStateAdmin)
 admin.site.register(UserMicroChallenge, UserMicroChallengeAdmin)
