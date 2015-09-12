@@ -7,7 +7,7 @@ from collections import OrderedDict
 
 #TODO add helper functions and __name__
 
-STEPS_IN_DURATION = 0
+STEPS_IN_DURATION = 'steps_in_duration'
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
     def __str__(self):    
@@ -250,6 +250,15 @@ class CollectedPet(models.Model):
     
     def get_default_image_path(self):
         self.pet.get_default_image_path()
+        
+    def get_all_equipped_items_image_paths(self):
+        images = []
+        all_items = self.inventory.get_collected_items_for_pet(self.pet)
+        for item in all_items:
+            if item.equipped:
+                images.append(item.item.get_image_path())
+        return images
+        
     
 class BodyPart(models.Model):
     name = models.CharField(max_length=100)
@@ -351,6 +360,7 @@ class MicroChallenge(models.Model):
     name = models.CharField(max_length=100, unique=True)
     overview = models.TextField(default="")
     challenge_type = models.CharField(choices=MicroChallengeTypes, max_length=100, null=True)
+    duration_mins = models.IntegerField(default=0)
 
     def __str__(self):
         return "Micro Challenge: " + self.name
@@ -373,15 +383,16 @@ class UserMicroChallengeState(models.Model):
 class UserMicroChallenge(models.Model):
     micro_challenge = models.ForeignKey(MicroChallenge)
     state = models.ForeignKey(UserMicroChallengeState)
-    profile = models.OneToOneField(Profile, null=True)
+    profile = models.ForeignKey(Profile, null=True)
     complete = models.BooleanField(default=False)
-    date_started = models.DateTimeField(auto_now=True, null=True)
+    date_started = models.DateTimeField(default=datetime.datetime.now(), null=True)
     date_end = models.DateTimeField(null=True)
+    date_completed = models.DateTimeField(null=True)
 
 class PetSwap(models.Model):
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
     to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
-    time_swapped = models.DateTimeField(auto_now=True)
+    time_swapped = models.DateTimeField(default=datetime.datetime.now())
 
 class MicroChallengeGoal(models.Model):
     micro_challenge = models.ForeignKey(MicroChallenge)
@@ -392,8 +403,11 @@ class MicroChallengeGoal(models.Model):
 
     def __str__(self):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name
-    
 
+class UserMicroChallengeGoalStatus(models.Model):
+    micro_chal_goal = models.ForeignKey(MicroChallengeGoal)
+    user_micro_chal = models.ForeignKey(UserMicroChallenge)
+    complete = models.BooleanField(default=False)
 
     
     

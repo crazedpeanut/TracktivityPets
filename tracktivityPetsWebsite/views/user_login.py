@@ -31,7 +31,7 @@ def user_login(request):
             try:
                 u = User.objects.get(email=email)
             except:
-                return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "Incorrect email/password combinatione",'loginForm':loginForm})
+                return render(request, 'tracktivityPetsWebsite/splash.html', { "error_message": "Incorrect email/password combination",'loginForm':loginForm})
             
             user = authenticate(username=u.get_username().lower(), password=password)
             

@@ -33,9 +33,9 @@
                     <h4 class="modal-title">Rename Pet</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="rename_pet_image" class="img-responsive col-xs-9 col-centred" src="http://i.imgur.com/S7rrY.jpg" />
+                    <img id="rename_pet_image" class="img-responsive col-xs-9 col-centred" src="{{ default_pet.image }}" />
                     <p>If you would like to rename your pet, please enter the new name below:</p>
-                    <input size="35" id="rename_textfield" type="text" placeholder="Original Pet Name Here" autocomplete="off">
+                    <input size="35" id="rename_textfield" type="text" placeholder="{{ default_pet.name }}" autocomplete="off">
                 </div>                    
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Cancel</button>
@@ -60,7 +60,7 @@
                 </div>                    
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default btn-success" data-dismiss="modal" id="rename_confirm_btn">Confirm</button>
+                    <button type="button" class="btn btn-default btn-success" data-dismiss="modal" id="equip_confirm_btn">Confirm</button>
                 </div>
             </div>        
         </div>

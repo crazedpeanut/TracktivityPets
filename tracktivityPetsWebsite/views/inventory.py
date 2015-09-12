@@ -76,6 +76,7 @@ def inventory(request, tab=""):
             details_item['description'] = default_item.item.description
             details_item['image'] = default_item.item.get_image_path()
             details_item['pk'] = default_item.item.pk
+            details_item["equipped"] = ("Equipped" if default_item.equipped else "Not Equipped")
         except Exception as e:
             details_item = {}
             
@@ -96,6 +97,7 @@ def inventory(request, tab=""):
             {
                 "collected_pets": pets,
                 "collected_items": items,
+                "is_items": len(items) > 0,
                 "collected_scenery": scenery,
                 "default_pet": details_pet,
                 "default_item": details_item,

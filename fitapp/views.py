@@ -146,14 +146,16 @@ def complete(request):
             SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
         except ImproperlyConfigured:
             return redirect(reverse('fitbit-error'))
-        subscribe.apply_async((fbuser.fitbit_user, SUBSCRIBER_ID), countdown=5)
+        subscribe.apply_async((fbuser.fitbit_user, SUBSCRIBER_ID), countdown=0.5)
         # Create tasks for all data in all data types
         for i, _type in enumerate(TimeSeriesDataType.objects.all()):
             # Delay execution for a few seconds to speed up response
             # Offset each call by 2 seconds so they don't bog down the server
-            get_time_series_data.apply_async(
-                (fbuser.fitbit_user, _type.category, _type.resource,),
-                countdown=10 + (i * 5))
+            if(_type.resource == "steps"):
+                logger.debug("Updating fitbit resource: %s", _type.resource)
+                get_time_series_data.apply_async(
+                    (fbuser.fitbit_user, _type.category, _type.resource,),
+                    countdown=(i * 1))
 
     logger.debug("Started celery job to retrieve users fitbit steps")
 
@@ -225,7 +227,7 @@ def logout(request):
                 SUBSCRIBER_ID = utils.get_setting('FITAPP_SUBSCRIBER_ID')
             except ImproperlyConfigured as e:
                 return redirect(reverse('fitbit-error'))
-            unsubscribe.apply_async(kwargs=fbuser.get_user_data(), countdown=5)
+            unsubscribe.apply_async(kwargs=fbuser.get_user_data(), countdown=1)
         fbuser.delete()
     next_url = request.GET.get('next', None) or utils.get_setting(
         'FITAPP_LOGOUT_REDIRECT')
@@ -254,23 +256,19 @@ def update(request):
                 body = request.FILES['updates'].read()
             updates = json.loads(body.decode('utf8'))
 
-            #### Stealing a request from Fitbit
-            f = open('fitbitupdate.txt', 'w')
-            f.write(body.decode('utf8'))
-            f.close()
-            ###
 
             # Create a celery task for each data type in the update
             for update in updates:
+                logger.debug("Updating users record, collection type: %s", update['collectionType'])
                 cat = getattr(TimeSeriesDataType, update['collectionType'])
                 resources = TimeSeriesDataType.objects.filter(category=cat)
                 for i, _type in enumerate(resources):
-                    # Offset each call by 2 seconds so they don't bog down the
+                    # Offset each call by 0.2 seconds so they don't bog down the
                     # server
                     get_time_series_data.apply_async(
                         (update['ownerId'], _type.category, _type.resource,),
                         {'date': parser.parse(update['date'])},
-                        countdown=(2 * i))
+                        countdown=(0.2 * i))
         except Exception as e:
             logger.error("Error trying to update fibit records: %s" % str(e))
             raise 500

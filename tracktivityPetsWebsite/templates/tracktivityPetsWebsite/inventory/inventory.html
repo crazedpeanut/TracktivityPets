@@ -31,6 +31,10 @@
                     $("#inventory_detail_pet_age").html(obj.age + " Days Old");
                     $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(obj.age + " Days Old");
                     $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
+                    
+                    //rename modal
+                    $("#rename_pet_modal").find("#rename_pet_image").attr("src", obj.image);
+                    $("#rename_pet_modal").find("#rename_textfield").attr("placeholder", obj.name);
             })
             .fail(function() {
 
@@ -52,14 +56,71 @@
         });
         
         $("#equip_item_btn").click(function(event) {
-            $('#inventory_detail_modal').modal('hide');  
-            $('#equip_confirm_modal').modal('show');
+        	var id = $("div[id*='selected_cosmetic_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
+        	
+        	if($("#equip_item_btn").html() === "Unequip!") {
+        		$.ajax( "{% url 'tracktivityPetsWebsite:equip_item' %}" + id + "/unequip/")
+	                .done(function(data) {
+						if(data === "success") { //show confirmation
+							alert("Successfully Unequipped Item");
+							$("#equip_item_btn").html("Equip!");
+						}
+						else
+							alert("Failed to Unequip");
+	            })
+	            .fail(function() {
+	            })
+	            .always(function() {                                    
+	            });
+        	}
+        	else {	
+        	
+	        	$.ajax( "{% url 'tracktivityPetsWebsite:equip_item' %}" + id)
+	                .done(function(data) {
+					if(data === "already_equipped") { //show confirmation
+						$('#inventory_detail_modal').modal('hide');  
+	            		$('#equip_confirm_modal').modal('show');
+					}
+					else if(data === "success") {
+						alert("Successfully Equipped");
+						$("#equip_item_btn").html("Unequip!");
+					}
+					else
+						alert("Failed");
+	            })
+	            .fail(function() {
+	            })
+	            .always(function() {                                    
+	
+	            });
+            }
+        
+        });
+        
+        $("#equip_confirm_btn").click(function(event) {
+        	var id = $("div[id*='selected_cosmetic_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
+        	
+    		$.ajax( "{% url 'tracktivityPetsWebsite:equip_item' %}" + id + "/equip/")
+                .done(function(data) {
+					if(data === "success") { //show confirmation
+						alert("Successfully Equipped Item");
+						$("#equip_item_btn").html("Unequip!");
+					}
+					else
+						alert("Failed to Equip");
+            })
+            .fail(function() {
+            })
+            .always(function() {                                    
+				return; //no need to do rest
+            });
+        
         });
         
         $("#cosmetics > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_").pop(); //unpurchased_x becomes x
-            
+            //alert("here");
             $.ajax( "{% url 'tracktivityPetsWebsite:view_purchased_item' %}" + id)
                 .done(function(data) {
                     
@@ -71,9 +132,18 @@
                     $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
                     $("#inventory_detail_cosmetics_image").attr("src", obj.image);
                     $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
+                    $("#confirm_equip_img").attr("src", obj.image);
+                    if(obj.equipped === "equipped") {
+                    	$("#equip_item_btn").html("Unequip!");
+                    }
+                    else {
+                    	$("#equip_item_btn").html("Equip!");
+                    }
+               
                     $("div[id*='selected_cosmetic_']").attr("id", "selected_cosmetic_" + id);
             })
             .fail(function() {
+            	alert("failed");
             })
             .always(function() {                                    
                 if (screen.width <= modalScreenWidth) {
@@ -114,10 +184,8 @@
         
         $(".activate_pet_button" ).click(function() {
             var id = $("div[id*='selected_pet_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
-            alert(id);
             $.ajax( "{% url 'tracktivityPetsWebsite:set_current_pet' %}" + id)
                 .done(function(data) {
-                    alert(data);
                     if(data === "False")
                         alert("Failed to Activate.");
                     else
@@ -143,6 +211,31 @@
                     
             })
             .fail(function() {
+            })
+            .always(function() {
+            
+            });
+        });
+        
+        $("#rename_confirm_btn" ).click(function() {
+        	 var id = $("div[id*='selected_pet_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
+        	 var name = $("#rename_textfield").val();//if user has entered anything
+
+            $.ajax( "{% url 'tracktivityPetsWebsite:set_pet_name' %}" + id + "/" + name)
+                .done(function(data) {
+                    if(data === "False")
+                        alert("Failed to Rename.");
+                    else {
+                        alert("Successfully Renamed");
+                        $("#pets").find("#collected_" + id).find("button").find("p").html(name);
+                        $("#inventory_detail_header").html(name);
+                        $("#rename_textfield").attr("placeholder", name);
+                    }
+                        
+                    
+            })
+            .fail(function() {
+				alert("failed");
             })
             .always(function() {
             

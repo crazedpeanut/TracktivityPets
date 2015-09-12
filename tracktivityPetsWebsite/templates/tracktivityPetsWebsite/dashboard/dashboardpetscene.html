@@ -8,6 +8,9 @@
        </div>
        <div class="row" style="position: relative">
             <img class="col-xs-12 col-sm-6 col-sm-offset-3" id="pet_mood_image" alt="pet mood image" src="{{ mood.image }}" />
+            {% for item in equipped_item_images %}
+            	<img class="overlayed_item" style="visibility:hidden" src="{{ item }}" />
+            {% endfor %}
        </div>
 </div>
 <div id="pet_scene_filler" class="xs-hidden"></div>

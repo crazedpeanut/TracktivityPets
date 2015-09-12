@@ -70,11 +70,23 @@ WSGI_APPLICATION = 'TracktivityPets.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'tracktivitypets',
+        'USER': 'tracktivitypets',
+        'PASSWORD': 'tracktivitypets',
+        'HOST': '192.168.0.9',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
+}
+'''
+
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+'''
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -94,8 +106,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-FITAPP_CONSUMER_KEY = 'c7386d7a6a275a01b74d875218c52a4b'
-FITAPP_CONSUMER_SECRET = '4af0aab93c7bc0c0a1e919c188dfb39d'
+FITAPP_CONSUMER_KEY = 'b65c2449d2635687a1a4003cb18578ca'
+FITAPP_CONSUMER_SECRET = 'f20f062dfa993a525590ad724ef11d0e'
 
 LOGIN_REDIRECT_URL = "/login/"
 LOGIN_URL = "/login/"

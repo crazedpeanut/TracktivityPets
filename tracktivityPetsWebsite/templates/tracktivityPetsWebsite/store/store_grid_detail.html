@@ -6,7 +6,7 @@
     <div class="collection_view_desktop tab-pane fade in active" id="pets">
         <div class="col-xs-12 col-sm-6">
             
-            {% if own_all_pets == True %}
+            {% if not default_scenery %}
 	        	<p>You own all pets</p>
 	        {% else %}
 	        	 {% for key, value in unlocked_pets.items %}
@@ -30,9 +30,9 @@
 	            {% endfor %}
 	        {% endif %}
         </div>
-        
+
         <div class="col-sm-6 hidden-xs" id="selected_pet_{{ default_pet.id }}">
-        	{% if not own_all_pets %}
+        	{% if default_pet %}
             <div hidden id=""></div>
             <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
             <div class="row"><img class="img-responsive col-centred" src="{{ default_pet.image }}" id="store_detail_image"></div>
@@ -54,8 +54,8 @@
     
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
-        <div class="col-xs-12 col-sm-6">
-            {% if own_all_scenerys == True %}
+        <div class="col-xs-12 col-md-6">
+            {% if not default_scenery %}
 	        	<p>You own all scenery</p>
 	        {% else %}
 	 			{% for key, value in unlocked_scenery.items %}
@@ -81,8 +81,8 @@
         </div>
         
         
-        <div class="col-sm-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
-        	{% if not owns_all_scenerys %}
+        <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
+        	{% if default_scenery %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
 	            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
 	            <div class="row" id="store_detail_scenery_description_div">
@@ -103,8 +103,8 @@
     
     <!-- Collected Cosmetics Tab -->
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
-        <div class="col-xs-12 col-sm-6">
-            {% if own_all_items == True %}
+        <div class="col-xs-12 col-md-6">
+            {% if not default_item %}
 	        	<p>You own all items</p>
 	        {% else %}
 	        	{% for key, value in unlocked_items.items %}
@@ -129,7 +129,7 @@
         </div>
 
         <div class="col-sm-6 hidden-xs" id="selected_item_{{ default_item.id }}">
-            {% if not own_all_items %}
+            {% if default_item %}
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
             <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
             <div class="row" id="inventory_detail_cosmetics_description_div">

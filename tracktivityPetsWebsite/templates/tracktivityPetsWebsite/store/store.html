@@ -106,7 +106,7 @@
                 .done(function(data) 
                 {
                     if(data === "False")
-                        alert("Failed");
+                        alert("Failed to purchase");
                     else 
                     {
                         alert("Successfully Purchased");
@@ -140,6 +140,100 @@
                     }
             })
             .fail(function() {
+            })
+            .always(function() {
+            
+            });
+        });
+        
+        $(".buy_scenery_button" ).click(function() {
+            var id = $("div[id*='selected_scenery_']").attr("id").split("_")[2]; //unpurchased_x becomes x
+            $.ajax( "{% url 'tracktivityPetsWebsite:purchase' %}scenery/" + id)
+                .done(function(data) 
+                {
+                    if(data === "False")
+                        alert("Failed");
+                    else 
+                    {
+                        alert("Successfully Purchased");
+                        var scenery = $("#unlocked_scenery_"+id).next();//next scenery
+                        if(scenery.attr("id") === undefined) {
+							scenery = $("#unlocked_scenery_"+id).prev();//prev scenery
+                        }
+                        
+                        if(scenery.attr("id") === undefined) {//no scenery before or after
+							$("#unlocked_scenery_"+id).remove();//remove scenery from list here
+		                    $("div[id*='selected_scenery_']").html('');
+                        }
+                        else
+                        { //update the details to contain the new scenery at front of list
+	                        $("#unlocked_scenery_"+id).remove();//remove item from list here
+	                        id = scenery.attr("id").split("_")[2]; //unpurchased_x becomes x
+							$.ajax( "{% url 'tracktivityPetsWebsite:view_unpurchased_scenery' %}" + id)
+				                .done(function(data) {
+				                    
+				                    var obj = JSON.parse(data);
+				                    $("#store_detail_scenery_header").html(obj.name);                    
+				                    //$("#store_detail_modal").find(".modal-title").html(obj.name);                   
+				                    $("#store_detail_scenery_description").html(obj.description);
+				                    //$("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
+				                    $("#store_detail_scenery_image").attr("src", obj.image);
+				                    //$("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
+				                    $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);
+				            });
+                        }
+                    	
+                    }
+            })
+            .fail(function() {
+            })
+            .always(function() {
+            
+            });
+        });
+        
+        $(".buy_pet_button" ).click(function() {
+            var id = $("div[id*='selected_pet_']").attr("id").split("_")[2]; //unpurchased_x becomes x
+            $.ajax( "{% url 'tracktivityPetsWebsite:purchase' %}pet/" + id)
+                .done(function(data) 
+                {
+                	return;
+                    if(data === "False")
+                        alert("Failed");
+                    else 
+                    {
+                        alert("Successfully Purchased");
+                        var pet = $("#unlocked_pet_"+id).next();//next pet
+                        if(pet.attr("id") === undefined) {
+							pet = $("#unlocked_pet_"+id).prev();//prev pet
+                        }
+                        
+                        if(pet.attr("id") === undefined) {//no scenery before or after
+							$("#unlocked_pet_"+id).remove();//remove scenery from list here
+		                    $("div[id*='selected_pet_']").html('');
+                        }
+                        else
+                        { //update the details to contain the new scenery at front of list
+	                        $("#unlocked_pet_"+id).remove();//remove item from list here
+	                        id = pet.attr("id").split("_")[2]; //unpurchased_x becomes x
+							$.ajax( "{% url 'tracktivityPetsWebsite:view_unpurchased_pet' %}" + id)
+				                .done(function(data) {
+				                    
+				                    var obj = JSON.parse(data);
+				                    $("#store_detail_header").html(obj.name);                    
+				                    //$("#store_detail_modal").find(".modal-title").html(obj.name);                   
+				                    $("#store_detail_pet_description").html(obj.story);
+				                    //$("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
+				                    $("#store_detail_image").attr("src", obj.image);
+				                    //$("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
+				                    $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
+				            });
+                        }
+                    	
+                    }
+            })
+            .fail(function (){
+            	
             })
             .always(function() {
             

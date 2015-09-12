@@ -26,3 +26,6 @@ from .challenges import get_active_challenge_names
 from .challenges import get_completed_challenge_names
 from .challenges import get_active_challenge_details
 from .challenges import get_complete_challenge_details
+from .challenges import accept_challenge
+from .tests import test_challenge_check
+from .set_pet_name import set_pet_name

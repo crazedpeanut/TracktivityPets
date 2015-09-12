@@ -150,3 +150,7 @@
 2015-08-04 13:36:30,360 DEBUG If Fitapp_subscribe
 2015-08-22 11:41:39,695 DEBUG User fitbit register call back receieved
 2015-08-22 11:41:43,548 DEBUG Added user fitbit infos to local database
+2015-09-10 13:48:18,969 DEBUG User fitbit register call back receieved
+2015-09-10 13:48:19,957 DEBUG Added user fitbit infos to local database
+2015-09-10 13:48:21,186 DEBUG Updating fitbit resource: steps
+2015-09-10 13:48:21,187 DEBUG Started celery job to retrieve users fitbit steps
