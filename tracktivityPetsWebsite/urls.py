@@ -48,4 +48,5 @@ urlpatterns = patterns('',
     url(r'^set_pet_name/$', views.set_pet_name, name='set_pet_name'),
     url(r'^set_pet_name/(?P<pet_index>[0-9]+)/$', views.set_pet_name, name='set_pet_name'),
     url(r'^set_pet_name/(?P<pet_index>[0-9]+)/(?P<name>[a-zA-Z0-9_]+)/$', views.set_pet_name, name='set_pet_name'),
+    url(r'^get_pet_penny_count/$', views.get_pet_penny_count, name='get_pet_penny_count'),
 )
