@@ -13,7 +13,8 @@
 	            <div class="col-xs-6" class="store_pet" id="unlocked_pet_{{ value.id }}">
 	                <button class="store_button">
 	                    <img class="img-responsive" src="{{ value.image }}">
-	                    <p class="">{{ key }}</p>
+	                    <h4 class="">{{ key }}</h4>
+	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x 500<h6>
 	                </button>            
 	            </div>
 	            {% endfor %}
@@ -21,8 +22,9 @@
 	            {% for key, value in locked_pets.items %}
 	            <div class="col-xs-6" class="store_pet" id="locked_pet_{{ value.id }}">
 	                <button class="store_button">
-	                    <img class="img-responsive locked" src="{{ value.image }}">
-	                    <p class="">{{ key }}</p>
+	                    <img class="img-responsive locked-pet" src="{{ value.image }}">
+	                    <h4 class="">{{ key }}</h4>
+	                    <h6>Locked</h6>
 	                </button>            
 	            </div>
 	            {% endfor %}
@@ -60,7 +62,8 @@
 	            <div class="col-xs-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
 	                <button class="store_button">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
-	                    <p class="scenery_description">{{ key }}</p>
+	                    <h4 class="scenery_description">{{ key }}</h4>
+	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x 500<h6>
 	                </button>            
 	            </div>
 				{% endfor %}
@@ -69,7 +72,8 @@
 	            <div class="col-xs-6" class="store_items" id="locked_scenery_{{ value.id }}">
 	                <button class="store_button">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail locked" src="{{ value.image }}">
-	                    <p class="scenery_description">{{ key }}</p>
+	                    <h4 class="scenery_description">{{ key }}</h4>
+	                    <h6>Locked</h6>
 	                </button>            
 	            </div>
 				{% endfor %}
@@ -107,7 +111,7 @@
 	            <div class="col-xs-6" class="store_items" id="unlocked_item_{{ value.id }}">
 	                <button class="">
 	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
-	                    <p class="cosmetics_description">{{ key }}</p>
+	                    <h4 class="cosmetics_description">{{ key }}</h4>
 	                </button>            
 	            </div>   
 	            {% endfor %}    
@@ -116,7 +120,8 @@
 	            <div class="col-xs-6" class="store_items" id="locked_item_{{ value.id }}">
 	                <button class="">
 	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
-	                    <p class="cosmetics_description">{{ key }}</p>
+	                    <h4 class="cosmetics_description">{{ key }}</h4>
+	                    <h6>Locked</h6>
 	                </button>            
 	            </div>   
 	            {% endfor %}  

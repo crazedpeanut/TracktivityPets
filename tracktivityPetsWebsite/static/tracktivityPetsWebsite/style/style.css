@@ -184,7 +184,6 @@ width: 75%;
   font: normal 16px/1 "Times New Roman", Times, serif;
   color: rgba(255,255,255,1);
   text-align: center;
-  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 
 }
@@ -199,10 +198,11 @@ width: 75%;
 }
 
 #penny_img {
-    width: 20px;
+    width: 25px;
+    height: 25px;
 }
 
-@media (max-width: 910px) {
+@media (max-width: 1120px) {
     .navbar-header {
         float: none;
     }
@@ -264,6 +264,12 @@ width: 75%;
 	/*width: 100px;*/
     height: 300px;
     padding 0;
+}
+
+.pet_scene_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 #petinfo
@@ -397,7 +403,7 @@ width: 75%;
 .bubble 
 {
     position: relative;
-    height: 120px;
+    /*height: 120px;*/
     padding: 0px;
     background: #FFFFFF;
     -webkit-border-radius: 10px;
@@ -489,8 +495,9 @@ width: 75%;
 }
 
 #petSpeech {
-    margin-top: 30px;
-    font-size: 24px
+    padding: 10px;
+    font-size: 24px;
+    text-align: center;
 }
 
 #pet_scene_filler {
@@ -603,10 +610,31 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
 
 #store_penny_img {
     width: 40px;
+    height: 40px;
 }
 
 #item_price_div, #item_price {
      margin-bottom: 10px;
+}
+
+/* This makes locked pets appear as silhouettes...works on all browsers except IE or Edge */
+.locked-pet {
+    -webkit-filter: contrast(50) brightness(0); // Safari, Chrome, Opera, iOS, Android
+    filter: contrast(50) brightness(0);         // Firefox
+}
+
+.locked {
+    -webkit-filter: grayscale(100%);
+    filter(grayscale: 100%);
+}
+
+.equipped {
+    border: 6px dashed #F8931D;
+    border-radius: 5px;
+}
+
+.locked {
+    //-webkit-filter: greyscale(100%);
 }
 
 /* Mobile devices inventory style rules */
@@ -674,9 +702,4 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
 .available_challenge_rewards {
     margin-top: 7%;
 }
-
-.locked{
-	-webkit-filter: greyscale(100%);
-}
-
 /*************************************************************************** End of Inventory Style ********************************************************************************/
