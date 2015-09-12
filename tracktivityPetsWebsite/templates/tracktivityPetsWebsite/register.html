@@ -35,34 +35,7 @@
                     <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="submit">Sign up</button>
                 </form>
             
-        </div>   
-    
-        <!--<div class="row">
-        	<div class="col-xs-12 col-sm-4 col-sm-offset-4">
-        		{% if registerForm.errors %} {% comment %} Previous form submission was not valid {% endcomment %}
-        			<div class="alert alert-danger" role="alert">
-    					{% for field in registerform %}
-    						{% for error in field.errors %}
-    		                		<strong>{{ error|escape }}</strong>
-    		        		{% endfor %}
-    		        	{% endfor %}
-    	        	</div>
-    			{% endif %}
-    			
-    			{% if error %}
-    			   	<div class="alert alert-danger" role="alert">
-    					<strong>{{ error|escape }}</strong>
-    				</div>
-    			{% endif %}
-    			
-                <form method="POST" action="{% url 'tracktivityPetsWebsite:register' %}" class="form-signin text-center">
-                    {{ registerForm }}
-                   	{% csrf_token %}
-                    <a class="formLink" href="/login/"><button class="btn btn-lg btn-primary col-xs-5 pull-left" type="button" formaction="#">Cancel</button></a>
-                    <button class="btn btn-lg btn-primary col-xs-5 pull-right" type="submit">Sign up</button>
-                </form>
-            </div>
-        </div>-->
+        </div>
     </div>
 </div>				
 {%endblock content_block %}

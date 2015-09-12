@@ -1,7 +1,8 @@
-<!-- inventory_modal.html: Sub-template that handles the pop-up (modal) detail view on mobile devices. -->
+<!-- store_modal.html: Sub-template that handles the pop-up (modal) detail view on mobile devices. -->
+{% load staticfiles %}
 
 <div class="container">            
-    <div class="modal fade" role="dialog" id="inventory_detail_modal">
+    <div class="modal fade" role="dialog" id="store_detail_modal">
         <div class="modal-dialog">              
             <div class="modal-content">
                 <div class="modal-header">
@@ -9,15 +10,71 @@
                     <h4 class="modal-title">{{ default.name }}</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="inventory_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" />
-                    <p id="inventory_detail_pet_description">{{ default.story }}</p>
-                    <div><h4 id="inventory_detail_pet_level">Level {{ default.level }}</h3></div>
-                    <div><h5 id="inventory_detail_pet_age">{{ default.age }} Days Old</h5></div>
+                    <img id="store_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" />
+                    <p id="store_detail_pet_description">{{ default.story }}</p>
                 </div>                    
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Rename</button>
-                    <button type="button" class="btn btn-default activate_button" data-dismiss="modal">Activate!</button>
+                <div style="font-weight: bold" id="item_price_div">Available for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span id="item_price">500</span>
+                </div>
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="btn btn-default btn-success buy_pet_button" data-dismiss="modal">Purchase</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="store_confirm_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Purchase Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="store_detail_image" class="img-responsive col-xs-9 col-centred" src="http://www.psdgraphics.com/file/shopping-bag-icon.jpg" />
+                    <p id="store_confirmation_msg">Are you sure you would like to purchase this item?</p>
+                    <p>Your current balance is:</p>
+                </div>
+                <div style="font-weight: bold" id="item_price_div">                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span id="item_price">600</span>
+                </div>                    
+                <div class="modal-footer">
+                <div style="font-weight: bold" id="item_price_div">Purchase this item for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span id="item_price">500</span>
+                </div>
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default btn-success confirm_buy_button" data-dismiss="modal">Confirm</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="item_purchased_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Item Purchased</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="store_detail_image" class="img-responsive col-xs-9 col-centred" src="http://www.insidemysteryshopping.com/assets/happy%20shopper%202.jpg" />
+                    <p id="store_confirmation_msg">Purchase confirmed!</p>
+                    <p>Your new item has been placed in your inventory.</p>
+                </div>
+                <div style="font-weight: bold" id="item_price_div">Your new balance:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span id="item_price">100</span>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
                 </div>
             </div>        
         </div>
