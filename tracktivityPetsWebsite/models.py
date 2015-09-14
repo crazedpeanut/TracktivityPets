@@ -409,6 +409,12 @@ class UserMicroChallengeGoalStatus(models.Model):
     user_micro_chal = models.ForeignKey(UserMicroChallenge)
     complete = models.BooleanField(default=False)
 
+class UserNotification(models.Model):
+    userProfile = models.ForeignKey(Profile)
+    dateAdded = models.DateTimeField(default=datetime.datetime.now())
+    message = models.CharField(max_length=1000)
+    acknowledged = models.BooleanField(default=False)
+
     
     
     
