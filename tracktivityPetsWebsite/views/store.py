@@ -23,6 +23,7 @@ def store(request):
             unlocked_pets[pet.default_name] = {}
             unlocked_pets[pet.default_name]['image'] = utils.generate_pet_image_url(pet, pet.mood_set.filter(happiness_needed=-1)[0].image_location)
             unlocked_pets[pet.default_name]['id'] = pet.id
+            unlocked_pets[pet.default_name]['cost'] = pet.cost
             if not default_pet_set:
                 default_pet = pet
                 default_pet_set = True
@@ -42,7 +43,11 @@ def store(request):
         details_pet['experience'] = default_pet.experience_to_unlock
         details_pet['story'] = default_pet.story_set.filter(level_unlocked=levelOne)[0].text
         details_pet['image'] = utils.generate_pet_image_url(default_pet, default_pet.mood_set.filter(happiness_needed=-1)[0].image_location)
-        details_pet['id'] = default_pet.pk  
+        details_pet['id'] = default_pet.pk
+        details_pet['cost'] = default_pet.cost
+        if default_pet.experience_to_unlock > request.user.profile.get_total_xp():
+            details_pet['locked'] = True
+            details_pet['story'] = "This pet is locked, to unlock you need another " + str(default_pet.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
     except Exception as e:
         return HttpResponse(str(e))
         own_all_pets = True
@@ -80,7 +85,11 @@ def store(request):
         details_item['experience'] = default_item.experience_to_unlock
         details_item['description'] = default_item.description
         details_item['image'] = default_item.get_image_path()
-        details_item['id'] = default_item.pk  
+        details_item['id'] = default_item.pk 
+        details_item['cost'] = default_item.cost
+        if default_item.experience_to_unlock > request.user.profile.get_total_xp():
+            details_item['locked'] = True
+            details_item['description'] = "This item is locked, to unlock you need another " + str(default_item.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
     except:
         own_all_items = True
         
@@ -98,6 +107,7 @@ def store(request):
             unlocked_scenery[scenery.name] = {}
             unlocked_scenery[scenery.name]['image'] = scenery.get_image_path()
             unlocked_scenery[scenery.name]['id'] = scenery.id
+            unlocked_scenery[scenery.name]['cost'] = scenery.cost
             if not default_scenery_set:
                 default_scenery = scenery
                 default_scenery_set = True
@@ -106,6 +116,7 @@ def store(request):
             locked_scenery[scenery.name] = {}
             locked_scenery[scenery.name]['image'] = scenery.get_image_path() 
             locked_scenery[scenery.name]['id'] = scenery.id
+            locked_scenery[scenery.name]['cost'] = scenery.cost
             if not default_scenery_set:
                 default_scenery = scenery
                 default_scenery_set = True
@@ -118,9 +129,16 @@ def store(request):
         details_scenery['experience'] = default_scenery.experience_to_unlock
         details_scenery['description'] = default_scenery.description
         details_scenery['image'] = default_scenery.get_image_path()
-        details_scenery['id'] = default_scenery.pk  
+        details_scenery['id'] = default_scenery.pk
+        details_scenery['cost'] = default_scenery.cost
+        if default_scenery.experience_to_unlock > request.user.profile.get_total_xp():
+            details_scenery['locked'] = True
+            details_scenery['description'] = "This scenery is locked, to unlock you need another " + str(default_scenery.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
+        
     except:
         own_all_scenerys = True
+        
+    current_balance = request.user.profile.total_pet_pennies
             
         
     #return HttpResponse(json.dumps(locked_scenery)) #json.dumps(locked_pets)
@@ -139,5 +157,6 @@ def store(request):
         "owns_all_items": own_all_items,
         "default_item": details_item,
         "own_all_scenerys": own_all_scenerys, 
-        "default_scenery": details_scenery
+        "default_scenery": details_scenery,
+        "current_balance": current_balance
     })

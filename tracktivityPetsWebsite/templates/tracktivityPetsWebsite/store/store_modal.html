@@ -16,7 +16,7 @@
                 <div class="modal-footer">
                 <div style="font-weight: bold" id="item_price_div">Available for:                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span id="item_price">500</span>
+                    x <span class="item_price">500</span>
                 </div>
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
                     <button type="button" class="btn btn-default btn-success buy_pet_button" data-dismiss="modal">Purchase</button>
@@ -26,8 +26,11 @@
     </div>
 </div> 
 
+
+
+<!-- items -->
 <div class="container">            
-    <div class="modal fade" role="dialog" id="store_confirm_modal">
+    <div class="modal fade" role="dialog" id="store_confirm_item_modal">
         <div class="modal-dialog">              
             <div class="modal-content">
                 <div class="modal-header">
@@ -35,21 +38,21 @@
                     <h4 class="modal-title">Purchase Confirmation</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="store_detail_image" class="img-responsive col-xs-9 col-centred" src="http://www.psdgraphics.com/file/shopping-bag-icon.jpg" />
+                    <img class="selected_item_image" class="img-responsive col-xs-9 col-centred" src="{{ default_item.image }}" />
                     <p id="store_confirmation_msg">Are you sure you would like to purchase this item?</p>
                     <p>Your current balance is:</p>
                 </div>
                 <div style="font-weight: bold" id="item_price_div">                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span id="item_price">600</span>
+                    x <span class="current_balance">{{ current_balance }}</span>
                 </div>                    
                 <div class="modal-footer">
                 <div style="font-weight: bold" id="item_price_div">Purchase this item for:                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span id="item_price">500</span>
+                    x <span class="item_price">{{ default_item.cost }}</span>
                 </div>
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default btn-success confirm_buy_button" data-dismiss="modal">Confirm</button>
+                    <button type="button" class="btn btn-default btn-success confirm_buy_item_button" data-dismiss="modal">Confirm</button>
                 </div>
             </div>        
         </div>
@@ -65,13 +68,132 @@
                     <h4 class="modal-title">Item Purchased</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="store_detail_image" class="img-responsive col-xs-9 col-centred" src="http://www.insidemysteryshopping.com/assets/happy%20shopper%202.jpg" />
+                    <img id="purchased_item_image" class="img-responsive col-xs-9 col-centred" src="{{ default_item.image }}" />
                     <p id="store_confirmation_msg">Purchase confirmed!</p>
                     <p>Your new item has been placed in your inventory.</p>
                 </div>
                 <div style="font-weight: bold" id="item_price_div">Your new balance:                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span id="item_price">100</span>
+                    x <span class="current_balance">100</span>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+
+
+
+
+<!-- scenery -->
+<div class="container">            
+    <div class="modal fade" role="dialog" id="store_confirm_scenery_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Purchase Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="selected_scenery_image" class="img-responsive col-xs-9 col-centred" src="{{ default_scenery.image }}" />
+                    <p id="store_confirmation_msg">Are you sure you would like to purchase this scenery?</p>
+                    <p>Your current balance is:</p>
+                </div>
+                <div style="font-weight: bold" id="item_price_div">                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="current_balance">{{ current_balance }}</span>
+                </div>                    
+                <div class="modal-footer">
+                <div style="font-weight: bold" id="item_price_div">Purchase this scenery for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="scenery_price">{{ default_scenery.cost }}</span>
+                </div>
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default btn-success confirm_buy_scenery_button" data-dismiss="modal">Confirm</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="scenery_purchased_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Scenery Purchased</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="purchased_scenery_image" class="img-responsive col-xs-9 col-centred" src="{{ default_scenery.image }}" />
+                    <p id="store_confirmation_msg">Purchase confirmed!</p>
+                    <p>Your new scenery has been placed in your inventory.</p>
+                </div>
+                <div style="font-weight: bold" id="item_price_div">Your new balance:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="current_balance">100</span>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+
+
+
+<!-- pets -->
+<div class="container">            
+    <div class="modal fade" role="dialog" id="store_confirm_pet_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Purchase Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="selected_pet_image" class="img-responsive col-xs-9 col-centred" src="{{ default_pet.image }}" />
+                    <p id="store_confirmation_msg">Are you sure you would like to purchase this pet?</p>
+                    <p>Your current balance is:</p>
+                </div>
+                <div style="font-weight: bold" id="item_price_div">                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="current_balance">{{ current_balance }}</span>
+                </div>                    
+                <div class="modal-footer">
+                <div style="font-weight: bold" id="item_price_div">Purchase this pet for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="pet_price">{{ default_pet.cost }}</span>
+                </div>
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default btn-success confirm_buy_pet_button" data-dismiss="modal">Confirm</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="pet_purchased_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pet Purchased</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="purchased_pet_image" class="img-responsive col-xs-9 col-centred" src="{{ default_pet.image }}" />
+                    <p id="store_confirmation_msg">Purchase confirmed!</p>
+                    <p>Your new pet has been placed in your inventory.</p>
+                </div>
+                <div style="font-weight: bold" id="item_price_div">Your new balance:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="current_balance">100</span>
                 </div>                    
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
