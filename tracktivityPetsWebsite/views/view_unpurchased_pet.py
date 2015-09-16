@@ -25,7 +25,14 @@ def view_unpurchased_pet(request, pet_index=""):
     details = {}
     details['name'] = pet.default_name
     details['cost'] = pet.cost
-    details['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text
+    details['story'] = "This pet is locked, to unlock you need another " + str(pet.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
     details['image'] = pet.get_default_image_path()
+    details['cost'] = pet.cost
+    details['locked'] = 'true'
+    
+    if request.user.profile.get_total_xp() >= pet.experience_to_unlock:
+        details['locked'] = 'false'
+        details['story'] = pet.story_set.filter(level_unlocked=levelOne)[0].text
+        
     
     return HttpResponse(json.dumps(details))
