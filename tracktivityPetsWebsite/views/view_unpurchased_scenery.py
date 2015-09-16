@@ -21,7 +21,14 @@ def view_unpurchased_scenery(request, scenery_index=""):
     details = {}
     details['name'] = scenery.name
     details['cost'] = scenery.cost
-    details['description'] = scenery.description
+    details['description'] = "This scenery is locked, to unlock you need another " + str(scenery.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
     details['image'] = scenery.get_image_path()
+    details['locked'] = 'true'
+    
+    if request.user.profile.get_total_xp() >= scenery.experience_to_unlock:
+        details['description'] = scenery.description
+        details['locked'] = 'false'
+    
+    
     
     return HttpResponse(json.dumps(details))
