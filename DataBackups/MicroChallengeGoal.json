@@ -1,24 +1,24 @@
 [
 {
-    "pk": 1,
     "fields": {
-        "medal": 1,
         "goal_state": 3,
-        "micro_challenge": 1,
         "pet_pennies_reward": 20,
-        "description": "Run run run "
+        "medal": 1,
+        "description": "Run run run ",
+        "micro_challenge": 1
     },
-    "model": "tracktivityPetsWebsite.microchallengegoal"
+    "model": "tracktivityPetsWebsite.microchallengegoal",
+    "pk": 1
 },
 {
-    "pk": 2,
     "fields": {
-        "medal": 2,
         "goal_state": 2,
-        "micro_challenge": 1,
         "pet_pennies_reward": 10,
-        "description": "Silver"
+        "medal": 2,
+        "description": "Silver",
+        "micro_challenge": 1
     },
-    "model": "tracktivityPetsWebsite.microchallengegoal"
+    "model": "tracktivityPetsWebsite.microchallengegoal",
+    "pk": 2
 }
 ]

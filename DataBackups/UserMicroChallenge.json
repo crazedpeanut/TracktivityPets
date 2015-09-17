@@ -1,1 +1,28 @@
 [
+{
+    "fields": {
+        "micro_challenge": 1,
+        "date_end": "2015-09-10T14:03:32Z",
+        "date_started": "2015-09-10T14:02:58Z",
+        "state": 3,
+        "complete": true,
+        "date_completed": "2015-09-10T04:06:09Z",
+        "profile": 24
+    },
+    "model": "tracktivityPetsWebsite.usermicrochallenge",
+    "pk": 1
+},
+{
+    "fields": {
+        "micro_challenge": 1,
+        "date_end": "2015-09-11T23:24:39.646Z",
+        "date_started": "2015-09-10T14:02:58.010Z",
+        "state": 4,
+        "complete": false,
+        "date_completed": null,
+        "profile": 24
+    },
+    "model": "tracktivityPetsWebsite.usermicrochallenge",
+    "pk": 2
+}
+]

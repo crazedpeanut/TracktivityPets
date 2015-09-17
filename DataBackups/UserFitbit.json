@@ -1,0 +1,12 @@
+[
+{
+    "model": "fitapp.userfitbit",
+    "fields": {
+        "user": 2,
+        "auth_secret": "84ef8960aa62d38edb2c736d8fbb6854",
+        "fitbit_user": "38NXDJ",
+        "auth_token": "7b4cb40c80d3c163b5ff8b17d1b60f8c"
+    },
+    "pk": 37
+}
+]

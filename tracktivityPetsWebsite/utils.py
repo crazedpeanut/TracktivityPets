@@ -241,7 +241,7 @@ def register_pet_selection(user, pet, name):
             now = datetime.datetime.now()
             profile = Profile.objects.get(user=user) #should change this to form of user.profile, but it doesnt seem to work 
             
-            scenery = Scenery.objects.get(name="Trees")
+            scenery = Scenery.objects.get(name="Oak Tree Park")
             collected_scenery = CollectedScenery.objects.create(scenery=scenery, inventory=profile.inventory)
             collected_scenery.save()#these 3 lines of code are untested
             

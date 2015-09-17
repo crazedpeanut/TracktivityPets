@@ -1,2 +1,54 @@
 [
+{
+    "pk": 3,
+    "fields": {
+        "belongs_to": 3,
+        "cost": 0,
+        "image_location": "Melvin-beanie.png",
+        "experience_to_unlock": 0,
+        "description": "a beanie",
+        "body_part": 1,
+        "name": "Beanie"
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 4,
+    "fields": {
+        "belongs_to": 3,
+        "cost": 0,
+        "image_location": "Melvin-topHat.png",
+        "experience_to_unlock": 0,
+        "description": "a tophat",
+        "body_part": 1,
+        "name": "Top Hat"
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 5,
+    "fields": {
+        "belongs_to": 3,
+        "cost": 15,
+        "image_location": "Melvin-BlueShadesGlasses.png",
+        "experience_to_unlock": 1000000,
+        "description": "Fancy blue glasses",
+        "body_part": 2,
+        "name": "Blue Shades"
+    },
+    "model": "tracktivityPetsWebsite.item"
+},
+{
+    "pk": 6,
+    "fields": {
+        "belongs_to": 3,
+        "cost": 5,
+        "image_location": "Melvin-heartGlasses.png",
+        "experience_to_unlock": 50,
+        "description": "Some heart glasses.",
+        "body_part": 2,
+        "name": "Heart Glasses"
+    },
+    "model": "tracktivityPetsWebsite.item"
+}
 ]

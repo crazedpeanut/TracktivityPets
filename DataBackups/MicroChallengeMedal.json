@@ -1,23 +1,23 @@
 [
 {
+    "model": "tracktivityPetsWebsite.microchallengemedal",
     "fields": {
         "name": "Gold"
     },
-    "model": "tracktivityPetsWebsite.microchallengemedal",
     "pk": 1
 },
 {
+    "model": "tracktivityPetsWebsite.microchallengemedal",
     "fields": {
         "name": "Silver"
     },
-    "model": "tracktivityPetsWebsite.microchallengemedal",
     "pk": 2
 },
 {
+    "model": "tracktivityPetsWebsite.microchallengemedal",
     "fields": {
         "name": "Bronze"
     },
-    "model": "tracktivityPetsWebsite.microchallengemedal",
     "pk": 3
 }
 ]
