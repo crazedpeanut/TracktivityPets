@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from tracktivityPetsWebsite.models import Pet, Item, Scenery, Level
 import json
 from tracktivityPetsWebsite import utils
+from django.templatetags.static import static
 
 @login_required
 def store(request):
@@ -48,8 +49,7 @@ def store(request):
         if default_pet.experience_to_unlock > request.user.profile.get_total_xp():
             details_pet['locked'] = True
             details_pet['story'] = "This pet is locked, to unlock you need another " + str(default_pet.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
-    except Exception as e:
-        return HttpResponse(str(e))
+    except:
         own_all_pets = True
             
     #item specific
@@ -139,6 +139,11 @@ def store(request):
         own_all_scenerys = True
         
     current_balance = request.user.profile.total_pet_pennies
+    
+    
+    current_mood = request.user.profile.current_pet.get_current_mood()
+    start_url = static('tracktivityPetsWebsite/images')
+    preview_pet_image = '{url}/pets/{name}/{location}'.format(url=start_url, name= request.user.profile.current_pet.pet, location=current_mood.image_location)
             
         
     #return HttpResponse(json.dumps(locked_scenery)) #json.dumps(locked_pets)
@@ -158,5 +163,6 @@ def store(request):
         "default_item": details_item,
         "own_all_scenerys": own_all_scenerys, 
         "default_scenery": details_scenery,
-        "current_balance": current_balance
+        "current_balance": current_balance,
+        "preview_pet_image": preview_pet_image
     })

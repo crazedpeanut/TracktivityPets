@@ -13,6 +13,7 @@ tracktivityPetsWebsite = ["Inventory",
                           "CollectedScenery",
                           "Pet",
                           "CollectedPet",
+                          "BodyPart",
                           "Item",
                           "CollectedItem",
                           "Profile",
@@ -22,11 +23,14 @@ tracktivityPetsWebsite = ["Inventory",
                           "Phrase",
                           "Story",
                           "MicroChallenge",
-                          "MicroChallengeState",
-                          "UserMicroChallenge",
                           "MicroChallengeMedal",
+                          "MicroChallengeState",
+                          "UserMicroChallengeState",
+                          "UserMicroChallenge",
+                          "PetSwap",
                           "MicroChallengeGoal",
-                          "PetSwap"]
+                          "UserMicroChallengeGoalStatus",
+                          "UserNotification"]
 
 if __name__ == "__main__":
     if sys.argv[1] == "-dump":
