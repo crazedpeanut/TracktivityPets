@@ -122,9 +122,9 @@
 	        {% else %}
 	        	{% for key, value in unlocked_items.items %}
 	            <div class="col-xs-6" class="store_items" id="unlocked_item_{{ value.id }}">
-	                <button class="">
-						<!--<img class="img-responsive" src="{{ preview_pet_image }}" width="200px" height="200px">-->
-	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
+	                <button class="store_button" style="position: relative">
+						<img class="img-responsive" src="{{ preview_pet_image }}">
+	                    <img class="img-responsive pet_scene_overlay" src="{{ value.image }}">
 	                    <h4 class="cosmetics_description">{{ key }}</h4>
 	                </button>            
 	            </div>   
