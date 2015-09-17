@@ -116,10 +116,10 @@ function get_active_challenge_details(challenge)
             $("#current").find(".active_chal_end_date").html(data['challenge']['date_end']);
             $("#current").find(".active_chal_current_steps").html(data['current_steps']);
 
-            $("#challenges_detail_modal .challenge_detail_description").html(data['challenge']['overview']);
-            $("#challenges_detail_modal .challenge_detail_description").html(data['challenge']['name']);
-            $("#challenges_detail_modal .challenge_detail_description").html(data['challenge']['date_end']);
-            $("#challenges_detail_modal .challenge_detail_description").html(data['current_steps']);
+            $("#challenges_detail_modal").find(".challenge_detail_description").html(data['challenge']['overview']);
+            $("#challenges_detail_modal").find(".challenge_detail_description").html(data['challenge']['name']);
+            $("#challenges_detail_modal").find(".challenge_detail_description").html(data['challenge']['date_end']);
+            $("#challenges_detail_modal").find(".challenge_detail_description").html(data['current_steps']);
 
             $("#current_challenge_rewards_table").html("");
             $("#challenges_detail_modal").find(".available_challenge_rewards").html("")
