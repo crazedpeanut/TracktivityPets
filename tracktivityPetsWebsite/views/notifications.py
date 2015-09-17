@@ -8,7 +8,7 @@ from tracktivityPetsWebsite.models import MicroChallenge, MicroChallengeGoal, Mi
 from django.core import serializers
 import datetime
 
-def get_acknowledged_notifications(request):
+def get_unacknowledged_notifications(request):
     notifications = UserNotification.objects.filter(userProfile=request.user.profile, acknowledged=False)
     return HttpResponse((serializers.serialize("json", notifications)), content_type="application/json")
 
@@ -16,3 +16,4 @@ def acknowledge_notification(request, notification_pk):
     notification = UserNotification.objects.filter(pk=notification_pk)
     notification.acknowledged = True
     notification.save()
+

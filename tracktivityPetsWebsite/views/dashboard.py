@@ -9,6 +9,7 @@ import fitapp.utils
 import json
 import logging
 from django.conf import settings
+from tracktivityPetsWebsite.models import UserNotification, EXPERIENCE_GAINED
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -83,6 +84,13 @@ def dashboard(request):
 
     error = ""
 
+    experience_gained = 0
+    experience_gained_notifications = UserNotification.objects.filter(notificationType=EXPERIENCE_GAINED)
+    for notif in experience_gained_notifications:
+        experience_gained += int(notif.message)
+        notif.acknowledged = True
+        notif.save()
+
     return render(request, 'tracktivityPetsWebsite/dashboard/dashboard.html',  
                   {
                    "pet_name": pet_name,
@@ -93,7 +101,7 @@ def dashboard(request):
                    "level_data": level_data,
                    "age": age,
                    "scenery_image": scenery_image,
-                   #"experience_gained": data['experience_gained'],
+                   "experience_gained": experience_gained,
                    #"levels_gained": data['levels_gained'],
                    "error": error,
                    "stories_unlocked_count": stories_unlocked.count(),

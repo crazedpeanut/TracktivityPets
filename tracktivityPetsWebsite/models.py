@@ -7,7 +7,14 @@ from collections import OrderedDict
 
 #TODO add helper functions and __name__
 
+#Challenge Type Constants
 STEPS_IN_DURATION = 'steps_in_duration'
+
+#Notification Type Constants
+EXPERIENCE_GAINED = 'experience_gained'
+LEVEL_UP = 'level_up'
+MICRO_CHAL_GOAL_COMPLETE = 'micro_chal_goal_complete'
+
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
     def __str__(self):    
@@ -409,11 +416,18 @@ class UserMicroChallengeGoalStatus(models.Model):
     user_micro_chal = models.ForeignKey(UserMicroChallenge)
     complete = models.BooleanField(default=False)
 
+NotificationTypes = (
+        (LEVEL_UP,'LEVEL_UP'),
+        (EXPERIENCE_GAINED, 'EXPERIENCE_GAINED')
+        (MICRO_CHAL_GOAL_COMPLETE, 'MICRO_CHAL_GOAL_COMPLETE')
+    )
+
 class UserNotification(models.Model):
     userProfile = models.ForeignKey(Profile)
     dateAdded = models.DateTimeField(default=datetime.datetime.now())
     message = models.CharField(max_length=1000)
     acknowledged = models.BooleanField(default=False)
+    notificationType = models.CharField(choices=NotificationTypes)
 
     
     
