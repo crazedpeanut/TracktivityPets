@@ -550,7 +550,7 @@ width: 75%;
     border: 1px solid white;
 }
 
-.tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p, #rename_pet_modal, #equip_confirm_modal, #store_confirm_modal, #item_purchased_modal 
+.tabs, #inventory_pet p, #inventory_detail_header, .collection_view_desktop, .collection_view_desktop p, .modal
 {
     text-align: center;
 }
