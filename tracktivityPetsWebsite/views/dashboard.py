@@ -85,21 +85,21 @@ def dashboard(request):
     error = ""
 
     experience_gained = 0
-    experience_gained_notifications = UserNotification.objects.filter(profile=request.user.profile, notificationType=EXPERIENCE_GAINED)
+    experience_gained_notifications = UserNotification.objects.userProfile(profile=request.user.profile, notificationType=EXPERIENCE_GAINED)
     for notif in experience_gained_notifications:
         experience_gained += int(notif.message)
         notif.acknowledged = True
         notif.save()
 
     levels_gained = 0
-    level_gained_notifications = UserNotification.objects.filter(profile=request.user.profile, notificationType=LEVEL_UP)
+    level_gained_notifications = UserNotification.objects.filter(userProfile=request.user.profile, notificationType=LEVEL_UP)
     for notif in level_gained_notifications:
         levels_gained += int(notif.message)
         notif.acknowledged = True
         notif.save()
 
     stories_gained = 0
-    story_gained_notifications = UserNotification.objects.filter(profile=request.user.profile, notificationType=STORY_UNLOCKED)
+    story_gained_notifications = UserNotification.objects.filter(userProfile=request.user.profile, notificationType=STORY_UNLOCKED)
     for notif in story_gained_notifications:
         stories_gained += int(notif.message)
         notif.acknowledged = True
