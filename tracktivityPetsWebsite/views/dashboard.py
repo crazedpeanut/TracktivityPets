@@ -85,7 +85,7 @@ def dashboard(request):
     error = ""
 
     experience_gained = 0
-    experience_gained_notifications = UserNotification.objects.userProfile(profile=request.user.profile, notificationType=EXPERIENCE_GAINED)
+    experience_gained_notifications = UserNotification.objects.filter(userProfile=request.user.profile, notificationType=EXPERIENCE_GAINED)
     for notif in experience_gained_notifications:
         experience_gained += int(notif.message)
         notif.acknowledged = True
