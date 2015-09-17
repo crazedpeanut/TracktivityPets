@@ -418,7 +418,7 @@ class UserMicroChallengeGoalStatus(models.Model):
 
 NotificationTypes = (
         (LEVEL_UP,'LEVEL_UP'),
-        (EXPERIENCE_GAINED, 'EXPERIENCE_GAINED')
+        (EXPERIENCE_GAINED, 'EXPERIENCE_GAINED'),
         (MICRO_CHAL_GOAL_COMPLETE, 'MICRO_CHAL_GOAL_COMPLETE')
     )
 
