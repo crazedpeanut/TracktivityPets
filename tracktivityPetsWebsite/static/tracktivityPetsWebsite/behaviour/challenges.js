@@ -56,6 +56,7 @@ function active_challenge_click_handler()
 function get_available_challenge_details(challenge)
 {
     $("#available .challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+    $("#challenges_detail_modal .challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
 
     $.ajax({
         url:"get_challenge_details/" + challenge,
@@ -64,12 +65,20 @@ function get_available_challenge_details(challenge)
         {
             $("#available").find(".challenge_detail_description").html(data['challenge']['overview']);
             $("#available").find(".challenge_detail_header").html(data['challenge']['name']);
+            $("#challenges_detail_modal").find(".challenge_detail_description").html(data['challenge']['overview']);
+            $("#challenges_detail_modal").find(".challenge_detail_header").html(data['challenge']['name']);
 
             $("#available_challenge_rewards_table").html("");
+            $("#challenges_detail_modal").find(".available_challenge_rewards").html("");
+
             for(var d in data['goals'])
             {
                 $("#available_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
                 "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+
+                $("#challenges_detail_modal").find(".available_challenge_rewards").append("<tr><td>" + data['goals'][d]['medal'] +
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+
             }
         }
     });
