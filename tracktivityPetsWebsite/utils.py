@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Level, Pet, Scenery, CollectedScenery
 from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
 from tracktivityPetsWebsite.models import UserMicroChallenge, UserMicroChallengeState, MicroChallengeGoal,\
-    MicroChallengeState, STEPS_IN_DURATION, UserMicroChallengeGoalStatus
+    MicroChallengeState, STEPS_IN_DURATION, UserMicroChallengeGoalStatus, UserNotification,\
+    LEVEL_UP, EXPERIENCE_GAINED
 import urllib
 import django
 from django.core.urlresolvers import reverse
@@ -171,7 +172,13 @@ def update_user_fitbit(user):
     #change last_fitbit_sync to todays date
     profile.last_fitbit_sync = date_to
     profile.save()
-    
+
+    experienceNotification = UserNotification()
+    experienceNotification.message = data_to_return['experience_gained']
+    experienceNotification.notificationType = EXPERIENCE_GAINED
+    experienceNotification.userProfile = user.profile
+    experienceNotification.save()
+
     return True, data_to_return
     #if request.method == GET
         #return ajax friendly data
@@ -353,6 +360,12 @@ def update_user_challenges(user):
                 if(user_micro_chal_goal_status.complete is not True):
                     if uc.state.state.steps >= goal.goal_state.steps:
                         logger.debug("User achieved goal for challenge: %s" % micro_chal.name)
+
+                        notification = UserNotification()
+                        message = "Achieved Medal: %s for challenge: %s" % (goal.medal.name, micro_chal.name)
+                        notification.message = message
+                        notification.userProfile = user.profile
+                        notification.save()
 
                         user.profile.total_pet_pennies += goal.pet_pennies_reward
                         user_micro_chal_goal_status.complete = True
