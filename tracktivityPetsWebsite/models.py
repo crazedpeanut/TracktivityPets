@@ -429,6 +429,9 @@ class UserNotification(models.Model):
     acknowledged = models.BooleanField(default=False)
     notificationType = models.CharField(choices=NotificationTypes, max_length=255)
 
+    def __str__(self):
+        return "Type: %s" % (self.notificationType)
+
     
     
     
