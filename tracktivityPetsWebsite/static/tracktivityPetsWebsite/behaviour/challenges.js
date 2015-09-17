@@ -119,8 +119,10 @@ function get_active_challenge_details(challenge)
             $("#challenges_detail_modal").find(".challenge_detail_description").html(data['challenge']['overview']);
             $("#challenges_detail_modal").find(".challenge_detail_header").html(data['challenge']['name']);
 
+            alert();
+
             $("#current_challenge_rewards_table").html("");
-            $("#challenges_detail_modal").find(".available_challenge_rewards").html("")
+            $("#challenges_detail_modal").find(".available_challenge_rewards").html("");
             for(var d in data['goals'])
             {
                 $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
