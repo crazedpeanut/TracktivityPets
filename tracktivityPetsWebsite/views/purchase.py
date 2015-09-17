@@ -18,7 +18,7 @@ def purchase(request, tab="", index=""):
             except:
                 pass
             
-            if (request.user.profile.total_pet_pennies >= pet.cost) and request.user.profile.get_total_experience() >= pet.experience_to_unlock:
+            if (request.user.profile.total_pet_pennies >= pet.cost) and request.user.profile.get_total_xp() >= pet.experience_to_unlock:
                 name = pet.default_name #change this later to what the user has named it?
                 level = Level.objects.get(level=1) #dodgy code, but can presume level 1 will always exist
                 now = datetime.datetime.now()
@@ -30,7 +30,7 @@ def purchase(request, tab="", index=""):
                 profile.total_pet_pennies -= pet.cost
                 profile.save()
                 
-                return HttpResponse("True")
+                return HttpResponse("True_" + str(profile.total_pet_pennies))
             else:
                 return HttpResponse("False")
         except:
@@ -45,14 +45,14 @@ def purchase(request, tab="", index=""):
             except:
                 pass
             
-            if (request.user.profile.total_pet_pennies >= scenery.cost) and request.user.profile.get_total_experience() >= scenery.experience_to_unlock:
+            if (request.user.profile.total_pet_pennies >= scenery.cost) and request.user.profile.get_total_xp() >= scenery.experience_to_unlock:
                 
                 collected_scenery = CollectedScenery.objects.create(scenery=scenery, inventory=request.user.profile.inventory)
                 collected_scenery.save()
                 request.user.profile.total_pet_pennies -= scenery.cost
                 request.user.profile.save()
                 
-                return HttpResponse("True")
+                return HttpResponse("True_" + str(request.user.profile.total_pet_pennies))
             else:
                 return HttpResponse("False")
         except:
@@ -68,18 +68,18 @@ def purchase(request, tab="", index=""):
             except:
                 pass
             
-            if (request.user.profile.total_pet_pennies >= item.cost) and request.user.profile.current_pet.get_total_experience() >= item.experience_to_unlock:
+            if (request.user.profile.total_pet_pennies >= item.cost) and request.user.profile.get_total_xp() >= item.experience_to_unlock:
                 
                 collected_item = CollectedItem.objects.create(item=item, inventory=request.user.profile.inventory)
                 collected_item.save()
                 request.user.profile.total_pet_pennies -= item.cost
                 request.user.profile.save()
                 
-                return HttpResponse("True")
+                return HttpResponse("True_" + str(request.user.profile.total_pet_pennies))
             else:
-                return HttpResponse("False")
-        except:
-            return HttpResponse("false")
+                return HttpResponse(str(request.user.profile.total_pet_pennies >= item.cost) + " " + str(request.user.profile.get_total_xp() >= item.experience_to_unlock))
+        except Exception as e:
+            return HttpResponse(str(e))
     else:     
         return HttpResponse("False")
     

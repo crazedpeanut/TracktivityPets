@@ -23,7 +23,7 @@ def dashboard(request):
     if not utils.is_fitbit_linked(request.user) or not fitapp.utils.is_integrated(request.user):
         return redirect('tracktivityPetsWebsite:fitbit_link')
     
-    elif request.user.profile.current_pet is None:#take them to the page to select a pet
+    if request.user.profile.current_pet is None:#take them to the page to select a pet
         return redirect('tracktivityPetsWebsite:pet_selection')
 
     start_url = static('tracktivityPetsWebsite/images')

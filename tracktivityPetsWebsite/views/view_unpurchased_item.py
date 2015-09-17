@@ -21,7 +21,12 @@ def view_unpurchased_item(request, item_index=""):
     details = {}
     details['name'] = item.name
     details['cost'] = item.cost
-    details['description'] = item.description
+    details['description'] = "This item is locked, to unlock you need another " + str(item.experience_to_unlock - request.user.profile.get_total_xp()) + " experience."
     details['image'] = item.get_image_path()
+    details['locked'] = 'true'
     
+    if request.user.profile.get_total_xp() >= item.experience_to_unlock:
+        details['locked'] = 'false'
+        details['description'] = item.description
+        
     return HttpResponse(json.dumps(details))

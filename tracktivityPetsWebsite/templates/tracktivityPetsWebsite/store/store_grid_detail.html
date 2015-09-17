@@ -14,7 +14,7 @@
 	                <button class="store_button">
 	                    <img class="img-responsive" src="{{ value.image }}">
 	                    <h4 class="">{{ key }}</h4>
-	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x 500<h6>
+	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
 	                </button>            
 	            </div>
 	            {% endfor %}
@@ -33,24 +33,33 @@
 
         <div class="col-sm-6 hidden-xs" id="selected_pet_{{ default_pet.id }}">
         	{% if default_pet %}
-            <div hidden id=""></div>
-            <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-centred" src="{{ default_pet.image }}" id="store_detail_image"></div>
-            <div class="row" id="store_detail_pet_description_div">
-                <p id="store_detail_pet_description" class="col-xs-12 col-sm-8 col-centred">
-                    {{ default_pet.story }}
-                </p>
-            </div>
-            <div style="font-weight: bold" id="item_price_div">Available for:                   
-                <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                x <span id="item_price">500</span>
-            </div>
-            <div class="row" id="store_detail_buttons">
-                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_button" type="button">Purchase</button>
-            </div>
+	            <div hidden id=""></div>
+	            <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
+	            <div class="row"><img class="img-responsive col-centred selected_pet_image" src="{{ default_pet.image }}" id="store_detail_image"></div>
+	            <div class="row" id="store_detail_pet_description_div">
+	                <p id="store_detail_pet_description" class="col-xs-12 col-sm-8 col-centred">
+	                    {{ default_pet.story }}
+	                </p>
+	            </div>
+	            {% if default_pet.locked %}
+		            <div style="font-weight: bold" id="item_price_div">Total Experience Required:                   
+		                {{ default_pet.experience }}
+		            </div>
+	            {% else %}
+		            <div style="font-weight: bold" id="item_price_div">Available for:                   
+		                <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+		                x <span class="pet_price">{{ default_pet.cost }}</span>
+		            </div>
+	            {% endif %}
+	            <div class="row" id="store_detail_buttons">
+	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_pet_button" type="button">Purchase</button>
+	            </div>
             {% endif %}
         </div>
     </div>
+    
+    
+    
     
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
@@ -63,7 +72,7 @@
 	                <button class="store_button">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
 	                    <h4 class="scenery_description">{{ key }}</h4>
-	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x 500<h6>
+	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
 	                </button>            
 	            </div>
 				{% endfor %}
@@ -84,7 +93,7 @@
         <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
         	{% if default_scenery %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
-	            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
+	            <div class="row"><img class="img-responsive col-xs-8 col-centred selected_scenery_image" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
 	            <div class="row" id="store_detail_scenery_description_div">
 	                <p id="store_detail_scenery_description" class="col-xs-12 col-sm-8 col-centred">
 	                     {{ default_scenery.description }}
@@ -92,14 +101,18 @@
 	            </div>
 	            <div style="font-weight: bold" id="item_price_div">Available for:                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span id="item_price">500</span>
+                    x <span class="scenery_price">{{ default_scenery.cost }}</span>
                 </div>
 	            <div class="row">
-	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_button" type="button">Purchase</button>
+	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_scenery_button" type="button">Purchase</button>
 	            </div>
 	         {% endif %}
         </div>
     </div>
+    
+    
+    
+    
     
     <!-- Collected Cosmetics Tab -->
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
@@ -131,7 +144,7 @@
         <div class="col-sm-6 hidden-xs" id="selected_item_{{ default_item.id }}">
             {% if default_item %}
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-xs-8 col-centred" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
+            <div class="row"><img class="img-responsive col-xs-8 col-centred selected_item_image" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
                 <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-sm-8 col-centred">
                     {{ default_item.description }}
@@ -139,10 +152,10 @@
             </div>
             <div style="font-weight: bold" id="item_price_div">Available for:                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span id="item_price">500</span>
+                    x <span class="item_price">{{ default_item.cost }}</span>
                 </div>
             <div class="row">
-                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_button" type="button">Purchase</button>
+                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_item_button" type="button">Purchase</button>
             </div>
             {% endif %}
         </div>
