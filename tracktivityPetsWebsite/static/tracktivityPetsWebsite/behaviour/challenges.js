@@ -104,6 +104,7 @@ function get_available_challenge_details(challenge)
 function get_active_challenge_details(challenge)
 {
     $("#current").find(".challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
+    $("#challenges_detail_modal .challenge_detail_description").html("<img class='loadimg' src='../static/tracktivityPetsWebsite/images/petpenny.gif'/>");
 
     $.ajax({
         url:"get_active_challenge_details/" + challenge,
@@ -115,10 +116,19 @@ function get_active_challenge_details(challenge)
             $("#current").find(".active_chal_end_date").html(data['challenge']['date_end']);
             $("#current").find(".active_chal_current_steps").html(data['current_steps']);
 
+            $("#challenges_detail_modal .challenge_detail_description").html(data['challenge']['overview']);
+            $("#challenges_detail_modal .challenge_detail_description").html(data['challenge']['name']);
+            $("#challenges_detail_modal .challenge_detail_description").html(data['challenge']['date_end']);
+            $("#challenges_detail_modal .challenge_detail_description").html(data['current_steps']);
+
             $("#current_challenge_rewards_table").html("");
+            $("#challenges_detail_modal").find(".available_challenge_rewards").html("")
             for(var d in data['goals'])
             {
                 $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+
+                $("#challenges_detail_modal").find(".available_challenge_rewards").append("<tr><td>" + data['goals'][d]['medal'] +
                 "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
             }
         }
@@ -241,6 +251,7 @@ function setSetUpClickListeners()
     {
         if (screen.width <= modalScreenWidth)
         {
+            $("#challenges_detail_modal").find(".modal-title").html("This is an available challenge");
             $("#challenges_detail_modal").find("#challenge_accept_btn").show();
             $("#challenges_detail_modal").find("#available_challenge_rewards").show();
             $("#challenges_detail_modal").find("#completed_challenge_reward").hide();
