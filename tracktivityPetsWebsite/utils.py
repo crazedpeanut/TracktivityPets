@@ -151,7 +151,7 @@ def update_user_fitbit(user):
 
     data_to_return = {}
     data_to_return['experience_gained'] = experience
-    data_to_return['levels_gained'] = new_level - current_level #TODO
+    data_to_return['levels_gained'] = new_level - current_level
     #data_to_return['pet_pennies_gained'] = 0
     data_to_return['stories'] = {}
     
@@ -173,11 +173,19 @@ def update_user_fitbit(user):
     profile.last_fitbit_sync = date_to
     profile.save()
 
-    experienceNotification = UserNotification()
-    experienceNotification.message = data_to_return['experience_gained']
-    experienceNotification.notificationType = EXPERIENCE_GAINED
-    experienceNotification.userProfile = user.profile
-    experienceNotification.save()
+    if(int(data_to_return['experience_gained']) > 0):
+        experienceNotification = UserNotification()
+        experienceNotification.message = data_to_return['experience_gained']
+        experienceNotification.notificationType = EXPERIENCE_GAINED
+        experienceNotification.userProfile = user.profile
+        experienceNotification.save()
+
+    if(data_to_return['levels_gained'] > 0):
+        levelNotification = UserNotification()
+        levelNotification.message = data_to_return['levels_gained']
+        levelNotification.notificationType = LEVEL_UP
+        levelNotification.userProfile = user.profile
+        levelNotification.save()
 
     return True, data_to_return
     #if request.method == GET
