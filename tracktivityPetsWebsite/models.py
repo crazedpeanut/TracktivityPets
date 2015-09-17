@@ -14,6 +14,7 @@ STEPS_IN_DURATION = 'steps_in_duration'
 EXPERIENCE_GAINED = 'experience_gained'
 LEVEL_UP = 'level_up'
 MICRO_CHAL_GOAL_COMPLETE = 'micro_chal_goal_complete'
+STORY_UNLOCKED = 'story_unlocked'
 
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
@@ -420,6 +421,7 @@ NotificationTypes = (
         (LEVEL_UP,'LEVEL_UP'),
         (EXPERIENCE_GAINED, 'EXPERIENCE_GAINED'),
         (MICRO_CHAL_GOAL_COMPLETE, 'MICRO_CHAL_GOAL_COMPLETE')
+        (STORY_UNLOCKED, 'STORy_UNLOCKED')
     )
 
 class UserNotification(models.Model):

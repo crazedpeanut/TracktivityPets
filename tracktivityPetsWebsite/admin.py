@@ -3,7 +3,7 @@ from django.contrib import admin
 from tracktivityPetsWebsite.models import Pet, Mood, Level, Phrase, Story, Profile, CollectedPet, Inventory, \
     Item, Scenery, CollectedItem, CollectedScenery, BodyPart, MicroChallenge, MicroChallengeGoal,\
     MicroChallengeState, UserMicroChallenge, UserMicroChallengeState, MicroChallengeMedal,\
-    UserMicroChallengeGoalStatus
+    UserMicroChallengeGoalStatus, UserNotification
 
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
@@ -181,6 +181,11 @@ class UserMicroChallengeGoalStatusAdmin(admin.ModelAdmin):
 
 #########################################
 
+class UserNotificationAdmin(admin.ModelAdmin):
+    fields = ('userProfile', 'dateAdded', 'message','acknowledged','notificationType')
+
+
+admin.site.register(UserNotification, UserNotificationAdmin)
 admin.site.register(UserMicroChallengeGoalStatus, UserMicroChallengeGoalStatusAdmin)
 admin.site.register(MicroChallengeMedal, MicroChallengeMedalAdmin)
 admin.site.register(UserMicroChallengeState, UserMicroChallengeStateAdmin)

@@ -9,7 +9,7 @@ import fitapp.utils
 import json
 import logging
 from django.conf import settings
-from tracktivityPetsWebsite.models import UserNotification, EXPERIENCE_GAINED
+from tracktivityPetsWebsite.models import UserNotification, EXPERIENCE_GAINED, LEVEL_UP, STORY_UNLOCKED
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -85,9 +85,23 @@ def dashboard(request):
     error = ""
 
     experience_gained = 0
-    experience_gained_notifications = UserNotification.objects.filter(notificationType=EXPERIENCE_GAINED)
+    experience_gained_notifications = UserNotification.objects.filter(profile=request.user.profile, notificationType=EXPERIENCE_GAINED)
     for notif in experience_gained_notifications:
         experience_gained += int(notif.message)
+        notif.acknowledged = True
+        notif.save()
+
+    levels_gained = 0
+    level_gained_notifications = UserNotification.objects.filter(profile=request.user.profile, notificationType=LEVEL_UP)
+    for notif in level_gained_notifications:
+        levels_gained += int(notif.message)
+        notif.acknowledged = True
+        notif.save()
+
+    stories_gained = 0
+    story_gained_notifications = UserNotification.objects.filter(profile=request.user.profile, notificationType=STORY_UNLOCKED)
+    for notif in story_gained_notifications:
+        stories_gained += int(notif.message)
         notif.acknowledged = True
         notif.save()
 
@@ -102,12 +116,12 @@ def dashboard(request):
                    "age": age,
                    "scenery_image": scenery_image,
                    "experience_gained": experience_gained,
-                   #"levels_gained": data['levels_gained'],
+                   "levels_gained": levels_gained,
                    "error": error,
                    "stories_unlocked_count": stories_unlocked.count(),
                    "stories_available_count": stories_available.count(),
                    "stories_unlocked": stories_unlocked,
-                   #"stories_gained": data['stories'],
+                   "stories_gained": stories_gained,
                    "progress_bar_colour": progress_bar_colour,
                    "equipped_item_images": equipped_item_images,
                    })

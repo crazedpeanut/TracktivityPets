@@ -5,7 +5,7 @@ from tracktivityPetsWebsite.models import Inventory, Profile, CollectedPet, Leve
 from tracktivityPetsWebsite.models import Experience, Happiness, Story, Item, CollectedItem, PetSwap
 from tracktivityPetsWebsite.models import UserMicroChallenge, UserMicroChallengeState, MicroChallengeGoal,\
     MicroChallengeState, STEPS_IN_DURATION, UserMicroChallengeGoalStatus, UserNotification,\
-    LEVEL_UP, EXPERIENCE_GAINED
+    LEVEL_UP, EXPERIENCE_GAINED, STORY_UNLOCKED
 import urllib
 import django
 from django.core.urlresolvers import reverse
@@ -186,6 +186,13 @@ def update_user_fitbit(user):
         levelNotification.notificationType = LEVEL_UP
         levelNotification.userProfile = user.profile
         levelNotification.save()
+
+    for story in data_to_return['stories']:
+        storyNotification = UserNotification()
+        storyNotification.message = "Unlocked a new Story!"
+        storyNotification.notificationType = STORY_UNLOCKED
+        storyNotification.userProfile = user.profile
+        storyNotification.save()
 
     return True, data_to_return
     #if request.method == GET
