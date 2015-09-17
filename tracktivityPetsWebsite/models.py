@@ -427,7 +427,7 @@ class UserNotification(models.Model):
     dateAdded = models.DateTimeField(default=datetime.datetime.now())
     message = models.CharField(max_length=1000)
     acknowledged = models.BooleanField(default=False)
-    notificationType = models.CharField(choices=NotificationTypes)
+    notificationType = models.CharField(choices=NotificationTypes, max_length=255)
 
     
     
