@@ -127,10 +127,7 @@ def complete(request):
     except Exception as e:
         logger.error(str(e))
         return redirect(reverse('fitbit-error'))
-
-    if UserFitbit.objects.filter(fitbit_user=fb.client.user_id).exists():
-        UserFitbit.objects.filter(fitbit_user=fb.client.user_id).delete()
-
+    
     fbuser, _ = UserFitbit.objects.get_or_create(user=request.user)
     fbuser.auth_token = fb.client.resource_owner_key
     fbuser.auth_secret = fb.client.resource_owner_secret
