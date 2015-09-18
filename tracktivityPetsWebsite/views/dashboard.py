@@ -101,7 +101,7 @@ def dashboard(request):
     stories_gained = 0
     story_gained_notifications = UserNotification.objects.filter(userProfile=request.user.profile, notificationType=STORY_UNLOCKED)
     for notif in story_gained_notifications:
-        stories_gained += int(notif.message)
+        stories_gained += 1
         notif.acknowledged = True
         notif.save()
 
