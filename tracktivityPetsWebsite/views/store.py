@@ -55,7 +55,8 @@ def store(request):
     #item specific
     current_pet_xp = request.user.profile.current_pet.get_total_experience()
     collected_items = request.user.profile.inventory.get_collected_items_for_pet(request.user.profile.current_pet.pet)
-    uncollected_items = Item.objects.exclude(id__in=[i.item.id for i in collected_items]) #every item not in collected_items
+    all_other_items = Item.objects.exclude(id__in=[i.item.id for i in collected_items]) #every item not in collected_items
+    uncollected_items = all_other_items.filter(belongs_to=request.user.profile.current_pet.pet)
     
     unlocked_items = {}
     locked_items = {}

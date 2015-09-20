@@ -64,8 +64,9 @@
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
         <div class="col-xs-12 col-sm-6 scrollview">
         {% for key, value in collected_items.items %}
-            <div class="col-xs-6" class="inventory_items" id="cosmetics_{{ value.pk }}">
+            <div class="col-xs-6" class="inventory_items" id="cosmetics_{{ value.pk }}" style="position: relative">
                 <button class="store_button">
+                <img class="img-responsive" src="{{ preview_pet_image }}">
                 <img class="img-responsive pet_scene_overlay" src="{{ value.image }}">
                 <p class="">{{ key }}</p>
                 </button>            

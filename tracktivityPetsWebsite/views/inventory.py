@@ -4,6 +4,7 @@ from tracktivityPetsWebsite.models import Item, Pet, Level
 from tracktivityPetsWebsite import utils
 from django.http import HttpResponse
 import json
+from django.templatetags.static import static
 
 @login_required
 def inventory(request, tab=""):
@@ -93,6 +94,10 @@ def inventory(request, tab=""):
             details_scenery['pk'] = default_scenery.scenery.pk
         except Exception as e:
             default_scenery = {}
+            
+        current_mood = request.user.profile.current_pet.get_current_mood()
+        start_url = static('tracktivityPetsWebsite/images')
+        preview_pet_image = '{url}/pets/{name}/{location}'.format(url=start_url, name= request.user.profile.current_pet.pet, location=current_mood.image_location)
         
         if tab == "":
             return render(request, 'tracktivityPetsWebsite/inventory/inventory.html',  
@@ -104,6 +109,7 @@ def inventory(request, tab=""):
                 "default_pet": details_pet,
                 "default_item": details_item,
                 "default_scenery": details_scenery,
+                "preview_pet_image": preview_pet_image
             })
         if tab == "pets":
             data = '{ "collected": ' + json.dumps(pets) + ', "details": ' + json.dumps(details) + ' }'
