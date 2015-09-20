@@ -26,6 +26,15 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
         
     def get_owned_items(self):
         return CollectedItem.objects.filter(inventory=self)
+    
+    def get_current_pet_owned_items(self):
+        all_items = self.get_owned_items()
+        for_pet = []
+        for collected_item in all_items:
+            if collected_item.item.belongs_to == self.profile.current_pet.pet:
+                for_pet.append(collected_item)
+        return for_pet
+        
         
     def get_owned_items_in_queryset(self, set):
         return CollectedItem.objects.filter(inventory=self, item__in=set)
