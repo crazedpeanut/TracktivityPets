@@ -27,16 +27,18 @@ def inventory(request, tab=""):
             pets[collected_pet.name]["image"] = image
             
             
-        collected_items = request.user.profile.inventory.get_owned_items()
-        
+        collected_items = request.user.profile.inventory.get_current_pet_owned_items()
+
         items = {}
         
-        for collected_item in collected_items:
-            items[collected_item.item.name] = {}
-            
-            items[collected_item.item.name]["pk"] = collected_item.item.pk
-            items[collected_item.item.name]["image"] = collected_item.item.get_image_path()    
-           
+        try: 
+            for collected_item in collected_items:
+                items[collected_item.item.name] = {}
+                
+                items[collected_item.item.name]["pk"] = collected_item.item.pk
+                items[collected_item.item.name]["image"] = collected_item.item.get_image_path()    
+        except:
+            pass
             
         collected_scenery = request.user.profile.inventory.get_owned_scenery()
           

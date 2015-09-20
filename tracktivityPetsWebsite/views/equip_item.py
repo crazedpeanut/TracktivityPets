@@ -11,7 +11,9 @@ def equip_item(request, item_index="", equip=""):
     #check if they own that item
     try:
         item = Item.objects.get(id=item_index)
+        
         owned_by_pet = request.user.profile.inventory.is_item_owned_by_pet(request.user.profile.current_pet.pet, item)
+
         if not owned_by_pet:
             return HttpResponse("Pet does not own this item");
         
