@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 <div class="collection_window container tab-content col-xs-12">
-    <!-- Pet Store Tab -->
+    <!-- Pet Store Tab --->
     <div class="collection_view_desktop tab-pane fade in active" id="pets">
         <div class="col-xs-12 col-sm-6">
             
@@ -57,10 +57,7 @@
             {% endif %}
         </div>
     </div>
-    
-    
-    
-    
+        
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
         <div class="col-xs-12 col-md-6">
@@ -87,8 +84,7 @@
 	            </div>
 				{% endfor %}
 			{% endif %}
-        </div>
-        
+        </div>        
         
         <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
         	{% if default_scenery %}
@@ -110,10 +106,6 @@
         </div>
     </div>
     
-    
-    
-    
-    
     <!-- Collected Cosmetics Tab -->
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
         <div class="col-xs-12 col-md-6">
@@ -122,9 +114,9 @@
 	        {% else %}
 	        	{% for key, value in unlocked_items.items %}
 	            <div class="col-xs-6" class="store_items" id="unlocked_item_{{ value.id }}">
-	                <button class="">
-						<!--<img class="img-responsive" src="{{ preview_pet_image }}" width="200px" height="200px">-->
-	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
+	                <button class="store_button" style="position: relative">
+						<img class="img-responsive" src="{{ preview_pet_image }}">
+	                    <img class="img-responsive pet_scene_overlay" src="{{ value.image }}">
 	                    <h4 class="cosmetics_description">{{ key }}</h4>
 	                </button>            
 	            </div>   
