@@ -540,6 +540,8 @@ width: 75%;
 
 /*********************************************************************** Inventory, Store and Challenges Pages Style ******************************************************/
 
+.nav-tabs {border-bottom: 0px;}
+    
 .nav-tabs > li > a {
     /* Override default Bootstrap tab style */
     background: #DADADA;
@@ -561,12 +563,19 @@ width: 75%;
 
 .collection_window {
     padding-top: 15px;
-    background: white;     
+    //background: white;  
+    background: url("/static/tracktivityPetsWebsite/images/blurclouds.jpg") no-repeat center fixed;
+    background-size: cover;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .inventory_button, .store_button {
     border: none;
-    background: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .inventory_detail, {
@@ -665,14 +674,20 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
 {    
     .collection_view_desktop
     {
-        min-height: 600px;
-        max-height: 600px;
+        min-height: 650px;
+        max-height: 650px;
     }
     
     #scenery_collection_view_img
     {
         width: 220px;
         height: 150px;
+    }
+    
+    .scrollview
+    {
+        height: 600px;
+        overflow: auto;
     }
 }
 
