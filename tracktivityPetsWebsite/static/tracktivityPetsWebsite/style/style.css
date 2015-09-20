@@ -577,7 +577,7 @@ width: 75%;
     padding-bottom: 1%;    
 }
 
-#inventory_detail_scenery_description_div {
+#inventory_detail_scenery_description_div, #inventory_detail_cosmetics_description_div {
     height: 250px;
     overflow: auto;
 }
@@ -593,7 +593,10 @@ width: 75%;
 }
 
 #inventory_detail_scenery_image, #store_detail_scenery_image {
-    height: 200px;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 4px;
+    height: 220px;
 }
 
 p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inventory_detail_cosmetics_description, #challenge_detail_description, #store_detail_pet_description, #store_detail_scenery_description {
