@@ -1,0 +1,4 @@
+Dashboard View
+==============
+.. automodule:: tracktivityPetsWebsite.views.dashboard
+    :members:
