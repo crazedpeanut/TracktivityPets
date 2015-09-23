@@ -222,7 +222,7 @@ class CollectedPet(models.Model):
         return largest_number, values
     
     def get_all_accumulative_experience(self):
-        pass
+
         dates = self.experience_set.all().order_by('date')
         values = OrderedDict()
         accumulative = 0
