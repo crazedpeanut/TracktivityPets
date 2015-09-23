@@ -185,11 +185,18 @@ class CollectedPet(models.Model):
         seven_days_ago = datetime.datetime.now() - datetime.timedelta(days=7)
         dates = self.happiness_set.filter(date__gt=seven_days_ago).order_by('date')
         values = OrderedDict()
-        for d in dates:
-            date = d.date.strftime('%d-%m')
+
+        if len(dates) > 0:
+            for d in dates:
+                date = d.date.strftime('%d-%m')
+                values[date] = OrderedDict()
+                values[date]['date'] = date
+                values[date]['happiness'] = d.amount/100
+        else:
+            date = datetime.datetime.now().strftime('%d-%m')
             values[date] = OrderedDict()
             values[date]['date'] = date
-            values[date]['happiness'] = d.amount/100
+            values[date]['happiness'] = 0
         return values
     
     def get_todays_happiness_value(self):
@@ -215,17 +222,24 @@ class CollectedPet(models.Model):
         return largest_number, values
     
     def get_all_accumulative_experience(self):
-        pass
+
         dates = self.experience_set.all().order_by('date')
         values = OrderedDict()
-        accumulative = 0 
-        for d in dates:
-            date = d.date.strftime('%d-%m')
+        accumulative = 0
+
+        if len(dates) > 0:
+            for d in dates:
+                date = d.date.strftime('%d-%m')
+                values[date] = OrderedDict()
+                values[date]['date'] = date
+                accumulative += d.amount
+                values[date]['experience'] = accumulative
+        else:
+            date = datetime.datetime.now().strftime('%d-%m')
             values[date] = OrderedDict()
             values[date]['date'] = date
-            accumulative += d.amount
-            values[date]['experience'] = accumulative
-            
+            values[date]['experience'] = 0
+
         return values
     
     def get_age_in_days(self):
