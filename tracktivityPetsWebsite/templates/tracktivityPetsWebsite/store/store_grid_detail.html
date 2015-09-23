@@ -59,13 +59,13 @@
         
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
-        <div class="col-xs-12 col-md-6 scrollview">
+        <div class="col-xs-12 col-sm-6 scrollview">
             {% if not default_scenery %}
 	        	<p>You own all scenery</p>
 	        {% else %}
 	 			{% for key, value in unlocked_scenery.items %}
 	            <div class="col-xs-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
-	                <button class="store_button">
+	                <button class="store_button col-xs-12">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
 	                    <h4 class="scenery_description">{{ key }}</h4>
 	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
@@ -113,7 +113,7 @@
 	        {% else %}
 	        	{% for key, value in unlocked_items.items %}
 	            <div class="col-xs-6" class="store_items" id="unlocked_item_{{ value.id }}">
-	                <button class="store_button" style="position: relative">
+	                <button class="store_button col-xs-12" style="position: relative">
 						<img class="img-responsive" src="{{ preview_pet_image }}">
 	                    <img class="img-responsive pet_scene_overlay" src="{{ value.image }}">
 	                    <h4 class="cosmetics_description">{{ key }}</h4>
@@ -123,7 +123,7 @@
 	            
 	        	{% for key, value in locked_items.items %}
 	            <div class="col-xs-6" class="store_items" id="locked_item_{{ value.id }}">
-	                <button class="">
+	                <button class="store_button col-xs-12">
 	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
 	                    <h4 class="cosmetics_description">{{ key }}</h4>
 	                    <h6>Locked</h6>
