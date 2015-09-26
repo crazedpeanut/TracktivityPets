@@ -20,17 +20,19 @@
                 .done(function(data) {
                     
                     var obj = JSON.parse(data);
-                    $("#inventory_detail_header").html(obj.name);                    
-                    $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
+                    $("#inventory_detail_header").html(obj.name);                                       
                     $("#inventory_detail_pet_level").html("Level " + obj.level);
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html("Level " + obj.level); 
                     $("#inventory_detail_pet_description").html(obj.story);
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.story);
-                    $("#inventory_detail_image").attr("src", obj.image);
-                    $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
+                    $("#inventory_detail_pet_image").attr("src", obj.image);
                     $("#inventory_detail_pet_age").html(obj.age + " Days Old");
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(obj.age + " Days Old");
                     $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
+                    
+                    $("#pet_inventory_detail_title").html(obj.name);
+                    $("#pet_inventory_detail_image").attr("src", obj.image);
+                    $("#pet_inventory_detail_description").html(obj.story);
+                    $("#pet_inventory_detail_level").html("Level " + obj.level);
+                    $("#pet_inventory_detail_age").html(obj.age + " Days Old");
+                    
                     
                     //rename modal
                     $("#rename_pet_modal").find("#rename_pet_image").attr("src", obj.image);
@@ -40,13 +42,13 @@
 
             })
             .always(function() {                                      
-                if (screen.width <= modalScreenWidth) {
-                    $('#inventory_detail_modal').modal('show');                            
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
+                    $('#pet_inventory_detail_modal').modal('show');                            
                 }
             });
         });
         
-        $("#rename_button").click(function(event) {
+        $(".rename_button").click(function(event) {
             $('#rename_pet_modal').modal('show');
         });
         
@@ -55,15 +57,15 @@
             $('#rename_pet_modal').modal('show');
         });
         
-        $("#equip_item_btn").click(function(event) {
+        $(".equip_item_btn").click(function(event) {
         	var id = $("div[id*='selected_cosmetic_']").attr("id").split("_")[2]; //unpurchased_y_x becomes x
         	
-        	if($("#equip_item_btn").html() === "Unequip!") {
+        	if($(".equip_item_btn").html() === "Unequip!") {
         		$.ajax( "{% url 'tracktivityPetsWebsite:equip_item' %}" + id + "/unequip/")
 	                .done(function(data) {
 						if(data === "success") { //show confirmation
 							alert("Successfully Unequipped Item");
-							$("#equip_item_btn").html("Equip!");
+							$(".equip_item_btn").html("Equip!");
 						}
 						else
 							alert("Failed to Unequip");
@@ -83,7 +85,7 @@
 					}
 					else if(data === "success") {
 						alert("Successfully Equipped");
-						$("#equip_item_btn").html("Unequip!");
+						$(".equip_item_btn").html("Unequip!");
 					}
 					else
 						alert("Failed");
@@ -104,7 +106,7 @@
                 .done(function(data) {
 					if(data === "success") { //show confirmation
 						alert("Successfully Equipped Item");
-						$("#equip_item_btn").html("Unequip!");
+						$(".equip_item_btn").html("Unequip!");
 					}
 					else
 						alert("Failed to Equip");
@@ -126,18 +128,19 @@
                     
                     var obj = JSON.parse(data);
                     $("#inventory_detail_cosmetics_header").html(obj.name);                    
-                    $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html(''); 
                     $("#inventory_detail_cosmetics_description").html(obj.description);
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
                     $("#inventory_detail_cosmetics_image").attr("src", obj.image);
-                    $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
                     $("#confirm_equip_img").attr("src", obj.image);
+                    
+                    $("#item_inventory_detail_title").html(obj.name);
+                    $("#item_inventory_detail_image").attr("src", obj.image);
+                    $("#item_inventory_detail_description").html(obj.description);
+                    
                     if(obj.equipped === "equipped") {
-                    	$("#equip_item_btn").html("Unequip!");
+                    	$(".equip_item_btn").html("Unequip!");
                     }
                     else {
-                    	$("#equip_item_btn").html("Equip!");
+                    	$(".equip_item_btn").html("Equip!");
                     }
                
                     $("div[id*='selected_cosmetic_']").attr("id", "selected_cosmetic_" + id);
@@ -146,8 +149,8 @@
             	alert("failed");
             })
             .always(function() {                                    
-                if (screen.width <= modalScreenWidth) {
-                    $('#inventory_detail_modal').modal('show');                            
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
+                    $('#item_inventory_detail_modal').modal('show');                            
                 }
                 
             });
@@ -163,21 +166,19 @@
                     var obj = JSON.parse(data);
                     $("#inventory_detail_scenery_header").html(obj.name);  
                     $("#inventory_detail_scenery_description").html(obj.description);                   
-                    $("#inventory_detail_modal").find(".modal-title").html(obj.name);                    
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_level").html(''); 
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_description").html(obj.description);
                     $("#inventory_detail_scenery_image").attr("src", obj.image);
-                    $("#inventory_detail_modal").find("#inventory_detail_image").attr("src", obj.image);
-                    $("#inventory_detail_modal").find("#inventory_detail_pet_age").html(" ");
                     $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);
+                    
+                    $("#scenery_inventory_detail_title").html(obj.name);
+                    $("#scenery_inventory_detail_image").attr("src", obj.image);
+                    $("#scenery_inventory_detail_description").html(obj.description);
                     
             })
             .fail(function() {
             })
             .always(function() {                                   
-                if (screen.width <= modalScreenWidth) {
-                    $("#inventory_detail_modal").find("#rename_button").hide();
-                    $('#inventory_detail_modal').modal('show'); 
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
+                    $('#scenery_inventory_detail_modal').modal('show'); 
                 }
             });
         });

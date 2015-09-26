@@ -18,7 +18,7 @@
         <div class="col-sm-6 hidden-xs " id="selected_pet_{{ default_pet.pk }}">
             <div hidden id="selected_{{ default_pet.pk }}" > </div>
             <div class="row"><h2 class="col-centred" id="inventory_detail_header">{{ default_pet.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-sm-6 col-centred" src="{{ default_pet.image }}" id="inventory_detail_image"></div>
+            <div class="row"><img class="img-responsive col-sm-6 col-centred" src="{{ default_pet.image }}" id="pet_inventory_detail_image"></div>
             <div class="row" id="inventory_detail_pet_description_div">
                 <p id="inventory_detail_pet_description" class="col-xs-12 col-sm-8 col-centred">
                     {{ default_pet.story }}
@@ -27,7 +27,7 @@
             <div class="row"><h4 id="inventory_detail_pet_level">Level {{ default_pet.level }}</h4></div>
             <div class="row"><h5 id="inventory_detail_pet_age">{{ default_pet.age }} Days Old</h5></div>
             <div class="row" id="inventory_detail_buttons" style="margin-bottom: 10px">
-                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred" id="rename_button" type="button">Rename</button>
+                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred rename_button"type="button">Rename</button>
                 <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred activate_pet_button" type="button">Activate!</button>
             </div>
         </div>
@@ -86,9 +86,9 @@
 	            </div>
 	            <div class="row" style="margin-bottom: 10px">
 	            	{% if default_item.equipped == "Equipped" %}
-	            	<button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" id="equip_item_btn" type="button">Unequip!</button>
+	            	<button class="btn btn-lg btn-primary col-md-3 col-centred activate_button equip_item_btn" type="button">Unequip!</button>
 	            	{% else %}
-	                <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button" id="equip_item_btn" type="button">Equip!</button>
+	                <button class="btn btn-lg btn-primary col-md-3 col-centred activate_button equip_item_btn" type="button">Equip!</button>
 	            	{% endif %}
 	            </div>
 	        {% endif %}

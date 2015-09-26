@@ -1,22 +1,23 @@
 <!-- store_modal.html: Sub-template that handles the pop-up (modal) detail view on mobile devices. -->
 {% load staticfiles %}
 
+
 <div class="container">            
-    <div class="modal fade" role="dialog" id="store_detail_modal">
+    <div class="modal fade" role="dialog" id="pet_detail_modal">
         <div class="modal-dialog">              
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ default.name }}</h4>
+                    <h4 id="pet_detail_modal_title" class="modal-title">{{ default_pet.name }}</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="store_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" />
-                    <p id="store_detail_pet_description">{{ default.story }}</p>
+                    <img id="pet_detail_modal_image" class="img-responsive col-xs-9 col-centred selected_pet_image" src="{{ default_pet.image }}" />
+                    <p id="pet_detail_modal_description">{{ default_pet.story }}</p>
                 </div>                    
                 <div class="modal-footer">
                 <div style="font-weight: bold" id="item_price_div">Available for:                   
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-                    x <span class="item_price">500</span>
+                    x <span class="pet_price">{{ default_pet.cost }}</span>
                 </div>
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
                     <button type="button" class="btn btn-default btn-success buy_pet_button" data-dismiss="modal">Purchase</button>
@@ -25,6 +26,57 @@
         </div>
     </div>
 </div> 
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="item_detail_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="item_detail_modal_title">{{ default_item.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="item_detail_modal_image" class="img-responsive col-xs-9 col-centred selected_item_image" src="{{ default_item.image }}" />
+                    <p id="item_detail_modal_description">{{ default_item.description }}</p>
+                </div>                    
+                <div class="modal-footer">
+                <div style="font-weight: bold" id="item_price_div">Available for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="item_price">{{ default_item.cost }}</span>
+                </div>
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="btn btn-default btn-success buy_item_button" data-dismiss="modal">Purchase</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="scenery_detail_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="scenery_detail_modal_title">{{ default_scenery.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="scenery_detail_modal_image" class="img-responsive col-xs-9 col-centred selected_scenery_image" src="{{ default_scenery.image }}" />
+                    <p id="scenery_detail_modal_description">{{ default_scenery.description }}</p>
+                </div>                    
+                <div class="modal-footer">
+                <div style="font-weight: bold" id="item_price_div">Available for:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="scenery_price">{{ default_scenery.cost }}</span>
+                </div>
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="btn btn-default btn-success buy_scenery_button" data-dismiss="modal">Purchase</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
 
 <!-- items -->
 <div class="container">            

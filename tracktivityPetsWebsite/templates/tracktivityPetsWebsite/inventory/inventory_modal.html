@@ -1,28 +1,79 @@
 <!-- inventory_modal.html: Sub-template that handles the pop-ups (modal) detail view on mobile devices, and rename pet view on all devices. -->
 
 <div class="container">            
-    <div class="modal fade" role="dialog" id="inventory_detail_modal">
+    <div class="modal fade" role="dialog" id="pet_inventory_detail_modal">
         <div class="modal-dialog">              
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ default.name }}</h4>
+                    <h4 id="pet_inventory_detail_title" class="modal-title">{{ default_pet.name }}</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="inventory_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default.image }}" />
-                    <p id="inventory_detail_pet_description">{{ default.story }}</p>
-                    <div><h4 id="inventory_detail_pet_level">Level {{ default.level }}</h3></div>
-                    <div><h5 id="inventory_detail_pet_age">{{ default.age }} Days Old</h5></div>
+                    <img id="inventory_detail_pet_image" class="img-responsive col-xs-9 col-centred" src="{{ default_pet.image }}" />
+                    <p id="pet_inventory_detail_description">{{ default_pet.story }}</p>
+                    <div><h4 id="pet_inventory_detail_level">Level {{ default_pet.level }}</h3></div>
+                    <div><h5 id="pet_inventory_detail_age">{{ default_pet.age }} Days Old</h5></div>
                 </div>                    
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
-                    <button type="button" class="btn btn-default btn-warning" data-dismiss="modal" id="rename_button">Rename</button>
-                    <button type="button" class="btn btn-default activate_button btn-success" data-dismiss="modal">Activate!</button>
+                    <button type="button" class="btn btn-default btn-warning rename_button" data-dismiss="modal">Rename</button>
+                    <button type="button" class="btn btn-default activate_button btn-success activate_pet_button" data-dismiss="modal">Activate!</button>
                 </div>
             </div>        
         </div>
     </div>
 </div>
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="scenery_inventory_detail_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="scenery_inventory_detail_title" class="modal-title">{{ default_scenery.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="scenery_inventory_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default_scenery.image }}" />
+                    <p id="scenery_inventory_detail_description">{{ default_scenery.description }}</p>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="btn btn-default activate_button btn-success activate_scenery_button" data-dismiss="modal">Activate!</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="item_inventory_detail_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="item_inventory_detail_title" class="modal-title">{{ default_item.name }}</h4>
+                </div>
+                <div class="modal-body">
+                    <img id="item_inventory_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default_item.image }}" />
+                    <p id="item_inventory_detail_description">{{ default_item.description }}</p>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+	            	{% if default_item.equipped == "Equipped" %}
+	            	<button type="button" class="btn btn-default activate_button btn-success equip_item_btn" data-dismiss="modal">Unequip!</button>
+	            	{% else %}
+	                <button type="button" class="btn btn-default activate_button btn-success equip_item_btn" data-dismiss="modal">Equip!</button>
+	            	{% endif %}
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
 <div class="container">            
     <div class="modal fade" role="dialog" id="rename_pet_modal">
