@@ -161,7 +161,10 @@ class CollectedScenery(models.Model):
 
 class Pet(models.Model):
     '''
-    
+    Every pet in Tracktivity Pets has an instance of the Pet model.
+	This model contains information such as minimum level for the pet,
+	the default name for the pet, the cost of the pet, and the amount of
+	experience required to unlock the pet from the store.
     '''
 
     starter_level = models.ForeignKey(Level)
@@ -198,7 +201,6 @@ class CollectedPet(models.Model):
         image_location = self.get_current_mood().image_location
         return '{url}/pets/{name}/{location}'.format(url=start_url, name=self.pet.default_name, location=image_location)
     
-    #this method is pretty much pointless...
     def get_total_happiness(self):
         data = self.happiness_set.all()
         total = 0
@@ -254,7 +256,6 @@ class CollectedPet(models.Model):
         return largest_number, values
     
     def get_all_accumulative_experience(self):
-
         dates = self.experience_set.all().order_by('date')
         values = OrderedDict()
         accumulative = 0
@@ -335,7 +336,12 @@ class BodyPart(models.Model):
         return self.name
     
 class Item(models.Model):
-    
+    '''
+	The Item model is created for every item in the store. 
+	The model contains information such as which pet the item can be used on,
+	its name, and the location of the image.
+	'''
+	
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
     description = models.TextField(default="")
@@ -352,15 +358,26 @@ class Item(models.Model):
         return '{url}/items/{pet}/{location}'.format(url=start_url, pet=self.belongs_to.default_name, location=self.image_location)
 
 class CollectedItem(models.Model):
+	'''
+	Every time a user purchases an item, a CollectedItem instance is created.
+	The CollectedItem model is used as to create a many-to-many relationship between
+	the Item and the User models
+	'''
+
     item = models.ForeignKey(Item)
     inventory = models.ForeignKey(Inventory)
-    #equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)
     equipped = models.BooleanField(default=False)
     
     def __str__(self):             
         return self.item.name
     
 class Profile(models.Model):
+	'''
+	The Profile model is used to store information about the users account.
+	Some of this information includes the users current pet, total pet pennies,
+	and the last time the application has synchronised with the users Fitbit.
+	'''
+	
     user = models.OneToOneField(User)
     inventory = models.OneToOneField(Inventory)  
     current_pet = models.OneToOneField(CollectedPet, null=True)
@@ -378,6 +395,15 @@ class Profile(models.Model):
         return total_xp
     
 class Happiness(models.Model):
+	'''
+	An instance of the Happiness model is created for every recorded day 
+	of Fitbit data. Happiness is very similar to Experience, however a 
+	function is performed to turn it into a percentage of a number.
+	
+	This number will most likely be around 7,500-10,000. The recommended
+	minimum amount of steps a person should take in a day.
+	'''
+
     pet = models.ForeignKey(CollectedPet)
     amount = models.IntegerField()
     date = models.DateTimeField()
@@ -386,6 +412,15 @@ class Happiness(models.Model):
         return self.pet.name + " " + str(self.date) + " " + str(self.amount)
 
 class Experience(models.Model):
+	'''
+	The Experience model is essentially just Fitbit steps for a day.
+	An instance of the Experience model is created for every recorded day 
+	of Fitbit data.
+	
+	It is used to calculate the total amount of steps the user has walked,
+	while a pet has been active.
+	'''
+	
     pet = models.ForeignKey(CollectedPet)
     amount = models.IntegerField()
     date = models.DateTimeField()
@@ -394,6 +429,12 @@ class Experience(models.Model):
         return self.pet.name + " " + str(self.date) + " " + str(self.amount)
  
 class Mood(models.Model):
+	'''
+	Pets have differing moods depending on its happiness.
+	This model contains information such as the location for the
+	image that reflects the pets mood.
+	'''
+
     pet = models.ForeignKey(Pet)
     level = models.ForeignKey(Level) #different images depending on level
     happiness_needed = models.IntegerField()
@@ -410,6 +451,11 @@ class Mood(models.Model):
         return self.description
 
 class Phrase(models.Model):
+	'''
+	A pet will have multiple phrases for each of its moods.
+	A pet will only say a phrase if it is currently in the 
+	corresponding mood.
+	'''
     mood = models.ForeignKey(Mood)
     text = models.TextField(default="")
     
@@ -417,6 +463,12 @@ class Phrase(models.Model):
         return self.text[0:20]
 
 class Story(models.Model):
+	'''
+	The Story model contains unlockble stories for each of the pets in Tracktivity Pets.
+	The model also contains information such as the level to unlock the story and
+	which pet the story is for.
+	'''
+
     level_unlocked = models.ForeignKey(Level)
     pet = models.ForeignKey(Pet)
     text = models.TextField(default="")
@@ -426,6 +478,13 @@ MicroChallengeTypes = (
 )
 
 class MicroChallenge(models.Model):
+	'''
+	The MicroChallenge model contains information for each micro challenge
+	in Tracktivity Pets. It contains the name of the challenge, a brief overview,
+	the type of challenge (So far this can only be STEPS_IN_DURATION), and the duration 
+	of the challenge.
+	'''
+	
     name = models.CharField(max_length=100, unique=True)
     overview = models.TextField(default="")
     challenge_type = models.CharField(choices=MicroChallengeTypes, max_length=100, null=True)
@@ -435,21 +494,42 @@ class MicroChallenge(models.Model):
         return "Micro Challenge: " + self.name
 
 class MicroChallengeMedal(models.Model):
+	'''
+	The MicroChallengeMedal model is used to represent a user completing a micro challenge
+	The current possible medals are Gold, Silver and Bronze. 
+	'''
+	
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
 class MicroChallengeState(models.Model):
+	'''
+	A MicroChallengeState is used to store the amount of steps a user has currently
+	completed while completing a challenge and the amount of steps required to complete a challenge.
+	These can be compared so that it can be determined if a user has completed a challenge or not.
+	'''
+
     steps = models.IntegerField()
 
     def __str__(self):
         return "Micro Challenge State. Steps: " + str(self.steps)
 
 class UserMicroChallengeState(models.Model):
+	'''
+	The UserMicroChallengeState model is created whenever a user starts a challenge.
+	It is used to create a many-to-many relationship between the User and MicroChallengeState models.
+	'''
+	
     state = models.ForeignKey(MicroChallengeState)
 
 class UserMicroChallenge(models.Model):
+	'''
+	The UserMicroChallenge is created whenever a user starts a MicroChallenge
+	It contains information used to determine when a user has completed a micro challenge.
+	'''
+
     micro_challenge = models.ForeignKey(MicroChallenge)
     state = models.ForeignKey(UserMicroChallengeState)
     profile = models.ForeignKey(Profile, null=True)
@@ -459,11 +539,22 @@ class UserMicroChallenge(models.Model):
     date_completed = models.DateTimeField(null=True)
 
 class PetSwap(models.Model):
+	'''
+	A PetSwap instance is created whenever a user swaps their current pet.
+	This is used to work out how to divide experience between a users pets.
+	'''
+	
     from_pet = models.ForeignKey(CollectedPet, related_name='from_pet')
     to_pet = models.ForeignKey(CollectedPet, related_name='to_pet')
     time_swapped = models.DateTimeField(default=datetime.datetime.now())
 
 class MicroChallengeGoal(models.Model):
+	'''
+	A MicroChallengeGoal contains information about what needs to be
+	done in order to achieve a goal. It also contains how many pet pennies
+	the user should be rewarded on completion.
+	'''
+	
     micro_challenge = models.ForeignKey(MicroChallenge)
     medal = models.ForeignKey(MicroChallengeMedal)
     description = models.TextField(default="")
@@ -474,7 +565,10 @@ class MicroChallengeGoal(models.Model):
         return "Micro Challenge Goal: " + self.micro_challenge.name + ", medal: " + self.medal.name
 
 class UserMicroChallengeGoalStatus(models.Model):
-    micro_chal_goal = models.ForeignKey(MicroChallengeGoal)
+    '''
+	Used to store whether or not a micro challenge has been completed or not.
+	'''
+	micro_chal_goal = models.ForeignKey(MicroChallengeGoal)
     user_micro_chal = models.ForeignKey(UserMicroChallenge)
     complete = models.BooleanField(default=False)
 
@@ -486,6 +580,12 @@ NotificationTypes = (
     )
 
 class UserNotification(models.Model):
+	'''
+	A UserNotification is used to keep track of updates, so that a user can be notified.
+	These types of notifications can be a number of types such as: a pet levelling up, experience being
+	gained, a micro challenge goal completed, or a story is unlocked.
+	'''
+	
     userProfile = models.ForeignKey(Profile)
     dateAdded = models.DateTimeField(default=datetime.datetime.now())
     message = models.CharField(max_length=1000)
