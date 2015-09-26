@@ -9,14 +9,9 @@ from django.templatetags.static import static
 @login_required
 def inventory(request, tab=""):
     if tab == "" or tab == "pets": #(tab == "pets" and request.is_ajax()): #ie <site>/inventory/
-        
-        #all_items = Item.objects.all()
-        
-        #locked_items = request.user.profile.inventory.calculate_unpurchased_items(all_items, collected_items)
-        #all_pets = Pet.objects.all()
+             
         collected_pets = request.user.profile.inventory.get_owned_pets()
-        #unpurchased_pets = request.user.profile.inventory.calculate_unpurchased_pets(all_pets, collected_pets) 
-        
+		
         pets = {}
         
         for collected_pet in collected_pets:

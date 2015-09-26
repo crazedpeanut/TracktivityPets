@@ -23,7 +23,7 @@ logger.setLevel(logging.DEBUG)
 def dashboard(request):
     '''
     The Dashboard View prepares the templates and values to be sent back
-    to a user who is visting the Dashboard page
+    to a user who is visiting the Dashboard page
     '''
 
     if not utils.is_fitbit_linked(request.user) or not fitapp.utils.is_integrated(request.user):
@@ -52,11 +52,6 @@ def dashboard(request):
     happiness_data = current_pet.get_happiness_last_seven_days()
     experience_data = current_pet.get_all_accumulative_experience()
     
-    '''try:
-        experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
-    except:
-        experience_progress = 0'''
-    
     experience_progress = 0
     progress_bar_text = ""
     progress_bar_colour = ""
@@ -72,7 +67,6 @@ def dashboard(request):
     else:
         experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))
         progress_bar_text = "{total}/ {needed} ({percent}%)".format(total=current_pet.get_total_experience(), needed=experience_needed, percent=experience_progress)
-        '''progress_bar_test = "Hello!"'''
         progress_bar_colour = "progress-bar-warning"
         
     happiness_today = current_pet.get_todays_happiness_value()
