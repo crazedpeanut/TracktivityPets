@@ -1,0 +1,7 @@
+Store View
+==============
+
+.. currentmodule:: tracktivityPetsWebsite.views.store
+
+
+.. autofunction:: set_current_scenery
