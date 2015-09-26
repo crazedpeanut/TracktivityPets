@@ -149,11 +149,11 @@
 			        </div>
 		        </div>
 			</div>	
-			<div id="adoptPetForm" class="text-center">
+			<div id="adoptPetForm" class="text-center col-xs-4 col-xs-offset-4">
 		        <form method="POST" onsubmit="getPet()" id="petSubmitForm">
 		        {% csrf_token %}
-		            <input placeholder="Pet Name" type="text" name="user_pet_name"><br/>
-		            <input type="submit" value="Adopt!"/>
+		            <input class="form-control" placeholder="Pet Name" type="text" name="user_pet_name"><br/>
+		            <input class="btn btn-success" type="submit" value="Adopt!"/>
 		            <input type="hidden" name="default_pet_name" value="" id="pet"/>                    
 		        </form>
 			</div>
