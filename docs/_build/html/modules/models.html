@@ -24,6 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Tracktivity Pets 1 documentation" href="../index.html" />
+    <link rel="next" title="Dashboard View" href="views/dashboard.html" />
     <link rel="prev" title="Welcome to Tracktivity Pets’s documentation!" href="../index.html" />
    
   
@@ -41,8 +42,11 @@
 <span id="models"></span><h1>Models<a class="headerlink" href="#module-tracktivityPetsWebsite.models" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.BodyPart">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">BodyPart</code><span class="sig-paren">(</span><em>id</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#BodyPart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.BodyPart" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">BodyPart</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#BodyPart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.BodyPart" title="Permalink to this definition">¶</a></dt>
+<dd><p>The BodyPart model is used by the Item model.
+An item will have a BodyPart that it can be placed on.
+This model is used in the case that only one item can be equipped per body part.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.CollectedItem">
@@ -51,13 +55,18 @@
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.CollectedPet">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">CollectedPet</code><span class="sig-paren">(</span><em>id</em>, <em>pet</em>, <em>inventory</em>, <em>level</em>, <em>name</em>, <em>date_created</em>, <em>scenery</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#CollectedPet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.CollectedPet" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">CollectedPet</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#CollectedPet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.CollectedPet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whenever a user purchases a pet, an instance of the CollectedPet is created.
+It is used to provide a many-to-many link between pets and users.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.CollectedScenery">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">CollectedScenery</code><span class="sig-paren">(</span><em>id</em>, <em>scenery</em>, <em>inventory</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#CollectedScenery"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.CollectedScenery" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">CollectedScenery</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#CollectedScenery"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.CollectedScenery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whenever a user purchases a scenery, an instance of the CollectedScenery
+model is created. This is used to create a many-to-many relationship between
+a user and a scenery item</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Experience">
@@ -71,8 +80,10 @@
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Inventory">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Inventory</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Inventory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Inventory" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Inventory</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Inventory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Inventory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Inventory model is used for keeping track of all a users
+pets, items, etc.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Item">
@@ -81,8 +92,11 @@
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Level">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Level</code><span class="sig-paren">(</span><em>id</em>, <em>level</em>, <em>experience_needed</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Level" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Level</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Level" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each user pet has an instance of the Level model,
+this is to determine its current level and the amount of exerience
+required to progress to the next one.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.MicroChallenge">
@@ -111,7 +125,7 @@
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Pet">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Pet</code><span class="sig-paren">(</span><em>id</em>, <em>starter_level</em>, <em>default_name</em>, <em>experience_to_unlock</em>, <em>cost</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Pet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Pet" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Pet</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Pet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Pet" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="class">
@@ -131,8 +145,13 @@
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Scenery">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Scenery</code><span class="sig-paren">(</span><em>id</em>, <em>experience_to_unlock</em>, <em>image_location</em>, <em>description</em>, <em>name</em>, <em>cost</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Scenery"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Scenery" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Scenery</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Scenery"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Scenery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every possible scenery item available for a user to purchase
+will need an instance of the Scenery model. It provides
+information such as the experience to unlock, the location path to the image, 
+a short description of the image, the name of the scene, and also the cost to purchase
+this scenery item.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Story">
@@ -171,6 +190,7 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../index.html" title="previous chapter">Welcome to Tracktivity Pets&#8217;s documentation!</a></li>
+      <li>Next: <a href="views/dashboard.html" title="next chapter">Dashboard View</a></li>
   </ul></li>
 </ul>
 </div>

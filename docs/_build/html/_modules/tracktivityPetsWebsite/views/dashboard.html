@@ -61,6 +61,11 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="dashboard"><a class="viewcode-back" href="../../../modules/views/dashboard.html#tracktivityPetsWebsite.views.dashboard.dashboard">[docs]</a><span class="k">def</span> <span class="nf">dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Dashboard View prepares the templates and values to be sent back</span>
+<span class="sd">    to a user who is visting the Dashboard page</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="k">if</span> <span class="ow">not</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_fitbit_linked</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">fitapp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_integrated</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite:fitbit_link&#39;</span><span class="p">)</span>
     

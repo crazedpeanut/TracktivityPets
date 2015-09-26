@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tracktivityPetsWebsite.views.challenges &mdash; Tracktivity Pets 1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Tracktivity Pets 1 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for tracktivityPetsWebsite.views.challenges</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">tracktivityPetsWebsite.models</span> <span class="kn">import</span> <span class="n">MicroChallenge</span><span class="p">,</span> <span class="n">MicroChallengeGoal</span><span class="p">,</span> <span class="n">MicroChallengeMedal</span><span class="p">,</span>\
+    <span class="n">UserMicroChallenge</span><span class="p">,</span> <span class="n">UserMicroChallengeState</span><span class="p">,</span> <span class="n">MicroChallengeState</span><span class="p">,</span> <span class="n">UserMicroChallengeGoalStatus</span>
+<span class="kn">from</span> <span class="nn">django.core</span> <span class="kn">import</span> <span class="n">serializers</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="challenges"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.challenges">[docs]</a><span class="k">def</span> <span class="nf">challenges</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/challenges/challenges.html&#39;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="get_available_challenge_names"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_available_challenge_names">[docs]</a><span class="k">def</span> <span class="nf">get_available_challenge_names</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">challenges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">MicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
+    <span class="n">new_chal_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_challenges</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">challenges</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">current_challenges</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">cc</span><span class="o">.</span><span class="n">micro_challenge</span><span class="p">:</span>
+                <span class="n">new_chal_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">((</span><span class="n">serializers</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="s">&quot;json&quot;</span><span class="p">,</span> <span class="n">challenges</span><span class="p">)),</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="get_challenge_details"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_challenge_details">[docs]</a><span class="k">def</span> <span class="nf">get_challenge_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">challenge_pk</span><span class="p">):</span>
+    <span class="n">challenge</span> <span class="o">=</span> <span class="n">MicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">challenge_pk</span><span class="p">)</span>
+
+    <span class="n">challenge_response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="n">challenge</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s">&#39;overview&#39;</span><span class="p">:</span><span class="n">challenge</span><span class="o">.</span><span class="n">overview</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">goals_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">goals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">MicroChallengeGoal</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">micro_challenge</span><span class="o">=</span><span class="n">challenge</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">goals</span><span class="p">:</span>
+        <span class="n">goals_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+            <span class="s">&#39;pet_pennies&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">pet_pennies_reward</span><span class="p">,</span>
+            <span class="s">&#39;medal&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">medal</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">})</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;challenge&#39;</span><span class="p">:</span><span class="n">challenge_response</span><span class="p">,</span>
+        <span class="s">&#39;goals&#39;</span><span class="p">:</span><span class="n">goals_list</span>
+    <span class="p">}</span>
+
+    <span class="n">response_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span> <span class="n">response_json</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="get_active_challenge_details"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_active_challenge_details">[docs]</a><span class="k">def</span> <span class="nf">get_active_challenge_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user_challenge_pk</span><span class="p">):</span>
+    <span class="n">uc</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">user_challenge_pk</span><span class="p">)</span>
+
+    <span class="n">challenge</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">micro_challenge</span>
+
+    <span class="n">challenge_response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="n">challenge</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s">&#39;overview&#39;</span><span class="p">:</span><span class="n">challenge</span><span class="o">.</span><span class="n">overview</span><span class="p">,</span>
+        <span class="s">&#39;date_started&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">date_started</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">-%m-%Y %H:%M:%S&quot;</span><span class="p">),</span>
+        <span class="s">&#39;date_end&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">date_end</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">-%m-%Y %H:%M:%S&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">goals_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">goals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">MicroChallengeGoal</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">micro_challenge</span><span class="o">=</span><span class="n">challenge</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">goals</span><span class="p">:</span>
+        <span class="n">goals_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+            <span class="s">&#39;pet_pennies&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">pet_pennies_reward</span><span class="p">,</span>
+            <span class="s">&#39;medal&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">medal</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">})</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;challenge&#39;</span><span class="p">:</span><span class="n">challenge_response</span><span class="p">,</span>
+        <span class="s">&#39;goals&#39;</span><span class="p">:</span><span class="n">goals_list</span><span class="p">,</span>
+        <span class="s">&#39;current_steps&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">steps</span>
+    <span class="p">}</span>
+
+    <span class="n">response_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span> <span class="n">response_json</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="get_complete_challenge_details"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_complete_challenge_details">[docs]</a><span class="k">def</span> <span class="nf">get_complete_challenge_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user_challenge_pk</span><span class="p">):</span>
+    <span class="n">uc</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">user_challenge_pk</span><span class="p">)</span>
+    <span class="n">completed_goals</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">challenge</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">micro_challenge</span>
+
+    <span class="n">challenge_response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="n">challenge</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+        <span class="s">&#39;overview&#39;</span><span class="p">:</span><span class="n">challenge</span><span class="o">.</span><span class="n">overview</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">goals_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">goals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">MicroChallengeGoal</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">micro_challenge</span><span class="o">=</span><span class="n">challenge</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">goals</span><span class="p">:</span>
+        <span class="n">chal_goal_stat</span> <span class="o">=</span> <span class="n">UserMicroChallengeGoalStatus</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">micro_chal_goal</span><span class="o">=</span><span class="n">g</span><span class="p">,</span> <span class="n">user_micro_chal</span><span class="o">=</span><span class="n">uc</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">chal_goal_stat</span><span class="o">.</span><span class="n">complete</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">):</span>
+            <span class="n">completed_goals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">completed_goals</span><span class="p">:</span>
+        <span class="n">goals_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s">&#39;description&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+            <span class="s">&#39;pet_pennies&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">pet_pennies_reward</span><span class="p">,</span>
+            <span class="s">&#39;medal&#39;</span><span class="p">:</span><span class="n">g</span><span class="o">.</span><span class="n">medal</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">})</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&#39;challenge&#39;</span><span class="p">:</span><span class="n">challenge_response</span><span class="p">,</span>
+        <span class="s">&#39;goals&#39;</span><span class="p">:</span><span class="n">goals_list</span><span class="p">,</span>
+        <span class="s">&#39;steps_taken&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">steps</span><span class="p">,</span>
+        <span class="s">&#39;date_completed&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">date_completed</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%d</span><span class="s">-%m-%Y %H:%M:%S&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+
+    <span class="n">response_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">response_json</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="get_active_challenge_names"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_active_challenge_names">[docs]</a><span class="k">def</span> <span class="nf">get_active_challenge_names</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">user_challenges</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">complete</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">challenge_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">uc</span> <span class="ow">in</span> <span class="n">user_challenges</span><span class="p">:</span>
+        <span class="n">challenge_names</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;pk&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">micro_challenge</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">challenge_names</span><span class="p">),</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;json/application&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="get_completed_challenge_names"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_completed_challenge_names">[docs]</a><span class="k">def</span> <span class="nf">get_completed_challenge_names</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">user_challenges</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">complete</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">challenge_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">uc</span> <span class="ow">in</span> <span class="n">user_challenges</span><span class="p">:</span>
+        <span class="n">challenge_names</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s">&#39;pk&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">pk</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="n">uc</span><span class="o">.</span><span class="n">micro_challenge</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">challenge_names</span><span class="p">),</span> <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;json/application&quot;</span><span class="p">)</span>
+</div>
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="accept_challenge"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.accept_challenge">[docs]</a><span class="k">def</span> <span class="nf">accept_challenge</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">challenge_pk</span><span class="p">):</span>
+    <span class="n">micro_chal</span> <span class="o">=</span> <span class="n">MicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">challenge_pk</span><span class="p">)</span>
+
+    <span class="n">chal_state</span> <span class="o">=</span> <span class="n">MicroChallengeState</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">chal_state</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="n">user_chal_state</span> <span class="o">=</span> <span class="n">UserMicroChallengeState</span><span class="p">()</span>
+    <span class="n">user_chal_state</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">chal_state</span>
+    <span class="n">user_chal_state</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="n">date_end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="n">micro_chal</span><span class="o">.</span><span class="n">duration_mins</span><span class="p">)</span>
+    <span class="n">user_chal</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">user_chal_state</span><span class="p">,</span> <span class="n">micro_challenge</span><span class="o">=</span><span class="n">micro_chal</span><span class="p">,</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">date_end</span><span class="o">=</span><span class="n">date_end</span><span class="p">)</span>
+    <span class="n">user_chal</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">MicroChallengeGoal</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">micro_challenge</span><span class="o">=</span><span class="n">micro_chal</span><span class="p">):</span>
+        <span class="n">user_micro_chal_goal_status</span> <span class="o">=</span> <span class="n">UserMicroChallengeGoalStatus</span><span class="p">(</span><span class="n">micro_chal_goal</span><span class="o">=</span><span class="n">g</span><span class="p">,</span> <span class="n">user_micro_chal</span><span class="o">=</span><span class="n">user_chal</span><span class="p">,</span> <span class="n">complete</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">user_micro_chal_goal_status</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">()</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Tracktivity Pets.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

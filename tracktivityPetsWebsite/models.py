@@ -5,8 +5,6 @@ import datetime
 from django.utils import timezone
 from collections import OrderedDict
 
-#TODO add helper functions and __name__
-
 #Challenge Type Constants
 STEPS_IN_DURATION = 'steps_in_duration'
 
@@ -18,6 +16,11 @@ STORY_UNLOCKED = 'story_unlocked'
 
 
 class Inventory(models.Model): #need to look up how to get a model with only an ID (automatically done for all models)
+    '''
+    The Inventory model is used for keeping track of all a users
+    pets, items, etc.
+    '''
+
     def __str__(self):    
         try:         
             return str(self.profile.user.email) + " inventory"
@@ -103,6 +106,12 @@ class Inventory(models.Model): #need to look up how to get a model with only an 
         return unpurchased_scenery         
 
 class Level(models.Model):
+    '''
+    Each user pet has an instance of the Level model,
+    this is to determine its current level and the amount of exerience
+    required to progress to the next one.
+    '''
+
     level = models.IntegerField(unique=True)
     experience_needed = models.IntegerField(default=0)
     
@@ -110,6 +119,14 @@ class Level(models.Model):
         return str(self.level) + ": " + str(self.experience_needed)
     
 class Scenery(models.Model):
+    '''
+    Every possible scenery item available for a user to purchase
+    will need an instance of the Scenery model. It provides
+    information such as the experience to unlock, the location path to the image, 
+    a short description of the image, the name of the scene, and also the cost to purchase
+    this scenery item.
+    '''
+
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
     description = models.TextField(default="")
@@ -130,6 +147,12 @@ class Scenery(models.Model):
         return "{url}/scenery/{location}".format(url=start_url, location=self.image_location)
     
 class CollectedScenery(models.Model):
+    '''
+    Whenever a user purchases a scenery, an instance of the CollectedScenery
+    model is created. This is used to create a many-to-many relationship between
+    a user and a scenery item
+    '''
+
     scenery = models.ForeignKey(Scenery)
     inventory = models.ForeignKey(Inventory)
     
@@ -137,6 +160,10 @@ class CollectedScenery(models.Model):
         return self.scenery.name
 
 class Pet(models.Model):
+    '''
+    
+    '''
+
     starter_level = models.ForeignKey(Level)
     default_name = models.CharField(max_length=100)
     experience_to_unlock = models.IntegerField()
@@ -151,6 +178,11 @@ class Pet(models.Model):
         return '{url}/pets/{name}/{location}'.format(url=start_url, name=self.default_name, location=image_location)
 
 class CollectedPet(models.Model):
+    '''
+    Whenever a user purchases a pet, an instance of the CollectedPet is created.
+    It is used to provide a many-to-many link between pets and users.
+    '''
+
     pet = models.ForeignKey(Pet)
     inventory = models.ForeignKey(Inventory)
     level = models.ForeignKey(Level)
@@ -292,12 +324,18 @@ class CollectedPet(models.Model):
         
     
 class BodyPart(models.Model):
+    '''
+    The BodyPart model is used by the Item model.
+    An item will have a BodyPart that it can be placed on.
+    This model is used in the case that only one item can be equipped per body part.
+    '''     
     name = models.CharField(max_length=100)
         
     def __str__(self):             
         return self.name
     
 class Item(models.Model):
+    
     experience_to_unlock = models.IntegerField()
     image_location = models.TextField(default="")
     description = models.TextField(default="")
