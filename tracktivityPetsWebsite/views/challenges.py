@@ -5,15 +5,26 @@ from tracktivityPetsWebsite.models import MicroChallenge, MicroChallengeGoal, Mi
     UserMicroChallenge, UserMicroChallengeState, MicroChallengeState, UserMicroChallengeGoalStatus
 from django.core import serializers
 import datetime
-
 import json
 
 @login_required
 def challenges(request):
+	'''
+	The challenges method renders the challenges template and corresponding sub-templates
+	then returns them to the user.
+	'''
+	
     return render(request, 'tracktivityPetsWebsite/challenges/challenges.html')
 
 @login_required
 def get_available_challenge_names(request):
+	'''
+	The get_available_challenge_names gets the names of the available challenges
+	for the logged in user.
+	
+	This list is then returned in JSON format.
+	'''
+
     challenges = list(MicroChallenge.objects.all())
     new_chal_list = []
     current_challenges = UserMicroChallenge.objects.filter(profile=request.user.profile)
@@ -27,6 +38,13 @@ def get_available_challenge_names(request):
 
 @login_required
 def get_challenge_details(request, challenge_pk):
+	'''
+	The get_challenge_details method gets the details of a MicroChallenge 
+	based on its primary key, passed in with the get request.
+	
+	The details are then returned in JSON format.
+	'''
+	
     challenge = MicroChallenge.objects.get(pk=challenge_pk)
 
     challenge_response = {
@@ -55,6 +73,13 @@ def get_challenge_details(request, challenge_pk):
 
 @login_required
 def get_active_challenge_details(request, user_challenge_pk):
+	'''
+	The get_active_challenge_details method gets the details of an incomplete UserMicroChallenge 
+	based on its primary key, passed in with the get request.
+	
+	The details are then returned in JSON format.
+	'''
+
     uc = UserMicroChallenge.objects.get(pk=user_challenge_pk)
 
     challenge = uc.micro_challenge
@@ -88,6 +113,13 @@ def get_active_challenge_details(request, user_challenge_pk):
 
 @login_required
 def get_complete_challenge_details(request, user_challenge_pk):
+	'''
+	The get_complete_challenge_details method gets the details of a complete UserMicroChallenge 
+	based on its primary key, passed in with the get request.
+	
+	The details are then returned in JSON format.
+	'''
+
     uc = UserMicroChallenge.objects.get(pk=user_challenge_pk)
     completed_goals = []
 
@@ -126,6 +158,13 @@ def get_complete_challenge_details(request, user_challenge_pk):
 
 @login_required
 def get_active_challenge_names(request):
+	'''
+	The get_active_challenge_names gets a list of all of the incomplete UserMicroChallenges
+	for the logged in user.
+	
+	The list is then returned in JSON format.
+	'''
+
     user_challenges = UserMicroChallenge.objects.filter(profile=request.user.profile, complete=False)
     challenge_names = []
 
@@ -136,6 +175,13 @@ def get_active_challenge_names(request):
 
 @login_required
 def get_completed_challenge_names(request):
+	'''
+	The get_completed_challenge_names gets a list of all of the complete UserMicroChallenges
+	for the logged in user.
+	
+	The list is then returned in JSON format.
+	'''
+	
     user_challenges = UserMicroChallenge.objects.filter(profile=request.user.profile, complete=True)
     challenge_names = []
 
@@ -146,6 +192,11 @@ def get_completed_challenge_names(request):
 
 @login_required
 def accept_challenge(request, challenge_pk):
+	'''
+	The accept_challenge method creates an incomplete UserMicroChallenge based on the challenge_pk passed in by the user in
+	the GET request.
+	'''
+	
     micro_chal = MicroChallenge.objects.get(pk=challenge_pk)
 
     chal_state = MicroChallengeState(steps=0)
