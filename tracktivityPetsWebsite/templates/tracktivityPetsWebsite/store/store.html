@@ -21,13 +21,14 @@
                 .done(function(data) {
                     
                     var obj = JSON.parse(data);
-                    $("#store_detail_header").html(obj.name);                    
-                    $("#store_detail_modal").find(".modal-title").html(obj.name);                   
+                    $("#store_detail_header").html(obj.name);                                     
                     $("#store_detail_pet_description").html(obj.story);
-                    $("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
                     $(".selected_pet_image").attr("src", obj.image);
-                    $("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
                     $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
+                    
+                    $("#pet_detail_modal_title").html(obj.name);
+                    $("#pet_detail_modal_title").attr("src", obj.image);
+                    $("#pet_detail_modal_title").html(obj.storey);
                     
                     $("#purchased_pet_image").attr("src", obj.image);
                     $(".pet_price").html(obj.cost);//update this everywhere
@@ -47,8 +48,8 @@
 
             })
             .always(function() {                                      
-                if (screen.width <= modalScreenWidth) {
-                    $('#store_detail_modal').modal('show');                            
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
+                    $('#pet_detail_modal').modal('show');                            
                 }
             });
         });
@@ -61,13 +62,14 @@
                 .done(function(data) {
                     
                     var obj = JSON.parse(data);
-                    $("#store_detail_scenery_header").html(obj.name);                    
-                    $("#store_detail_modal").find(".modal-title").html(obj.name);                   
+                    $("#store_detail_scenery_header").html(obj.name);                                     
                     $("#store_detail_scenery_description").html(obj.description);
-                    $("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
                     $(".selected_scenery_image").attr("src", obj.image);
-                    $("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
                     $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);
+                    
+                    $("#scenery_detail_modal_title").html(obj.name);
+                    $("#scenery_detail_modal_image").attr("src", obj.image);
+                    $("#scenery_detail_modal_description").html(obj.description);
                     
                     $(".scenery_price").html(obj.cost);//update this everywhere
                     $("#purchased_scenery_image").attr("src", obj.image);
@@ -85,8 +87,8 @@
 
             })
             .always(function() {                                      
-                if (screen.width <= modalScreenWidth) {
-                    $('#store_detail_modal').modal('show');                            
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
+                    $('#scenery_detail_modal').modal('show');                            
                 }
             });
         });
@@ -99,13 +101,14 @@
                 .done(function(data) {
                     
                     var obj = JSON.parse(data);
-                    $("#store_detail_cosmetics_header").html(obj.name);                    
-                    $("#store_detail_modal").find(".modal-title").html(obj.name);                   
+                    $("#store_detail_cosmetics_header").html(obj.name);                                      
                     $("#inventory_detail_cosmetics_description").html(obj.description);
-                    $("#store_detail_modal").find("#store_detail_pet_description").html(obj.story);
                     $(".selected_item_image").attr("src", obj.image);
-                    $("#store_detail_modal").find("#store_detail_image").attr("src", obj.image);
                     $("div[id*='selected_item_']").attr("id", "selected_item_" + id);
+                    
+                    $("#item_detail_modal_title").html(obj.name);
+                    $("#item_detail_modal_image").attr("src", obj.image);
+                    $("#item_detail_modal_description").html(obj.description);
                     
                     $(".item_price").html(obj.cost);//update this everywhere
                     $("#purchased_item_image").attr("src", obj.image);
@@ -122,9 +125,9 @@
             .fail(function() {
 
             })
-            .always(function() {                                      
-                if (screen.width <= modalScreenWidth) {
-                    $('#store_detail_modal').modal('show');                            
+            .always(function() {                                    
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
+                    $('#item_detail_modal').modal('show');                            
                 }
             });
         });
