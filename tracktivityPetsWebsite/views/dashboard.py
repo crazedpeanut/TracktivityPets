@@ -13,7 +13,7 @@ from tracktivityPetsWebsite.models import UserNotification, EXPERIENCE_GAINED, L
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler(settings.LOG_LOCATION + '/tracktivitypets_dashboard.log')
+hdlr = logging.FileHandler('./tracktivitypets_dashboard.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr)
@@ -21,6 +21,11 @@ logger.setLevel(logging.DEBUG)
 
 @login_required
 def dashboard(request):
+    '''
+    The Dashboard View prepares the templates and values to be sent back
+    to a user who is visting the Dashboard page
+    '''
+
     if not utils.is_fitbit_linked(request.user) or not fitapp.utils.is_integrated(request.user):
         return redirect('tracktivityPetsWebsite:fitbit_link')
     

@@ -9,7 +9,7 @@ from .models import UserFitbit
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-hdlr = logging.FileHandler(settings.LOG_LOCATION + '/tracktivitypets_fitapp_utils.log')
+hdlr = logging.FileHandler('/var/log/TracktivityPets/tracktivitypets_fitapp_utils.log')
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 hdlr.setFormatter(formatter)
 logger.addHandler(hdlr) 

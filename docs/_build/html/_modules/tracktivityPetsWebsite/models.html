@@ -45,8 +45,6 @@
 <span class="kn">from</span> <span class="nn">django.utils</span> <span class="kn">import</span> <span class="n">timezone</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span>
 
-<span class="c">#TODO add helper functions and __name__</span>
-
 <span class="c">#Challenge Type Constants</span>
 <span class="n">STEPS_IN_DURATION</span> <span class="o">=</span> <span class="s">&#39;steps_in_duration&#39;</span>
 
@@ -58,6 +56,11 @@
 
 
 <div class="viewcode-block" id="Inventory"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Inventory">[docs]</a><span class="k">class</span> <span class="nc">Inventory</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span> <span class="c">#need to look up how to get a model with only an ID (automatically done for all models)</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Inventory model is used for keeping track of all a users</span>
+<span class="sd">    pets, items, etc.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>    
         <span class="k">try</span><span class="p">:</span>         
             <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">email</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; inventory&quot;</span>
@@ -143,6 +146,12 @@
         <span class="k">return</span> <span class="n">unpurchased_scenery</span>         
 </div>
 <div class="viewcode-block" id="Level"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Level">[docs]</a><span class="k">class</span> <span class="nc">Level</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Each user pet has an instance of the Level model,</span>
+<span class="sd">    this is to determine its current level and the amount of exerience</span>
+<span class="sd">    required to progress to the next one.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">experience_needed</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     
@@ -150,6 +159,14 @@
         <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">level</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experience_needed</span><span class="p">)</span>
     </div>
 <div class="viewcode-block" id="Scenery"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Scenery">[docs]</a><span class="k">class</span> <span class="nc">Scenery</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Every possible scenery item available for a user to purchase</span>
+<span class="sd">    will need an instance of the Scenery model. It provides</span>
+<span class="sd">    information such as the experience to unlock, the location path to the image, </span>
+<span class="sd">    a short description of the image, the name of the scene, and also the cost to purchase</span>
+<span class="sd">    this scenery item.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">experience_to_unlock</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">image_location</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
@@ -170,6 +187,12 @@
         <span class="k">return</span> <span class="s">&quot;{url}/scenery/{location}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">start_url</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">image_location</span><span class="p">)</span>
     </div>
 <div class="viewcode-block" id="CollectedScenery"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.CollectedScenery">[docs]</a><span class="k">class</span> <span class="nc">CollectedScenery</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Whenever a user purchases a scenery, an instance of the CollectedScenery</span>
+<span class="sd">    model is created. This is used to create a many-to-many relationship between</span>
+<span class="sd">    a user and a scenery item</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">scenery</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Scenery</span><span class="p">)</span>
     <span class="n">inventory</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Inventory</span><span class="p">)</span>
     
@@ -177,6 +200,10 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span>
 </div>
 <div class="viewcode-block" id="Pet"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Pet">[docs]</a><span class="k">class</span> <span class="nc">Pet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">starter_level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Level</span><span class="p">)</span>
     <span class="n">default_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">experience_to_unlock</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
@@ -191,6 +218,11 @@
         <span class="k">return</span> <span class="s">&#39;{url}/pets/{name}/{location}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">start_url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">default_name</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">image_location</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="CollectedPet"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.CollectedPet">[docs]</a><span class="k">class</span> <span class="nc">CollectedPet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Whenever a user purchases a pet, an instance of the CollectedPet is created.</span>
+<span class="sd">    It is used to provide a many-to-many link between pets and users.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pet</span><span class="p">)</span>
     <span class="n">inventory</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Inventory</span><span class="p">)</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Level</span><span class="p">)</span>
@@ -225,11 +257,18 @@
         <span class="n">seven_days_ago</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
         <span class="n">dates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">happiness_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">date__gt</span><span class="o">=</span><span class="n">seven_days_ago</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;date&#39;</span><span class="p">)</span>
         <span class="n">values</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
-            <span class="n">date</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">-%m&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">-%m&#39;</span><span class="p">)</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;happiness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">amount</span><span class="o">/</span><span class="mi">100</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">-%m&#39;</span><span class="p">)</span>
             <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
             <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
-            <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;happiness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">amount</span><span class="o">/</span><span class="mi">100</span>
+            <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;happiness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">return</span> <span class="n">values</span>
     
     <span class="k">def</span> <span class="nf">get_todays_happiness_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -255,17 +294,24 @@
         <span class="k">return</span> <span class="n">largest_number</span><span class="p">,</span> <span class="n">values</span>
     
     <span class="k">def</span> <span class="nf">get_all_accumulative_experience</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">pass</span>
+
         <span class="n">dates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experience_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;date&#39;</span><span class="p">)</span>
         <span class="n">values</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
-        <span class="n">accumulative</span> <span class="o">=</span> <span class="mi">0</span> 
-        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
-            <span class="n">date</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">-%m&#39;</span><span class="p">)</span>
+        <span class="n">accumulative</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+                <span class="n">date</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">-%m&#39;</span><span class="p">)</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
+                <span class="n">accumulative</span> <span class="o">+=</span> <span class="n">d</span><span class="o">.</span><span class="n">amount</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accumulative</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%d</span><span class="s">-%m&#39;</span><span class="p">)</span>
             <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
             <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
-            <span class="n">accumulative</span> <span class="o">+=</span> <span class="n">d</span><span class="o">.</span><span class="n">amount</span>
-            <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">accumulative</span>
-            
+            <span class="n">values</span><span class="p">[</span><span class="n">date</span><span class="p">][</span><span class="s">&#39;experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
         <span class="k">return</span> <span class="n">values</span>
     
     <span class="k">def</span> <span class="nf">get_age_in_days</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -318,12 +364,18 @@
         
     </div>
 <div class="viewcode-block" id="BodyPart"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.BodyPart">[docs]</a><span class="k">class</span> <span class="nc">BodyPart</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The BodyPart model is used by the Item model.</span>
+<span class="sd">    An item will have a BodyPart that it can be placed on.</span>
+<span class="sd">    This model is used in the case that only one item can be equipped per body part.</span>
+<span class="sd">    &#39;&#39;&#39;</span>     
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
         
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>             
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
     </div>
 <div class="viewcode-block" id="Item"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Item">[docs]</a><span class="k">class</span> <span class="nc">Item</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    
     <span class="n">experience_to_unlock</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">image_location</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>

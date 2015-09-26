@@ -12,9 +12,17 @@ Contents:
 
    modules/models
    modules/views/dashboard
-
-
-
+   modules/views/challenges
+   modules/views/equip_item
+   modules/views/feedback
+   modules/views/fitbit_link
+   modules/views/fitbit_success
+   modules/views/get_pet_penny_count
+   modules/views/inventory
+   modules/views/main_story
+   modules/views/notifications
+   modules/views/purchase
+   modules/views/pet_selection
 
 Indices and tables
 ==================
