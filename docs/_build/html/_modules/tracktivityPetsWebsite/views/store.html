@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tracktivityPetsWebsite.views.store &mdash; Tracktivity Pets 1 documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="Tracktivity Pets 1 documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for tracktivityPetsWebsite.views.store</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.decorators</span> <span class="kn">import</span> <span class="n">login_required</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<span class="kn">from</span> <span class="nn">tracktivityPetsWebsite.models</span> <span class="kn">import</span> <span class="n">Pet</span><span class="p">,</span> <span class="n">Item</span><span class="p">,</span> <span class="n">Scenery</span><span class="p">,</span> <span class="n">Level</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">tracktivityPetsWebsite</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">django.templatetags.static</span> <span class="kn">import</span> <span class="n">static</span>
+
+<span class="nd">@login_required</span>
+<div class="viewcode-block" id="store"><a class="viewcode-back" href="../../../modules/views/store.html#tracktivityPetsWebsite.views.store.store">[docs]</a><span class="k">def</span> <span class="nf">store</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    
+    <span class="c">#pet specific</span>
+    <span class="n">total_xp</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">()</span>
+    <span class="n">collected_pets</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">get_owned_pets</span><span class="p">()</span>
+    <span class="n">uncollected_pets</span> <span class="o">=</span> <span class="n">Pet</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">id__in</span><span class="o">=</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">pet</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">collected_pets</span><span class="p">])</span> <span class="c">#every pet not in collected_pets</span>
+    
+    <span class="n">unlocked_pets</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">locked_pets</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="n">default_pet_set</span> <span class="o">=</span> <span class="bp">False</span>
+    
+    <span class="k">for</span> <span class="n">pet</span> <span class="ow">in</span> <span class="n">uncollected_pets</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">total_xp</span> <span class="o">&gt;=</span> <span class="n">pet</span><span class="o">.</span><span class="n">experience_to_unlock</span><span class="p">:</span>
+            <span class="n">unlocked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">unlocked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">][</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">generate_pet_image_url</span><span class="p">(</span><span class="n">pet</span><span class="p">,</span> <span class="n">pet</span><span class="o">.</span><span class="n">mood_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">happiness_needed</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">image_location</span><span class="p">)</span>
+            <span class="n">unlocked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">unlocked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">][</span><span class="s">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="o">.</span><span class="n">cost</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">default_pet_set</span><span class="p">:</span>
+                <span class="n">default_pet</span> <span class="o">=</span> <span class="n">pet</span>
+                <span class="n">default_pet_set</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">locked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">locked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">][</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">generate_pet_image_url</span><span class="p">(</span><span class="n">pet</span><span class="p">,</span> <span class="n">pet</span><span class="o">.</span><span class="n">mood_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">happiness_needed</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">image_location</span><span class="p">)</span> 
+            <span class="n">locked_pets</span><span class="p">[</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span><span class="o">.</span><span class="n">id</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">default_pet_set</span><span class="p">:</span>
+                <span class="n">default_pet</span> <span class="o">=</span> <span class="n">pet</span>
+                <span class="n">default_pet_set</span> <span class="o">=</span> <span class="bp">True</span>
+                
+    <span class="n">details_pet</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>   
+        <span class="n">levelOne</span> <span class="o">=</span> <span class="n">Level</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">own_all_pets</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">default_name</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">experience_to_unlock</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;story&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">story_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">level_unlocked</span><span class="o">=</span><span class="n">levelOne</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">generate_pet_image_url</span><span class="p">(</span><span class="n">default_pet</span><span class="p">,</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">mood_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">happiness_needed</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">image_location</span><span class="p">)</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">pk</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">cost</span>
+        <span class="k">if</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">experience_to_unlock</span> <span class="o">&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">():</span>
+            <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;locked&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;story&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;This pet is locked, to unlock you need another &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">default_pet</span><span class="o">.</span><span class="n">experience_to_unlock</span> <span class="o">-</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">())</span> <span class="o">+</span> <span class="s">&quot; experience.&quot;</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">own_all_pets</span> <span class="o">=</span> <span class="bp">True</span>
+            
+    <span class="c">#item specific</span>
+    <span class="n">current_pet_xp</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span><span class="o">.</span><span class="n">get_total_experience</span><span class="p">()</span>
+    <span class="n">collected_items</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">get_collected_items_for_pet</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span><span class="o">.</span><span class="n">pet</span><span class="p">)</span>
+    <span class="n">all_other_items</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">id__in</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">collected_items</span><span class="p">])</span> <span class="c">#every item not in collected_items</span>
+    <span class="n">uncollected_items</span> <span class="o">=</span> <span class="n">all_other_items</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">belongs_to</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span><span class="o">.</span><span class="n">pet</span><span class="p">)</span>
+    
+    <span class="n">unlocked_items</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">locked_items</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="n">default_item_set</span> <span class="o">=</span> <span class="bp">False</span>
+    
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">uncollected_items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">current_pet_xp</span> <span class="o">&gt;=</span> <span class="n">item</span><span class="o">.</span><span class="n">experience_to_unlock</span><span class="p">:</span>
+            <span class="n">unlocked_items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">unlocked_items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span>
+            <span class="n">unlocked_items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">default_item_set</span><span class="p">:</span>
+                <span class="n">default_item</span> <span class="o">=</span> <span class="n">item</span>
+                <span class="n">default_item_set</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">locked_items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">locked_items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span> 
+            <span class="n">locked_items</span><span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">id</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">default_item_set</span><span class="p">:</span>
+                <span class="n">default_item</span> <span class="o">=</span> <span class="n">item</span>
+                <span class="n">default_item_set</span> <span class="o">=</span> <span class="bp">True</span>
+       
+    <span class="n">details_item</span> <span class="o">=</span> <span class="p">{}</span>     
+    <span class="k">try</span><span class="p">:</span>    
+        <span class="n">own_all_items</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_item</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_item</span><span class="o">.</span><span class="n">experience_to_unlock</span>
+        <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_item</span><span class="o">.</span><span class="n">description</span>
+        <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_item</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span>
+        <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_item</span><span class="o">.</span><span class="n">pk</span> 
+        <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_item</span><span class="o">.</span><span class="n">cost</span>
+        <span class="k">if</span> <span class="n">default_item</span><span class="o">.</span><span class="n">experience_to_unlock</span> <span class="o">&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">():</span>
+            <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;locked&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">details_item</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;This item is locked, to unlock you need another &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">default_item</span><span class="o">.</span><span class="n">experience_to_unlock</span> <span class="o">-</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">())</span> <span class="o">+</span> <span class="s">&quot; experience.&quot;</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">own_all_items</span> <span class="o">=</span> <span class="bp">True</span>
+        
+  
+    <span class="c">#scenery specific</span>
+    <span class="n">collected_scenery</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">get_owned_scenery</span><span class="p">()</span>
+    <span class="n">uncollected_scenery</span> <span class="o">=</span> <span class="n">Scenery</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">exclude</span><span class="p">(</span><span class="n">id__in</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">scenery</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">collected_scenery</span><span class="p">])</span> <span class="c">#every scenery not in collected_scenery</span>
+    
+    <span class="n">unlocked_scenery</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">locked_scenery</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="n">default_scenery_set</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">scenery</span> <span class="ow">in</span> <span class="n">uncollected_scenery</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">total_xp</span> <span class="o">&gt;=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">experience_to_unlock</span><span class="p">:</span>
+            <span class="n">unlocked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">unlocked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span>
+            <span class="n">unlocked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">unlocked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">cost</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">default_scenery_set</span><span class="p">:</span>
+                <span class="n">default_scenery</span> <span class="o">=</span> <span class="n">scenery</span>
+                <span class="n">default_scenery_set</span> <span class="o">=</span> <span class="bp">True</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">locked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">locked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span> 
+            <span class="n">locked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">locked_scenery</span><span class="p">[</span><span class="n">scenery</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">cost</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">default_scenery_set</span><span class="p">:</span>
+                <span class="n">default_scenery</span> <span class="o">=</span> <span class="n">scenery</span>
+                <span class="n">default_scenery_set</span> <span class="o">=</span> <span class="bp">True</span>
+                
+                
+    <span class="n">details_scenery</span> <span class="o">=</span> <span class="p">{}</span>     
+    <span class="k">try</span><span class="p">:</span>    
+        <span class="n">own_all_scenerys</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;experience&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">experience_to_unlock</span>
+        <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">description</span>
+        <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">get_image_path</span><span class="p">()</span>
+        <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">pk</span>
+        <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;cost&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">cost</span>
+        <span class="k">if</span> <span class="n">default_scenery</span><span class="o">.</span><span class="n">experience_to_unlock</span> <span class="o">&gt;</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">():</span>
+            <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;locked&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="n">details_scenery</span><span class="p">[</span><span class="s">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;This scenery is locked, to unlock you need another &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">default_scenery</span><span class="o">.</span><span class="n">experience_to_unlock</span> <span class="o">-</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">get_total_xp</span><span class="p">())</span> <span class="o">+</span> <span class="s">&quot; experience.&quot;</span>
+        
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">own_all_scenerys</span> <span class="o">=</span> <span class="bp">True</span>
+        
+    <span class="n">current_balance</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">total_pet_pennies</span>
+    
+    
+    <span class="n">current_mood</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span><span class="o">.</span><span class="n">get_current_mood</span><span class="p">()</span>
+    <span class="n">start_url</span> <span class="o">=</span> <span class="n">static</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite/images&#39;</span><span class="p">)</span>
+    <span class="n">preview_pet_image</span> <span class="o">=</span> <span class="s">&#39;{url}/pets/{name}/{location}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">start_url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span><span class="o">.</span><span class="n">pet</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">current_mood</span><span class="o">.</span><span class="n">image_location</span><span class="p">)</span>
+            
+        
+    <span class="c">#return HttpResponse(json.dumps(locked_scenery)) #json.dumps(locked_pets)</span>
+    <span class="c">#return HttpResponse(own_all_items)</span>
+
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/store/store.html&#39;</span><span class="p">,</span> 
+    <span class="p">{</span>
+        <span class="s">&quot;unlocked_pets&quot;</span><span class="p">:</span> <span class="n">unlocked_pets</span><span class="p">,</span>
+        <span class="s">&quot;locked_pets&quot;</span><span class="p">:</span> <span class="n">locked_pets</span><span class="p">,</span>
+        <span class="s">&quot;unlocked_items&quot;</span><span class="p">:</span> <span class="n">unlocked_items</span><span class="p">,</span>
+        <span class="s">&quot;locked_items&quot;</span><span class="p">:</span> <span class="n">locked_items</span><span class="p">,</span>
+        <span class="s">&quot;unlocked_scenery&quot;</span><span class="p">:</span> <span class="n">unlocked_scenery</span><span class="p">,</span>
+        <span class="s">&quot;locked_scenery&quot;</span><span class="p">:</span> <span class="n">locked_scenery</span><span class="p">,</span>
+        <span class="s">&quot;own_all_pets&quot;</span><span class="p">:</span> <span class="n">own_all_pets</span><span class="p">,</span>
+        <span class="s">&quot;default_pet&quot;</span><span class="p">:</span> <span class="n">details_pet</span><span class="p">,</span>
+        <span class="s">&quot;owns_all_items&quot;</span><span class="p">:</span> <span class="n">own_all_items</span><span class="p">,</span>
+        <span class="s">&quot;default_item&quot;</span><span class="p">:</span> <span class="n">details_item</span><span class="p">,</span>
+        <span class="s">&quot;own_all_scenerys&quot;</span><span class="p">:</span> <span class="n">own_all_scenerys</span><span class="p">,</span> 
+        <span class="s">&quot;default_scenery&quot;</span><span class="p">:</span> <span class="n">details_scenery</span><span class="p">,</span>
+        <span class="s">&quot;current_balance&quot;</span><span class="p">:</span> <span class="n">current_balance</span><span class="p">,</span>
+        <span class="s">&quot;preview_pet_image&quot;</span><span class="p">:</span> <span class="n">preview_pet_image</span>
+    <span class="p">})</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Tracktivity Pets.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

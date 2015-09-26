@@ -23,6 +23,20 @@ Contents:
    modules/views/notifications
    modules/views/purchase
    modules/views/pet_selection
+   modules/views/register
+   modules/views/set_current_name
+   modules/views/set_current_pet
+   modules/views/set_current_scenery
+   modules/views/store
+   modules/views/user_login
+   modules/views/user_logout
+   modules/views/view_purchased_item
+   modules/views/view_purchased_pet
+   modules/views/view_purchased_scenery
+   modules/views/view_unpurchased_item
+   modules/views/view_unpurchased_pet
+   modules/views/view_unpurchased_scenery
+
 
 Indices and tables
 ==================
