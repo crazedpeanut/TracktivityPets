@@ -36,8 +36,8 @@ def register(request):
             if result is not None:
                 return render(request, 'tracktivityPetsWebsite/register.html', {'error':result,'registerForm': registerForm} ) #Form not valid
             else:
-                username = registerForm.cleaned_data['username'].lower()
-                password = registerForm.cleaned_data['password'] #Removed .lower() from the password, this shouldn't happen.
+                username = registerForm.cleaned_data['username'] #Removed .lower() from the username, this shouldn't happen.
+                password = registerForm.cleaned_data['password'].lower()
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 return redirect('tracktivityPetsWebsite:fitbit_link')
