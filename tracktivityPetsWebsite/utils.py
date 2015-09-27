@@ -112,10 +112,11 @@ def update_user_fitbit(user):
     experience = 0
 
     for date in data_json['objects']: #terrible code reuse
-
+        '''
         datetime_object = datetime.datetime.strptime(date['dateTime'], '%Y-%m-%d')
         swap_counts = count_pet_swaps_for_day(datetime_object)
         swap_counts += 1
+        '''
 
         if date['value'] == None: #Handle null vals
             date['value'] = '0'
@@ -126,9 +127,9 @@ def update_user_fitbit(user):
                 existing_happiness = Happiness.objects.get(pet=profile.current_pet, date=str(date['dateTime']) + " 00:00:00+00:00")
 
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
-                happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
+                happiness = int(happiness)#Division of happiness and experience for pets active throughout day
                 existing_happiness.amount = happiness
-                existing_experience.amount = int(date['value']) / swap_counts #Division of happiness and experience for pets active throughout day
+                existing_experience.amount = int(date['value'])#Division of happiness and experience for pets active throughout day
                 experience += int(date['value']) - int(existing_experience.amount) #new - old = amount gained
                 existing_experience.save()
                 existing_happiness.save()
@@ -137,13 +138,13 @@ def update_user_fitbit(user):
                 exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
                 experience += exp.amount
                 happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
-                happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
+                happiness = int(happiness)#Division of happiness and experience for pets active throughout day
                 Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
         else:
             exp = Experience.objects.create(pet=profile.current_pet, amount=int(date['value']), date=date['dateTime'])
             experience += exp.amount
             happiness = max(min(int(date['value']) / 100, 100), 0) #100 is used to set '100%'
-            happiness = int(happiness) / swap_counts #Division of happiness and experience for pets active throughout day
+            happiness = int(happiness)#Division of happiness and experience for pets active throughout day
             Happiness.objects.create(pet=profile.current_pet, amount=int(happiness), date=date['dateTime'])
             
     current_level = profile.current_pet.level.level
