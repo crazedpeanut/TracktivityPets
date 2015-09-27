@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-    	
+    	$(".selected_pet_image").addClass("col-xs-12");
     	
     	var modalScreenWidth = 768;
     	
@@ -24,6 +24,7 @@
                     $("#store_detail_header").html(obj.name);                                     
                     $("#store_detail_pet_description").html(obj.story);
                     $(".selected_pet_image").attr("src", obj.image);
+
                     $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
                     
                     $("#pet_detail_modal_title").html(obj.name);

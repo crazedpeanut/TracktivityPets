@@ -272,6 +272,13 @@ width: 75%;
     left: 0;
 }
 
+
+.pet_preview_overlay {
+    position: absolute;
+    top: -3%;
+    left: 0;
+}
+
 #petinfo
 {
 	top: 0;
@@ -612,7 +619,7 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     text-align: justify;
 }
 
-#inventory_detail_scenery_image, #inventory_detail_scenery_description_div, #store_detail_scenery_description_div, #store_detail_scenery_image, .activate_scenery_button {
+#inventory_detail_scenery_image, #inventory_detail_scenery_description_div, #store_detail_scenery_description_div, #store_detail_scenery_image {
     margin-top: 3%;
 }
 
@@ -625,7 +632,7 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     height: 40px;
 }
 
-#item_price_div, #item_price {
+#item_price_div, #item_price, .buy_pet_button {
      margin-bottom: 10px;
 }
 
@@ -692,8 +699,9 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
 }
 
 #challenge_detail_container {
-    border: 1px solid black;
-    height: 585px;
+    height: 635px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
 }
 
 #challenge_subdetail {
@@ -709,6 +717,10 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
 
 #challenge_img_subhead {
     margin-top: 15%;
+}
+
+#challenge_detail_description_div {
+    min-height: 500px;
 }
 
 #challenge_detail_description {
