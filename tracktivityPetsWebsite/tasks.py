@@ -23,7 +23,10 @@ LOCK_EXPIRE = 60 * 5 # Lock expires in 5 minutes
 @shared_task
 def update_user_with_fitbit(fitbit_user):
     """ Get the user's time series data """
-
+    '''
+    The update_user_with_fitbit task fetched a users time series fitbit data asynchronously
+    The function then calls another function in utils.py to update the users active challenges
+    '''
     logger.debug("Updating TracktivityPets local db for fitbit user: %s" % (fitbit_user))
 
     try:

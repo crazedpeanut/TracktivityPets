@@ -76,15 +76,16 @@ def retrieve_fitapp_data(user, date_from, date_to):
 
     return True, json.loads(data)#change it from text to something usable
 
-''' gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
-#TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
-this method will probably take 2-3 seconds to run, since fitbit API can take a while to respond, so ajax would be good
-means it should go in the update_user_fitbit
-'''
+
 #TODO: Gets all steps for the day, and doesnt consider other pets already having steps for it
 #Not going to effect release 1, but needs to change for release 2. Will have to loop through each pet in users inventory, get the experience for the day, add it all up, minus that from the total steps, and then add that to the pet
 def update_user_fitbit(user):
-
+    ''' 
+    Gets the steps from last_fitbit_sync to today, handles and stores the data in happiness/experience models 
+    #TODO: change this to be ajax suitable, so a button press can asynchronously call this method, and then get notified that update is done
+    this method will probably take 2-3 seconds to run, since fitbit API can take a while to respond, so ajax would be good
+    means it should go in the update_user_fitbit
+    '''
     profile = user.profile
 
     #pull steps from last_fitbit_sync upto today
@@ -201,11 +202,16 @@ def update_user_fitbit(user):
         #render dashboard page
 
 def count_pet_swaps_for_day(day):
+    '''
+    Returns the amount of times a user has swapped pets during a single day.
+    '''
+    
     swaps = PetSwap.objects.filter(time_swapped__year=day.year, time_swapped__day=day.day, time_swapped__month=day.month)
     return swaps.count()
 
-''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
 def register_user(first_name=None, last_name=None, email=None, username=None, password=None, confirm_password=None, registerForm=None):
+    ''' A new user is created based up values passed in, returns None if there is no problems, otherwise a string with the error '''
+
     if registerForm is not None and registerForm.is_valid(): #Using registerForm to enter details
             username = registerForm.cleaned_data['username'].lower()
             password = registerForm.cleaned_data['password']
@@ -230,9 +236,10 @@ def register_user(first_name=None, last_name=None, email=None, username=None, pa
             
         
 
-''' Used for when a user picks their first pet. Creates a new current pet and assigns it to the user (and default scenery)'''
 #TODO: Untested
 def register_pet_selection(user, pet, name):
+    ''' Used for when a user picks their first pet. Creates a new current pet and assigns it to the user (and default scenery)'''
+
     if user.profile.current_pet is not None:
         return False, None #user already has a current pet
     else:
@@ -255,6 +262,10 @@ def register_pet_selection(user, pet, name):
 
 #forces a refresh on the pet to see if it's level should be different
 def update_pet_level(collected_pet):
+    '''
+    Checks if a pets level should be updated, if so, perform the update.
+    '''
+
     try:
         experience = collected_pet.get_total_experience()
         level = Level.objects.filter(experience_needed__lte=experience).order_by('-experience_needed')
@@ -265,6 +276,10 @@ def update_pet_level(collected_pet):
         return False
             
 def update_pet_level_with_value(collected_pet, experience):
+    '''
+    Updates a pet level with an amount of experience.
+    '''
+
     try:
         level = Level.objects.filter(experience_needed__lte=experience).order_by('-experience_needed')
         collected_pet.level = level[0]
@@ -274,6 +289,10 @@ def update_pet_level_with_value(collected_pet, experience):
         return False
 
 def get_pet_selection_data():
+    '''
+    Return all of the pet information required for the initial pet selection view.
+
+    '''
     pets = Pet.objects.all()
     levelOne = Level.objects.get(level=1)
     data = {}
@@ -293,9 +312,17 @@ def get_pet_selection_data():
     return data
 
 def get_current_pet(user):
+    '''
+    Returns the logged in users current pet.
+    '''
+
     return user.profile.current_pet
 
 def set_current_pet(user, owned_pet):
+    '''
+    Swaps the logged in users pet with the one specified. The one specified must be owned by the user.
+    '''
+
     try:
         num_pets = CollectedPet.objects.filter(inventory=user.profile.inventory)
         if(num_pets.count() > 0):
@@ -307,6 +334,10 @@ def set_current_pet(user, owned_pet):
         return False
     
 def set_current_scenery(collected_pet, collected_scenery):
+    '''
+    Swaps the logged in users scenery with the one specified. The scenery specified must be ownned by the user.
+    '''
+
     try:
         collected_pet.scenery = collected_scenery
         collected_pet.save()
@@ -314,8 +345,13 @@ def set_current_scenery(collected_pet, collected_scenery):
     except:
         return False
   
-#returns true if an item is already on that body part  
+
 def is_item_on_bodypart(part, collected_pet):
+    '''
+    Returns true if an item is already on that body part or false if no objects on the body part
+    were found.
+    '''
+
     collected_items = collected_pet.inventory.get_collected_items_for_pet(collected_pet.pet)
     for c in collected_items:
         if c.item.body_part == part and c.equipped:
@@ -323,6 +359,10 @@ def is_item_on_bodypart(part, collected_pet):
     return False #no objects on the body part were found
 
 def equip_item(collected_pet, item, part):
+    '''
+    Equips an item onto a pets body part. The item must be owned by the user.
+    '''
+
     collected_items = collected_pet.inventory.get_collected_items_for_pet(collected_pet.pet)
     for c in collected_items:
         if c.item.body_part == part and c.equipped:
@@ -334,15 +374,27 @@ def equip_item(collected_pet, item, part):
 def get_user(request):
     return request.user
 
-''' Returns whether a user has a linked fitbit account or not '''
+
 def is_fitbit_linked(user):
+    ''' Returns whether a user has a linked fitbit account or not '''
     return fitapp.utils.is_integrated(user)
 
 def generate_pet_image_url(pet, image_location):
+    '''
+    Helper function to generate the path of a pets image.
+    '''
+
     start_url = static('tracktivityPetsWebsite/images')
     return '{url}/pets/{name}/{location}'.format(url=start_url, name=pet.default_name, location=image_location)
 
 def update_user_challenges(user):
+    '''
+    The update user challenges method goes through all of a users currently active challenges
+    and checks if they have been achieved. If so, a UserNotification is generated to th user can be notified.
+
+    If user has completed a challenge they are rewarded with the pet pennies specified by the MicroChallengeGoal.
+    '''
+
     uc_queryset = UserMicroChallenge.objects.filter(profile=user.profile, complete=False)
 
     logger.debug("Checking challenged for user: %s", user.get_username())
