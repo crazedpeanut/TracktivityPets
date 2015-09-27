@@ -49,14 +49,9 @@
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="inventory"><a class="viewcode-back" href="../../../modules/views/inventory.html#tracktivityPetsWebsite.views.inventory.inventory">[docs]</a><span class="k">def</span> <span class="nf">inventory</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">tab</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="ow">or</span> <span class="n">tab</span> <span class="o">==</span> <span class="s">&quot;pets&quot;</span><span class="p">:</span> <span class="c">#(tab == &quot;pets&quot; and request.is_ajax()): #ie &lt;site&gt;/inventory/</span>
-        
-        <span class="c">#all_items = Item.objects.all()</span>
-        
-        <span class="c">#locked_items = request.user.profile.inventory.calculate_unpurchased_items(all_items, collected_items)</span>
-        <span class="c">#all_pets = Pet.objects.all()</span>
+             
         <span class="n">collected_pets</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">get_owned_pets</span><span class="p">()</span>
-        <span class="c">#unpurchased_pets = request.user.profile.inventory.calculate_unpurchased_pets(all_pets, collected_pets) </span>
-        
+		
         <span class="n">pets</span> <span class="o">=</span> <span class="p">{}</span>
         
         <span class="k">for</span> <span class="n">collected_pet</span> <span class="ow">in</span> <span class="n">collected_pets</span><span class="p">:</span>

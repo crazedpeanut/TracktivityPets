@@ -24,6 +24,7 @@
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="top" title="Tracktivity Pets 1 documentation" href="../../index.html" />
+    <link rel="next" title="Equip Item View" href="equip_item.html" />
     <link rel="prev" title="Dashboard View" href="dashboard.html" />
    
   
@@ -42,42 +43,64 @@
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.challenges">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">challenges</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#challenges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.challenges" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The challenges method renders the challenges template and corresponding sub-templates
+then returns them to the user.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.get_available_challenge_names">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">get_available_challenge_names</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#get_available_challenge_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.get_available_challenge_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_available_challenge_names gets the names of the available challenges
+for the logged in user.</p>
+<p>This list is then returned in JSON format.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.get_challenge_details">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">get_challenge_details</code><span class="sig-paren">(</span><em>request</em>, <em>challenge_pk</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#get_challenge_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.get_challenge_details" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_challenge_details method gets the details of a MicroChallenge 
+based on its primary key, passed in with the get request.</p>
+<p>The details are then returned in JSON format.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.get_active_challenge_details">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">get_active_challenge_details</code><span class="sig-paren">(</span><em>request</em>, <em>user_challenge_pk</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#get_active_challenge_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.get_active_challenge_details" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_active_challenge_details method gets the details of an incomplete UserMicroChallenge 
+based on its primary key, passed in with the get request.</p>
+<p>The details are then returned in JSON format.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.get_complete_challenge_details">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">get_complete_challenge_details</code><span class="sig-paren">(</span><em>request</em>, <em>user_challenge_pk</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#get_complete_challenge_details"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.get_complete_challenge_details" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_complete_challenge_details method gets the details of a complete UserMicroChallenge 
+based on its primary key, passed in with the get request.</p>
+<p>The details are then returned in JSON format.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.get_active_challenge_names">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">get_active_challenge_names</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#get_active_challenge_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.get_active_challenge_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_active_challenge_names gets a list of all of the incomplete UserMicroChallenges
+for the logged in user.</p>
+<p>The list is then returned in JSON format.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.get_completed_challenge_names">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">get_completed_challenge_names</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#get_completed_challenge_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.get_completed_challenge_names" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The get_completed_challenge_names gets a list of all of the complete UserMicroChallenges
+for the logged in user.</p>
+<p>The list is then returned in JSON format.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.challenges.accept_challenge">
 <code class="descclassname">tracktivityPetsWebsite.views.challenges.</code><code class="descname">accept_challenge</code><span class="sig-paren">(</span><em>request</em>, <em>challenge_pk</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/challenges.html#accept_challenge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.challenges.accept_challenge" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The accept_challenge method creates an incomplete UserMicroChallenge based on the challenge_pk passed in by the user in
+the GET request.</p>
+</dd></dl>
 
 </div>
 
@@ -91,6 +114,7 @@
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="dashboard.html" title="previous chapter">Dashboard View</a></li>
+      <li>Next: <a href="equip_item.html" title="next chapter">Equip Item View</a></li>
   </ul></li>
 </ul>
 </div>

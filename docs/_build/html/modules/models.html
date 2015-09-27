@@ -50,8 +50,11 @@ This model is used in the case that only one item can be equipped per body part.
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.CollectedItem">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">CollectedItem</code><span class="sig-paren">(</span><em>id</em>, <em>item</em>, <em>inventory</em>, <em>equipped</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#CollectedItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.CollectedItem" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">CollectedItem</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#CollectedItem"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.CollectedItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Every time a user purchases an item, a CollectedItem instance is created.
+The CollectedItem model is used as to create a many-to-many relationship between
+the Item and the User models</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.CollectedPet">
@@ -70,13 +73,23 @@ a user and a scenery item</p>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Experience">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Experience</code><span class="sig-paren">(</span><em>id</em>, <em>pet</em>, <em>amount</em>, <em>date</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Experience"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Experience" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Experience</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Experience"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Experience" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Experience model is essentially just Fitbit steps for a day.
+An instance of the Experience model is created for every recorded day 
+of Fitbit data.</p>
+<p>It is used to calculate the total amount of steps the user has walked,
+while a pet has been active.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Happiness">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Happiness</code><span class="sig-paren">(</span><em>id</em>, <em>pet</em>, <em>amount</em>, <em>date</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Happiness"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Happiness" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Happiness</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Happiness"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Happiness" title="Permalink to this definition">¶</a></dt>
+<dd><p>An instance of the Happiness model is created for every recorded day 
+of Fitbit data. Happiness is very similar to Experience, however a 
+function is performed to turn it into a percentage of a number.</p>
+<p>This number will most likely be around 7,500-10,000. The recommended
+minimum amount of steps a person should take in a day.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Inventory">
@@ -87,8 +100,11 @@ pets, items, etc.</p>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Item">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Item</code><span class="sig-paren">(</span><em>id</em>, <em>experience_to_unlock</em>, <em>image_location</em>, <em>description</em>, <em>name</em>, <em>cost</em>, <em>belongs_to</em>, <em>body_part</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Item" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Item</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Item"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Item" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Item model is created for every item in the store. 
+The model contains information such as which pet the item can be used on,
+its name, and the location of the image.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Level">
@@ -100,48 +116,77 @@ required to progress to the next one.</p>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.MicroChallenge">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallenge</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>overview</em>, <em>challenge_type</em>, <em>duration_mins</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallenge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallenge" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallenge</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallenge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallenge" title="Permalink to this definition">¶</a></dt>
+<dd><p>The MicroChallenge model contains information for each micro challenge
+in Tracktivity Pets. It contains the name of the challenge, a brief overview,
+the type of challenge (So far this can only be STEPS_IN_DURATION), and the duration 
+of the challenge.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.MicroChallengeGoal">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallengeGoal</code><span class="sig-paren">(</span><em>id</em>, <em>micro_challenge</em>, <em>medal</em>, <em>description</em>, <em>pet_pennies_reward</em>, <em>goal_state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallengeGoal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallengeGoal" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallengeGoal</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallengeGoal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallengeGoal" title="Permalink to this definition">¶</a></dt>
+<dd><p>A MicroChallengeGoal contains information about what needs to be
+done in order to achieve a goal. It also contains how many pet pennies
+the user should be rewarded on completion.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.MicroChallengeMedal">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallengeMedal</code><span class="sig-paren">(</span><em>id</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallengeMedal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallengeMedal" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallengeMedal</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallengeMedal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallengeMedal" title="Permalink to this definition">¶</a></dt>
+<dd><p>The MicroChallengeMedal model is used to represent a user completing a micro challenge
+The current possible medals are Gold, Silver and Bronze.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.MicroChallengeState">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallengeState</code><span class="sig-paren">(</span><em>id</em>, <em>steps</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallengeState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallengeState" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">MicroChallengeState</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#MicroChallengeState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.MicroChallengeState" title="Permalink to this definition">¶</a></dt>
+<dd><p>A MicroChallengeState is used to store the amount of steps a user has currently
+completed while completing a challenge and the amount of steps required to complete a challenge.
+These can be compared so that it can be determined if a user has completed a challenge or not.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Mood">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Mood</code><span class="sig-paren">(</span><em>id</em>, <em>pet</em>, <em>level</em>, <em>happiness_needed</em>, <em>image_location</em>, <em>description</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Mood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Mood" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Mood</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Mood"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Mood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pets have differing moods depending on its happiness.
+This model contains information such as the location for the
+image that reflects the pets mood.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Pet">
 <em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Pet</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Pet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Pet" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="docutils">
+<dt>Every pet in Tracktivity Pets has an instance of the Pet model.</dt>
+<dd>This model contains information such as minimum level for the pet,
+the default name for the pet, the cost of the pet, and the amount of
+experience required to unlock the pet from the store.</dd>
+</dl>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.PetSwap">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">PetSwap</code><span class="sig-paren">(</span><em>id</em>, <em>from_pet</em>, <em>to_pet</em>, <em>time_swapped</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#PetSwap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.PetSwap" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">PetSwap</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#PetSwap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.PetSwap" title="Permalink to this definition">¶</a></dt>
+<dd><p>A PetSwap instance is created whenever a user swaps their current pet.
+This is used to work out how to divide experience between a users pets.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Phrase">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Phrase</code><span class="sig-paren">(</span><em>id</em>, <em>mood</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Phrase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Phrase" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Phrase</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Phrase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Phrase" title="Permalink to this definition">¶</a></dt>
+<dd><p>A pet will have multiple phrases for each of its moods.
+A pet will only say a phrase if it is currently in the 
+corresponding mood.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Profile">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Profile</code><span class="sig-paren">(</span><em>id</em>, <em>user</em>, <em>inventory</em>, <em>current_pet</em>, <em>total_pet_pennies</em>, <em>last_fitbit_sync</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Profile" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Profile</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Profile model is used to store information about the users account.
+Some of this information includes the users current pet, total pet pennies,
+and the last time the application has synchronised with the users Fitbit.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Scenery">
@@ -155,28 +200,39 @@ this scenery item.</p>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.Story">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Story</code><span class="sig-paren">(</span><em>id</em>, <em>level_unlocked</em>, <em>pet</em>, <em>text</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Story"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Story" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">Story</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#Story"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.Story" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Story model contains unlockble stories for each of the pets in Tracktivity Pets.
+The model also contains information such as the level to unlock the story and
+which pet the story is for.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.UserMicroChallenge">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserMicroChallenge</code><span class="sig-paren">(</span><em>id</em>, <em>micro_challenge</em>, <em>state</em>, <em>profile</em>, <em>complete</em>, <em>date_started</em>, <em>date_end</em>, <em>date_completed</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserMicroChallenge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserMicroChallenge" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserMicroChallenge</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserMicroChallenge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserMicroChallenge" title="Permalink to this definition">¶</a></dt>
+<dd><p>The UserMicroChallenge is created whenever a user starts a MicroChallenge
+It contains information used to determine when a user has completed a micro challenge.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.UserMicroChallengeGoalStatus">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserMicroChallengeGoalStatus</code><span class="sig-paren">(</span><em>id</em>, <em>micro_chal_goal</em>, <em>user_micro_chal</em>, <em>complete</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserMicroChallengeGoalStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserMicroChallengeGoalStatus" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserMicroChallengeGoalStatus</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserMicroChallengeGoalStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserMicroChallengeGoalStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to store whether or not a micro challenge has been completed or not.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.UserMicroChallengeState">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserMicroChallengeState</code><span class="sig-paren">(</span><em>id</em>, <em>state</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserMicroChallengeState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserMicroChallengeState" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserMicroChallengeState</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserMicroChallengeState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserMicroChallengeState" title="Permalink to this definition">¶</a></dt>
+<dd><p>The UserMicroChallengeState model is created whenever a user starts a challenge.
+It is used to create a many-to-many relationship between the User and MicroChallengeState models.</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="tracktivityPetsWebsite.models.UserNotification">
-<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserNotification</code><span class="sig-paren">(</span><em>id</em>, <em>userProfile</em>, <em>dateAdded</em>, <em>message</em>, <em>acknowledged</em>, <em>notificationType</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserNotification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserNotification" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">tracktivityPetsWebsite.models.</code><code class="descname">UserNotification</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tracktivityPetsWebsite/models.html#UserNotification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.models.UserNotification" title="Permalink to this definition">¶</a></dt>
+<dd><p>A UserNotification is used to keep track of updates, so that a user can be notified.
+These types of notifications can be a number of types such as: a pet levelling up, experience being
+gained, a micro challenge goal completed, or a story is unlocked.</p>
+</dd></dl>
 
 </div>
 

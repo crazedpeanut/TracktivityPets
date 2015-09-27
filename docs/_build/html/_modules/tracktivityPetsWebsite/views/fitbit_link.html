@@ -48,6 +48,12 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="fitbit_link"><a class="viewcode-back" href="../../../modules/views/fitbit_link.html#tracktivityPetsWebsite.views.fitbit_link.fitbit_link">[docs]</a><span class="k">def</span> <span class="nf">fitbit_link</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The fitbit_link method renders the fitbit_link template and returns it to the user.</span>
+<span class="sd">    This page is to direct the user to the Fitbit authorisation page so Tracktivity Pets</span>
+<span class="sd">    can access their Fitbit Data.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">fitbit_link_link</span> <span class="o">=</span> <span class="s">&#39;/fitbit/login&#39;</span>
     <span class="k">if</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_fitbit_linked</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite:dashboard&#39;</span><span class="p">)</span>

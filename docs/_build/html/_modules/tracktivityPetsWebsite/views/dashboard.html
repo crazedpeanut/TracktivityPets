@@ -63,7 +63,7 @@
 <div class="viewcode-block" id="dashboard"><a class="viewcode-back" href="../../../modules/views/dashboard.html#tracktivityPetsWebsite.views.dashboard.dashboard">[docs]</a><span class="k">def</span> <span class="nf">dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    The Dashboard View prepares the templates and values to be sent back</span>
-<span class="sd">    to a user who is visting the Dashboard page</span>
+<span class="sd">    to a user who is visiting the Dashboard page</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_fitbit_linked</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">fitapp</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">is_integrated</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">):</span>
@@ -92,11 +92,6 @@
     <span class="n">happiness_data</span> <span class="o">=</span> <span class="n">current_pet</span><span class="o">.</span><span class="n">get_happiness_last_seven_days</span><span class="p">()</span>
     <span class="n">experience_data</span> <span class="o">=</span> <span class="n">current_pet</span><span class="o">.</span><span class="n">get_all_accumulative_experience</span><span class="p">()</span>
     
-    <span class="sd">&#39;&#39;&#39;try:</span>
-<span class="sd">        experience_progress = int(round(current_pet.get_total_experience() / experience_needed * 100, 0))</span>
-<span class="sd">    except:</span>
-<span class="sd">        experience_progress = 0&#39;&#39;&#39;</span>
-    
     <span class="n">experience_progress</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">progress_bar_text</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
     <span class="n">progress_bar_colour</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
@@ -112,7 +107,6 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">experience_progress</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">current_pet</span><span class="o">.</span><span class="n">get_total_experience</span><span class="p">()</span> <span class="o">/</span> <span class="n">experience_needed</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
         <span class="n">progress_bar_text</span> <span class="o">=</span> <span class="s">&quot;{total}/ {needed} ({percent}%)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">current_pet</span><span class="o">.</span><span class="n">get_total_experience</span><span class="p">(),</span> <span class="n">needed</span><span class="o">=</span><span class="n">experience_needed</span><span class="p">,</span> <span class="n">percent</span><span class="o">=</span><span class="n">experience_progress</span><span class="p">)</span>
-        <span class="sd">&#39;&#39;&#39;progress_bar_test = &quot;Hello!&quot;&#39;&#39;&#39;</span>
         <span class="n">progress_bar_colour</span> <span class="o">=</span> <span class="s">&quot;progress-bar-warning&quot;</span>
         
     <span class="n">happiness_today</span> <span class="o">=</span> <span class="n">current_pet</span><span class="o">.</span><span class="n">get_todays_happiness_value</span><span class="p">()</span>

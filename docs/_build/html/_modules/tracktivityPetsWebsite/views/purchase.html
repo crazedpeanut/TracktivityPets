@@ -48,6 +48,16 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="purchase"><a class="viewcode-back" href="../../../modules/views/purchase.html#tracktivityPetsWebsite.views.purchase.purchase">[docs]</a><span class="k">def</span> <span class="nf">purchase</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The purchase method takes the current tab a user is on and the index of the item they want to purchase.</span>
+<span class="sd">    It then makes sure the user has the necessary pet pennies and experience.</span>
+<span class="sd">    </span>
+<span class="sd">    The tab determines the type of item the user wants to purchase.</span>
+<span class="sd">    So far the options available are Scenery, Pet and Item.</span>
+
+<span class="sd">    If the user has successfully purchased &quot;True&quot; is returned to the user, otherwise &quot;False&quot; is returned.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="k">if</span> <span class="n">tab</span> <span class="o">==</span> <span class="s">&quot;pet&quot;</span><span class="p">:</span> <span class="c">#(tab == &quot;pets&quot; and request.is_ajax()): #ie &lt;site&gt;/inventory/</span>
         <span class="c">#return HttpResponse(&quot;True&quot;)</span>
         <span class="k">try</span><span class="p">:</span>

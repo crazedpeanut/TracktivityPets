@@ -201,7 +201,10 @@
 </div>
 <div class="viewcode-block" id="Pet"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Pet">[docs]</a><span class="k">class</span> <span class="nc">Pet</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    </span>
+<span class="sd">    Every pet in Tracktivity Pets has an instance of the Pet model.</span>
+<span class="sd">	This model contains information such as minimum level for the pet,</span>
+<span class="sd">	the default name for the pet, the cost of the pet, and the amount of</span>
+<span class="sd">	experience required to unlock the pet from the store.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">starter_level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Level</span><span class="p">)</span>
@@ -238,7 +241,6 @@
         <span class="n">image_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_current_mood</span><span class="p">()</span><span class="o">.</span><span class="n">image_location</span>
         <span class="k">return</span> <span class="s">&#39;{url}/pets/{name}/{location}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">start_url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pet</span><span class="o">.</span><span class="n">default_name</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">image_location</span><span class="p">)</span>
     
-    <span class="c">#this method is pretty much pointless...</span>
     <span class="k">def</span> <span class="nf">get_total_happiness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">happiness_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
         <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
@@ -294,7 +296,6 @@
         <span class="k">return</span> <span class="n">largest_number</span><span class="p">,</span> <span class="n">values</span>
     
     <span class="k">def</span> <span class="nf">get_all_accumulative_experience</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="n">dates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experience_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;date&#39;</span><span class="p">)</span>
         <span class="n">values</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
         <span class="n">accumulative</span> <span class="o">=</span> <span class="mi">0</span>
@@ -375,7 +376,12 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
     </div>
 <div class="viewcode-block" id="Item"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Item">[docs]</a><span class="k">class</span> <span class="nc">Item</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Item model is created for every item in the store. </span>
+<span class="sd">    The model contains information such as which pet the item can be used on,</span>
+<span class="sd">    its name, and the location of the image.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">experience_to_unlock</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">image_location</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
@@ -392,15 +398,26 @@
         <span class="k">return</span> <span class="s">&#39;{url}/items/{pet}/{location}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">start_url</span><span class="p">,</span> <span class="n">pet</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">belongs_to</span><span class="o">.</span><span class="n">default_name</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">image_location</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="CollectedItem"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.CollectedItem">[docs]</a><span class="k">class</span> <span class="nc">CollectedItem</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Every time a user purchases an item, a CollectedItem instance is created.</span>
+<span class="sd">    The CollectedItem model is used as to create a many-to-many relationship between</span>
+<span class="sd">    the Item and the User models</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">item</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Item</span><span class="p">)</span>
     <span class="n">inventory</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Inventory</span><span class="p">)</span>
-    <span class="c">#equipped_on = models.ForeignKey(CollectedPet, null=True, blank=True)</span>
     <span class="n">equipped</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>             
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">item</span><span class="o">.</span><span class="n">name</span>
     </div>
 <div class="viewcode-block" id="Profile"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Profile">[docs]</a><span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Profile model is used to store information about the users account.</span>
+<span class="sd">    Some of this information includes the users current pet, total pet pennies,</span>
+<span class="sd">    and the last time the application has synchronised with the users Fitbit.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
     <span class="n">inventory</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">Inventory</span><span class="p">)</span>  
     <span class="n">current_pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">CollectedPet</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -418,6 +435,15 @@
         <span class="k">return</span> <span class="n">total_xp</span>
     </div>
 <div class="viewcode-block" id="Happiness"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Happiness">[docs]</a><span class="k">class</span> <span class="nc">Happiness</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    An instance of the Happiness model is created for every recorded day </span>
+<span class="sd">    of Fitbit data. Happiness is very similar to Experience, however a </span>
+<span class="sd">    function is performed to turn it into a percentage of a number.</span>
+<span class="sd">	</span>
+<span class="sd">    This number will most likely be around 7,500-10,000. The recommended</span>
+<span class="sd">    minimum amount of steps a person should take in a day.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">CollectedPet</span><span class="p">)</span>
     <span class="n">amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
@@ -426,6 +452,15 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="Experience"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Experience">[docs]</a><span class="k">class</span> <span class="nc">Experience</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Experience model is essentially just Fitbit steps for a day.</span>
+<span class="sd">    An instance of the Experience model is created for every recorded day </span>
+<span class="sd">    of Fitbit data.</span>
+
+<span class="sd">    It is used to calculate the total amount of steps the user has walked,</span>
+<span class="sd">    while a pet has been active.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">CollectedPet</span><span class="p">)</span>
     <span class="n">amount</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
     <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">()</span>
@@ -434,6 +469,12 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pet</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">amount</span><span class="p">)</span>
  </div>
 <div class="viewcode-block" id="Mood"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Mood">[docs]</a><span class="k">class</span> <span class="nc">Mood</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Pets have differing moods depending on its happiness.</span>
+<span class="sd">    This model contains information such as the location for the</span>
+<span class="sd">    image that reflects the pets mood.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pet</span><span class="p">)</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Level</span><span class="p">)</span> <span class="c">#different images depending on level</span>
     <span class="n">happiness_needed</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
@@ -450,6 +491,11 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
 </div>
 <div class="viewcode-block" id="Phrase"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Phrase">[docs]</a><span class="k">class</span> <span class="nc">Phrase</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A pet will have multiple phrases for each of its moods.</span>
+<span class="sd">    A pet will only say a phrase if it is currently in the </span>
+<span class="sd">    corresponding mood.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">mood</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Mood</span><span class="p">)</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
     
@@ -457,6 +503,12 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
 </div>
 <div class="viewcode-block" id="Story"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.Story">[docs]</a><span class="k">class</span> <span class="nc">Story</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Story model contains unlockble stories for each of the pets in Tracktivity Pets.</span>
+<span class="sd">    The model also contains information such as the level to unlock the story and</span>
+<span class="sd">    which pet the story is for.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">level_unlocked</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Level</span><span class="p">)</span>
     <span class="n">pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Pet</span><span class="p">)</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
@@ -466,6 +518,13 @@
 <span class="p">)</span>
 
 <div class="viewcode-block" id="MicroChallenge"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.MicroChallenge">[docs]</a><span class="k">class</span> <span class="nc">MicroChallenge</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The MicroChallenge model contains information for each micro challenge</span>
+<span class="sd">    in Tracktivity Pets. It contains the name of the challenge, a brief overview,</span>
+<span class="sd">    the type of challenge (So far this can only be STEPS_IN_DURATION), and the duration </span>
+<span class="sd">    of the challenge.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">overview</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
     <span class="n">challenge_type</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="n">MicroChallengeTypes</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -475,21 +534,42 @@
         <span class="k">return</span> <span class="s">&quot;Micro Challenge: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 </div>
 <div class="viewcode-block" id="MicroChallengeMedal"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.MicroChallengeMedal">[docs]</a><span class="k">class</span> <span class="nc">MicroChallengeMedal</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The MicroChallengeMedal model is used to represent a user completing a micro challenge</span>
+<span class="sd">    The current possible medals are Gold, Silver and Bronze. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
 </div>
 <div class="viewcode-block" id="MicroChallengeState"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.MicroChallengeState">[docs]</a><span class="k">class</span> <span class="nc">MicroChallengeState</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A MicroChallengeState is used to store the amount of steps a user has currently</span>
+<span class="sd">    completed while completing a challenge and the amount of steps required to complete a challenge.</span>
+<span class="sd">    These can be compared so that it can be determined if a user has completed a challenge or not.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">steps</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s">&quot;Micro Challenge State. Steps: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="UserMicroChallengeState"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.UserMicroChallengeState">[docs]</a><span class="k">class</span> <span class="nc">UserMicroChallengeState</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The UserMicroChallengeState model is created whenever a user starts a challenge.</span>
+<span class="sd">    It is used to create a many-to-many relationship between the User and MicroChallengeState models.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">state</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MicroChallengeState</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="UserMicroChallenge"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.UserMicroChallenge">[docs]</a><span class="k">class</span> <span class="nc">UserMicroChallenge</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The UserMicroChallenge is created whenever a user starts a MicroChallenge</span>
+<span class="sd">    It contains information used to determine when a user has completed a micro challenge.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">micro_challenge</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MicroChallenge</span><span class="p">)</span>
     <span class="n">state</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">UserMicroChallengeState</span><span class="p">)</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Profile</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -499,11 +579,22 @@
     <span class="n">date_completed</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="PetSwap"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.PetSwap">[docs]</a><span class="k">class</span> <span class="nc">PetSwap</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A PetSwap instance is created whenever a user swaps their current pet.</span>
+<span class="sd">    This is used to work out how to divide experience between a users pets.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">from_pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">CollectedPet</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;from_pet&#39;</span><span class="p">)</span>
     <span class="n">to_pet</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">CollectedPet</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s">&#39;to_pet&#39;</span><span class="p">)</span>
     <span class="n">time_swapped</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
 </div>
 <div class="viewcode-block" id="MicroChallengeGoal"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.MicroChallengeGoal">[docs]</a><span class="k">class</span> <span class="nc">MicroChallengeGoal</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A MicroChallengeGoal contains information about what needs to be</span>
+<span class="sd">    done in order to achieve a goal. It also contains how many pet pennies</span>
+<span class="sd">    the user should be rewarded on completion.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">micro_challenge</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MicroChallenge</span><span class="p">)</span>
     <span class="n">medal</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MicroChallengeMedal</span><span class="p">)</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
@@ -514,6 +605,10 @@
         <span class="k">return</span> <span class="s">&quot;Micro Challenge Goal: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">micro_challenge</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s">&quot;, medal: &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">medal</span><span class="o">.</span><span class="n">name</span>
 </div>
 <div class="viewcode-block" id="UserMicroChallengeGoalStatus"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.UserMicroChallengeGoalStatus">[docs]</a><span class="k">class</span> <span class="nc">UserMicroChallengeGoalStatus</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Used to store whether or not a micro challenge has been completed or not.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
     <span class="n">micro_chal_goal</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">MicroChallengeGoal</span><span class="p">)</span>
     <span class="n">user_micro_chal</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">UserMicroChallenge</span><span class="p">)</span>
     <span class="n">complete</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -526,6 +621,12 @@
     <span class="p">)</span>
 
 <div class="viewcode-block" id="UserNotification"><a class="viewcode-back" href="../../modules/models.html#tracktivityPetsWebsite.models.UserNotification">[docs]</a><span class="k">class</span> <span class="nc">UserNotification</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A UserNotification is used to keep track of updates, so that a user can be notified.</span>
+<span class="sd">    These types of notifications can be a number of types such as: a pet levelling up, experience being</span>
+<span class="sd">    gained, a micro challenge goal completed, or a story is unlocked.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">userProfile</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Profile</span><span class="p">)</span>
     <span class="n">dateAdded</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
     <span class="n">message</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>

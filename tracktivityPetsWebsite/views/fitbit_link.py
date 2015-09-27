@@ -8,11 +8,11 @@ from django.core.urlresolvers import reverse
 
 @login_required
 def fitbit_link(request):
-	'''
-	The fitbit_link method renders the fitbit_link template and returns it to the user.
-	This page is to direct the user to the Fitbit authorisation page so Tracktivity Pets
-	can access their Fitbit Data.
-	'''
+    '''
+    The fitbit_link method renders the fitbit_link template and returns it to the user.
+    This page is to direct the user to the Fitbit authorisation page so Tracktivity Pets
+    can access their Fitbit Data.
+    '''
 
     fitbit_link_link = '/fitbit/login'
     if utils.is_fitbit_linked(request.user):

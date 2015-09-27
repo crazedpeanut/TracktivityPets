@@ -44,7 +44,12 @@
 
 
 <div class="viewcode-block" id="feedback"><a class="viewcode-back" href="../../../modules/views/feedback.html#tracktivityPetsWebsite.views.feedback.feedback">[docs]</a><span class="k">def</span> <span class="nf">feedback</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">	The feedback method renders the feedback template and returns it to the user.</span>
+<span class="sd">	If the type of the request is POST then an email will be sent to the development team</span>
+<span class="sd">	with comments from the user.</span>
+<span class="sd">	&#39;&#39;&#39;</span>
+	
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&quot;POST&quot;</span><span class="p">:</span>
         <span class="n">contents</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;contents&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
         
@@ -52,8 +57,8 @@
             <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/feedback.html&#39;</span><span class="p">)</span>
         
         <span class="n">username</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">get_username</span><span class="p">()</span>
-        <span class="c">#user_email = request.user.email</span>
-        <span class="n">user_email</span> <span class="o">=</span> <span class="s">&#39;john@johnkendall.net&#39;</span> <span class="c">#Just for test purposes</span>
+
+        <span class="n">user_email</span> <span class="o">=</span> <span class="s">&#39;john@johnkendall.net&#39;</span>
         <span class="n">email_to</span> <span class="o">=</span> <span class="s">&quot;pets@bitlink.com.au&quot;</span>
         <span class="n">subject</span> <span class="o">=</span> <span class="s">&quot;Tracktivity Pets Feedback from &quot;</span> <span class="o">+</span> <span class="n">username</span>
         
@@ -63,10 +68,7 @@
             <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/feedback.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;error&#39;</span><span class="p">:</span><span class="s">&#39;Bad header&#39;</span><span class="p">})</span>
             
         <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/feedback.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;success&#39;</span><span class="p">:</span><span class="s">&#39;Message sent successfully&#39;</span><span class="p">})</span>
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/feedback.html&#39;</span><span class="p">)</span>
-
-
-<span class="c"># &lt;input type=&quot;text&quot; id=&quot;formfill&quot; class=&quot;form-submitting&quot; placeholder=&quot;First name&quot; required autofocus /&gt; for html stuff</span></div>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/feedback.html&#39;</span><span class="p">)</span></div>
 </pre></div>
 
           </div>

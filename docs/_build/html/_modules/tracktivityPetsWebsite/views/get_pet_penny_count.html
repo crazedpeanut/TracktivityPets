@@ -43,6 +43,11 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_pet_penny_count"><a class="viewcode-back" href="../../../modules/views/get_pet_penny_count.html#tracktivityPetsWebsite.views.get_pet_penny_count.get_pet_penny_count">[docs]</a><span class="k">def</span> <span class="nf">get_pet_penny_count</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    get_pet_penny_count returns the amount of pet pennies for logged in</span>
+<span class="sd">    user.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">total_pet_pennies</span><span class="p">)</span></div>
 </pre></div>
 

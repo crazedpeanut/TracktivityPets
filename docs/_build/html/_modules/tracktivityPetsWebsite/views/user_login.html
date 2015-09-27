@@ -48,6 +48,16 @@
 <span class="kn">import</span> <span class="nn">fitapp</span>
 
 <div class="viewcode-block" id="user_login"><a class="viewcode-back" href="../../../modules/views/user_login.html#tracktivityPetsWebsite.views.user_login.user_login">[docs]</a><span class="k">def</span> <span class="nf">user_login</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The user_login function validates the username and password logs the user in if they are valid.</span>
+
+<span class="sd">    If the user has selected the &quot;remember me&quot; checkbox, their session will remain valid</span>
+<span class="sd">    for whatever is set in settings.REMEMBER_ME_DURATION, at the time of writing this it is 1 year.</span>
+
+<span class="sd">    If the users credentials are incorrect, a validation error message is returned.</span>
+
+<span class="sd">    Once logged in, the user is redirected to the dashboard.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span>  <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">():</span> <span class="c">#if user is logged in</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite:dashboard&#39;</span><span class="p">)</span> <span class="c">#go to dashboard</span>

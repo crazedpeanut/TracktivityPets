@@ -44,6 +44,10 @@
 <span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse</span>
     
 <div class="viewcode-block" id="user_logout"><a class="viewcode-back" href="../../../modules/views/user_logout.html#tracktivityPetsWebsite.views.user_logout.user_logout">[docs]</a><span class="k">def</span> <span class="nf">user_logout</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The user_logout method kills a logged in users session so they have to log in again to use their account.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">():</span> <span class="c">#if user is logged in</span>
         <span class="n">logout</span><span class="p">(</span><span class="n">request</span><span class="p">)</span> <span class="c">#log them out</span>
         

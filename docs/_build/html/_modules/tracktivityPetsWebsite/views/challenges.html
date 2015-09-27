@@ -45,15 +45,26 @@
     <span class="n">UserMicroChallenge</span><span class="p">,</span> <span class="n">UserMicroChallengeState</span><span class="p">,</span> <span class="n">MicroChallengeState</span><span class="p">,</span> <span class="n">UserMicroChallengeGoalStatus</span>
 <span class="kn">from</span> <span class="nn">django.core</span> <span class="kn">import</span> <span class="n">serializers</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
-
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="challenges"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.challenges">[docs]</a><span class="k">def</span> <span class="nf">challenges</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The challenges method renders the challenges template and corresponding sub-templates</span>
+<span class="sd">    then returns them to the user.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/challenges/challenges.html&#39;</span><span class="p">)</span>
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_available_challenge_names"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_available_challenge_names">[docs]</a><span class="k">def</span> <span class="nf">get_available_challenge_names</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The get_available_challenge_names gets the names of the available challenges</span>
+<span class="sd">    for the logged in user.</span>
+<span class="sd">	</span>
+<span class="sd">    This list is then returned in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">challenges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">MicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
     <span class="n">new_chal_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">current_challenges</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">)</span>
@@ -67,6 +78,13 @@
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_challenge_details"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_challenge_details">[docs]</a><span class="k">def</span> <span class="nf">get_challenge_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">challenge_pk</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The get_challenge_details method gets the details of a MicroChallenge </span>
+<span class="sd">    based on its primary key, passed in with the get request.</span>
+<span class="sd">	</span>
+<span class="sd">    The details are then returned in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">challenge</span> <span class="o">=</span> <span class="n">MicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">challenge_pk</span><span class="p">)</span>
 
     <span class="n">challenge_response</span> <span class="o">=</span> <span class="p">{</span>
@@ -95,6 +113,13 @@
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_active_challenge_details"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_active_challenge_details">[docs]</a><span class="k">def</span> <span class="nf">get_active_challenge_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user_challenge_pk</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The get_active_challenge_details method gets the details of an incomplete UserMicroChallenge </span>
+<span class="sd">    based on its primary key, passed in with the get request.</span>
+<span class="sd">	</span>
+<span class="sd">    The details are then returned in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">uc</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">user_challenge_pk</span><span class="p">)</span>
 
     <span class="n">challenge</span> <span class="o">=</span> <span class="n">uc</span><span class="o">.</span><span class="n">micro_challenge</span>
@@ -128,6 +153,13 @@
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_complete_challenge_details"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_complete_challenge_details">[docs]</a><span class="k">def</span> <span class="nf">get_complete_challenge_details</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">user_challenge_pk</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The get_complete_challenge_details method gets the details of a complete UserMicroChallenge </span>
+<span class="sd">    based on its primary key, passed in with the get request.</span>
+<span class="sd">	</span>
+<span class="sd">    The details are then returned in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">uc</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">user_challenge_pk</span><span class="p">)</span>
     <span class="n">completed_goals</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -166,6 +198,13 @@
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_active_challenge_names"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_active_challenge_names">[docs]</a><span class="k">def</span> <span class="nf">get_active_challenge_names</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The get_active_challenge_names gets a list of all of the incomplete UserMicroChallenges</span>
+<span class="sd">    for the logged in user.</span>
+<span class="sd">	</span>
+<span class="sd">    The list is then returned in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="n">user_challenges</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">complete</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
     <span class="n">challenge_names</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -176,6 +215,13 @@
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="get_completed_challenge_names"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.get_completed_challenge_names">[docs]</a><span class="k">def</span> <span class="nf">get_completed_challenge_names</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The get_completed_challenge_names gets a list of all of the complete UserMicroChallenges</span>
+<span class="sd">    for the logged in user.</span>
+<span class="sd">	</span>
+<span class="sd">    The list is then returned in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">user_challenges</span> <span class="o">=</span> <span class="n">UserMicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">profile</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">complete</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">challenge_names</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -186,6 +232,11 @@
 </div>
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="accept_challenge"><a class="viewcode-back" href="../../../modules/views/challenges.html#tracktivityPetsWebsite.views.challenges.accept_challenge">[docs]</a><span class="k">def</span> <span class="nf">accept_challenge</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">challenge_pk</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The accept_challenge method creates an incomplete UserMicroChallenge based on the challenge_pk passed in by the user in</span>
+<span class="sd">    the GET request.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+	
     <span class="n">micro_chal</span> <span class="o">=</span> <span class="n">MicroChallenge</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">challenge_pk</span><span class="p">)</span>
 
     <span class="n">chal_state</span> <span class="o">=</span> <span class="n">MicroChallengeState</span><span class="p">(</span><span class="n">steps</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
