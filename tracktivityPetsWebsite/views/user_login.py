@@ -8,6 +8,16 @@ from django.shortcuts import redirect
 import fitapp
 
 def user_login(request):
+    '''
+    The user_login function validates the username and password logs the user in if they are valid.
+
+    If the user has selected the "remember me" checkbox, their session will remain valid
+    for whatever is set in settings.REMEMBER_ME_DURATION, at the time of writing this it is 1 year.
+
+    If the users credentials are incorrect, a validation error message is returned.
+
+    Once logged in, the user is redirected to the dashboard.
+    '''
 
     if  request.user.is_authenticated(): #if user is logged in
         return redirect('tracktivityPetsWebsite:dashboard') #go to dashboard

@@ -9,6 +9,16 @@ from django.contrib.auth import authenticate, login
 #from tracktivityPetsWebsite import utils #example of using utils
 
 def register(request):
+    '''
+    The register method renders and returns a registration form to sign up to Tracktivity Pets.
+    If the user is already logged in, they are redirected to their dashboard.
+
+    This method is also used to accept the POST requests from the form.
+    If the form is not valid, a message is sent back to the users browser.
+
+
+    '''
+
     if request.user.is_authenticated(): #if user is logged in
         return redirect('tracktivityPetsWebsite:dashboard') #go to dashboard
     
@@ -27,7 +37,7 @@ def register(request):
                 return render(request, 'tracktivityPetsWebsite/register.html', {'error':result,'registerForm': registerForm} ) #Form not valid
             else:
                 username = registerForm.cleaned_data['username'].lower()
-                password = registerForm.cleaned_data['password'].lower()
+                password = registerForm.cleaned_data['password'] #Removed .lower() from the password, this shouldn't happen.
                 user = authenticate(username=username, password=password)
                 login(request, user)
                 return redirect('tracktivityPetsWebsite:fitbit_link')

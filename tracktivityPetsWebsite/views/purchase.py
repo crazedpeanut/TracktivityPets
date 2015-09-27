@@ -8,6 +8,16 @@ import datetime
 
 @login_required
 def purchase(request, tab="", index=""):
+    '''
+    The purchase method takes the current tab a user is on and the index of the item they want to purchase.
+    It then makes sure the user has the necessary pet pennies and experience.
+    
+    The tab determines the type of item the user wants to purchase.
+    So far the options available are Scenery, Pet and Item.
+
+    If the user has successfully purchased "True" is returned to the user, otherwise "False" is returned.
+    '''
+
     if tab == "pet": #(tab == "pets" and request.is_ajax()): #ie <site>/inventory/
         #return HttpResponse("True")
         try:
