@@ -37,7 +37,7 @@
     <div class="collection_view_desktop tab-pane fade" id="scenery">
         <div class="col-xs-12 col-sm-6 scrollview">
         {% for key, value in collected_scenery.items %}
-            <div class="col-xs-6" class="inventory_items" id="scenery_{{ value.pk }}">
+            <div class="col-xs-12 col-md-6" class="inventory_items" id="scenery_{{ value.pk }}">
                 <button class="inventory_button">
                 <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
                 <p class="scenery_description">{{ key }}</p>

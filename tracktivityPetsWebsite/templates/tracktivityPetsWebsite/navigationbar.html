@@ -5,7 +5,7 @@
             
 	    $.ajax( "{% url 'tracktivityPetsWebsite:get_pet_penny_count' %}")
 	        .done(function(data) {
-	            $("#pet_pennies_navbar").html("x " + data);
+	            $(".pet_pennies_navbar").html("x " + data);
 	    });
       });
 </script>
@@ -19,6 +19,11 @@
         <span class="icon-bar"></span> 
       </button>
       <a class="navbar-brand" href="/">Tracktivity Pets</a>
+          <li class="navbar-text navbarpennies pull-right">
+            Balance:                   
+            <img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+            <span class="pet_pennies_navbar">x ?</span>       
+        </li>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -32,7 +37,7 @@
         <li class="navbar-text">
             Pet Penny Balance:                   
             <img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-            <span id="pet_pennies_navbar">x ?</span>       
+            <span class="pet_pennies_navbar">x ?</span>       
         </li>
         <li class="navbar-text">Signed in as: {{ user.get_username }}</li>
         <li><a href="{% url 'tracktivityPetsWebsite:user_logout' %}"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
