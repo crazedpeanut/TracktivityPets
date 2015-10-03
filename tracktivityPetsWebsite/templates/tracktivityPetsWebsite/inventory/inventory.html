@@ -65,7 +65,7 @@
         		$.ajax( "{% url 'tracktivityPetsWebsite:equip_item' %}" + id + "/unequip/")
 	                .done(function(data) {
 						if(data === "success") { //show confirmation
-							alert("Successfully Unequipped Item");
+							$('#item_unequipped_modal').modal('show');
 							$(".equip_item_btn").html("Equip!");
 						}
 						else
