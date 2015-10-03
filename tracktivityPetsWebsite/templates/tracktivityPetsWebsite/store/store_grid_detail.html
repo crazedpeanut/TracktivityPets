@@ -124,7 +124,8 @@
 	        	{% for key, value in locked_items.items %}
 	            <div class="col-xs-6" class="store_items" id="locked_item_{{ value.id }}">
 	                <button class="store_button col-xs-12">
-	                    <img class="img-responsive" src="{{ value.image }}" width="200px" height="200px">
+						<img class="img-responsive locked" src="{{ preview_pet_image }}">
+	                    <img class="img-responsive pet_preview_overlay locked" src="{{ value.image }}">
 	                    <h4 class="cosmetics_description">{{ key }}</h4>
 	                    <h6>Locked</h6>
 	                </button>            
@@ -136,7 +137,10 @@
         <div class="col-sm-6 hidden-xs" id="selected_item_{{ default_item.id }}">
             {% if default_item %}
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
-            <div class="row"><img class="img-responsive col-xs-6 col-centred selected_item_image" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image"></div>
+            <div class="row">
+            	<img class="img-responsive col-centred selected_pet_image col-xs-6" src="{{ preview_pet_image }}">
+            	<img class="img-responsive col-xs-6 col-centred selected_item_image pet_preview_overlay" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
+            </div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
                 <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-sm-8 col-centred">
                     {{ default_item.description }}
