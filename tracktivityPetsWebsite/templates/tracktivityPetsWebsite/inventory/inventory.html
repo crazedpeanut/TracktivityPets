@@ -24,6 +24,7 @@
                     $("#inventory_detail_pet_level").html("Level " + obj.level);
                     $("#inventory_detail_pet_description").html(obj.story);
                     $("#inventory_detail_pet_image").attr("src", obj.image);
+                    $("#pet_modal_activated_img").attr("src", obj.image);
                     $("#inventory_detail_pet_age").html(obj.age + " Days Old");
                     $("div[id*='selected_pet_']").attr("id", "selected_pet_" + id);
                     
@@ -167,8 +168,8 @@
                     $("#inventory_detail_scenery_header").html(obj.name);  
                     $("#inventory_detail_scenery_description").html(obj.description);                   
                     $("#inventory_detail_scenery_image").attr("src", obj.image);
-                    $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);
-                    
+                    $("#scenery_modal_activated_img").attr("src", obj.image);
+                    $("div[id*='selected_scenery_']").attr("id", "selected_scenery_" + id);                    
                     $("#scenery_inventory_detail_title").html(obj.name);
                     $("#scenery_inventory_detail_image").attr("src", obj.image);
                     $("#scenery_inventory_detail_description").html(obj.description);
@@ -190,8 +191,7 @@
                     if(data === "False")
                         alert("Failed to Activate.");
                     else
-                        alert("Successfully Activated");
-                    
+                        $('#pet_inventory_activated_modal').modal('show');                    
             })
             .fail(function() {
 			alert("failed");
@@ -207,9 +207,8 @@
                 .done(function(data) {
                     if(data === "False")
                         alert("Failed");
-                    else
-                        alert("Successfully Activated");
-                    
+                    else                    
+                        $('#scenery_inventory_activated_modal').modal('show');                    
             })
             .fail(function() {
             })

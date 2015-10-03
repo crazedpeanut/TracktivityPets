@@ -61,10 +61,10 @@
     <div class="collection_view_desktop tab-pane fade" id="scenery">
         <div class="col-xs-12 col-sm-6 scrollview">
             {% if not default_scenery %}
-	        	<p>You own all scenery</p>
+	        	<h3 style="margin-top: 100px">Wow! You own all available scenery. Well done!</h3>
 	        {% else %}
 	 			{% for key, value in unlocked_scenery.items %}
-	            <div class="col-xs-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
+	            <div class="col-xs-12 col-md-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
 	                <button class="store_button col-xs-12">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
 	                    <h4 class="scenery_description">{{ key }}</h4>
@@ -74,8 +74,8 @@
 				{% endfor %}
 				
 	 			{% for key, value in locked_scenery.items %}
-	            <div class="col-xs-6" class="store_items" id="locked_scenery_{{ value.id }}">
-	                <button class="store_button">
+	            <div class="col-xs-12 col-md-6" class="store_items" id="locked_scenery_{{ value.id }}">
+	                <button class="store_button col-xs-12">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail locked" src="{{ value.image }}">
 	                    <h4 class="scenery_description">{{ key }}</h4>
 	                    <h6>Locked</h6>
@@ -85,7 +85,7 @@
 			{% endif %}
         </div>        
         
-        <div class="col-md-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
+        <div class="col-sm-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
         	{% if default_scenery %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
 	            <div class="row"><img class="img-responsive col-xs-8 col-centred selected_scenery_image" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>

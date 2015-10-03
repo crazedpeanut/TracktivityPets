@@ -202,7 +202,17 @@ width: 75%;
     height: 25px;
 }
 
+.navbarpennies {
+    display: none;
+}
+
 @media (max-width: 1120px) {
+    .navbarpennies {
+        display: inline-block;
+        margin-top: 15px;
+        margin-right: 10px;
+    }
+
     .navbar-header {
         float: none;
     }
@@ -623,7 +633,7 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     margin-top: 3%;
 }
 
-#store_detail_pet_description_div {
+#store_detail_pet_description_div, #scenery_inventory_detail_image {
     margin-bottom: 15px;
 }
 
