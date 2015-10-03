@@ -27,17 +27,17 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-            <li><a href="/">Pet Dashboard</a></li>
-            <li><a href="/store">Store</a></li>
-            <li><a href="/inventory">Inventory</a></li>
-            <li><a href="/challenges">Challenges</a></li>
+            <li {% if disable_navbar_links %} class="disabled" {% endif %}><a href="/">Pet Dashboard</a></li>
+            <li {% if disable_navbar_links %} class="disabled" {% endif %}><a href="/store">Store</a></li>
+            <li {% if disable_navbar_links %} class="disabled" {% endif %}><a href="/inventory">Inventory</a></li>
+            <li {% if disable_navbar_links %} class="disabled" {% endif %}><a href="/challenges">Challenges</a></li>
             <li><a href="/feedback">Feedback</a></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="navbar-text">
             Pet Penny Balance:                   
             <img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
-            <span class="pet_pennies_navbar">x ?</span>       
+            <span class="pet_pennies_navbar">x Loading</span>       
         </li>
         <li class="navbar-text">Signed in as: {{ user.get_username }}</li>
         <li><a href="{% url 'tracktivityPetsWebsite:user_logout' %}"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>

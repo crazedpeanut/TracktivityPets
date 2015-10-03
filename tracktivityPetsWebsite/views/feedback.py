@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def feedback(request):
     '''
 	The feedback method renders the feedback template and returns it to the user.

@@ -5,13 +5,17 @@ from tracktivityPetsWebsite import utils
 from django.http import HttpResponse
 import json
 from django.templatetags.static import static
+from django.shortcuts import redirect
 
 @login_required
 def inventory(request, tab=""):
+    
+    if request.user.profile.current_pet is None:#take them to the page to select a pet
+        return redirect('tracktivityPetsWebsite:pet_selection')
+    
     if tab == "" or tab == "pets": #(tab == "pets" and request.is_ajax()): #ie <site>/inventory/
              
         collected_pets = request.user.profile.inventory.get_owned_pets()
-		
         pets = {}
         
         for collected_pet in collected_pets:
@@ -55,6 +59,9 @@ def inventory(request, tab=""):
         levelOne = Level.objects.get(level=1)
         current_mood = default_pet.get_current_mood()
         image_location = current_mood.image_location
+        age = default_pet.get_age_in_days()
+        if age < 0:
+            age = 0
         
         details_pet = {}
         details_pet['name'] = default_pet.name
@@ -62,7 +69,7 @@ def inventory(request, tab=""):
         details_pet['level'] = level
         details_pet['story'] = default_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
         details_pet['image'] = utils.generate_pet_image_url(default_pet.pet, image_location)
-        details_pet['age'] = default_pet.get_age_in_days()
+        details_pet['age'] = age
         details_pet['pk'] = default_pet.pet.pk
         
         details_item = {}

@@ -5,9 +5,13 @@ from tracktivityPetsWebsite.models import Pet, Item, Scenery, Level
 import json
 from tracktivityPetsWebsite import utils
 from django.templatetags.static import static
+from django.shortcuts import redirect
 
 @login_required
 def store(request):
+    
+    if request.user.profile.current_pet is None:#take them to the page to select a pet
+        return redirect('tracktivityPetsWebsite:pet_selection')
     
     #pet specific
     total_xp = request.user.profile.get_total_xp()
