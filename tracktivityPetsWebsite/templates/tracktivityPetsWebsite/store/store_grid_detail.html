@@ -122,6 +122,7 @@
 						<img class="img-responsive" src="{{ preview_pet_image }}">
 	                    <img class="img-responsive store_itemlist_overlay" src="{{ value.image }}">
 	                    <h6 class="cosmetics_description">{{ key }}</h6>
+	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
 	                </button>            
 	            </div>   
 	            {% endfor %}    
