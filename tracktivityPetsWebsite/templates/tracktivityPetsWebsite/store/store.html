@@ -141,6 +141,8 @@
         	var cost = parseInt($(".pet_price").html());
         	
         	if(pet_pennies < cost) {
+        		$(".current_balance").html(pet_pennies);
+        		$(".required_balance").html(cost);
         		$('#insufficient_pennies').modal('show');
         		return;
         	}
@@ -157,6 +159,8 @@
         	var cost = parseInt($(".item_price").html());
         	
         	if(pet_pennies < cost) {
+        		        		$(".current_balance").html(pet_pennies);
+        		$(".required_balance").html(cost);
                 $('#insufficient_pennies').modal('show');
         		return;
         	}
@@ -177,6 +181,8 @@
         	var cost = parseInt($(".scenery_price").html());
         	
         	if(pet_pennies < cost) {
+        		$(".current_balance").html(pet_pennies);
+        		$(".required_balance").html(cost);
                 $('#insufficient_pennies').modal('show');
         		return;
         	}
