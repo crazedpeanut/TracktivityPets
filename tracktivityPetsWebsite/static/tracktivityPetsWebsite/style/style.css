@@ -249,7 +249,7 @@ width: 75%;
     }
 }
 
-.modal-footer {
+.modal-footer, th {
     text-align: center;
 }
 
@@ -284,6 +284,12 @@ width: 75%;
 
 
 .pet_preview_overlay {
+    position: absolute;
+    top: 3%;
+    left: 0;
+}
+
+.store_itemlist_overlay {
     position: absolute;
     top: -3%;
     left: 0;
@@ -593,6 +599,7 @@ width: 75%;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     margin-bottom: 10px;
+    min-height: 155px;
 }
 
 .inventory_detail, {
@@ -675,13 +682,7 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     #pets, #scenery, #cosmetics, #available, #current, #completed
     {
         min-height: 320px;
-    }
-    
-    #scenery_collection_view_img
-    {
-        width: 150px;
-        height: 70px;
-    }   
+    }    
 }
 
 /* Tablet and desktop devices inventory style rules */
@@ -705,6 +706,19 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     {
         height: 600px;
         overflow: auto;
+    }
+    
+    #pets > div > div > .store_button {
+        min-height: 300px;
+    }
+}
+
+@media only screen
+    and (min-device-width: 768px)
+    and (max-device-width: 1024px)
+{
+       #pets > div > div > button {
+        min-height: 350px;
     }
 }
 
