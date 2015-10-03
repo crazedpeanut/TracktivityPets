@@ -40,5 +40,6 @@ def pet_selection(request):
                       {
                        'available_pets': pets,
                        'pets_available_count': len(pets),
+                       'disable_navbar_links': True
                        })
     

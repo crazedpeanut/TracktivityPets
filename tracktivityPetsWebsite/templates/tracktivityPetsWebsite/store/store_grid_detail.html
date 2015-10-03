@@ -34,7 +34,11 @@
         	{% if default_pet %}
 	            <div hidden id=""></div>
 	            <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
-	            <div class="row"><img class="img-responsive col-centred selected_pet_image" src="{{ default_pet.image }}" id="store_detail_image"></div>
+	            {% if default_pet.locked %}
+	            	<div class="row"><img class="img-responsive col-centred selected_pet_image locked-pet" src="{{ default_pet.image }}" id="store_detail_image"></div>
+	            {% else %}
+	            	<div class="row"><img class="img-responsive col-centred selected_pet_image" src="{{ default_pet.image }}" id="store_detail_image"></div>
+	            {% endif %}
 	            <div class="row" id="store_detail_pet_description_div">
 	                <p id="store_detail_pet_description" class="col-xs-12 col-sm-8 col-centred">
 	                    {{ default_pet.story }}

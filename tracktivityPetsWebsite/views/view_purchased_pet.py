@@ -48,6 +48,9 @@ def view_purchased_pet(request, pet_index=""):
         levelOne = Level.objects.get(level=1)
         current_mood = owned_pet.get_current_mood()
         image_location = current_mood.image_location
+        age = owned_pet.get_age_in_days()
+        if age < 0:
+            age = 0
         
         details = {}
         details['name'] = owned_pet.name
@@ -55,7 +58,7 @@ def view_purchased_pet(request, pet_index=""):
         details['level'] = level
         details['story'] = owned_pet.pet.story_set.filter(level_unlocked=levelOne)[0].text
         details['image'] = utils.generate_pet_image_url(owned_pet.pet, image_location)
-        details['age'] = owned_pet.get_age_in_days()
+        details['age'] = age
         
         
         return HttpResponse(json.dumps(details))
