@@ -48,6 +48,8 @@ def dashboard(request):
         experience_needed = next_level.experience_needed
     
     age = current_pet.get_age_in_days()
+    if age < 0:
+        age = 0
 
     happiness_data = current_pet.get_happiness_last_seven_days()
     experience_data = current_pet.get_all_accumulative_experience()

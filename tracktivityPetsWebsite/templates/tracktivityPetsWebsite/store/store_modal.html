@@ -1,7 +1,7 @@
 <!-- store_modal.html: Sub-template that handles the pop-up (modal) detail view on mobile devices. -->
 {% load staticfiles %}
 
-
+<!-- mobile popup modals -->
 <div class="container">            
     <div class="modal fade" role="dialog" id="pet_detail_modal">
         <div class="modal-dialog">              
@@ -36,7 +36,8 @@
                     <h4 class="modal-title" id="item_detail_modal_title">{{ default_item.name }}</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="item_detail_modal_image" class="img-responsive col-xs-9 col-centred selected_item_image" src="{{ default_item.image }}" />
+                	<img class="img-responsive col-xs-9 col-centred" src="{{ preview_pet_image }}">
+                    <img id="item_detail_modal_image" class="img-responsive col-xs-9 col-centred selected_item_image pet_preview_overlay" src="{{ default_item.image }}" />
                     <p id="item_detail_modal_description">{{ default_item.description }}</p>
                 </div>                    
                 <div class="modal-footer">
@@ -78,6 +79,9 @@
 </div> 
 
 
+
+
+
 <!-- items -->
 <div class="container">            
     <div class="modal fade" role="dialog" id="store_confirm_item_modal">
@@ -89,7 +93,8 @@
                 </div>
                 <div class="modal-body" style="position: relative">
                     <div class="row">
-                        <img class="selected_item_image col-xs-12 col-sm-8 col-sm-offset-2" src="{{ default_item.image }}" />
+                    	<img class="col-xs-12 col-sm-8 col-sm-offset-2" src="{{ preview_pet_image }}">
+                        <img class="selected_item_image col-xs-12 col-sm-8 col-sm-offset-2 pet_preview_overlay" src="{{ default_item.image }}" />
                     </div>
                     <div class="row">
                         <p id="store_confirmation_msg">Are you sure you would like to purchase this item?</p>
@@ -122,7 +127,8 @@
                     <h4 class="modal-title">Item Purchased</h4>
                 </div>
                 <div class="modal-body">
-                    <img id="purchased_item_image" class="img-responsive col-xs-9 col-centred" src="{{ default_item.image }}" />
+                	<img class="img-responsive col-xs-9 col-centred" src="{{ preview_pet_image }}">
+                    <img id="purchased_item_image" class="img-responsive col-xs-9 col-centred pet_preview_overlay" src="{{ default_item.image }}" />
                     <p id="store_confirmation_msg">Purchase confirmed!</p>
                     <p>Your new item has been placed in your inventory.</p>
                 </div>
