@@ -136,6 +136,15 @@
         $(".buy_pet_button").click(function(event) {
         	if($(this).html() === "Locked")
         		return;
+        	
+        	var pet_pennies = parseInt($(".pet_pennies_navbar").html().substring(2));
+        	var cost = parseInt($(".pet_price").html());
+        	
+        	if(pet_pennies < cost) {
+        		alert("You do not have the funds required to purchase this pet");
+        		return;
+        	}
+        	
             $('#store_detail_modal').modal('hide');  
             $('#store_confirm_pet_modal').modal('show');
         });
@@ -143,6 +152,14 @@
         $(".buy_item_button").click(function(event) {
         	if($(this).html() === "Locked")
         		return;
+        		
+        	var pet_pennies = parseInt($(".pet_pennies_navbar").html().substring(2));
+        	var cost = parseInt($(".item_price").html());
+        	
+        	if(pet_pennies < cost) {
+        		alert("You do not have the funds required to purchase this item");
+        		return;
+        	}
             $('#store_detail_modal').modal('hide');  
             $('#store_confirm_item_modal').modal('show');
         });
@@ -155,6 +172,15 @@
         $(".buy_scenery_button").click(function(event) {
         	if($(this).html() === "Locked")
         		return;
+        		
+        	var pet_pennies = parseInt($(".pet_pennies_navbar").html().substring(2));
+        	var cost = parseInt($(".scenery_price").html());
+        	
+        	if(pet_pennies < cost) {
+        		alert("You do not have the funds required to purchase this scenery");
+        		return;
+        	}
+        	
             $('#store_detail_modal').modal('hide');  
             $('#store_confirm_scenery_modal').modal('show');
         });
