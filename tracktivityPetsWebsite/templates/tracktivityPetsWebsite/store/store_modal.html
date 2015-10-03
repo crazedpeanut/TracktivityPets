@@ -35,10 +35,12 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title" id="item_detail_modal_title">{{ default_item.name }}</h4>
                 </div>
-                <div class="modal-body">
-                	<img class="img-responsive col-xs-9 col-centred" src="{{ preview_pet_image }}">
-                    <img id="item_detail_modal_image" class="img-responsive col-xs-9 col-centred selected_item_image pet_preview_overlay" src="{{ default_item.image }}" />
-                    <p id="item_detail_modal_description">{{ default_item.description }}</p>
+                <div class="modal-body" style="padding: 0; display: inline-block; position: relative">
+                	<div class="row">
+                	    <img class="img-responsive col-xs-8 col-xs-offset-2" src="{{ preview_pet_image }}">
+                        <img id="item_detail_modal_image" class="img-responsive col-xs-8 col-xs-offset-2 selected_item_image pet_preview_overlay" src="{{ default_item.image }}" />
+                </div>
+                <p id="item_detail_modal_description">{{ default_item.description }}</p>
                 </div>                    
                 <div class="modal-footer">
                 <div style="font-weight: bold" id="item_price_div">Available for:                   
@@ -78,10 +80,6 @@
     </div>
 </div> 
 
-
-
-
-
 <!-- items -->
 <div class="container">            
     <div class="modal fade" role="dialog" id="store_confirm_item_modal">
@@ -91,10 +89,10 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Purchase Confirmation</h4>
                 </div>
-                <div class="modal-body" style="position: relative">
+                <div class="modal-body" style="position: relative; padding: 0">
                     <div class="row">
-                    	<img class="col-xs-12 col-sm-8 col-sm-offset-2" src="{{ preview_pet_image }}">
-                        <img class="selected_item_image col-xs-12 col-sm-8 col-sm-offset-2 pet_preview_overlay" src="{{ default_item.image }}" />
+                    	<img class="col-xs-8 col-xs-offset-2" src="{{ preview_pet_image }}">
+                        <img class="selected_item_image col-xs-8 col-xs-offset-2 pet_preview_overlay" src="{{ default_item.image }}" />
                     </div>
                     <div class="row">
                         <p id="store_confirmation_msg">Are you sure you would like to purchase this item?</p>
@@ -126,9 +124,11 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Item Purchased</h4>
                 </div>
-                <div class="modal-body">
-                	<img class="img-responsive col-xs-9 col-centred" src="{{ preview_pet_image }}">
-                    <img id="purchased_item_image" class="img-responsive col-xs-9 col-centred pet_preview_overlay" src="{{ default_item.image }}" />
+                <div class="modal-body" style="padding: 0; display: inline-block">
+                    <div class="row">
+                        <img class="img-responsive col-xs-8 col-xs-offset-2" src="{{ preview_pet_image }}">
+                        <img id="purchased_item_image" class="img-responsive col-xs-8 col-xs-offset-2 pet_preview_overlay" src="{{ default_item.image }}" />
+                    </div>                	
                     <p id="store_confirmation_msg">Purchase confirmed!</p>
                     <p>Your new item has been placed in your inventory.</p>
                 </div>
@@ -198,10 +198,7 @@
             </div>        
         </div>
     </div>
-</div> 
-
-
-
+</div>
 
 <!-- pets -->
 <div class="container">            
@@ -251,6 +248,35 @@
                     <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
                     x <span class="current_balance">100</span>
                 </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div> 
+
+<!-- Not enough cash modal-->
+<div class="container">            
+    <div class="modal fade" role="dialog" id="insufficient_pennies">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Insufficient Pet Pennies</h4>
+                </div>
+                <div class="modal-body">                    
+                    <p>Uh oh!</p>
+                    <p>You don't currently have enough Pet Pennies to purchase that. You can get more by completing a challenge though!</p>
+                </div>
+                <div style="font-weight: bold" id="current_balance_div">Your current balance:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="current_balance">100</span>
+                </div>  
+                <div style="font-weight: bold" id="item_price_div">You need:                   
+                    <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
+                    x <span class="required_balance">500</span>
+                </div>                   
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-danger" data-dismiss="modal">Dismiss</button>
                 </div>

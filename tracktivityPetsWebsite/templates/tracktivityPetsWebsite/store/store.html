@@ -11,7 +11,7 @@
     $(document).ready(function() {
     	$(".selected_pet_image").addClass("col-xs-12");
     	
-    	var modalScreenWidth = 768;
+    	var modalScreenWidth = 990;
     	
         $("#pets > div > div").click(function(event) 
         {
@@ -97,23 +97,23 @@
         $("#cosmetics > div > div").click(function(event) 
         {
             var id = $(this).attr("id").split("_")[2]; //unpurchased_x becomes x
-            
+
             $.ajax( "{% url 'tracktivityPetsWebsite:view_unpurchased_item' %}" + id)
                 .done(function(data) {
-                    
                     var obj = JSON.parse(data);
+
                     $("#store_detail_cosmetics_header").html(obj.name);                                      
                     $("#inventory_detail_cosmetics_description").html(obj.description);
                     $(".selected_item_image").attr("src", obj.image);
                     $("div[id*='selected_item_']").attr("id", "selected_item_" + id);
-                    
+
                     $("#item_detail_modal_title").html(obj.name);
                     $("#item_detail_modal_image").attr("src", obj.image);
                     $("#item_detail_modal_description").html(obj.description);
                     
                     $(".item_price").html(obj.cost);//update this everywhere
                     $("#purchased_item_image").attr("src", obj.image);
-                    
+
                     if(obj.locked === 'true') {
                     	$(".selected_item_image").addClass("locked");
                     	$(".buy_item_button").html("Locked");
@@ -126,9 +126,9 @@
             .fail(function() {
 
             })
-            .always(function() {                                    
-                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {
-                    $('#item_detail_modal').modal('show');                            
+            .always(function() {                      
+                if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth) {                    
+                    $('#item_detail_modal').modal('show');                   
                 }
             });
         });
@@ -141,7 +141,7 @@
         	var cost = parseInt($(".pet_price").html());
         	
         	if(pet_pennies < cost) {
-        		alert("You do not have the funds required to purchase this pet");
+        		$('#insufficient_pennies').modal('show');
         		return;
         	}
         	
@@ -157,7 +157,7 @@
         	var cost = parseInt($(".item_price").html());
         	
         	if(pet_pennies < cost) {
-        		alert("You do not have the funds required to purchase this item");
+                $('#insufficient_pennies').modal('show');
         		return;
         	}
             $('#store_detail_modal').modal('hide');  
@@ -177,7 +177,7 @@
         	var cost = parseInt($(".scenery_price").html());
         	
         	if(pet_pennies < cost) {
-        		alert("You do not have the funds required to purchase this scenery");
+                $('#insufficient_pennies').modal('show');
         		return;
         	}
         	
