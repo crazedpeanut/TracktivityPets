@@ -92,7 +92,12 @@
         <div class="col-sm-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
         	{% if default_scenery %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
-	            <div class="row"><img class="img-responsive col-xs-8 col-centred selected_scenery_image" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
+	            {% if default_scenery.locked %}
+	            	<div class="row"><img class="img-responsive col-xs-8 col-centred selected_scenery_image locked" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
+	            {% else %}
+	            	<div class="row"><img class="img-responsive col-xs-8 col-centred selected_scenery_image" src="{{ default_scenery.image }}" id="store_detail_scenery_image"></div>
+	            {% endif %}
+	            
 	            <div class="row" id="store_detail_scenery_description_div">
 	                <p id="store_detail_scenery_description" class="col-xs-12 col-sm-8 col-centred">
 	                     {{ default_scenery.description }}
@@ -143,7 +148,12 @@
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
             <div class="row">
             	<img class="img-responsive col-centred col-xs-6" src="{{ preview_pet_image }}">
-            	<img class="img-responsive col-xs-6 col-centred selected_item_image pet_preview_overlay" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
+            	{% if default_item.locked %}
+            		<img class="img-responsive col-xs-6 col-centred selected_item_image pet_preview_overlay locked" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
+            	{% else %}
+            		<img class="img-responsive col-xs-6 col-centred selected_item_image pet_preview_overlay" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
+            	{% endif %}
+            	
             </div>
             <div class="row" id="inventory_detail_cosmetics_description_div">
                 <p id="inventory_detail_cosmetics_description" class="col-xs-12 col-sm-8 col-centred">
