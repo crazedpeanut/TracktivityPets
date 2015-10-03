@@ -70,7 +70,9 @@ function get_available_challenge_details(challenge)
 
             $("#available_challenge_rewards_table").html("");
             $("#challenges_detail_modal").find(".available_challenge_rewards").html("");
-
+            
+            $("#available_challenge_rewards_table").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
+            
             for(var d in data['goals'])
             {
                 $("#available_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
@@ -119,7 +121,7 @@ function get_active_challenge_details(challenge)
             $("#challenges_detail_modal").find(".challenge_detail_description").html(data['challenge']['overview']);
             $("#challenges_detail_modal").find(".challenge_detail_header").html(data['challenge']['name']);
 
-            $("#current_challenge_rewards_table").html("");
+            $("#current_challenge_rewards_table").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
             $("#challenges_detail_modal").find(".available_challenge_rewards").html("");
             for(var d in data['goals'])
             {
@@ -152,7 +154,7 @@ function get_completed_challenge_details(challenge)
             $("#completed").find(".challenge_detail_description").html(data['challenge']['overview']);
             $("#completed").find(".challenge_detail_header").html(data['challenge']['name']);
 
-            $("#completed_challenge_rewards_table").html("");
+            $("#completed_challenge_rewards_table").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
             for(var d in data['goals'])
             {
                 $("#completed_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
@@ -247,7 +249,7 @@ function setSetUpClickListeners()
 
     $("#avail_challenges > a").click(function(event)
     {
-        if (screen.width <= modalScreenWidth)
+        if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth)
         {
             $("#challenges_detail_modal").find(".modal-title").html("This is an available challenge");
             $("#challenges_detail_modal").find("#challenge_accept_btn").show();
@@ -259,7 +261,7 @@ function setSetUpClickListeners()
 
     $("#current_challenges > a").click(function(event)
     {
-        if (screen.width <= modalScreenWidth)
+        if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth)
         {
             $("#challenges_detail_modal").find(".modal-title").html("This is a current challenge");
             $("#challenges_detail_modal").find("#challenge_accept_btn").hide();
@@ -271,7 +273,7 @@ function setSetUpClickListeners()
 
     $("#completed_challenges > a").click(function(event)
     {
-        if (screen.width <= modalScreenWidth)
+        if (screen.width <= modalScreenWidth || $(document).width() <= modalScreenWidth)
         {
             $("#challenges_detail_modal").find("#challenge_accept_btn").hide();
             $("#challenges_detail_modal").find(".modal-title").html("This is a completed challenge");

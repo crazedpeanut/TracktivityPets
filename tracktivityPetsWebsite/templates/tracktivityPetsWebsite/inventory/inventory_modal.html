@@ -48,13 +48,17 @@
 <div class="container">            
     <div class="modal fade" role="dialog" id="item_inventory_detail_modal">
         <div class="modal-dialog">              
-            <div class="modal-content">
+            <div class="modal-content">            
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 id="item_inventory_detail_title" class="modal-title">{{ default_item.name }}</h4>
                 </div>
-                <div class="modal-body">
-                    <img id="item_inventory_detail_image" class="img-responsive col-xs-9 col-centred" src="{{ default_item.image }}" />
+                
+                <div class="modal-body" style="padding: 0; display: inline-block; position: relative">
+                    <div class="row">
+                        <img class="col-xs-8 col-xs-offset-2" src="{{ preview_pet_image }}">
+                        <img id="item_inventory_detail_image" class="img-responsive col-xs-8 col-xs-offset-2 selected_item_image pet_preview_overlay" src="{{ default_item.image }}" />
+                    </div>                    
                     <p id="item_inventory_detail_description">{{ default_item.description }}</p>
                 </div>                    
                 <div class="modal-footer">
@@ -144,6 +148,44 @@
                 <div class="modal-body">
                     <img id="pet_modal_activated_img" class="img-responsive col-xs-9 col-centred" src="{{ default_pet.image }}" />
                     <p id="pet_inventory_detail_description">Your active pet has been switched. You can now browse their Inventory and shop for their items in the Store, as well as check up on them in the Dashboard!</p>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-success" data-dismiss="modal">Awesome!</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="item_equipped_modal">
+7        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="item_inventory_detail_title" class="modal-title">Item Equipped!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Your item has now been equipped! Go and admire your pet's new look on the Dashboard.</p>
+                </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-success" data-dismiss="modal">Awesome!</button>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>
+
+<div class="container">            
+    <div class="modal fade" role="dialog" id="pet_renamed_modal">
+        <div class="modal-dialog">              
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="item_inventory_detail_title" class="modal-title">Pet Renamed!</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Your pet has been successfully renamed.</p>
                 </div>                    
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-success" data-dismiss="modal">Awesome!</button>

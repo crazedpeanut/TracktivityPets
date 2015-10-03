@@ -4,25 +4,25 @@
 <div class="collection_window container tab-content col-xs-12">
     <!-- Pet Store Tab --->
     <div class="collection_view_desktop tab-pane fade in active" id="pets">
-        <div class="col-xs-12 col-sm-6 scrollview">            
+        <div class="col-xs-12 col-md-6 scrollview">            
             {% if not default_pet %}
 	        	<h3 style="margin-top: 100px">Wow! You own every pet. Well done!</h3>
 	        {% else %}
 	        	 {% for key, value in unlocked_pets.items %}
-	            <div class="col-xs-6" class="store_pet" id="unlocked_pet_{{ value.id }}">
+	            <div class="col-xs-12 col-sm-6 store_pet"id="unlocked_pet_{{ value.id }}">
 	                <button class="store_button">
 	                    <img class="img-responsive" src="{{ value.image }}">
-	                    <h4 class="">{{ key }}</h4>
+	                    <h6 class="">{{ key }}</h6>
 	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
 	                </button>            
 	            </div>
 	            {% endfor %}
 	
 	            {% for key, value in locked_pets.items %}
-	            <div class="col-xs-6" class="store_pet" id="locked_pet_{{ value.id }}">
+	            <div class="col-xs-12 col-sm-6" class="store_pet" id="locked_pet_{{ value.id }}">
 	                <button class="store_button">
 	                    <img class="img-responsive locked-pet" src="{{ value.image }}">
-	                    <h4 class="">{{ key }}</h4>
+	                    <h6 class="">{{ key }}</h6>
 	                    <h6>Locked</h6>
 	                </button>            
 	            </div>
@@ -30,7 +30,7 @@
 	        {% endif %}
         </div>
 
-        <div class="col-sm-6 hidden-xs" id="selected_pet_{{ default_pet.id }}">
+        <div class="col-sm-6 hidden-xs hidden-sm" id="selected_pet_{{ default_pet.id }}">
         	{% if default_pet %}
 	            <div hidden id=""></div>
 	            <div class="row"><h2 class="col-centred" id="store_detail_header">{{ default_pet.name }}</h2></div>
@@ -44,16 +44,12 @@
 	                    {{ default_pet.story }}
 	                </p>
 	            </div>
-	            {% if default_pet.locked %}
-		            <div style="font-weight: bold" id="item_price_div">Total Experience Required:                   
-		                {{ default_pet.experience }}
-		            </div>
-	            {% else %}
+
 		            <div style="font-weight: bold" id="item_price_div">Available for:                   
 		                <img id="store_penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}">
 		                x <span class="pet_price">{{ default_pet.cost }}</span>
 		            </div>
-	            {% endif %}
+
 	            <div class="row" id="store_detail_buttons">
 	                <button class="btn btn-lg btn-primary col-sm-4 col-md-3 col-centred buy_pet_button" type="button">Purchase</button>
 	            </div>
@@ -63,25 +59,25 @@
         
     <!-- Scenery Store Tab -->
     <div class="collection_view_desktop tab-pane fade" id="scenery">
-        <div class="col-xs-12 col-sm-6 scrollview">
+        <div class="col-xs-12 col-md-6 scrollview">
             {% if not default_scenery %}
 	        	<h3 style="margin-top: 100px">Wow! You own all available scenery. Well done!</h3>
 	        {% else %}
 	 			{% for key, value in unlocked_scenery.items %}
-	            <div class="col-xs-12 col-md-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
+	            <div class="col-xs-12 col-sm-6" class="store_items" id="unlocked_scenery_{{ value.id }}">
 	                <button class="store_button col-xs-12">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail" src="{{ value.image }}">
-	                    <h4 class="scenery_description">{{ key }}</h4>
+	                    <h6 class="scenery_description">{{ key }}</h6>
 	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
 	                </button>            
 	            </div>
 				{% endfor %}
 				
 	 			{% for key, value in locked_scenery.items %}
-	            <div class="col-xs-12 col-md-6" class="store_items" id="locked_scenery_{{ value.id }}">
+	            <div class="col-xs-12 col-sm-6" class="store_items" id="locked_scenery_{{ value.id }}">
 	                <button class="store_button col-xs-12">
 	                    <img id="scenery_collection_view_img" class="img-responsive img-thumbnail locked" src="{{ value.image }}">
-	                    <h4 class="scenery_description">{{ key }}</h4>
+	                    <h6 class="scenery_description">{{ key }}</h6>
 	                    <h6>Locked</h6>
 	                </button>            
 	            </div>
@@ -89,7 +85,7 @@
 			{% endif %}
         </div>        
         
-        <div class="col-sm-6 hidden-xs" id="selected_scenery_{{ default_scenery.id }}">
+        <div class="col-md-6 hidden-xs hidden-sm" id="selected_scenery_{{ default_scenery.id }}">
         	{% if default_scenery %}
 	            <div class="row"><h2 class="col-centred" id="store_detail_scenery_header">{{ default_scenery.name }}</h2></div>
 	            {% if default_scenery.locked %}
@@ -116,25 +112,25 @@
     
     <!-- Collected Cosmetics Tab -->
     <div class="collection_view_desktop tab-pane fade" id="cosmetics">
-        <div class="col-xs-12 col-sm-6 scrollview">
+        <div class="col-xs-12 col-md-6 scrollview">
             {% if not default_item %}
 	        	<p>You own all items</p>
 	        {% else %}
 	        	{% for key, value in unlocked_items.items %}
-	            <div class="col-xs-6" class="store_items" id="unlocked_item_{{ value.id }}">
+	            <div class="col-xs-12 col-sm-6" class="store_items" id="unlocked_item_{{ value.id }}">
 	                <button class="store_button col-xs-12" style="position: relative">
 						<img class="img-responsive" src="{{ preview_pet_image }}">
-	                    <img class="img-responsive pet_preview_overlay" src="{{ value.image }}">
-	                    <h4 class="cosmetics_description">{{ key }}</h4>
+	                    <img class="img-responsive store_itemlist_overlay" src="{{ value.image }}">
+	                    <h6 class="cosmetics_description">{{ key }}</h6>
 	                </button>            
 	            </div>   
 	            {% endfor %}    
 	            
 	        	{% for key, value in locked_items.items %}
-	            <div class="col-xs-6" class="store_items" id="locked_item_{{ value.id }}">
+	            <div class="col-xs-12 col-sm-6" class="store_items" id="locked_item_{{ value.id }}">
 	                <button class="store_button col-xs-12">
 						<img class="img-responsive locked" src="{{ preview_pet_image }}">
-	                    <img class="img-responsive pet_preview_overlay locked" src="{{ value.image }}">
+	                    <img class="img-responsive store_itemlist_overlay locked" src="{{ value.image }}">
 	                    <h4 class="cosmetics_description">{{ key }}</h4>
 	                    <h6>Locked</h6>
 	                </button>            
@@ -143,15 +139,15 @@
 	        {% endif %}
         </div>
 
-        <div class="col-sm-6 hidden-xs" id="selected_item_{{ default_item.id }}">
+        <div class="col-md-6 hidden-xs hidden-sm" id="selected_item_{{ default_item.id }}">
             {% if default_item %}
             <div class="row"><h2 class="col-centred" id="store_detail_cosmetics_header">{{ default_item.name }}</h2></div>
             <div class="row">
-            	<img class="img-responsive col-centred col-xs-6" src="{{ preview_pet_image }}">
+            	<img class="img-responsive col-xs-6 col-xs-offset-3" src="{{ preview_pet_image }}">
             	{% if default_item.locked %}
-            		<img class="img-responsive col-xs-6 col-centred selected_item_image pet_preview_overlay locked" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
+            		<img style="position: absolute" class="img-responsive col-xs-6 col-xs-offset-3 selected_item_image locked" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
             	{% else %}
-            		<img class="img-responsive col-xs-6 col-centred selected_item_image pet_preview_overlay" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
+            		<img style="position: absolute" class="img-responsive col-xs-6 col-xs-offset-3 selected_item_image" src="{{ default_item.image }}" id="inventory_detail_cosmetics_image">
             	{% endif %}
             	
             </div>

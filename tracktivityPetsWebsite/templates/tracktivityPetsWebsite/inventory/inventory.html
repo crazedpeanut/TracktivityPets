@@ -85,7 +85,7 @@
 	            		$('#equip_confirm_modal').modal('show');
 					}
 					else if(data === "success") {
-						alert("Successfully Equipped");
+						$('#item_equipped_modal').modal('show');
 						$(".equip_item_btn").html("Unequip!");
 					}
 					else
@@ -106,7 +106,8 @@
     		$.ajax( "{% url 'tracktivityPetsWebsite:equip_item' %}" + id + "/equip/")
                 .done(function(data) {
 					if(data === "success") { //show confirmation
-						alert("Successfully Equipped Item");
+					   $('#item_equipped_modal').modal('show');
+						//alert("Successfully Equipped Item");
 						$(".equip_item_btn").html("Unequip!");
 					}
 					else
@@ -226,7 +227,7 @@
                     if(data === "False")
                         alert("Failed to Rename.");
                     else {
-                        alert("Successfully Renamed");
+                        $('#pet_renamed_modal').modal('show');
                         $("#pets").find("#collected_" + id).find("button").find("p").html(name);
                         $("#inventory_detail_header").html(name);
                         $("#rename_textfield").attr("placeholder", name);
