@@ -10,7 +10,7 @@
 	        {% else %}
 	        	 {% for key, value in unlocked_pets.items %}
 	            <div class="col-xs-12 col-sm-6 store_pet"id="unlocked_pet_{{ value.id }}">
-	                <button class="store_button">
+	                <button class="store_button col-xs-12">
 	                    <img class="img-responsive" src="{{ value.image }}">
 	                    <h6 class="">{{ key }}</h6>
 	                    <h6 id="collection_view_cost"><img id="penny_img" src="{% static 'tracktivityPetsWebsite/images/penny.png' %}"> x {{ value.cost }}<h6>
@@ -20,7 +20,7 @@
 	
 	            {% for key, value in locked_pets.items %}
 	            <div class="col-xs-12 col-sm-6" class="store_pet" id="locked_pet_{{ value.id }}">
-	                <button class="store_button">
+	                <button class="store_button col-xs-12">
 	                    <img class="img-responsive locked-pet" src="{{ value.image }}">
 	                    <h6 class="">{{ key }}</h6>
 	                    <h6>Locked</h6>

@@ -621,7 +621,7 @@ width: 75%;
 }
 
 #inventory_detail_pet_description_div, #store_detail_pet_description_div {
-    height: 180px;
+    height: 150px;
     overflow: auto;
 }
 
@@ -706,19 +706,15 @@ p#inventory_detail_pet_description, #inventory_detail_scenery_description, #inve
     {
         height: 600px;
         overflow: auto;
-    }
-    
-    #pets > div > div > .store_button {
-        min-height: 300px;
-    }
+    }    
 }
 
 @media only screen
-    and (min-device-width: 768px)
-    and (max-device-width: 1024px)
+    and (min-device-width: 1200px)
+    and (max-device-width: 5120px)
 {
-       #pets > div > div > button {
-        min-height: 350px;
+      #pets > div > div > .store_button {
+        min-height: 300px;
     }
 }
 
