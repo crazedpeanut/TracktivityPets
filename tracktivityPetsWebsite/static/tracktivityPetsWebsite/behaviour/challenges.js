@@ -90,6 +90,9 @@ function get_available_challenge_details(challenge)
     $(".accept-chal-button").click(function(event)
     {
 
+            $("#pop-up-modal").find(".modal-message").html("Challenge Accepted!");
+            $("#pop-up-modal").modal('show');
+
             $.ajax({
                url:"accept_challenge/" + challenge,
                type:"GET",
