@@ -200,7 +200,7 @@
 					
                     if(success[0] === "True")
                     {
-                    	$("#pet_pennies_navbar").html("x " + success[1]); //defined in navbar
+                    	$(".pet_pennies_navbar").html("x " + success[1]); //defined in navbar
                     	$('#store_confirm_item_modal').modal('hide');
                     	$('#item_purchased_modal').modal('show');
                         $(".current_balance").html(success[1]);
@@ -252,7 +252,7 @@
 					
                     if(success[0] === "True") 
                     {
-                    	$("#pet_pennies_navbar").html("x " + success[1]); //defined in navbar
+                    	$(".pet_pennies_navbar").html("x " + success[1]); //defined in navbar
                     	$(".current_balance").html(success[1]);
                         $('#store_confirm_scenery_modal').modal('hide');
                     	$('#scenery_purchased_modal').modal('show');
@@ -306,7 +306,7 @@
 					
                     if(success[0] === "True") 
                     {
-                    	$("#pet_pennies_navbar").html("x " + success[1]); //defined in navbar
+                    	$(".pet_pennies_navbar").html("x " + success[1]); //defined in navbar
                         $(".current_balance").html(success[1]);
                 		$('#store_confirm_pet_modal').modal('hide');  
             			$('#pet_purchased_modal').modal('show');
