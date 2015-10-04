@@ -72,6 +72,7 @@ def store(request):
             unlocked_items[item.name] = {}
             unlocked_items[item.name]['image'] = item.get_image_path()
             unlocked_items[item.name]['id'] = item.id
+            unlocked_items[item.name]['cost'] = item.cost
             if not default_item_set:
                 default_item = item
                 default_item_set = True
