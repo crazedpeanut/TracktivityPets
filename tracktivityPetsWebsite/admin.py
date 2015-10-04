@@ -185,6 +185,11 @@ class UserNotificationAdmin(admin.ModelAdmin):
     fields = ('userProfile', 'dateAdded', 'message','acknowledged','notificationType')
 
 
+##################################
+
+class ExperienceAdmin(admin.ModelAdmin):
+    fields = ('pet', 'amount', 'date')
+
 admin.site.register(UserNotification, UserNotificationAdmin)
 admin.site.register(UserMicroChallengeGoalStatus, UserMicroChallengeGoalStatusAdmin)
 admin.site.register(MicroChallengeMedal, MicroChallengeMedalAdmin)
