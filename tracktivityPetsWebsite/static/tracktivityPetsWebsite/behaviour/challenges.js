@@ -72,14 +72,15 @@ function get_available_challenge_details(challenge)
             $("#challenges_detail_modal").find(".available_challenge_rewards").html("");
             
             $("#available_challenge_rewards_table").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
+            $("#challenges_detail_modal").find(".available_challenge_rewards").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
             
             for(var d in data['goals'])
             {
                 $("#available_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
-                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td><img id='penny_img' src='/static/tracktivityPetsWebsite/images/penny.png'/> x "+ data['goals'][d]['pet_pennies'] +"</td></tr>");
 
                 $("#challenges_detail_modal").find(".available_challenge_rewards").append("<tr><td>" + data['goals'][d]['medal'] +
-                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td><img id='penny_img' src='/static/tracktivityPetsWebsite/images/penny.png'/> x "+ data['goals'][d]['pet_pennies'] +"</td></tr>");
 
             }
         }
@@ -125,14 +126,15 @@ function get_active_challenge_details(challenge)
             $("#challenges_detail_modal").find(".challenge_detail_header").html(data['challenge']['name']);
 
             $("#current_challenge_rewards_table").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
-            $("#challenges_detail_modal").find(".available_challenge_rewards").html("");
+            $("#challenges_detail_modal").find(".available_challenge_rewards").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
+            $("#challenges_detail_modal").find(".available_challenge_rewards").html("<thead><tr><th>Difficulty</th><th>Challenge</th><th>Reward</th></tr></thead>");
             for(var d in data['goals'])
             {
                 $("#current_challenge_rewards_table").append("<tr><td>" + data['goals'][d]['medal'] +
-                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td><img id='penny_img' src='/static/tracktivityPetsWebsite/images/penny.png'/> x "+ data['goals'][d]['pet_pennies'] +"</td></tr>");
 
                 $("#challenges_detail_modal").find(".available_challenge_rewards").append("<tr><td>" + data['goals'][d]['medal'] +
-                "</td><td>"+ data['goals'][d]['description'] +"</td><td>"+ data['goals'][d]['pet_pennies'] +"</td></tr>");
+                "</td><td>"+ data['goals'][d]['description'] +"</td><td><img id='penny_img' src='/static/tracktivityPetsWebsite/images/penny.png'/> x "+ data['goals'][d]['pet_pennies'] +"</td></tr>");
             }
         }
     });
