@@ -12,6 +12,10 @@ import json
 
 @login_required
 def view_unpurchased_item(request, item_index=""):
+    '''
+    The view_unpurchased_item method finds the item that corresponds with the item_index parameter.
+    The details for the item are then returned back to the users browser in JSON format.
+    '''
 
     try:
         item = Item.objects.get(id=item_index) #get the item in the url

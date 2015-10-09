@@ -4,10 +4,16 @@ from django.http import HttpResponse
 from tracktivityPetsWebsite import utils
 from django.shortcuts import redirect
 from tracktivityPetsWebsite.models import CollectedPet, Pet
-import json
 
 @login_required
 def pet_selection(request):
+    '''
+    When the request to the pet_selection method is GET, the pet_selection templates are rendered and
+    sent back to the users browser
+
+    If the request is POST, then the chosen pet is set as the users current pet.
+    On successful completion of this, the user is sent to the next stage of the registration process.
+    '''
 
     if request.user.profile.current_pet is not None or CollectedPet.objects.filter(inventory=request.user.profile.inventory).count() > 0:#redirect if own any pets, so they cant get more
         return redirect('tracktivityPetsWebsite:dashboard')

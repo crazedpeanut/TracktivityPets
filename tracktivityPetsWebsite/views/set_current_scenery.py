@@ -9,6 +9,10 @@ import json
 
 @login_required
 def set_current_scenery(request, scenery_index=""):
+    '''
+    The set_current_scenery method, as the name suggests, sets the current scenery for the
+    user that was passed in with the request object.
+    '''
     if scenery_index is "":
         return HttpResponse("False")
     else:

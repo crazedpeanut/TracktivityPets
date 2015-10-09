@@ -8,8 +8,14 @@ import datetime
 
 @login_required
 def purchase(request, tab="", index=""):
-    if tab == "pet": #(tab == "pets" and request.is_ajax()): #ie <site>/inventory/
-        #return HttpResponse("True")
+    '''
+    The purchase function takes the current store tab the user is on (tab) and attempts to
+    purchased the specified item (index) for the user passed in with the request object.
+
+    The result of the transaction is then sent back to the user for notification.
+    '''
+
+    if tab == "pet":
         try:
             pet = Pet.objects.get(pk=index)
             try:

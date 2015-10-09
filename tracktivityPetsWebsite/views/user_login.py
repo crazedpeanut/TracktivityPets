@@ -8,6 +8,18 @@ from django.shortcuts import redirect
 import fitapp
 
 def user_login(request):
+    '''
+    The user_login function takes a username and password, passed in as POST parameters.
+
+    If the credentials are valid, then a session is create for the user so they can access the features
+    of the web application.
+
+    If the credentials are not valid, the response back to the user will contain validation errors. This is
+    so the user can be notified.
+
+    If the user has selected the 'remember me' checkbox, the expiry date for their session is valid for
+    1 year.
+    '''
 
     if  request.user.is_authenticated(): #if user is logged in
         return redirect('tracktivityPetsWebsite:dashboard') #go to dashboard

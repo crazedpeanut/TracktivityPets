@@ -9,6 +9,10 @@ import json
 
 @login_required
 def set_pet_name(request, pet_index="", name=""):
+    '''
+    The set_pet_name method, as the name suggests, sets the name of the current pet for the
+    user that was passed in with the request object.
+    '''
     if pet_index is "" or name is "":
         return HttpResponse("False")
     else:

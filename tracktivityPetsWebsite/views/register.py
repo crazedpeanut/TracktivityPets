@@ -6,9 +6,15 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
 
-#from tracktivityPetsWebsite import utils #example of using utils
-
 def register(request):
+    '''
+    If the request to the register function is a GET request, the registration form is rendered and sent back to user.
+
+    If the request is POST, then the form fields are validated. If valid, the user is registered and sent to the next
+    stage of the registration process.
+
+    If the contents of the fields are not valid, then a validation error message is sent back to notify the user.
+    '''
     if request.user.is_authenticated(): #if user is logged in
         return redirect('tracktivityPetsWebsite:dashboard') #go to dashboard
     

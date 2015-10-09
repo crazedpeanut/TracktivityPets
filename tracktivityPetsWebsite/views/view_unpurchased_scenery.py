@@ -12,6 +12,10 @@ import json
 
 @login_required
 def view_unpurchased_scenery(request, scenery_index=""):
+    '''
+    The view_unpurchased_scenery method finds the scenery that corresponds with the scenery_index parameter.
+    The details for the scenery are then returned back to the users browser in JSON format.
+    '''
 
     try:
         scenery = Scenery.objects.get(id=scenery_index) #get the scenery in the url

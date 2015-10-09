@@ -8,7 +8,10 @@ from django.templatetags.static import static
 
 @login_required
 def store(request):
-    
+    '''
+    The store function renders and fills in, the store templates. Once rendered, these templates are then
+    returned to the user.
+    '''
     #pet specific
     total_xp = request.user.profile.get_total_xp()
     collected_pets = request.user.profile.inventory.get_owned_pets()
