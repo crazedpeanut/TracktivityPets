@@ -31,26 +31,26 @@ logger.setLevel(logging.DEBUG)
 
 
 #TODO: need to compensate for all the possible codes recieved from fitbit-django (such as 101, etc)
-'''
- When everything goes well, the *status_code* is 100 and the requested data
-is included. However, there are a number of things that can 'go wrong'
-with this call. For each type of error, we return an empty data list with
-a *status_code* to describe what went wrong on our end:
 
-    :100: OK - Response contains JSON data.
-    :101: User is not logged in.
-    :102: User is not integrated with Fitbit.
-    :103: Fitbit authentication credentials are invalid and have been
-        removed.
-    :104: Invalid input parameters. Either *period* or *end_date*, but not
-        both, must be supplied. *period* should be one of [1d, 7d, 30d,
-        1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
-        'yyyy-mm-dd'.
-    :105: User exceeded the Fitbit limit of 150 calls/hour.
-    :106: Fitbit error - please try again soon.
-'''
 def retrieve_fitapp_data(user, date_from, date_to):
+    '''
+     When everything goes well, the *status_code* is 100 and the requested data
+    is included. However, there are a number of things that can 'go wrong'
+    with this call. For each type of error, we return an empty data list with
+    a *status_code* to describe what went wrong on our end:
 
+        :100: OK - Response contains JSON data.
+        :101: User is not logged in.
+        :102: User is not integrated with Fitbit.
+        :103: Fitbit authentication credentials are invalid and have been
+            removed.
+        :104: Invalid input parameters. Either *period* or *end_date*, but not
+            both, must be supplied. *period* should be one of [1d, 7d, 30d,
+            1w, 1m, 3m, 6m, 1y, max], and dates should be of the format
+            'yyyy-mm-dd'.
+        :105: User exceeded the Fitbit limit of 150 calls/hour.
+        :106: Fitbit error - please try again soon.
+    '''
     if not is_fitbit_linked(user):
         return False, 'No fitbit found'
     elif user.profile.current_pet is None:

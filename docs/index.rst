@@ -16,6 +16,7 @@ Contents:
    modules/models
    modules/utils
    modules/views
+   modules/tasks
 
 Indices and tables
 ==================
