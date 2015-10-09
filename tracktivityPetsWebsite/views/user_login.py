@@ -9,14 +9,16 @@ import fitapp
 
 def user_login(request):
     '''
-    The user_login function validates the username and password logs the user in if they are valid.
+    The user_login function takes a username and password, passed in as POST parameters.
 
-    If the user has selected the "remember me" checkbox, their session will remain valid
-    for whatever is set in settings.REMEMBER_ME_DURATION, at the time of writing this it is 1 year.
+    If the credentials are valid, then a session is create for the user so they can access the features
+    of the web application.
 
-    If the users credentials are incorrect, a validation error message is returned.
+    If the credentials are not valid, the response back to the user will contain validation errors. This is
+    so the user can be notified.
 
-    Once logged in, the user is redirected to the dashboard.
+    If the user has selected the 'remember me' checkbox, the expiry date for their session is valid for
+    1 year.
     '''
 
     if  request.user.is_authenticated(): #if user is logged in

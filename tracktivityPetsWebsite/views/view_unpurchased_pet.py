@@ -13,6 +13,10 @@ from tracktivityPetsWebsite import utils
 
 @login_required
 def view_unpurchased_pet(request, pet_index=""):
+    '''
+    The view_unpurchased_pet method finds the pet that corresponds with the pet_index parameter.
+    The details for the pet are then returned back to the users browser in JSON format.
+    '''
 
     try:
         pet = Pet.objects.get(id=pet_index) #get the pet in the url

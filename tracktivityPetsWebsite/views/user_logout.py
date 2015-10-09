@@ -5,9 +5,10 @@ from django.core.urlresolvers import reverse
     
 def user_logout(request):
     '''
-    The user_logout method kills a logged in users session so they have to log in again to use their account.
+    The user_logout destroys the users session so that they can no longer access any of the
+    websites features that require valid credentials.
     '''
-    
+
     if request.user.is_authenticated(): #if user is logged in
         logout(request) #log them out
         

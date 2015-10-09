@@ -20,6 +20,7 @@ def purchase(request, tab="", index=""):
 
     if tab == "pet": #(tab == "pets" and request.is_ajax()): #ie <site>/inventory/
         #return HttpResponse("True")
+
         try:
             pet = Pet.objects.get(pk=index)
             try:

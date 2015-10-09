@@ -13,15 +13,10 @@ import json
 
 @login_required
 def view_purchased_pet(request, pet_index=""):
-
-    #if user owns pet or not
-        #experience
-        #level
-        #list of usable items
-        #rename pet
-        #make active
-    #else
-        #purchase pet with pennies
+    '''
+    The view_purchased_pet method finds the purchased pet that corresponds with the pet_index parameter.
+    The details for the purchased pet are then returned back to the users browser in JSON format.
+    '''
         
     if pet_index is "":
         owned_pet = request.user.profile.current_pet

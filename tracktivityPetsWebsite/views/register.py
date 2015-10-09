@@ -6,8 +6,6 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login
 
-#from tracktivityPetsWebsite import utils #example of using utils
-
 def register(request):
     '''
     The register method renders and returns a registration form to sign up to Tracktivity Pets.
@@ -15,8 +13,6 @@ def register(request):
 
     This method is also used to accept the POST requests from the form.
     If the form is not valid, a message is sent back to the users browser.
-
-
     '''
 
     if request.user.is_authenticated(): #if user is logged in

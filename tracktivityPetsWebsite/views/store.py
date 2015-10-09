@@ -9,10 +9,14 @@ from django.shortcuts import redirect
 
 @login_required
 def store(request):
-    
+    '''
+    The store function renders and fills in, the store templates. Once rendered, these templates are then
+    returned to the user.
+    '''
+
     if request.user.profile.current_pet is None:#take them to the page to select a pet
         return redirect('tracktivityPetsWebsite:pet_selection')
-    
+
     #pet specific
     total_xp = request.user.profile.get_total_xp()
     collected_pets = request.user.profile.inventory.get_owned_pets()

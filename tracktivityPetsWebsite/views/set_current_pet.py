@@ -9,6 +9,10 @@ import json
 
 @login_required
 def set_current_pet(request, pet_index=""):
+    '''
+    The set_current_pet method, as the name suggests, sets the current pet for the
+    user that was passed in with the request object.
+    '''
     if pet_index is "":
         return HttpResponse("False")
     else:
