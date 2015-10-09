@@ -88,6 +88,8 @@
         <span class="n">experience_needed</span> <span class="o">=</span> <span class="n">next_level</span><span class="o">.</span><span class="n">experience_needed</span>
     
     <span class="n">age</span> <span class="o">=</span> <span class="n">current_pet</span><span class="o">.</span><span class="n">get_age_in_days</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="n">happiness_data</span> <span class="o">=</span> <span class="n">current_pet</span><span class="o">.</span><span class="n">get_happiness_last_seven_days</span><span class="p">()</span>
     <span class="n">experience_data</span> <span class="o">=</span> <span class="n">current_pet</span><span class="o">.</span><span class="n">get_all_accumulative_experience</span><span class="p">()</span>

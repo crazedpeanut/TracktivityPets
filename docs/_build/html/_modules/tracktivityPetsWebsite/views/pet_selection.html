@@ -44,10 +44,16 @@
 <span class="kn">from</span> <span class="nn">tracktivityPetsWebsite</span> <span class="kn">import</span> <span class="n">utils</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 <span class="kn">from</span> <span class="nn">tracktivityPetsWebsite.models</span> <span class="kn">import</span> <span class="n">CollectedPet</span><span class="p">,</span> <span class="n">Pet</span>
-<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="pet_selection"><a class="viewcode-back" href="../../../modules/views/pet_selection.html#tracktivityPetsWebsite.views.pet_selection.pet_selection">[docs]</a><span class="k">def</span> <span class="nf">pet_selection</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    When the request to the pet_selection method is GET, the pet_selection templates are rendered and</span>
+<span class="sd">    sent back to the users browser</span>
+
+<span class="sd">    If the request is POST, then the chosen pet is set as the users current pet.</span>
+<span class="sd">    On successful completion of this, the user is sent to the next stage of the registration process.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">CollectedPet</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">inventory</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">inventory</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span><span class="c">#redirect if own any pets, so they cant get more</span>
         <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite:dashboard&#39;</span><span class="p">)</span>
@@ -80,6 +86,7 @@
                       <span class="p">{</span>
                        <span class="s">&#39;available_pets&#39;</span><span class="p">:</span> <span class="n">pets</span><span class="p">,</span>
                        <span class="s">&#39;pets_available_count&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">pets</span><span class="p">),</span>
+                       <span class="s">&#39;disable_navbar_links&#39;</span><span class="p">:</span> <span class="bp">True</span>
                        <span class="p">})</span>
     </div>
 </pre></div>

@@ -52,6 +52,10 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="view_unpurchased_item"><a class="viewcode-back" href="../../../modules/views/view_unpurchased_item.html#tracktivityPetsWebsite.views.view_unpurchased_item.view_unpurchased_item">[docs]</a><span class="k">def</span> <span class="nf">view_unpurchased_item</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">item_index</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The view_unpurchased_item method finds the item that corresponds with the item_index parameter.</span>
+<span class="sd">    The details for the item are then returned back to the users browser in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">item</span> <span class="o">=</span> <span class="n">Item</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">item_index</span><span class="p">)</span> <span class="c">#get the item in the url</span>

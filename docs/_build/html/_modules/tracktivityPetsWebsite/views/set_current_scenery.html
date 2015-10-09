@@ -49,6 +49,10 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="set_current_scenery"><a class="viewcode-back" href="../../../modules/views/set_current_scenery.html#tracktivityPetsWebsite.views.set_current_scenery.set_current_scenery">[docs]</a><span class="k">def</span> <span class="nf">set_current_scenery</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">scenery_index</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The set_current_scenery method, as the name suggests, sets the current scenery for the</span>
+<span class="sd">    user that was passed in with the request object.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">scenery_index</span> <span class="ow">is</span> <span class="s">&quot;&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">&quot;False&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>

@@ -60,6 +60,7 @@
 
     <span class="k">if</span> <span class="n">tab</span> <span class="o">==</span> <span class="s">&quot;pet&quot;</span><span class="p">:</span> <span class="c">#(tab == &quot;pets&quot; and request.is_ajax()): #ie &lt;site&gt;/inventory/</span>
         <span class="c">#return HttpResponse(&quot;True&quot;)</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">pet</span> <span class="o">=</span> <span class="n">Pet</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
             <span class="k">try</span><span class="p">:</span>

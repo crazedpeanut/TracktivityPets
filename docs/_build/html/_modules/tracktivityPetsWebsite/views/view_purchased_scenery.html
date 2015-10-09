@@ -53,6 +53,11 @@
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="view_purchased_scenery"><a class="viewcode-back" href="../../../modules/views/view_unpurchased_scenery.html#tracktivityPetsWebsite.views.view_purchased_scenery.view_purchased_scenery">[docs]</a><span class="k">def</span> <span class="nf">view_purchased_scenery</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">scenery_index</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The view_purchased_scenery method finds the scenery that corresponds with the scenery_index parameter.</span>
+<span class="sd">    The details for the scenery are then returned back to the users browser in JSON format.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="k">try</span><span class="p">:</span>
         <span class="n">scenery</span> <span class="o">=</span> <span class="n">Scenery</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">scenery_index</span><span class="p">)</span> <span class="c">#get the scenery in the url</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">scenery</span><span class="o">.</span><span class="n">name</span>

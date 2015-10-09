@@ -45,13 +45,17 @@
 <span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">django.templatetags.static</span> <span class="kn">import</span> <span class="n">static</span>
+<span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">redirect</span>
 
 <span class="nd">@login_required</span>
 <div class="viewcode-block" id="inventory"><a class="viewcode-back" href="../../../modules/views/inventory.html#tracktivityPetsWebsite.views.inventory.inventory">[docs]</a><span class="k">def</span> <span class="nf">inventory</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">tab</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">):</span>
+    
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">current_pet</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span><span class="c">#take them to the page to select a pet</span>
+        <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite:pet_selection&#39;</span><span class="p">)</span>
+    
     <span class="k">if</span> <span class="n">tab</span> <span class="o">==</span> <span class="s">&quot;&quot;</span> <span class="ow">or</span> <span class="n">tab</span> <span class="o">==</span> <span class="s">&quot;pets&quot;</span><span class="p">:</span> <span class="c">#(tab == &quot;pets&quot; and request.is_ajax()): #ie &lt;site&gt;/inventory/</span>
              
         <span class="n">collected_pets</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">inventory</span><span class="o">.</span><span class="n">get_owned_pets</span><span class="p">()</span>
-		
         <span class="n">pets</span> <span class="o">=</span> <span class="p">{}</span>
         
         <span class="k">for</span> <span class="n">collected_pet</span> <span class="ow">in</span> <span class="n">collected_pets</span><span class="p">:</span>
@@ -95,6 +99,9 @@
         <span class="n">levelOne</span> <span class="o">=</span> <span class="n">Level</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">current_mood</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">get_current_mood</span><span class="p">()</span>
         <span class="n">image_location</span> <span class="o">=</span> <span class="n">current_mood</span><span class="o">.</span><span class="n">image_location</span>
+        <span class="n">age</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">get_age_in_days</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">age</span> <span class="o">=</span> <span class="mi">0</span>
         
         <span class="n">details_pet</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">name</span>
@@ -102,7 +109,7 @@
         <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">level</span>
         <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;story&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">pet</span><span class="o">.</span><span class="n">story_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">level_unlocked</span><span class="o">=</span><span class="n">levelOne</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
         <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;image&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">generate_pet_image_url</span><span class="p">(</span><span class="n">default_pet</span><span class="o">.</span><span class="n">pet</span><span class="p">,</span> <span class="n">image_location</span><span class="p">)</span>
-        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">get_age_in_days</span><span class="p">()</span>
+        <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age</span>
         <span class="n">details_pet</span><span class="p">[</span><span class="s">&#39;pk&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_pet</span><span class="o">.</span><span class="n">pet</span><span class="o">.</span><span class="n">pk</span>
         
         <span class="n">details_item</span> <span class="o">=</span> <span class="p">{}</span>

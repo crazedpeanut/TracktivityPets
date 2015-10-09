@@ -43,11 +43,13 @@
 <dl class="function">
 <dt id="tracktivityPetsWebsite.views.user_login.user_login">
 <code class="descclassname">tracktivityPetsWebsite.views.user_login.</code><code class="descname">user_login</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tracktivityPetsWebsite/views/user_login.html#user_login"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tracktivityPetsWebsite.views.user_login.user_login" title="Permalink to this definition">¶</a></dt>
-<dd><p>The user_login function validates the username and password logs the user in if they are valid.</p>
-<p>If the user has selected the &#8220;remember me&#8221; checkbox, their session will remain valid
-for whatever is set in settings.REMEMBER_ME_DURATION, at the time of writing this it is 1 year.</p>
-<p>If the users credentials are incorrect, a validation error message is returned.</p>
-<p>Once logged in, the user is redirected to the dashboard.</p>
+<dd><p>The user_login function takes a username and password, passed in as POST parameters.</p>
+<p>If the credentials are valid, then a session is create for the user so they can access the features
+of the web application.</p>
+<p>If the credentials are not valid, the response back to the user will contain validation errors. This is
+so the user can be notified.</p>
+<p>If the user has selected the &#8216;remember me&#8217; checkbox, the expiry date for their session is valid for
+1 year.</p>
 </dd></dl>
 
 </div>

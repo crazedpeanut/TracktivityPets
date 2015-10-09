@@ -63,7 +63,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">redirect_to</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="s">&#39;tracktivityPetsWebsite:main_story&#39;</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/fitbit/fitbit_link.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;fitbit_link_link&quot;</span><span class="p">:</span> <span class="n">fitbit_link_link</span><span class="p">,</span> <span class="s">&#39;redirect_to&#39;</span><span class="p">:</span> <span class="n">redirect_to</span><span class="p">})</span></div>
+    <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;tracktivityPetsWebsite/fitbit/fitbit_link.html&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&quot;fitbit_link_link&quot;</span><span class="p">:</span> <span class="n">fitbit_link_link</span><span class="p">,</span> <span class="s">&#39;redirect_to&#39;</span><span class="p">:</span> <span class="n">redirect_to</span><span class="p">,</span> <span class="s">&#39;disable_navbar_links&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span></div>
 </pre></div>
 
           </div>
