@@ -1,0 +1,8 @@
+Utils
+==============
+
+.. currentmodule:: tracktivityPetsWebsite.tasks
+
+
+.. autofunction:: update_user_with_fitbit
+.. autofunction:: check_user_challenges

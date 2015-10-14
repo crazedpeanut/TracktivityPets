@@ -29,4 +29,4 @@ Views:
    views/view_purchased_scenery
    views/view_unpurchased_item
    views/view_unpurchased_pet
-   views/view_purchased_scenery
+   views/view_unpurchased_scenery

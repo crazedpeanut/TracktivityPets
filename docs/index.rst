@@ -11,6 +11,7 @@ Contents:
 .. toctree::
 
    modules/Introduction
+   modules/FileOverview.rst
    modules/HowItWorks
    modules/Installation
    modules/models

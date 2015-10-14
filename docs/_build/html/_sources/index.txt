@@ -10,9 +10,14 @@ Contents:
 
 .. toctree::
 
+   modules/Introduction
+   modules/FileOverview.rst
+   modules/HowItWorks
+   modules/Installation
    modules/models
-   modules/views
    modules/utils
+   modules/views
+   modules/tasks
 
 Indices and tables
 ==================

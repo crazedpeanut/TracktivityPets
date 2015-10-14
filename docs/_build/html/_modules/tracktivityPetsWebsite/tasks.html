@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tracktivityPetsWebsite.tasks &mdash; Tracktivity Pets 1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Tracktivity Pets 1 documentation" href="../../index.html" />
+    <link rel="up" title="Module code" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for tracktivityPetsWebsite.tasks</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">celery</span> <span class="kn">import</span> <span class="n">shared_task</span>
+<span class="kn">from</span> <span class="nn">celery.exceptions</span> <span class="kn">import</span> <span class="n">Ignore</span><span class="p">,</span> <span class="n">Reject</span>
+<span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">parser</span>
+<span class="kn">from</span> <span class="nn">django.core.cache</span> <span class="kn">import</span> <span class="n">cache</span>
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">fitapp.models</span> <span class="kn">import</span> <span class="n">UserFitbit</span>
+<span class="kn">from</span> <span class="nn">tracktivityPetsWebsite.utils</span> <span class="kn">import</span> <span class="n">update_user_fitbit</span><span class="p">,</span> <span class="n">update_user_challenges</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">hdlr</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">&#39;./tracktivitypets_tasks.log&#39;</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%(asctime)s</span><span class="s"> </span><span class="si">%(levelname)s</span><span class="s"> </span><span class="si">%(message)s</span><span class="s">&#39;</span><span class="p">)</span>
+<span class="n">hdlr</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">hdlr</span><span class="p">)</span>
+<span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="n">LOCK_EXPIRE</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">5</span> <span class="c"># Lock expires in 5 minutes</span>
+
+<span class="nd">@shared_task</span>
+<div class="viewcode-block" id="update_user_with_fitbit"><a class="viewcode-back" href="../../modules/tasks.html#tracktivityPetsWebsite.tasks.update_user_with_fitbit">[docs]</a><span class="k">def</span> <span class="nf">update_user_with_fitbit</span><span class="p">(</span><span class="n">fitbit_user</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Get the user&#39;s time series data &quot;&quot;&quot;</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The update_user_with_fitbit task fetched a users time series fitbit data asynchronously</span>
+<span class="sd">    The function then calls another function in utils.py to update the users active challenges</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;Updating TracktivityPets local db for fitbit user: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fitbit_user</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+
+        <span class="c"># Create a lock so we don&#39;t try to run the same task multiple times</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        lock_id = &#39;{0}-lock-{1}&#39;.format(__name__, fitbit_user)</span>
+<span class="sd">        if not cache.add(lock_id, &#39;true&#39;, LOCK_EXPIRE):</span>
+<span class="sd">            logger.debug(&#39;Already updating fitbit name: %s&#39; % (fitbit_user))</span>
+<span class="sd">            raise Ignore()</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">fbusers</span> <span class="o">=</span> <span class="n">UserFitbit</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">fitbit_user</span><span class="o">=</span><span class="n">fitbit_user</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">fbuser</span> <span class="ow">in</span> <span class="n">fbusers</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;About to update TracktivityPets local db for TPets user: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fbuser</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">get_username</span><span class="p">()))</span>
+            <span class="n">update_user_fitbit</span><span class="p">(</span><span class="n">fbuser</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+            <span class="n">check_user_challenges</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">fbuser</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="c">#release lock</span>
+        <span class="c">#cache.delete(lock_id)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</div>
+<span class="nd">@shared_task</span>
+<div class="viewcode-block" id="check_user_challenges"><a class="viewcode-back" href="../../modules/tasks.html#tracktivityPetsWebsite.tasks.check_user_challenges">[docs]</a><span class="k">def</span> <span class="nf">check_user_challenges</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;check user challenges task started for user: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">user</span><span class="o">.</span><span class="n">get_username</span><span class="p">())</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">update_user_challenges</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s">&quot;Error occured during user challenge check. User: </span><span class="si">%s</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">user</span><span class="o">.</span><span class="n">get_username</span><span class="p">())</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;check user challenges task finished for user: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">user</span><span class="o">.</span><span class="n">get_username</span><span class="p">())</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Tracktivity Pets.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

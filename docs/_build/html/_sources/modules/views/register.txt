@@ -1,5 +1,5 @@
 Register View
-==============
+=====================
 
 .. currentmodule:: tracktivityPetsWebsite.views.register
 
