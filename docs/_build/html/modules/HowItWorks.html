@@ -24,8 +24,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Tracktivity Pets 1 documentation" href="../index.html" />
-    <link rel="next" title="How to Install Tracktivity Pets" href="Installation.html" />
-    <link rel="prev" title="Introduction - What is Tracktivity Pets?" href="Introduction.html" />
+    <link rel="next" title="Models" href="models.html" />
+    <link rel="prev" title="Tracktivity Pets File Overview" href="FileOverview.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -40,6 +40,155 @@
             
   <div class="section" id="how-tracktivity-pets-works">
 <h1>How Tracktivity Pets Works<a class="headerlink" href="#how-tracktivity-pets-works" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Ubuntu 14.04 LTS (May work on other operating systems however)</li>
+<li>Python3</li>
+<li>pip3</li>
+<li>Nginx (We used version 1.9)</li>
+<li>mySQL or mariaDB server</li>
+<li>Python libraries</li>
+<li>django</li>
+<li>fitbit</li>
+<li>django-fitbit</li>
+<li>django-celery</li>
+<li>mysqlclient</li>
+<li>gunicorn</li>
+<li>Virtualenv</li>
+<li>RabbitMQ</li>
+<li>Celery</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Install Ubuntu server and install any updates available.</p>
+</li>
+<li><p class="first">Install python3 - apt-get install python3</p>
+</li>
+<li><p class="first">Install pip3 - apt-get install python3-pip</p>
+</li>
+<li><p class="first">Install virtualenv - pip3 install virtualenv</p>
+</li>
+<li><p class="first">Install the mysql client libraries - apt-get install libmysqlient-dev python3-dev</p>
+</li>
+<li><p class="first">Install mySQL - apt-get install mysql</p>
+</li>
+<li><p class="first">Log into mysql and create a database called “tracktivitypets”</p>
+</li>
+<li><p class="first">Create a mySQL user called “tracktivitypets” with the password “tracktivitypets”</p>
+</li>
+<li><p class="first">The username can be changes in the settings.py of Tracktivity Pets</p>
+</li>
+<li><p class="first">Give the tracktivitypets user all privileges on the tracktivitypets database</p>
+</li>
+<li><p class="first">Create a user called “django” with a default home directory - useradd django</p>
+</li>
+<li><p class="first">Gives the user django a password - passwd django</p>
+</li>
+<li><p class="first">Create a directory for logs - mkdir /var/log/TracktivityPets</p>
+</li>
+<li><p class="first">Give django ownership of /var/log/TracktivityPets - chown django:django /var/log/TracktivityPets</p>
+</li>
+<li><p class="first">Login as the user - su django</p>
+</li>
+<li><p class="first">cd to the home directory - cd ~</p>
+</li>
+<li><p class="first">Create a Python virtual environment - virtualenv init</p>
+</li>
+<li><p class="first">Copy TracktivityPets folder into the home directory of the user django</p>
+</li>
+<li><p class="first">In the settings.py file, change the hostname or IP address of the database to the location of your database instance (localhost if mysql is installed on the same server)</p>
+</li>
+<li><p class="first">Make sure the django user owns the files and directories within the TracktivityPets directory - chown -R django:django TracktivityPets</p>
+</li>
+<li><p class="first">Activate the Python virtual environment - source ./init/bin/activate</p>
+</li>
+<li><p class="first">Install the following python libraries using pip3:</p>
+<blockquote>
+<div><ul class="simple">
+<li>django</li>
+<li>fitbit</li>
+<li>django-fitbit</li>
+<li>django-celery</li>
+<li>mysqlclient</li>
+<li>gunicorn</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Get django to create the tables in the database - python3 manage makemigrations, python3 manage migrate</p>
+</li>
+<li><p class="first">Load the initial data into the database - python3 manage loaddata initdata.json</p>
+</li>
+<li><p class="first">Install RabbitMQ server - apt-get install rabbitmq-server</p>
+</li>
+<li><p class="first">Install nginx - apt-get install nginx</p>
+</li>
+<li><p class="first">Create a file /etc/nginx/sites-enabled/tracktivitypets.conf</p>
+</li>
+<li><p class="first">Define a server block to communicate to the gunicorn UNIX socket. (Below is an example server block config)</p>
+</li>
+<li><p class="first">Set up gunicorn to run on the servers start-up using Upstart. (Below is an example configuration script)</p>
+</li>
+</ol>
+<div class="section" id="nginx-configuration">
+<h3>Nginx configuration<a class="headerlink" href="#nginx-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>upstream trackpets {
+    server unix:/home/django/run/gunicorn.sock fail_timeout=10s;
+}
+
+server {
+    listen   80;
+    server_name tracktivitypets.me www.tracktivitypets.me;
+
+    client_max_body_size 4G;
+
+    access_log /var/log/nginx-access.log;
+    error_log /var/log/nginx-error.log warn;
+
+    location /static/ {
+	autoindex on;
+	alias   /home/django/TracktivityPets/tracktivityPetsWebsite/static/;
+    }
+
+    location /static/admin/ {
+	autoindex on;
+	alias   /usr/lib/python2.7/dist-packages/django/contrib/admin/static/admin/;
+    }
+
+    location /media/ {
+	autoindex on;
+	alias   /home/django/TracktivityPets/media/;
+    }
+
+    location / {
+	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	proxy_set_header Host $http_host;
+	proxy_redirect off;
+
+	if (!-f $request_filename) {
+	    proxy_pass http://trackpets;
+</pre></div>
+</div>
+</div>
+<div class="section" id="gunicorn-configuration">
+<h3>Gunicorn configuration<a class="headerlink" href="#gunicorn-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>description &quot;myapp&quot;
+
+start on (filesystem)
+stop on runlevel [016]
+
+respawn
+setuid nobody
+setgid nogroup
+chdir /path/to/app/directory
+
+exec /path/to/virtualenv/bin/gunicorn myapp:app
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -47,12 +196,25 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How Tracktivity Pets Works</a><ul>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#nginx-configuration">Nginx configuration</a></li>
+<li><a class="reference internal" href="#gunicorn-configuration">Gunicorn configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Introduction.html" title="previous chapter">Introduction - What is Tracktivity Pets?</a></li>
-      <li>Next: <a href="Installation.html" title="next chapter">How to Install Tracktivity Pets</a></li>
+      <li>Previous: <a href="FileOverview.html" title="previous chapter">Tracktivity Pets File Overview</a></li>
+      <li>Next: <a href="models.html" title="next chapter">Models</a></li>
   </ul></li>
 </ul>
 </div>
