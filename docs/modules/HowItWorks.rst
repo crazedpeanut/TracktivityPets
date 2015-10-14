@@ -1,11 +1,8 @@
 How Tracktivity Pets Works
 ===========================
 
-Installation
------------------------------
-
 Dependencies
-~~~~~~~~~~~~~~
+-----------------------------
 
 * Ubuntu 14.04 LTS (May work on other operating systems however)
 * Python3
@@ -23,4 +20,97 @@ Dependencies
 * RabbitMQ
 * Celery
 
+Installation
+-----------------------------
 
+1. Install Ubuntu server and install any updates available.
+2. Install python3 - apt-get install python3
+3. Install pip3 - apt-get install python3-pip
+4. Install virtualenv - pip3 install virtualenv
+5. Install the mysql client libraries - apt-get install libmysqlient-dev python3-dev
+6. Install mySQL - apt-get install mysql
+7. Log into mysql and create a database called “tracktivitypets”
+8. Create a mySQL user called “tracktivitypets” with the password “tracktivitypets”
+9. The username can be changes in the settings.py of Tracktivity Pets
+10. Give the tracktivitypets user all privileges on the tracktivitypets database
+11. Create a user called “django” with a default home directory - useradd django
+12. Gives the user django a password - passwd django 
+13. Create a directory for logs - mkdir /var/log/TracktivityPets
+14. Give django ownership of /var/log/TracktivityPets - chown django:django /var/log/TracktivityPets
+15. Login as the user - su django
+16. cd to the home directory - cd ~
+17. Create a Python virtual environment - virtualenv init
+18. Copy TracktivityPets folder into the home directory of the user django
+19. In the settings.py file, change the hostname or IP address of the database to the location of your database instance (localhost if mysql is installed on the same server)
+20. Make sure the django user owns the files and directories within the TracktivityPets directory - chown -R django:django TracktivityPets
+21. Activate the Python virtual environment - source ./init/bin/activate
+22. Install the following python libraries using pip3:
+	
+	- django
+	- fitbit
+	- django-fitbit
+	- django-celery
+	- mysqlclient
+	- gunicorn
+	
+23. Get django to create the tables in the database - python3 manage makemigrations, python3 manage migrate
+24. Load the initial data into the database - python3 manage loaddata initdata.json
+25. Install RabbitMQ server - apt-get install rabbitmq-server
+26. Install nginx - apt-get install nginx
+27. Create a file /etc/nginx/sites-enabled/tracktivitypets.conf
+28. Define a server block to communicate to the gunicorn UNIX socket. (Below is an example server block config)
+29. Set up gunicorn to run on the servers start-up using Upstart. (Below is an example configuration script)
+
+Nginx configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+upstream trackpets {
+    server unix:/home/django/run/gunicorn.sock fail_timeout=10s;
+}
+
+server {
+    listen   80;
+    server_name tracktivitypets.me www.tracktivitypets.me;
+
+    client_max_body_size 4G;
+
+    access_log /var/log/nginx-access.log;
+    error_log /var/log/nginx-error.log warn;
+
+    location /static/ {
+        autoindex on;
+        alias   /home/django/TracktivityPets/tracktivityPetsWebsite/static/;
+    }
+
+    location /static/admin/ {
+        autoindex on;
+        alias   /usr/lib/python2.7/dist-packages/django/contrib/admin/static/admin/;
+    }
+
+    location /media/ {
+        autoindex on;
+        alias   /home/django/TracktivityPets/media/;
+    }
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+
+        if (!-f $request_filename) {
+            proxy_pass http://trackpets;
+
+Nginx configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+description "myapp"
+
+start on (filesystem)
+stop on runlevel [016]
+
+respawn
+setuid nobody
+setgid nogroup
+chdir /path/to/app/directory
+
+exec /path/to/virtualenv/bin/gunicorn myapp:app
