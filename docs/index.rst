@@ -11,8 +11,9 @@ Contents:
 .. toctree::
 
    modules/Introduction
-   modules/FileOverview
    modules/HowItWorks
+   modules/FileOverview
+   modules/DevTools
    modules/models
    modules/utils
    modules/views
