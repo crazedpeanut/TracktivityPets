@@ -24,8 +24,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Tracktivity Pets 1 documentation" href="../index.html" />
-    <link rel="next" title="How Tracktivity Pets Works" href="HowItWorks.html" />
-    <link rel="prev" title="Introduction - What is Tracktivity Pets?" href="Introduction.html" />
+    <link rel="next" title="Development Tools" href="DevTools.html" />
+    <link rel="prev" title="How Tracktivity Pets Works" href="HowItWorks.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -40,6 +40,7 @@
             
   <div class="section" id="tracktivity-pets-file-overview">
 <h1>Tracktivity Pets File Overview<a class="headerlink" href="#tracktivity-pets-file-overview" title="Permalink to this headline">¶</a></h1>
+<p>This section is designed to give an overview of the purpose of the main files throughout the project in order to help identify the purpose of the file, as well as show you where may be best to edit specific parts of the project.</p>
 <div class="section" id="front-end-files">
 <h2>Front-end files<a class="headerlink" href="#front-end-files" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="user-interface">
@@ -53,7 +54,7 @@
 <h4>Templates Introduction<a class="headerlink" href="#templates-introduction" title="Permalink to this headline">¶</a></h4>
 <p>Each separate page within Tracktivity Pets is either defined in a Django template file of its own (such as the Feedback page), or a collection of sub-templates which are then included into a main template (such as the Store). Django templates are essentially just HTML files which incorporate extra code for processing data returned from a Django view file, such as what pets a user has currently unlocked.</p>
 <div class="section" id="base-html">
-<h5><strong>base.html</strong><a class="headerlink" href="#base-html" title="Permalink to this headline">¶</a></h5>
+<h5>base.html<a class="headerlink" href="#base-html" title="Permalink to this headline">¶</a></h5>
 <p>Every web page needs opening &lt;html&gt; and &lt;head&gt; tags in which vital stylesheets, script files and other information relevant to the entire site is defined. Tracktivity Pets defines this in the base.html template, and almost every other page in the site extends this template. Some of the most important features of base.html are the links to Bootstrap’s CSS and library of inbuilt Javascript functions, as well as to Google’s charting API necessary for the Dashboard page. Within the &lt;body&gt; tag, a template block is defined for the navigation bar, followed by a &lt;div&gt; element with identifer “page-content”. This &lt;div&gt; contains another template block called content_block: It is into this block that other pages insert their own code.</p>
 </div>
 <div class="section" id="splash-html">
@@ -195,6 +196,105 @@ Unequipping an item,</li>
 </div>
 </div>
 </div>
+<div class="section" id="back-end-files-django">
+<h2>Back-end Files (Django)<a class="headerlink" href="#back-end-files-django" title="Permalink to this headline">¶</a></h2>
+<p>All the files discussed in this part of the section are found in &lt;project folder&gt;/tracktivityPetsWebsite/ apart from settings.py which is detailed below.</p>
+<div class="section" id="settings-py">
+<h3><strong>settings.py</strong><a class="headerlink" href="#settings-py" title="Permalink to this headline">¶</a></h3>
+<p>First and foremost, the most important file in this system is settings.py, which can be found in &lt;project folder&gt;/TracktivityPets. This file is used by Django to to run the project, and needs to match specific parts of the server. Most importantly are that HOST_NAME needs to match the domain name of the server that the project is being run on. DEBUG should be turned to False if you do not wish for your users to see errors (and see a 404 page instead), or may be set to True if you want debugging information. There is a range of EMAIL_* related variables, and these need to match any desired SMTP server settings. The (uncommented out) DATABASES variable needs to match the desired database, such as your own username, password and host. And FITAPP_* variables will need to be changed to match your consumer secret and consumer key.</p>
+</div>
+<div class="section" id="admin-py">
+<h3><strong>admin.py</strong><a class="headerlink" href="#admin-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used for the files generated in the admin view found at &lt;domain name&gt;/admin and is an easy way to add new entries to the database. It is already filled with some of the models used in this project, and is a built in Django functionality, with plenty of useful tutorials found online.</p>
+</div>
+<div class="section" id="models-py">
+<h3><strong>models.py</strong><a class="headerlink" href="#models-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is another file used by Django, and is where all of the models we have used are found, as well as specific methods used on these models (see the appendix for more information). Again, this is a simple another built in Django functionality, and is recommended to learn how Django handles this before attempting to modify.</p>
+</div>
+<div class="section" id="utils-py">
+<h3><strong>utils.py</strong><a class="headerlink" href="#utils-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used as a way for more generic methods to exist, that did not suit models.py. This contains methods such as creating a users first pet, activating items, pet changes, and more. See the appendix on this file for more information.</p>
+</div>
+<div class="section" id="urls-py">
+<h3><strong>urls.py</strong><a class="headerlink" href="#urls-py" title="Permalink to this headline">¶</a></h3>
+<p>This file contains all the URLs for tracktivityPetsWebsite, and is included in the urls.py found in &lt;project folder&gt;/TracktivityPets. For more information on this, see the Program Structure section for an explanation of how this works.</p>
+</div>
+<div class="section" id="tasks-py">
+<h3><strong>tasks.py</strong><a class="headerlink" href="#tasks-py" title="Permalink to this headline">¶</a></h3>
+<p>This file contains functions that are to be executed asynchronously by Celery. Each function in this file has the &#64;shared_task decorator, indicating they can be used by Celery.</p>
+</div>
+<div class="section" id="tests-py">
+<h3><strong>tests.py</strong><a class="headerlink" href="#tests-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is another built in Django file, and is not actually currently used, but does exist for future implementation. This file is essentially used for running automated testing, and many online resources cover this aspect if you wish to implement this functionality.</p>
+</div>
+</div>
+<div class="section" id="back-end-files-tracktivity-pets">
+<h2>Back-End Files (Tracktivity Pets)<a class="headerlink" href="#back-end-files-tracktivity-pets" title="Permalink to this headline">¶</a></h2>
+<p>The files discussed here are all in references to those found in &lt;project folder&gt;/tracktivityPetsWebsite/views.</p>
+<div class="section" id="init-py">
+<h3><strong>__init__.py</strong><a class="headerlink" href="#init-py" title="Permalink to this headline">¶</a></h3>
+<p>Due to the nature of Django code, all views are expected to be in a single views.py file. To get around this, the views folder was created and this file fixes that. Essentially, instead of looking for a views.py file, Django will now look for this file. This file just contains imports of all the functions and are set up in the way: from .&lt;file&gt; import &lt;function name in file&gt; (also note the . before the file).</p>
+</div>
+<div class="section" id="challenges-py">
+<h3><strong>challenges.py</strong><a class="headerlink" href="#challenges-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used as the backend for the challenges page in Tracktivity Pets. It handles rendering the templates, accepting challenges, checking the status of challenges, and also alerting the user once they have complete a challenge goal.</p>
+</div>
+<div class="section" id="dashboard-py">
+<h3><strong>dashboard.py</strong><a class="headerlink" href="#dashboard-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used as the backend for the dashboard page, and retrieves all the necessary information required for the dashboard template.</p>
+</div>
+<div class="section" id="equip-item-py">
+<h3><strong>equip_item.py</strong><a class="headerlink" href="#equip-item-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is an ajax call that does some basic logic on an item the user wishes to equip or unequip an item, responding whether the item has been equipped, unequipped, or an item already exists on that body part.</p>
+</div>
+<div class="section" id="feedback-py">
+<h3><strong>feedback.py</strong><a class="headerlink" href="#feedback-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used to render the feedback page, or if something is in the POST variable, the system will attempt to email the provided email address with the information the user entered.</p>
+</div>
+<div class="section" id="fitbit-link-py">
+<h3><strong>fitbit_link.py</strong><a class="headerlink" href="#fitbit-link-py" title="Permalink to this headline">¶</a></h3>
+<p>This file simply renders the template to link a Fitbit device, or redirects if one is already linked.</p>
+</div>
+<div class="section" id="fitbit-success-py">
+<h3><strong>fitbit_success.py</strong><a class="headerlink" href="#fitbit-success-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used to notify the Django Fitbit app that an account has successfully been authorised.</p>
+</div>
+<div class="section" id="get-pet-penny-count-py">
+<h3><strong>get_pet_penny_count.py</strong><a class="headerlink" href="#get-pet-penny-count-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is an ajax call that simply returns the amount of pet pennies the user currently has, and is used for the pet penny counter in the navigation bar.</p>
+</div>
+<div class="section" id="inventory-py">
+<h3><strong>inventory.py</strong><a class="headerlink" href="#inventory-py" title="Permalink to this headline">¶</a></h3>
+<p>This file is used to get all the items, pets. and scenery that the user owns. The items retrieved are for the current pet only. This file also renders the inventory template.</p>
+</div>
+<div class="section" id="main-story-py">
+<h3><strong>main_story.py</strong><a class="headerlink" href="#main-story-py" title="Permalink to this headline">¶</a></h3>
+<p>This file simply renders the main_story template so that the user can view the main story on registration.</p>
+</div>
+<div class="section" id="notifications-py">
+<h3><strong>notifications.py</strong><a class="headerlink" href="#notifications-py" title="Permalink to this headline">¶</a></h3>
+<p>This file keeps track of any notifications or updates to be displayed to the user. There are a number of different kinds of notifications such as goals completed, gained experience, and stories unlocked. These can all be handled differently depending on the context and type of notification. A notification can also be acknowledged so they can be displayed only once.</p>
+</div>
+<div class="section" id="pet-selection-py">
+<h3><strong>pet_selection.py</strong><a class="headerlink" href="#pet-selection-py" title="Permalink to this headline">¶</a></h3>
+<p>This file serves two purposes: firstly it retrieves all the pets that exist, as well as their silhouettes and story, and renders the template for the pet selection page. It is also used for registering the chosen pet when it receives a POST.</p>
+</div>
+<div class="section" id="purchase-py">
+<h3><strong>purchase.py</strong><a class="headerlink" href="#purchase-py" title="Permalink to this headline">¶</a></h3>
+<p>The purpose of this file is as an ajax call to purchase a scenery, item, or pet. The POST request handles whether the user is purchasing a scenery, item or pet and provides an id of the said purchase. The system will then see if they have the requirements for it, and will return whether it was purchased successfully or not, followed by the amount of new pet pennies if it was a success.</p>
+</div>
+<div class="section" id="register-py">
+<h3><strong>register.py</strong><a class="headerlink" href="#register-py" title="Permalink to this headline">¶</a></h3>
+<p>This file serves two purposes: firstly it renders the template for registering, and if a POST request is made then the user account is registered with the input they provided. Double ups of account details are also checked, so this may return an error.</p>
+</div>
+</div>
+<div class="section" id="external-django-apps">
+<h2>External Django Apps<a class="headerlink" href="#external-django-apps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="django-fitbit">
+<h3>Django-Fitbit<a class="headerlink" href="#django-fitbit" title="Permalink to this headline">¶</a></h3>
+<p>Django-Fitbit is a Django app that acts as a wrapper around the Python Fitbit library. It handles updates from Fitbit and can pull data so that Tracktivity Pets has up to date step information for its users.</p>
+</div>
+</div>
 </div>
 
 
@@ -210,7 +310,7 @@ Unequipping an item,</li>
 <li><a class="reference internal" href="#user-interface">User Interface</a></li>
 <li><a class="reference internal" href="#site-templates">Site templates</a><ul>
 <li><a class="reference internal" href="#templates-introduction">Templates Introduction</a><ul>
-<li><a class="reference internal" href="#base-html"><strong>base.html</strong></a></li>
+<li><a class="reference internal" href="#base-html">base.html</a></li>
 <li><a class="reference internal" href="#splash-html"><strong>splash.html</strong></a></li>
 <li><a class="reference internal" href="#login-html"><strong>login.html</strong></a></li>
 <li><a class="reference internal" href="#register-html"><strong>register.html</strong></a></li>
@@ -252,6 +352,37 @@ Unequipping an item,</li>
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#back-end-files-django">Back-end Files (Django)</a><ul>
+<li><a class="reference internal" href="#settings-py"><strong>settings.py</strong></a></li>
+<li><a class="reference internal" href="#admin-py"><strong>admin.py</strong></a></li>
+<li><a class="reference internal" href="#models-py"><strong>models.py</strong></a></li>
+<li><a class="reference internal" href="#utils-py"><strong>utils.py</strong></a></li>
+<li><a class="reference internal" href="#urls-py"><strong>urls.py</strong></a></li>
+<li><a class="reference internal" href="#tasks-py"><strong>tasks.py</strong></a></li>
+<li><a class="reference internal" href="#tests-py"><strong>tests.py</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#back-end-files-tracktivity-pets">Back-End Files (Tracktivity Pets)</a><ul>
+<li><a class="reference internal" href="#init-py"><strong>__init__.py</strong></a></li>
+<li><a class="reference internal" href="#challenges-py"><strong>challenges.py</strong></a></li>
+<li><a class="reference internal" href="#dashboard-py"><strong>dashboard.py</strong></a></li>
+<li><a class="reference internal" href="#equip-item-py"><strong>equip_item.py</strong></a></li>
+<li><a class="reference internal" href="#feedback-py"><strong>feedback.py</strong></a></li>
+<li><a class="reference internal" href="#fitbit-link-py"><strong>fitbit_link.py</strong></a></li>
+<li><a class="reference internal" href="#fitbit-success-py"><strong>fitbit_success.py</strong></a></li>
+<li><a class="reference internal" href="#get-pet-penny-count-py"><strong>get_pet_penny_count.py</strong></a></li>
+<li><a class="reference internal" href="#inventory-py"><strong>inventory.py</strong></a></li>
+<li><a class="reference internal" href="#main-story-py"><strong>main_story.py</strong></a></li>
+<li><a class="reference internal" href="#notifications-py"><strong>notifications.py</strong></a></li>
+<li><a class="reference internal" href="#pet-selection-py"><strong>pet_selection.py</strong></a></li>
+<li><a class="reference internal" href="#purchase-py"><strong>purchase.py</strong></a></li>
+<li><a class="reference internal" href="#register-py"><strong>register.py</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-django-apps">External Django Apps</a><ul>
+<li><a class="reference internal" href="#django-fitbit">Django-Fitbit</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -259,8 +390,8 @@ Unequipping an item,</li>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Introduction.html" title="previous chapter">Introduction - What is Tracktivity Pets?</a></li>
-      <li>Next: <a href="HowItWorks.html" title="next chapter">How Tracktivity Pets Works</a></li>
+      <li>Previous: <a href="HowItWorks.html" title="previous chapter">How Tracktivity Pets Works</a></li>
+      <li>Next: <a href="DevTools.html" title="next chapter">Development Tools</a></li>
   </ul></li>
 </ul>
 </div>

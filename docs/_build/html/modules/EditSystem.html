@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Editing Tracktivity Pets &mdash; Tracktivity Pets 1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Tracktivity Pets 1 documentation" href="../index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="editing-tracktivity-pets">
+<h1>Editing Tracktivity Pets<a class="headerlink" href="#editing-tracktivity-pets" title="Permalink to this headline">¶</a></h1>
+<p>In this section extending the system will be discussed. This includes where to start for release 3 features, as well as adding new pets, scenery, items, and challenges. One of the features that Django has built in is an admin view that allows developers to easily access the database and add/edit/remove entries in the database. Some time was spent on setting up specific models in here so that certain things could easily be modified, though it should be noted that this was not a requirement and as such does not work perfectly.</p>
+<div class="section" id="accessing-the-admin-page">
+<h2>Accessing the Admin Page<a class="headerlink" href="#accessing-the-admin-page" title="Permalink to this headline">¶</a></h2>
+<p>To add new pets, scenery, items, and challenges, you simply log navigate to &lt;domain name&gt;/admin and log in as an administrator. By default this is set to a username:password pair of administrator:admin (though may be different if you have changed this). From this section you can see a range of headings such as ‘Authentication and Authorization’, ‘Djcelery’, ‘Fitapp’, and ‘Tracktivitypetswebsite’. Under these are specific subheadings which directly correlate with the models defined.</p>
+</div>
+<div class="section" id="adding-pets">
+<h2>Adding Pets<a class="headerlink" href="#adding-pets" title="Permalink to this headline">¶</a></h2>
+<p>From the admin page, adding a new pet is as simple as clicking on ‘Pets’ under ‘Tracktivitypetswebsite’.</p>
+<p>Here you will be presented with a list of currently existing pets, and by clicking the button at the top right labelled ‘Add pet’, you will be taken to a form to create a new pet. Similarly, clicking on an existing pet’s name will take you to an already filled out form where you can edit and save changes.</p>
+<p>Upon clicking on the ‘Add pet’ button, an administrator will be presented with the blank form to fill out. Clicking on the ‘Starter level’ dropdown list, you can select what level this pet will start at when purchased from the store or selected from the pet selection page. The default name plays two major roles: first off it will be what the user will see the pet called on the pet selection page and store, and what it is referred to throughout the admin page, and secondly (which is a very important step) is that any images for the pet or pet’s items MUST be in the desired spot under an identical (even including capitals) folder.</p>
+<p>Using an example of a pet called ‘Peter’, all images related to the silhouette, default picture, and evolution/mood images for Peter would go in &lt;project folder&gt;/tracktivityPetsWebsite/static/trackivityPetsWebsite/images/pets/Peter and any cosmetic items for Peter would go in &lt;project folder&gt;/tracktivityPetsWebsite/static/trackivityPetsWebsite/images/items/Peter. To get proper results for this, the development team made all pets 1024x1024 pixels, with a transparent background. Items are also the same dimension, and were simply positioned in Photoshop so that they were in the correct position, with a very large amount of whitespace. If you do not do this, unwanted results may occur.</p>
+<p>‘Experience to unlock’ in this form is how much experience is needed (across all pets) for user’s to be able to purchase this pet, otherwise it will appear locked. ‘Cost’ is how many pet pennies the user must have in order to be able to purchase an unlocked pet.</p>
+<p>Next in the form is how to set up the images for the pet. Setting the level to 1, the happiness to -1, will set up the required default picture for this pet. This default picture is used in the pet selection page and in the store, and should be used to represent what the pet is like to a user. The image location is relative to the pet’s image folder, as described above.</p>
+<p>As such, an image entered into this field as default_picture.png would need to exist in the file structure as &lt;project folder&gt;/tracktivityPetsWebsite/static/trackivityPetsWebsite/images/pets/Peter/default_picture.png. Next to this image location field is a description, this will be used later on to set the mood for the pet, so try name these something meaningful, such as default picture, silhouette, evolution 1 sad, etc.</p>
+<p>To set up a pet entirely, after the admin has set a default picture, they also need to set a silhouette, which is done much the same way as the default picture, but for this the happiness is set to -2. From here it is time to set the happiness and evolution images for the pet. The way this works is quite simple, the level indicates what level is required for the image should be shown, and the happiness indicates how much happiness is needed for this image.</p>
+<p>The system will then pick the closest (without going above) image based on the level and happiness the pet has. For example, if two images are present, a level 1 and 0 happiness, and a level 5 and 50 happiness, but the pet is level 3 and has 70 happiness, the requirements for the second image will not be met, so the first image will instead be used. If the pet was level 5 however, the second image would be selected. For best practice, the development team used three evolutions (at level 1, level 5, and level 10), with three moods each (at happiness 0, happiness 35, and happiness 70).</p>
+<p>Below all of this, is the ‘Stories’ section. A default story for the pet should be set up, this is used in the pet selection page, the store, and many other places throughout. To set this up, simply select the level as 1, and write in a story. To add more stories, simply add a new level at whatever level you wish, and enter a story. Once all this is done, simply click the save button at the bottom right hand corner (note: you should probably click ‘save and continue editing’ throughout, as this can be time consuming, and you do not want to lose work). At this stage, it is assumed that a default picture, silhouette, and multiple evolutions/happiness images have been setup, as well as at least a default story for the pet.</p>
+<p>Next up is setting the phrases for the pet, which will be spoken depending on the mood of the pet. To do this, navigate back to the original admin page, and click on ‘Moods’ under ‘Tracktivitypetswebsite’. Here you will be presented with every mood that exists for every single pet, for ease of finding the pet’s name is displayed first, followed by the description you set for each image while setting up the pet (so name them something useful!).</p>
+<p>To add new phrases, simply click on the mood you wish the pet to state these phrases as, and type away! Do note that a phrase for each pet does need to be set, otherwise the website will give an error if this mood if ever reached by a user (and again, this is an easy way to access the database, not a perfectly working solution). At this stage, the pet should be fully set up and ready to use by users, throughout, if any help is needed simply refer to already existing pets/stories/moods.</p>
+</div>
+<div class="section" id="adding-scenery">
+<h2>Adding Scenery<a class="headerlink" href="#adding-scenery" title="Permalink to this headline">¶</a></h2>
+<p>Adding a new scenery is extremely simple, far more simple than adding a pet. To add a new scenery, simply navigate to the admin page as described earlier, then press on ‘Scenerys’ under ‘Trackitivtypetswebsite’. Here you will be presented with a list of currently existing scenery, and just like ‘Pets’, you can either modify an existing scenery, or add a new scenery by clicking ‘Add scenery’.</p>
+<p>Upon clicking ‘Add scenery’, an admin will be presented with a fresh form. The ‘name’ section is what the scenery will be called, and will be displayed in the store and inventory. ‘Experience to unlock’ is the amount of experience that is required (across all pets) to unlock this scenery. ‘Cost’ is how many pet pennies are required in order to purchase this scenery once unlocked. ‘Description’ is the description/story of the scenery, and will be displayed to users in the store and inventory. Image location is a relative path from &lt;project folder&gt;/tracktivityPetsWebsite/static/trackivityPetsWebsite/images/scenery such that a scenery with the image name of beach.jpg would be found in &lt;project folder&gt;/tracktivityPetsWebsite/static/trackivityPetsWebsite/images/scenery/beach.jpg.</p>
+<p>It should also be noted that there is a CSS rule that zooms in on part of the scenery, which is done so to get more of the center of the image based on screen size, so the image may look slightly cropped on certain screen sizes. Clicking on save should now make this scenery live on the website.</p>
+</div>
+<div class="section" id="adding-items">
+<h2>Adding Items<a class="headerlink" href="#adding-items" title="Permalink to this headline">¶</a></h2>
+<p>Adding items are very similar to adding scenery, though slightly different. To add a new item, simply navigate to the admin page as described earlier and press ‘Items’ under ‘Tracktivitypetswebsite’. Here you will be presented with a list of items, that starts with a pets name, followed by the item name. Just like scenery and pets, you can either click one of these to modify an existing item, or press the ‘Add item’ at the top right hand corner to add a new item. Upon clicking on ‘Add item’ you will be presented with a fresh form. ‘Name’ refers to what the item should be called, and will be displayed to the user in the store and inventory. ‘Experience to unlock’ is how much experience is needed by this pet in order to unlock this item. ‘Cost’ refers to the amount of pet pennies required in order to purchase this item once unlocked. ‘Belongs to’ is a drop down box with a list of all pets that exist (and is updated automatically with new pets), and indicates which pet this item is usable on (only one pet per item).</p>
+<p>‘Body part’ is used to indicate which body part this item goes on, and is used by the system to detect other items on this body part, so that a warning can be given to the user to unequip the other item. If the body part does not exist, you can simply press the + next to this which should take you to a form that simply takes the name of the body part so you can add your own. ‘Description’ is the description/story for this item, and is displayed to the user in the store and inventory.</p>
+<p>Image location is a relative path, and is expected to be found in the images folder, under the name of the pet. For example, if an item is called blue_hat.png and belongs to a pet called Peter, it should be found in &lt;project folder&gt;/tracktivityPetsWebsite/static/trackivityPetsWebsite/images/items/Peter/blue_hat.png. Clicking on save should now make this item be live on the website.</p>
+</div>
+<div class="section" id="adding-challenges">
+<h2>Adding Challenges<a class="headerlink" href="#adding-challenges" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="extending-for-release-3">
+<h2>Extending For Release 3<a class="headerlink" href="#extending-for-release-3" title="Permalink to this headline">¶</a></h2>
+<p>There were two features stated as being in “release three” for this project (multiplayer challenges and a statistics view), and this section will provide a brief overview of where to start looking to implement said features.</p>
+<p>First and foremost, to get any new pages to work, you need to setup a url in urls.py to tell Django what view to call when the user enters a specific url (maybe /statistics or /multiplayer_challenge). Also any new view will need to be added to __init__.py in the format as described in the backend (tracktivityPetsWebsite) section.</p>
+<p>To implement the multiplayer challenges, a model for ‘Friend’ will need to be added, which simply requires a one-to-many relationship field to other ‘User’ models. An extension of ‘Profile’ may also want to be made to add more social aspects such as a user profile picture, or some statistics such as sex, age, etc. This could be further added by adding a ‘Status’ model for users to be able to make posts or something, if you wish to go down that route. It should also be noted that a unique username currently exists for every user, though is not used, which could be used as a screen name for multiplayer challenges/friends as so avoid giving them an email address. A page would need to be setup so that users can browse people, or add/delete friends somehow. Another page would be needed for the actual multiplayer challenges, and could be based off of the current ‘Challenge’ view and template, though would need a way to select a friend to invite. To implement the actual multiplayer challenges, minimal changes would need to be made to the existing models. A new model could be created that takes the ID of both users and the datetime the challenge is to be started. Once the opponent accepts the challenge, a new UserMicroChallenge instance would be created for both users. Once the duration of the challenge is over, a mechanism would need to be implemented so that the users are notified of the results of the challenge.</p>
+<p>The statistics page should be very straight forward. Lots of the data already exists, and it is simply a matter of looking through the models to see what data there is. This can include stuff such as a pet’s happiness for a given day, experience earned on that day, total experience for a pet, etc. All of this is searchable via queries and can be ordered. Other aspects such as rewards from challenges can be used. Further statistics would be as simple as modifying the existing models to add new data fields to track. A statistics page would then need to be created and simply render a template to fill in the HTML with fields retrieved from the database.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Editing Tracktivity Pets</a><ul>
+<li><a class="reference internal" href="#accessing-the-admin-page">Accessing the Admin Page</a></li>
+<li><a class="reference internal" href="#adding-pets">Adding Pets</a></li>
+<li><a class="reference internal" href="#adding-scenery">Adding Scenery</a></li>
+<li><a class="reference internal" href="#adding-items">Adding Items</a></li>
+<li><a class="reference internal" href="#adding-challenges">Adding Challenges</a></li>
+<li><a class="reference internal" href="#extending-for-release-3">Extending For Release 3</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/EditSystem.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Tracktivity Pets.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="../_sources/modules/EditSystem.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

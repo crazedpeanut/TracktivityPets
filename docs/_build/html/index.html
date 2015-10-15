@@ -43,12 +43,35 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modules/Introduction.html">Introduction - What is Tracktivity Pets?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/HowItWorks.html">How Tracktivity Pets Works</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/HowItWorks.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/HowItWorks.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/HowItWorks.html#nginx-configuration">Nginx configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/HowItWorks.html#gunicorn-configuration">Gunicorn configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modules/HowItWorks.html#structure">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/HowItWorks.html#main-method">Main Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/HowItWorks.html#program-structure">Program Structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/EditSystem.html">Editing Tracktivity Pets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/EditSystem.html#accessing-the-admin-page">Accessing the Admin Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/EditSystem.html#adding-pets">Adding Pets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/EditSystem.html#adding-scenery">Adding Scenery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/EditSystem.html#adding-items">Adding Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/EditSystem.html#adding-challenges">Adding Challenges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/EditSystem.html#extending-for-release-3">Extending For Release 3</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules/FileOverview.html">Tracktivity Pets File Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="modules/FileOverview.html#front-end-files">Front-end files</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#user-interface">User Interface</a></li>
 <li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#site-templates">Site templates</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="modules/FileOverview.html#templates-introduction">Templates Introduction</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="modules/FileOverview.html#base-html"><strong>base.html</strong></a></li>
+<li class="toctree-l5"><a class="reference internal" href="modules/FileOverview.html#base-html">base.html</a></li>
 <li class="toctree-l5"><a class="reference internal" href="modules/FileOverview.html#splash-html"><strong>splash.html</strong></a></li>
 <li class="toctree-l5"><a class="reference internal" href="modules/FileOverview.html#login-html"><strong>login.html</strong></a></li>
 <li class="toctree-l5"><a class="reference internal" href="modules/FileOverview.html#register-html"><strong>register.html</strong></a></li>
@@ -90,15 +113,56 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="modules/FileOverview.html#back-end-files-django">Back-end Files (Django)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#settings-py"><strong>settings.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#admin-py"><strong>admin.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#models-py"><strong>models.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#utils-py"><strong>utils.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#urls-py"><strong>urls.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#tasks-py"><strong>tasks.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#tests-py"><strong>tests.py</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules/HowItWorks.html">How Tracktivity Pets Works</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules/HowItWorks.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules/HowItWorks.html#installation">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="modules/HowItWorks.html#nginx-configuration">Nginx configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="modules/HowItWorks.html#gunicorn-configuration">Gunicorn configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/FileOverview.html#back-end-files-tracktivity-pets">Back-End Files (Tracktivity Pets)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#init-py"><strong>__init__.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#challenges-py"><strong>challenges.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#dashboard-py"><strong>dashboard.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#equip-item-py"><strong>equip_item.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#feedback-py"><strong>feedback.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#fitbit-link-py"><strong>fitbit_link.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#fitbit-success-py"><strong>fitbit_success.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#get-pet-penny-count-py"><strong>get_pet_penny_count.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#inventory-py"><strong>inventory.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#main-story-py"><strong>main_story.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#notifications-py"><strong>notifications.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#pet-selection-py"><strong>pet_selection.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#purchase-py"><strong>purchase.py</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#register-py"><strong>register.py</strong></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="modules/FileOverview.html#external-django-apps">External Django Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/FileOverview.html#django-fitbit">Django-Fitbit</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules/DevTools.html">Development Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#ubuntu-server">Ubuntu Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#mysql">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#fedora">Fedora</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#gunicorn">Gunicorn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#git-github">Git/GitHub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#django">Django</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#fitbit-api">Fitbit API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#nginx">Nginx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#rabbitmq">RabbitMQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#celery">Celery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#javascript">Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#photoshop">Photoshop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#html5">HTML5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#css3">CSS3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/DevTools.html#bootstrap">Bootstrap</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules/models.html">Models</a></li>

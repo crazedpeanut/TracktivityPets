@@ -1,6 +1,8 @@
 Tracktivity Pets File Overview
 ========================================
 
+This section is designed to give an overview of the purpose of the main files throughout the project in order to help identify the purpose of the file, as well as show you where may be best to edit specific parts of the project.
+
 Front-end files
 -----------------------------
 
@@ -18,12 +20,12 @@ Templates Introduction
 ``````````````````````````
 Each separate page within Tracktivity Pets is either defined in a Django template file of its own (such as the Feedback page), or a collection of sub-templates which are then included into a main template (such as the Store). Django templates are essentially just HTML files which incorporate extra code for processing data returned from a Django view file, such as what pets a user has currently unlocked.
 
-**base.html**
+base.html
 *************
 
 Every web page needs opening <html> and <head> tags in which vital stylesheets, script files and other information relevant to the entire site is defined. Tracktivity Pets defines this in the base.html template, and almost every other page in the site extends this template. Some of the most important features of base.html are the links to Bootstrap’s CSS and library of inbuilt Javascript functions, as well as to Google’s charting API necessary for the Dashboard page. Within the <body> tag, a template block is defined for the navigation bar, followed by a <div> element with identifer “page-content”. This <div> contains another template block called content_block: It is into this block that other pages insert their own code.
 
-**splash.html**
+splash.html
 ***************
 
 This template provides the background for the initial login interface. The template defines divs and image tags for the circular image of Sir Oinksalot, as well as the Tracktivity Pets logo text beneath this image. It then includes the login.html template separately to reduce the amount of code in this template, which is essentially just defining the page’s structure.
@@ -201,3 +203,129 @@ This template contains all the structural code for each tab within the Challenge
 *******************************
 
 The code skeleton for the various modals that may be needed for the Challenges page are contained within this template. When using a mobile device, the detail view will be hidden - after the user taps a challenge (available, current or completed) from the list view, the challenges_detail_modal will pop up containing the challenge’s relevant data (like its table of rewards for each difficulty level).
+
+
+Back-end Files (Django)
+-----------------------------
+
+All the files discussed in this part of the section are found in <project folder>/tracktivityPetsWebsite/ apart from settings.py which is detailed below.
+
+**settings.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First and foremost, the most important file in this system is settings.py, which can be found in <project folder>/TracktivityPets. This file is used by Django to to run the project, and needs to match specific parts of the server. Most importantly are that HOST_NAME needs to match the domain name of the server that the project is being run on. DEBUG should be turned to False if you do not wish for your users to see errors (and see a 404 page instead), or may be set to True if you want debugging information. There is a range of EMAIL_* related variables, and these need to match any desired SMTP server settings. The (uncommented out) DATABASES variable needs to match the desired database, such as your own username, password and host. And FITAPP_* variables will need to be changed to match your consumer secret and consumer key.
+
+**admin.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used for the files generated in the admin view found at <domain name>/admin and is an easy way to add new entries to the database. It is already filled with some of the models used in this project, and is a built in Django functionality, with plenty of useful tutorials found online.
+
+**models.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is another file used by Django, and is where all of the models we have used are found, as well as specific methods used on these models (see the appendix for more information). Again, this is a simple another built in Django functionality, and is recommended to learn how Django handles this before attempting to modify. 
+
+**utils.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used as a way for more generic methods to exist, that did not suit models.py. This contains methods such as creating a users first pet, activating items, pet changes, and more. See the appendix on this file for more information. 
+
+**urls.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file contains all the URLs for tracktivityPetsWebsite, and is included in the urls.py found in <project folder>/TracktivityPets. For more information on this, see the Program Structure section for an explanation of how this works. 
+
+**tasks.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file contains functions that are to be executed asynchronously by Celery. Each function in this file has the @shared_task decorator, indicating they can be used by Celery. 
+
+**tests.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is another built in Django file, and is not actually currently used, but does exist for future implementation. This file is essentially used for running automated testing, and many online resources cover this aspect if you wish to implement this functionality. 
+
+Back-End Files (Tracktivity Pets)
+-----------------------------------
+
+The files discussed here are all in references to those found in <project folder>/tracktivityPetsWebsite/views. 
+
+**__init__.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Due to the nature of Django code, all views are expected to be in a single views.py file. To get around this, the views folder was created and this file fixes that. Essentially, instead of looking for a views.py file, Django will now look for this file. This file just contains imports of all the functions and are set up in the way: from .<file> import <function name in file> (also note the . before the file). 
+
+**challenges.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used as the backend for the challenges page in Tracktivity Pets. It handles rendering the templates, accepting challenges, checking the status of challenges, and also alerting the user once they have complete a challenge goal.
+
+**dashboard.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used as the backend for the dashboard page, and retrieves all the necessary information required for the dashboard template.
+
+**equip_item.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is an ajax call that does some basic logic on an item the user wishes to equip or unequip an item, responding whether the item has been equipped, unequipped, or an item already exists on that body part.
+
+**feedback.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used to render the feedback page, or if something is in the POST variable, the system will attempt to email the provided email address with the information the user entered.
+
+**fitbit_link.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file simply renders the template to link a Fitbit device, or redirects if one is already linked. 
+
+**fitbit_success.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used to notify the Django Fitbit app that an account has successfully been authorised.
+
+**get_pet_penny_count.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is an ajax call that simply returns the amount of pet pennies the user currently has, and is used for the pet penny counter in the navigation bar.
+
+**inventory.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file is used to get all the items, pets. and scenery that the user owns. The items retrieved are for the current pet only. This file also renders the inventory template. 
+
+**main_story.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file simply renders the main_story template so that the user can view the main story on registration. 
+
+**notifications.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file keeps track of any notifications or updates to be displayed to the user. There are a number of different kinds of notifications such as goals completed, gained experience, and stories unlocked. These can all be handled differently depending on the context and type of notification. A notification can also be acknowledged so they can be displayed only once.
+
+**pet_selection.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file serves two purposes: firstly it retrieves all the pets that exist, as well as their silhouettes and story, and renders the template for the pet selection page. It is also used for registering the chosen pet when it receives a POST. 
+
+**purchase.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The purpose of this file is as an ajax call to purchase a scenery, item, or pet. The POST request handles whether the user is purchasing a scenery, item or pet and provides an id of the said purchase. The system will then see if they have the requirements for it, and will return whether it was purchased successfully or not, followed by the amount of new pet pennies if it was a success.
+
+**register.py**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This file serves two purposes: firstly it renders the template for registering, and if a POST request is made then the user account is registered with the input they provided. Double ups of account details are also checked, so this may return an error.
+
+External Django Apps
+--------------------------
+
+Django-Fitbit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Django-Fitbit is a Django app that acts as a wrapper around the Python Fitbit library. It handles updates from Fitbit and can pull data so that Tracktivity Pets has up to date step information for its users.
+
+

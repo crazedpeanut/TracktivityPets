@@ -10,9 +10,14 @@ Contents:
 
 .. toctree::
 
+   modules/Introduction
+   modules/HowItWorks
+   modules/FileOverview
+   modules/DevTools
    modules/models
+   modules/utils
    modules/views
-
+   modules/tasks
 
 Indices and tables
 ==================

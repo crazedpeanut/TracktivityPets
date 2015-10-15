@@ -24,8 +24,8 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Tracktivity Pets 1 documentation" href="../index.html" />
-    <link rel="next" title="Models" href="models.html" />
-    <link rel="prev" title="Tracktivity Pets File Overview" href="FileOverview.html" />
+    <link rel="next" title="Tracktivity Pets File Overview" href="FileOverview.html" />
+    <link rel="prev" title="Introduction - What is Tracktivity Pets?" href="Introduction.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
@@ -131,6 +131,31 @@
 </li>
 <li><p class="first">Set up gunicorn to run on the servers start-up using Upstart. (Below is an example configuration script)</p>
 </li>
+<li><dl class="first docutils">
+<dt>In the settings.py file, you will need to configure the SMTP settings so that they work with your server. This is for the feedback functionality of the application.</dt>
+<dd><p class="first">below is an example:</p>
+<ul class="last simple">
+<li>EMAIL_BACKEND = &#8216;django.core.mail.backends.smtp.EmailBackend&#8217;</li>
+<li>EMAIL_USE_TLS = True (Should be True)</li>
+<li>EMAIL_HOST = &#8216;SMTP HOSTNAME HERE&#8217;</li>
+<li>EMAIL_HOST_USER = &#8216;SMTP USERNAME&#8217;</li>
+<li>EMAIL_HOST_PASSWORD = &#8216;SMTP PASSWORD&#8217;</li>
+<li>EMAIL_PORT = 587</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">In the settings.py, you will also need to change the hostname and Fitbit fields so that they correspond with your details</p>
+<blockquote>
+<div><ul class="simple">
+<li>HOST_NAME = &#8220;YOUR HOSTNAME HERE&#8221;</li>
+<li>FITAPP_CONSUMER_KEY = &#8216;FITBIT CONSUMER KEY HERE&#8217;</li>
+<li>FITAPP_CONSUMER_SECRET = &#8216;FITBIT CONSUMER PRIVATE KEY HERE&#8217;</li>
+<li>FITAPP_SUBSCRIBE = SET TO True FOR SUBSCRIPTION (ASYNC) FITBIT RESULTS</li>
+<li>FITAPP_SUBSCRIBER_ID = &#8220;FITBIT SUBSCRIBER ID HERE&#8221;</li>
+</ul>
+</div></blockquote>
+</li>
 </ol>
 <div class="section" id="nginx-configuration">
 <h3>Nginx configuration<a class="headerlink" href="#nginx-configuration" title="Permalink to this headline">¶</a></h3>
@@ -189,6 +214,28 @@ exec /path/to/virtualenv/bin/gunicorn myapp:app
 </div>
 </div>
 </div>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="main-method">
+<h3>Main Method<a class="headerlink" href="#main-method" title="Permalink to this headline">¶</a></h3>
+<p>Due to the nature of our program implementing the Django framework, our project does not have a traditional style of a main method. The entry point that a developer would need to worry about &lt;project folder&gt;/TracktivityPets/urls.py. This basic file is structured in such a way that branches off to use multiple different Django ‘apps’. The first is the admin page, which the developer will not need to change as these are pre-built by the Django development team, the second uses the content found in &lt;project folder&gt;/fitapp/urls.py, and the third being the entryway into the pages we developed, which can be found in &lt;project folder&gt;/tracktivityPetsWebsite/urls.py.</p>
+<p>From here a logical representation of the url a user has entered is converted into a regex and is then matched to a function found within a view. Take for example the following code found in &lt;project folder&gt;/tracktivityPetsWebsite/urls.py:</p>
+<blockquote>
+<div>url(r&#8217;^login/$&#8217;, views.user_login, name=&#8217;user_login&#8217;)</div></blockquote>
+<p>This means anytime a user enters &lt;domain name&gt;/login, the function called user_login found in &lt;project folder&gt;/tracktivityPetsWebsite/views/__init__.py will be called. The same works for all the other views. It is recommended to familiarise yourself with regex as to understand the symbols within the more complicated urls.</p>
+</div>
+<div class="section" id="program-structure">
+<h3>Program Structure<a class="headerlink" href="#program-structure" title="Permalink to this headline">¶</a></h3>
+<p>Django is referred to as a model-view-controller (MVC) framework, however it is slightly different to traditional MVC frameworks, and appears to be more of a model-view-controller-template.
+Traditionally views are used to represent how something should look, but Django takes a different approach and uses views to describe which data is shown. Views in Django are page-specific functions that are passed a HttpResponse object, which allows access to user data, session data, and more. Using this, the view uses logic and queries the database through the use of models, similar to the controller of traditional MVC patterns. Templates are similar to traditional views, in that they are given data and decide how to display the information. Models in Django are basically the same as traditional MVC patterns.</p>
+<p>The controller portion of Django is not so much what is shown (like in MVC), but rather the system logic for following through to the correct view. This is done by looking at urls.py, defined in the project’s folder, which uses regular expression (regex) pattern matching on the URL entered by the user (as described above). It attempts to match the regex to a view, and if it is found it will then go to that view to perform the logic and querying as described above. Partial matches can be found, and will look further into other Django app’s urls.py files, if specified. If no matches are found the user is redirected to a “404 page not found” page.</p>
+<p>Using this logic, and the explanation of the main method to indicate what function should be run, we can look further into how a page is delivered to the user. So we can assume that the system has now selected a function that is defined in &lt;project folder&gt;/views/__init__.py. This imports functions from other files, as clearly indicated in this file. If you then select one of the files listed there (which are found in the same folder, which is called views), you can see the logic behind how data is retrieved from the database.</p>
+<p>QuerySet objects are used to create an object-oriented style query that Django will change into it’s own query for the database, depending on the database used. This will then fetch the data, and return it in an object-oriented class. Logic can then be applied, such as for loops and if statements. Further down, a HttpResponse may be seen, which will return exactly the string that is found to the user’s web browser, or will call a render function, that takes a request object, a dictionary with key/value pairs, and a template to render. The request object is passed into the function automatically from when Django matches a URL, and contains HTTP specific variables, such as the ip address, cookies, and other information. For the return function, at this point in time the program should now have a set of key/value pairs that contain variables that have had logic applied to them, such as retrieving the user’s current pet, how much experience that pet, and so on. The third variable will have a Django specific path, that uses a shortcut to find templates that are (by default, and such in this software), found in &lt;project folder&gt;/tracktivityPetsWebsite/templates.</p>
+<p>A URL of tracktivityPetsWebsite/pet_selection.py would in fact be referring to &lt;project folder&gt;/tracktivityPetsWebsite/templates/pet_selection.py due to this shortcut. What this now means is that the dictionary full of variables will have been passed to this template in order to render it. Throughout this HTML file will be brackets indicated as either {{ &lt;variable&gt; }} or {% &lt;logic&gt; %}. These are Jinja2 specific tags, and knowledge on such language will be required to understand what is happening here. All variables inside {{ &lt;variable&gt; }} will be named appropriately so that they reflect the same key as was passed into this template from the python file previously discussed. Once Jinja2 has completed filling in these variables and using it’s logic, the now completed HTML file will be delivered to the user’s device for viewing.</p>
+<p>Below is a flow diagram that shows the process that Django takes, as described above.</p>
+<img alt="../_images/overview.png" src="../_images/overview.png" />
+</div>
+</div>
 </div>
 
 
@@ -206,6 +253,11 @@ exec /path/to/virtualenv/bin/gunicorn myapp:app
 <li><a class="reference internal" href="#gunicorn-configuration">Gunicorn configuration</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#structure">Structure</a><ul>
+<li><a class="reference internal" href="#main-method">Main Method</a></li>
+<li><a class="reference internal" href="#program-structure">Program Structure</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -213,8 +265,8 @@ exec /path/to/virtualenv/bin/gunicorn myapp:app
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="FileOverview.html" title="previous chapter">Tracktivity Pets File Overview</a></li>
-      <li>Next: <a href="models.html" title="next chapter">Models</a></li>
+      <li>Previous: <a href="Introduction.html" title="previous chapter">Introduction - What is Tracktivity Pets?</a></li>
+      <li>Next: <a href="FileOverview.html" title="next chapter">Tracktivity Pets File Overview</a></li>
   </ul></li>
 </ul>
 </div>
