@@ -60,6 +60,24 @@ Installation
 27. Create a file /etc/nginx/sites-enabled/tracktivitypets.conf
 28. Define a server block to communicate to the gunicorn UNIX socket. (Below is an example server block config)
 29. Set up gunicorn to run on the servers start-up using Upstart. (Below is an example configuration script)
+30. In the settings.py file, you will need to configure the SMTP settings so that they work with your server. This is for the feedback functionality of the application.
+	below is an example:
+	
+	- EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+	- EMAIL_USE_TLS = True (Should be True)
+	- EMAIL_HOST = 'SMTP HOSTNAME HERE'
+	- EMAIL_HOST_USER = 'SMTP USERNAME'
+	- EMAIL_HOST_PASSWORD = 'SMTP PASSWORD'
+	- EMAIL_PORT = 587
+
+31. In the settings.py, you will also need to change the hostname and Fitbit fields so that they correspond with your details
+
+	- HOST_NAME = "YOUR HOSTNAME HERE"
+	
+	- FITAPP_CONSUMER_KEY = 'FITBIT CONSUMER KEY HERE'
+	- FITAPP_CONSUMER_SECRET = 'FITBIT CONSUMER PRIVATE KEY HERE'
+	- FITAPP_SUBSCRIBE = SET TO True FOR SUBSCRIPTION (ASYNC) FITBIT RESULTS 
+	- FITAPP_SUBSCRIBER_ID = "FITBIT SUBSCRIBER ID HERE"
 
 Nginx configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
