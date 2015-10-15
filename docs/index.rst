@@ -13,6 +13,7 @@ Contents:
    modules/Introduction
    modules/HowItWorks
    modules/EditSystem
+   modules/Troubleshooting
    modules/FileOverview
    modules/DevTools
    modules/models

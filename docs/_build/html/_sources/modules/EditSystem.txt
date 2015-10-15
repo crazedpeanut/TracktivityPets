@@ -56,6 +56,7 @@ Image location is a relative path, and is expected to be found in the images fol
 Adding Challenges
 -----------------------------
 
+To add a new challenge to Tracktivity Pets
 
 Extending For Release 3
 -----------------------------
