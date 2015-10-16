@@ -56,7 +56,27 @@ Image location is a relative path, and is expected to be found in the images fol
 Adding Challenges
 -----------------------------
 
+To add a new challenge to Tracktivity Pets, the first step is to navigate to the Tracktivity Pets administration panel (<hostname>/admin) and log in with a django superuser account. In the Tracktivitypetswebsite section, click the Micro challenges model. Click the 'Add micro challenge' button on the right hand side of the page, which will take you to a form.
 
+Fill out your challenge details in the form. The fields should be fairly self explanitory. Here is a brief explanation of all of them:
+
+- Name - This is the name of your challenge. 
+- Overview - This is just some text to describe what your challenge is and what the user has to do to complete it.
+- Challenge Type - This is used by the backend to determine how to calculate if the user has completed the challenge or not. The only type of   challenge implemented so far is STEPS_IN_DURATION.
+- Duration mins - This is how long the challenge goes for, or how much time the user has to complete the challenge.
+
+Once the form is filled out, click the 'Save' button.
+
+Next up, we need to create the goals for the challenge. These are essentially how many steps the user has to take and the reward they get for accomplishing it. To create your goals go back to the administration panel home page and click 'Micro challenge goals'.
+
+Click the 'Add micro challenge goal' on the right hand side of the screen. You should now see a form. Here is a description of the fields in this form:
+
+- Micro challenge - This is the micro challenge this goal refers to.
+- Medal - This is the medal that the user receives for achieving this challenge. The current medals are gold, silver and bronze, but you can    add more if you would like.
+- Description - A textfield for describing how the user can achieve this goal.
+- Pet pennies reward - How many pet pennies the user receives for completing this goal.
+- Goal state - This is the state that has to be achieved in order to complete this goal. At the moment a goal state only contains the amount    of steps.
+ 
 Extending For Release 3
 -----------------------------
 

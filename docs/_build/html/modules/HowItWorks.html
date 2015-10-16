@@ -24,7 +24,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Tracktivity Pets 1 documentation" href="../index.html" />
-    <link rel="next" title="Tracktivity Pets File Overview" href="FileOverview.html" />
+    <link rel="next" title="Editing Tracktivity Pets" href="EditSystem.html" />
     <link rel="prev" title="Introduction - What is Tracktivity Pets?" href="Introduction.html" />
    
   
@@ -235,6 +235,11 @@ Traditionally views are used to represent how something should look, but Django 
 <p>Below is a flow diagram that shows the process that Django takes, as described above.</p>
 <img alt="../_images/overview.png" src="../_images/overview.png" />
 </div>
+<div class="section" id="database-design-and-class-structure">
+<h3>Database Design and Class Structure<a class="headerlink" href="#database-design-and-class-structure" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/erdiagram.png" src="../_images/erdiagram.png" />
+<p>Above is an Entity-Relationship (ER) diagram showing the final version of the database. This is a direct representation of the models found in &lt;project folder&gt;/tracktivityPetsWebsite/models.py. The external user model represents the built-in User model provided by Django, and the external Fitbit model represents the models found in &lt;project folder&gt;/fitapp/models.py from the Fitbit app. Due to how Django models work, this ER diagram is also a direct representation of the class model used (excluding functions, which can be found in the corresponding models.py files), and will be translated into QuerySet objects upon querying.</p>
+</div>
 </div>
 </div>
 
@@ -256,6 +261,7 @@ Traditionally views are used to represent how something should look, but Django 
 <li><a class="reference internal" href="#structure">Structure</a><ul>
 <li><a class="reference internal" href="#main-method">Main Method</a></li>
 <li><a class="reference internal" href="#program-structure">Program Structure</a></li>
+<li><a class="reference internal" href="#database-design-and-class-structure">Database Design and Class Structure</a></li>
 </ul>
 </li>
 </ul>
@@ -266,7 +272,7 @@ Traditionally views are used to represent how something should look, but Django 
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="Introduction.html" title="previous chapter">Introduction - What is Tracktivity Pets?</a></li>
-      <li>Next: <a href="FileOverview.html" title="next chapter">Tracktivity Pets File Overview</a></li>
+      <li>Next: <a href="EditSystem.html" title="next chapter">Editing Tracktivity Pets</a></li>
   </ul></li>
 </ul>
 </div>

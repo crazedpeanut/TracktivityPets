@@ -6,11 +6,24 @@
 Welcome to Tracktivity Pets's documentation!
 ============================================
 
+Introduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This documentation has been written for the purpose of describing how Tracktivity Pets works so that it can be administrated, modified and/or extended by a third party.
+
+In this documentation you will find information such as what dependencies are required to run Tracktivity Pets, how to install the application and get it running on a server. You will also find a description of the structure of the backend of the application, including how the data used by Tracktivity Pets is modeled and descriptions for all of the files that contribute to the applications operation.
+
+If you would like to add new data to the application, this documentation contains guides for adding new pets, items, challenges and sceneries.
+
+If you would like to modify or extend Tracktivity Pets, some suggestions about where to start are also included. These suggestions are based upon some of the features that the applications development team had planned for later releases of the project but did not have enough time to implement them. 
+
+ 
+
+
 Contents:
 
 .. toctree::
 
-   modules/Introduction
    modules/HowItWorks
    modules/EditSystem
    modules/Troubleshooting

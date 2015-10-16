@@ -103,7 +103,10 @@ From here a logical representation of the url a user has entered is converted in
     url(r'^login/$', views.user_login, name='user_login')
 
 This means anytime a user enters <domain name>/login, the function called user_login found in <project folder>/tracktivityPetsWebsite/views/__init__.py will be called. The same works for all the other views. It is recommended to familiarise yourself with regex as to understand the symbols within the more complicated urls.
+
 Program Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Django is referred to as a model-view-controller (MVC) framework, however it is slightly different to traditional MVC frameworks, and appears to be more of a model-view-controller-template.
 Traditionally views are used to represent how something should look, but Django takes a different approach and uses views to describe which data is shown. Views in Django are page-specific functions that are passed a HttpResponse object, which allows access to user data, session data, and more. Using this, the view uses logic and queries the database through the use of models, similar to the controller of traditional MVC patterns. Templates are similar to traditional views, in that they are given data and decide how to display the information. Models in Django are basically the same as traditional MVC patterns.
  
@@ -120,3 +123,5 @@ Below is a flow diagram that shows the process that Django takes, as described a
 
 .. image:: ../images/overview.png
 
+Database Design and Class Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

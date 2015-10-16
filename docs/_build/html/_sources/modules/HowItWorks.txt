@@ -123,3 +123,9 @@ Below is a flow diagram that shows the process that Django takes, as described a
 
 .. image:: ../images/overview.png
 
+Database Design and Class Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/erdiagram.png
+
+Above is an Entity-Relationship (ER) diagram showing the final version of the database. This is a direct representation of the models found in <project folder>/tracktivityPetsWebsite/models.py. The external user model represents the built-in User model provided by Django, and the external Fitbit model represents the models found in <project folder>/fitapp/models.py from the Fitbit app. Due to how Django models work, this ER diagram is also a direct representation of the class model used (excluding functions, which can be found in the corresponding models.py files), and will be translated into QuerySet objects upon querying.
